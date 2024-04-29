@@ -10,7 +10,7 @@ const App = () => {
     <>
     <Sidebar />
     <Navbar />
-    <Login/>
+    {/* <Login/> */}  
     </>
 )
 }
