@@ -9,6 +9,12 @@
     width: 60%;
 }
 
+.sb-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
 /* Masquer la barre de défilement par défaut */
 ::-webkit-scrollbar {
     width: 0;
