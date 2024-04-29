@@ -8,3 +8,21 @@
 .logo {
     width: 60%;
 }
+
+/* Masquer la barre de défilement par défaut */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  
+  /* Afficher la barre de défilement uniquement au survol */
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  /* Afficher la barre de défilement au survol */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Changez la couleur selon votre préférence */
+    border-radius: 10px;
+  }
+  

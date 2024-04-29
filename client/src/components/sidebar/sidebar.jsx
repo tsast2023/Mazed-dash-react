@@ -89,8 +89,9 @@ const Playground = () => {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       <Sidebar
+        style={{ overflowY: 'auto' }}
         collapsed={collapsed}
         toggled={toggled}
         onBackdropClick={() => setToggled(false)}
@@ -165,7 +166,7 @@ const Playground = () => {
         </div>
       </Sidebar>
 
-      <main>
+      <main style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ padding: '16px 24px', color: '#44596e' }}>
         <div style={{ marginBottom: '16px' }}>
             {broken && (
