@@ -1,11 +1,13 @@
 import React from 'react';
-import Sidebarr from './components/sidebar/sidebar';
+import Sidebar from './components/sidebar/sidebar';
 import './App.css'
+import Navbar from './components/navbar/navbar';
 
 const App = () => {
   return (
     <>
-    <Sidebarr />
+    <Sidebar />
+    <Navbar />
     </>
   )
 }
