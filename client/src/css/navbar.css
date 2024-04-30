@@ -25,6 +25,7 @@
   
   .notification-icon {
     position: relative;
+    transition: transform 0.3s ease-in-out;
   }
   
   .notification-icon i {
@@ -32,14 +33,71 @@
     color: #333;
   }
   
-  .notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 3px 6px;
-    font-size: 12px;
+  .notification-icon:hover {
+    transform: scale(1.1);
   }
+  
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially hidden */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .side-menu.open {
+    right: 0;
+  }
+  
+  .notification-content {
+    padding: 20px;
+  }
+  
+  .notification-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .user-avatar {
+    margin-right: 10px;
+  }
+  
+  .avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .notification-details {
+    flex: 1;
+  }
+  
+  .notification-message {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .notification-time {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+  }
+  
   
