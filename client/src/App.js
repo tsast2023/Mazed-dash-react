@@ -2,7 +2,8 @@ import React from 'react';
 import Sidebar from './components/sidebar';
 import './App.css'
 import Navbar from './components/navbar';
-import Login from './pages/Login';
+import Home from './pages/Home';
+import Categories from './pages/catCreate'
 import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
       <div className='content-container'>
         <Navbar />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path='/CreationCat' element={<Categories />} />
         </Routes>
       </div>
     </div>

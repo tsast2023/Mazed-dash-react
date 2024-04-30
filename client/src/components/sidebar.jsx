@@ -118,7 +118,7 @@ const Playground = () => {
         >
           <div style={{ flex: 1, marginBottom: "32px" }}>
             <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem component={<Link to="/login" />} icon={<i className="fa-solid fa-house"></i>}>
+              <MenuItem component={<Link to="/" />} icon={<i className="fa-solid fa-house"></i>}>
                 Tableau de bord
               </MenuItem>
               <SubMenu
@@ -132,7 +132,7 @@ const Playground = () => {
                 label="Catégories"
                 icon={<i className="fa-solid fa-layer-group"></i>}
               >
-                <MenuItem> Création de catégorie </MenuItem>
+                <MenuItem component={<Link to="/CreationCat" />}> Création de catégorie </MenuItem>
                 <MenuItem> Liste de catégorie </MenuItem>
               </SubMenu>
               <SubMenu
