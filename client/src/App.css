@@ -1,1 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+.app-container {
+    display: flex;
+  }
+  
+  .sidebar-container {
+    flex: 0 0 auto; /* Sidebar takes its natural width */
+  }
+  
+  .content-container {
+    flex: 1; /* Content takes up remaining space */
+    overflow-y: auto; /* Add scroll if content overflows vertically */
+  }
+  

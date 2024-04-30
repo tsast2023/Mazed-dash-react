@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "../css/sidebar.css";
+import { Link } from "react-router-dom";
 const Theme = "light";
 
 const themes = {
@@ -117,7 +118,7 @@ const Playground = () => {
         >
           <div style={{ flex: 1, marginBottom: "32px" }}>
             <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem icon={<i className="fa-solid fa-house"></i>}>
+              <MenuItem component={<Link to="/login" />} icon={<i className="fa-solid fa-house"></i>}>
                 Tableau de bord
               </MenuItem>
               <SubMenu
