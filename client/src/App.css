@@ -53,3 +53,7 @@ input {
   padding: 1.5rem;
 }
 
+.card-footer {
+  background-color: #fff;
+  border: none;
+}

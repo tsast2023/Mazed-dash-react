@@ -52,6 +52,10 @@ const CatCreate = () => {
             </div>
           </div>
         </div>
+        <div className="card-footer d-flex justify-content-end">
+          <button type="button" className="btn btn-secondary me-3">Anuuler</button>
+          <button type="button" className="btn btn-primary">Enregister</button>
+        </div>
       </div>
     </div>
   );
