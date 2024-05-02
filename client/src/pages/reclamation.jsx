@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 
 function App() {
   return (
+    <div className="content-container">
     <div id="main">
       <header className="mb-3">
         <a href="#" className="burger-btn d-block d-xl-none">
           <i className="bi bi-justify fs-3"></i>
         </a>
       </header>
-
-      {/* Contextual classes start */}
       <section className="section">
         <div className="row" id="table-contexual">
           <div className="col-12">
@@ -35,10 +34,11 @@ function App() {
                         <td className="text-bold-500">10/10/2024</td>
                         <td>Lorem Lorem</td>
                         <td className="text-bold-500">Lorem Lorem</td>
-                        <td><span className="badge bg-success">Ouverte</span></td>
+                        <td>
+                          <span className="badge bg-success">Ouverte</span>
+                        </td>
                         <td>
                           <section id="basic-modals">
-                            {/* Button trigger for basic modal */}
                             <button
                               type="button"
                               className="btn btn-outline block"
@@ -47,8 +47,6 @@ function App() {
                             >
                               <i className="fa-solid fa-eye font-medium-1"></i>
                             </button>
-
-                            {/*Basic Modal */}
                             <div
                               className="modal fade text-left"
                               id="default1"
@@ -78,22 +76,22 @@ function App() {
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar
-                                      oat cake cookie pastry dragée pastry.
-                                      Carrot cake chocolate tootsie roll
-                                      chocolate bar candy canes biscuit.
-                                      Gummies bonbon apple pie fruitcake icing
-                                      biscuit apple pie jelly-o sweet roll.
+                                      Bonbon caramels muffin. Chocolate bar oat
+                                      cake cookie pastry dragée pastry. Carrot
+                                      cake chocolate tootsie roll chocolate bar
+                                      candy canes biscuit. Gummies bonbon apple
+                                      pie fruitcake icing biscuit apple pie
+                                      jelly-o sweet roll.
                                     </p>
                                     <div className="card-body">
-                                    <div className="form-group with-title mb-3">
-                                      <textarea
-                                        className="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                      ></textarea>
+                                      <div className="form-group with-title mb-3">
+                                        <textarea
+                                          className="form-control"
+                                          id="exampleFormControlTextarea1"
+                                          rows="3"
+                                        ></textarea>
+                                      </div>
                                     </div>
-                                  </div>
                                   </div>
                                   <div className="modal-footer">
                                     <button
@@ -121,10 +119,11 @@ function App() {
                         <td className="text-bold-500">10/10/2024</td>
                         <td>Lorem Lorem</td>
                         <td className="text-bold-500">Lorem Lorem</td>
-                        <td><span className="badge bg-danger">Fermée</span></td>
+                        <td>
+                          <span className="badge bg-danger">Fermée</span>
+                        </td>
                         <td>
                           <section id="basic-modals">
-                            {/* Button trigger for basic modal */}
                             <button
                               type="button"
                               className="btn btn-outline block"
@@ -133,8 +132,6 @@ function App() {
                             >
                               <i className="fa-solid fa-eye font-medium-1"></i>
                             </button>
-
-                            {/*Basic Modal */}
                             <div
                               className="modal fade text-left"
                               id="default2"
@@ -164,18 +161,22 @@ function App() {
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar
-                                      oat cake cookie pastry dragée pastry.
-                                      Carrot cake chocolate tootsie roll
-                                      chocolate bar candy canes biscuit.
-                                      Gummies bonbon apple pie fruitcake icing
-                                      biscuit apple pie jelly-o sweet roll.
-                                      Toffee sugar plum sugar plum jelly-o
-                                      jujubes bonbon dessert carrot cake.
-                                      Cookie dessert tart muffin topping donut
-                                      icing fruitcake. Sweet roll cotton candy
-                                      dragée danish Candy canes
+                                      Bonbon caramels muffin. Chocolate bar oat
+                                      cake cookie pastry dragée pastry. Carrot
+                                      cake chocolate tootsie roll chocolate bar
+                                      candy canes biscuit. Gummies bonbon apple
+                                      pie fruitcake icing biscuit apple pie
+                                      jelly-o sweet roll.
                                     </p>
+                                    <div className="card-body">
+                                      <div className="form-group with-title mb-3">
+                                        <textarea
+                                          className="form-control"
+                                          id="exampleFormControlTextarea1"
+                                          rows="3"
+                                        ></textarea>
+                                      </div>
+                                    </div>
                                   </div>
                                   <div className="modal-footer">
                                     <button
@@ -207,24 +208,7 @@ function App() {
           </div>
         </div>
       </section>
-      {/* Contextual classes end */}
-
-      <footer>
-        <div className="footer clearfix mb-0 text-muted">
-          <div className="float-start">
-            <p>2024 &copy; Mazed</p>
-          </div>
-          <div className="float-end">
-            <p>
-              Crafted with
-              <span className="text-danger"
-                ><i className="bi bi-heart-fill icon-mid"></i
-              ></span>
-              by <a href="https://TSAST.me">TSAST</a>
-            </p>
-          </div>
-        </div>
-      </footer>
+    </div>
     </div>
   );
 }
