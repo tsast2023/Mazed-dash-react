@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './components/sidebar';
-import './App.css'
+import './App.css';
 import Navbar from './components/navbar';
+import Home from './pages/Home';
+import Categories from './pages/catCreate';
+import ListeCategories from './pages/catList'
 import Login from './pages/Login';
 import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
-import EnchèreCreation from './pages/EnchèreCreation';
 
 const App = () => {
+  const [token, setToken] = useState(null);
+
+
+
   return (
     <Router>
     <div className='app-container'>
@@ -17,7 +23,6 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path='/EnchèreCreation' element={<EnchèreCreation/>}/>
         </Routes>
       </div>
     </div>
@@ -25,5 +30,4 @@ const App = () => {
 )
 }
 
-export default App
-
+export default App;

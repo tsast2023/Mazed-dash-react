@@ -57,6 +57,9 @@ const Playground = () => {
   const [hasImage, setHasImage] = useState(false);
   const [theme, setTheme] = useState(Theme);
 
+  // State to manage active link
+  const [activeLink, setActiveLink] = useState("");
+
   const menuItemStyles = {
     root: {
       fontSize: "16px",
@@ -90,6 +93,11 @@ const Playground = () => {
     label: ({ open }) => ({
       fontWeight: open ? 600 : undefined,
     }),
+    // Style for active link
+    active: {
+      backgroundColor: themes[theme].menu.hover.backgroundColor,
+      color: themes[theme].menu.hover.color,
+    },
   };
 
   return (
@@ -118,22 +126,61 @@ const Playground = () => {
         >
           <div style={{ flex: 1, marginBottom: "32px" }}>
             <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem component={<Link to="/login" />} icon={<i className="fa-solid fa-house"></i>}>
+              <MenuItem
+                component={<Link to="/" />}
+                icon={<i className="fa-solid fa-house"></i>}
+                onClick={() => setActiveLink("/")}
+                style={activeLink === "/" ? menuItemStyles.active : null}
+              >
                 Tableau de bord
               </MenuItem>
               <SubMenu
                 label="Super Admin"
                 icon={<i className="fa-solid fa-user-tie"></i>}
               >
-                <MenuItem> Google maps</MenuItem>
-                <MenuItem> Open street maps</MenuItem>
+                <MenuItem
+                  component={<Link to="/google-maps" />}
+                  onClick={() => setActiveLink("/google-maps")}
+                  style={
+                    activeLink === "/google-maps" ? menuItemStyles.active : null
+                  }
+                >
+                  Google maps
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/open-street-maps" />}
+                  onClick={() => setActiveLink("/open-street-maps")}
+                  style={
+                    activeLink === "/open-street-maps"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Open street maps
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Catégories"
                 icon={<i className="fa-solid fa-layer-group"></i>}
               >
-                <MenuItem> Création de catégorie </MenuItem>
-                <MenuItem> Liste de catégorie </MenuItem>
+                <MenuItem
+                  component={<Link to="/CreationCat" />}
+                  onClick={() => setActiveLink("/CreationCat")}
+                  style={
+                    activeLink === "/CreationCat" ? menuItemStyles.active : null
+                  }
+                >
+                  Création de catégorie
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/ListeCat" />}
+                  onClick={() => setActiveLink("/ListeCat")}
+                  style={
+                    activeLink === "/ListeCat" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste de catégories
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Produits"
@@ -197,17 +244,27 @@ const Playground = () => {
 
             <Menu menuItemStyles={menuItemStyles}>
               <MenuItem
+                component={<Link to="/Réclamations" />}
                 icon={<i className="fa-solid fa-circle-exclamation"></i>}
+                onClick={() => setActiveLink("/Réclamations")}
+                style={
+                  activeLink === "/Réclamations" ? menuItemStyles.active : null
+                }
               >
-                {" "}
-                Réclamations{" "}
+                Réclamations
               </MenuItem>
               <MenuItem icon={<i className="fa-solid fa-right-left"></i>}>
                 {" "}
                 Demandes de transferts
               </MenuItem>
-              <MenuItem icon={<i className="fa-solid fa-credit-card"></i>}>
-                {" "}
+              <MenuItem
+                component={<Link to="/Cartes" />}
+                icon={<i className="fa-solid fa-credit-card"></i>}
+                onClick={() => setActiveLink("/Cartes")}
+                style={
+                  activeLink === "/Cartes" ? menuItemStyles.active : null
+                }
+              >
                 Cartes recharges
               </MenuItem>
               <MenuItem icon={<i className="fa-regular fa-file-video"></i>}>
@@ -233,7 +290,7 @@ const Playground = () => {
                 className="sb-button"
                 onClick={() => setToggled(!toggled)}
               >
-              <i className="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
               </button>
             )}
           </div>
