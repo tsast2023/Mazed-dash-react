@@ -7,12 +7,12 @@ export default function Login() {
     <h1>Login</h1>
     <form action="#" className="form-login">
       <div className="textfield">
-        <label htmlFor="email"> E-mail</label>
-        <input type="email" name="usuario" placeholder="E-mail" />
+        <label className='label' htmlFor="email"> E-mail</label>
+        <input className='input' type="email" name="usuario" placeholder="E-mail" />
       </div>
       <div className="textfield">
-        <label htmlFor="senha"> Senha</label>
-        <input type="password" name="senha" placeholder="Senha" />
+        <label className='label' htmlFor="senha"> Senha</label>
+        <input className='input' type="password" name="senha" placeholder="Senha" />
       </div>
       <a className="forgot-password" href="#">Esqueceu sua senha?</a>
       <button className="btn-login">Login </button>
