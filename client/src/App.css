@@ -1,14 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+body {
+  background-color: #f2f7ff;
+}
+
+label {
+  color: #000;
+  font-size: 20px;
+  font-family: "Nunito";
+}
+
+input {
+  margin-bottom: 1rem;
+}
+
 .app-container {
-    display: flex;
-  }
-  
-  .sidebar-container {
-    flex: 0 0 auto; /* Sidebar takes its natural width */
-  }
-  
-  .content-container {
-    flex: 1; /* Content takes up remaining space */
-    overflow-y: auto; /* Add scroll if content overflows vertically */
-  }
-  
+  display: flex;
+}
+
+.sidebar-container {
+  flex: 0 0 auto;
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 75px;
+  padding-right: 30px;
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: none;
+}
+.card {
+  padding: 1rem;
+  margin-bottom: 2.2rem;
+  border: none;
+  background-color: #fff;
+}
+
+.card-title {
+  color: #25396f;
+  margin-bottom: 3rem; 
+}
+
+.card .card-header ~ .card-body {
+  padding-top: 1.5rem; 
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
