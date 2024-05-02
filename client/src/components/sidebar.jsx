@@ -268,7 +268,7 @@ const Playground = () => {
               </MenuItem>
               <MenuItem
                 component={<Link to="/Tutoriel" />}
-                icon={<i className="fa-regular fa-file-video"></i>}
+                icon={<i class="fa-solid fa-video"></i>}
                 onClick={() => setActiveLink("/Tutoriel")}
                 style={
                   activeLink === "/Tutoriel" ? menuItemStyles.active : null

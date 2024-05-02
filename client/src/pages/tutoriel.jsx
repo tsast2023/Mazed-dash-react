@@ -158,7 +158,7 @@ const App = () => {
                         <td className="text-bold-500">Image ici</td>
                         <th>
                           <i
-                            className="bi bi-trash3-fill deleteIcon"
+                            className="fa-solid fa-trash deleteIcon"
                             onClick={handleDelete}
                           ></i>
                         </th>
@@ -167,7 +167,7 @@ const App = () => {
                         <td className="text-bold-500">Image ici</td>
                         <th>
                           <i
-                            className="bi bi-trash3-fill deleteIcon"
+                            className="fa-solid fa-trash deleteIcon"
                             onClick={handleDelete}
                           ></i>
                         </th>
@@ -176,7 +176,7 @@ const App = () => {
                         <td className="text-bold-500">Image ici</td>
                         <th>
                           <i
-                            className="bi bi-trash3-fill deleteIcon"
+                            className="fa-solid fa-trash deleteIcon"
                             onClick={handleDelete}
                           ></i>
                         </th>
@@ -185,7 +185,7 @@ const App = () => {
                         <td className="text-bold-500">Image ici</td>
                         <th>
                           <i
-                            className="bi bi-trash3-fill deleteIcon"
+                            className="fa-solid fa-trash deleteIcon"
                             onClick={handleDelete}
                           ></i>
                         </th>
@@ -194,7 +194,7 @@ const App = () => {
                         <td className="text-bold-500">Image ici</td>
                         <th>
                           <i
-                            className="bi bi-trash3-fill deleteIcon"
+                            className="fa-solid fa-trash deleteIcon"
                             onClick={handleDelete}
                           ></i>
                         </th>
