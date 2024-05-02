@@ -15,15 +15,48 @@ input {
 }
 
 .app-container {
-    display: flex;
-  }
-  
-  .sidebar-container {
-    flex: 0 0 auto; /* Sidebar takes its natural width */
-  }
-  
-  .content-container {
-    flex: 1; /* Content takes up remaining space */
-    overflow-y: auto; /* Add scroll if content overflows vertically */
-  }
-  
+  display: flex;
+}
+
+.sidebar-container {
+  flex: 0 0 auto;
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 80px;
+}
+
+.card {
+  margin-right: 70px;
+  background-color: #fff;
+}
+.card .card-content {
+  position: relative;
+}
+.card .card-header ~ .card-body {
+  padding-top: 0;
+}
+.card .card-content {
+  position: relative;
+  background-color: #fff;
+  border: none;
+}
+.card .card-body {
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+.card-header {
+  background-color: #fff;
+  border: none;
+  margin-bottom: 3.5rem;
+}
+
+.card-footer {
+  background-color: #fff;
+  border: none;
+}
+
+

@@ -6,7 +6,9 @@ import Home from './pages/Home';
 import Categories from './pages/catCreate';
 import ListeCategories from './pages/catList'
 import Login from './pages/Login';
-import {BrowserRouter as Router , Route , Routes} from 'react-router-dom'
+import Réclamations from './pages/reclamation';
+import Cartes from './pages/recharges';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -15,19 +17,29 @@ const App = () => {
 
   return (
     <Router>
-    <div className='app-container'>
-      <div className='sidebar-container'>
-        <Sidebar />
-      </div>
-      <div className='content-container'>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </div>
-  </Router>
-)
-}
+      <div className='app-container'>
+        {!token && (
+          <div className='sidebar-container'>
+            <Sidebar />
+          </div>
+        )}
+        {!token && (
+          <div className='content-container'>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path='/CreationCat' element={<Categories />} />
+              <Route path='/ListeCat' element={<ListeCategories />} />
+              <Route path='/Réclamations' element={<Réclamations />} />
+              <Route path='/Cartes' element={<Cartes />} />
+            </Routes>
+          </div>
+        )}
+        </div>
+        {token && <Login setToken={setToken} />}
+      
+    </Router>
+  );
+};
 
 export default App;
