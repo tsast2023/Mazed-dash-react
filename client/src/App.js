@@ -10,6 +10,7 @@ import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
 import Tutoriel from './pages/tutoriel';
 import Transferts from './pages/transfer';
+import Produits from './pages/prodCreate';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
               <Route path='/Cartes' element={<Cartes />} />
               <Route path='/Tutoriel' element={<Tutoriel />} />
               <Route path='/Transferts' element={<Transferts />} />
+              <Route path='/CreationProd' element={<Produits />} />
             </Routes>
           </div>
         )}

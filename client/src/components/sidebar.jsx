@@ -186,7 +186,15 @@ const Playground = () => {
                 label="Produits"
                 icon={<i className="fa-solid fa-diamond"></i>}
               >
-                <MenuItem> Création de produit </MenuItem>
+                <MenuItem
+                  component={<Link to="/CreationProd" />}
+                  onClick={() => setActiveLink("/CreationProd")}
+                  style={
+                    activeLink === "/CreationProd" ? menuItemStyles.active : null
+                  }
+                >
+                  Création de produit
+                </MenuItem>
                 <MenuItem> Liste de produits </MenuItem>
               </SubMenu>
               <SubMenu
