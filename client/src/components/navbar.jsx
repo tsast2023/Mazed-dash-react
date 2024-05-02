@@ -45,7 +45,7 @@ const Navbar = ({ username }) => {
         </div>
       </div>
       <div className="user-profile">
-        <img src="./logo192.png" alt="User" className="user-image" title={`Hello, ${username}`} />
+        <img src="./user.png" alt="User" className="user-image" title={`Hello, ${username}`} />
       </div>
     </div>
   );
