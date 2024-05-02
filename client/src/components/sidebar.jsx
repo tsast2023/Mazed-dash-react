@@ -245,11 +245,13 @@ const Playground = () => {
             </Menu>
 
             <Menu menuItemStyles={menuItemStyles}>
-              <MenuItem
+            <MenuItem
+                component={<Link to="/Réclamations" />}
                 icon={<i className="fa-solid fa-circle-exclamation"></i>}
+                onClick={() => setActiveLink("/")}
+                style={activeLink === "/Réclamations" ? menuItemStyles.active : null}
               >
-                {" "}
-                Réclamations{" "}
+                Réclamations
               </MenuItem>
               <MenuItem icon={<i className="fa-solid fa-right-left"></i>}>
                 {" "}
