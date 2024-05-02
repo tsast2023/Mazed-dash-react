@@ -87,6 +87,7 @@ function CategoryList() {
   };
 
   return (
+    <div className="content-container">
     <div id="main">
       <header className="mb-3">
         <a href="#" className="burger-btn d-block d-xl-none">
@@ -115,7 +116,7 @@ function CategoryList() {
                     <h6>Type</h6>
                     <fieldset className="form-group">
                       <select className="form-select" id="basicSelect1">
-                        <option disabled selected>Choose Type</option>
+                        <option disabled selected>Choisissez le type</option>
                         <option>Parente</option>
                         <option>Fille</option>
                       </select>
@@ -125,7 +126,7 @@ function CategoryList() {
                     <h6>Statut</h6>
                     <fieldset className="form-group">
                       <select className="form-select" id="basicSelect2">
-                        <option disabled selected>Choose Status</option>
+                        <option disabled selected>Choisissez le statut</option>
                         <option>Publiée</option>
                         <option>Brouillon</option>
                       </select>
@@ -135,7 +136,7 @@ function CategoryList() {
                     <h6>Etat</h6>
                     <fieldset className="form-group">
                       <select className="form-select" id="basicSelect3">
-                        <option disabled selected>Choose Etat</option>
+                        <option disabled selected>Choisissez État</option>
                         <option>Activée</option>
                         <option>Désactivée</option>
                       </select>
@@ -173,6 +174,22 @@ function CategoryList() {
                           <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
                           <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
                         </tr>
+                        <tr>
+                          <td className="text-bold-500">Michael Right</td>
+                          <td>
+                            <a href="cat-fille-table.html">
+                            <i className="fa-solid fa-eye"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <a href="cat-edit.html">
+                            <i className="fa-solid fa-pen-to-square"></i>
+                            </a>
+                          </td>
+                          <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
+                          <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
+                          <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -182,6 +199,7 @@ function CategoryList() {
           </div>
         </section>
       </div>
+    </div>
     </div>
   );
 }
