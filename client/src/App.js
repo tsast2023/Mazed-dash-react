@@ -8,6 +8,7 @@ import ListeCategories from './pages/catList'
 import Login from './pages/Login';
 import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
+import Tutoriel from './pages/tutoriel';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -18,12 +19,12 @@ const App = () => {
   return (
     <Router>
       <div className='app-container'>
-        {token && (
+        {!token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
         )}
-        {token && (
+        {!token && (
           <div className='content-container'>
             <Navbar />
             <Routes>
@@ -32,11 +33,12 @@ const App = () => {
               <Route path='/ListeCat' element={<ListeCategories />} />
               <Route path='/Réclamations' element={<Réclamations />} />
               <Route path='/Cartes' element={<Cartes />} />
+              <Route path='/Tutoriel' element={<Tutoriel />} />
             </Routes>
           </div>
         )}
         </div>
-        {!token && <Login setToken={setToken} />}
+        {token && <Login setToken={setToken} />}
       
     </Router>
   );

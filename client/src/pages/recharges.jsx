@@ -137,7 +137,7 @@ function recharges() {
           </div>
         </div>
       </section>
-      <section className="section">
+      <section className="section mt-4">
         <div className="card">
           <div className="card-header">
             <h2 className="new-price">Liste des cartes ajoutées</h2>

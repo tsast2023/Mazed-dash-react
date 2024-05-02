@@ -254,7 +254,6 @@ const Playground = () => {
                 Réclamations
               </MenuItem>
               <MenuItem icon={<i className="fa-solid fa-right-left"></i>}>
-                {" "}
                 Demandes de transferts
               </MenuItem>
               <MenuItem
@@ -267,14 +266,19 @@ const Playground = () => {
               >
                 Cartes recharges
               </MenuItem>
-              <MenuItem icon={<i className="fa-regular fa-file-video"></i>}>
-                {" "}
+              <MenuItem
+                component={<Link to="/Tutoriel" />}
+                icon={<i className="fa-regular fa-file-video"></i>}
+                onClick={() => setActiveLink("/Tutoriel")}
+                style={
+                  activeLink === "/Tutoriel" ? menuItemStyles.active : null
+                }
+              >
                 Tutoriel
               </MenuItem>
               <MenuItem
                 icon={<i className="fa-solid fa-right-from-bracket"></i>}
               >
-                {" "}
                 Déconnexion
               </MenuItem>
             </Menu>
