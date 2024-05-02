@@ -142,9 +142,7 @@ const Playground = () => {
                   component={<Link to="/google-maps" />}
                   onClick={() => setActiveLink("/google-maps")}
                   style={
-                    activeLink === "/google-maps"
-                      ? menuItemStyles.active
-                      : null
+                    activeLink === "/google-maps" ? menuItemStyles.active : null
                   }
                 >
                   Google maps
@@ -245,11 +243,13 @@ const Playground = () => {
             </Menu>
 
             <Menu menuItemStyles={menuItemStyles}>
-            <MenuItem
+              <MenuItem
                 component={<Link to="/Réclamations" />}
                 icon={<i className="fa-solid fa-circle-exclamation"></i>}
                 onClick={() => setActiveLink("/Réclamations")}
-                style={activeLink === "/Réclamations" ? menuItemStyles.active : null}
+                style={
+                  activeLink === "/Réclamations" ? menuItemStyles.active : null
+                }
               >
                 Réclamations
               </MenuItem>
@@ -257,8 +257,14 @@ const Playground = () => {
                 {" "}
                 Demandes de transferts
               </MenuItem>
-              <MenuItem icon={<i className="fa-solid fa-credit-card"></i>}>
-                {" "}
+              <MenuItem
+                component={<Link to="/Cartes" />}
+                icon={<i className="fa-solid fa-credit-card"></i>}
+                onClick={() => setActiveLink("/Cartes")}
+                style={
+                  activeLink === "/Cartes" ? menuItemStyles.active : null
+                }
+              >
                 Cartes recharges
               </MenuItem>
               <MenuItem icon={<i className="fa-regular fa-file-video"></i>}>
@@ -284,7 +290,7 @@ const Playground = () => {
                 className="sb-button"
                 onClick={() => setToggled(!toggled)}
               >
-              <i className="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
               </button>
             )}
           </div>

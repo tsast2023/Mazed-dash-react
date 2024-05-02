@@ -7,6 +7,7 @@ import Categories from './pages/catCreate';
 import ListeCategories from './pages/catList'
 import Login from './pages/Login';
 import Réclamations from './pages/reclamation';
+import Cartes from './pages/recharges';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
               <Route path='/CreationCat' element={<Categories />} />
               <Route path='/ListeCat' element={<ListeCategories />} />
               <Route path='/Réclamations' element={<Réclamations />} />
+              <Route path='/Cartes' element={<Cartes />} />
             </Routes>
           </div>
         )}
