@@ -253,7 +253,14 @@ const Playground = () => {
               >
                 Réclamations
               </MenuItem>
-              <MenuItem icon={<i className="fa-solid fa-right-left"></i>}>
+              <MenuItem
+                component={<Link to="/Transferts" />}
+                icon={<i className="fa-solid fa-right-left"></i>}
+                onClick={() => setActiveLink("/Transferts")}
+                style={
+                  activeLink === "/Transferts" ? menuItemStyles.active : null
+                }
+              >
                 Demandes de transferts
               </MenuItem>
               <MenuItem

@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
 import Tutoriel from './pages/tutoriel';
+import Transferts from './pages/transfer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
               <Route path='/Réclamations' element={<Réclamations />} />
               <Route path='/Cartes' element={<Cartes />} />
               <Route path='/Tutoriel' element={<Tutoriel />} />
+              <Route path='/Transferts' element={<Transferts />} />
             </Routes>
           </div>
         )}
