@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
               <div className="card-content">
                 {/* table contextual / colored */}
                 <div className="table-responsive">
-                  <table className="table" id="table1">
+                  <table className="table">
                     <thead>
                       <tr>
                         <th>Date</th>
@@ -31,13 +31,11 @@ function App() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="table">
+                      <tr>
                         <td className="text-bold-500">10/10/2024</td>
                         <td>Lorem Lorem</td>
                         <td className="text-bold-500">Lorem Lorem</td>
-                        <td>
-                          <span className="badge bg-success">Ouverte</span>
-                        </td>
+                        <td><span className="badge bg-success">Ouverte</span></td>
                         <td>
                           <section id="basic-modals">
                             {/* Button trigger for basic modal */}
@@ -45,7 +43,7 @@ function App() {
                               type="button"
                               className="btn btn-outline block"
                               data-bs-toggle="modal"
-                              data-bs-target="#default"
+                              data-bs-target="#default1"
                             >
                               <i className="fa-solid fa-eye font-medium-1"></i>
                             </button>
@@ -53,7 +51,7 @@ function App() {
                             {/*Basic Modal */}
                             <div
                               className="modal fade text-left"
-                              id="default"
+                              id="default1"
                               tabIndex="-1"
                               role="dialog"
                               aria-labelledby="myModalLabel1"
@@ -73,28 +71,21 @@ function App() {
                                     </h5>
                                     <button
                                       type="button"
-                                      className="close rounded-pill"
+                                      className="btn-close"
                                       data-bs-dismiss="modal"
                                       aria-label="Close"
-                                    >
-                                      <i data-feather="x"></i>
-                                    </button>
+                                    ></button>
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll. Toffee sugar plum
-                                      sugar plum jelly-o jujubes bonbon dessert
-                                      carrot cake. Cookie dessert tart muffin
-                                      topping donut icing fruitcake. Sweet roll
-                                      cotton candy dragée danish Candy canes
+                                      Bonbon caramels muffin. Chocolate bar
+                                      oat cake cookie pastry dragée pastry.
+                                      Carrot cake chocolate tootsie roll
+                                      chocolate bar candy canes biscuit.
+                                      Gummies bonbon apple pie fruitcake icing
+                                      biscuit apple pie jelly-o sweet roll.
                                     </p>
-                                  </div>
-                                  <div className="card-body">
+                                    <div className="card-body">
                                     <div className="form-group with-title mb-3">
                                       <textarea
                                         className="form-control"
@@ -103,26 +94,21 @@ function App() {
                                       ></textarea>
                                     </div>
                                   </div>
+                                  </div>
                                   <div className="modal-footer">
                                     <button
                                       type="button"
-                                      className="btn"
+                                      className="btn btn-secondary"
                                       data-bs-dismiss="modal"
                                     >
-                                      <i className="bx bx-x d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Marquer comme résolue
-                                      </span>
+                                      Fermer
                                     </button>
                                     <button
                                       type="button"
-                                      className="btn btn-primary ms-1"
+                                      className="btn btn-primary"
                                       data-bs-dismiss="modal"
                                     >
-                                      <i className="bx bx-check d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Envoyer
-                                      </span>
+                                      Envoyer
                                     </button>
                                   </div>
                                 </div>
@@ -131,13 +117,11 @@ function App() {
                           </section>
                         </td>
                       </tr>
-                      <tr className="table">
+                      <tr>
                         <td className="text-bold-500">10/10/2024</td>
                         <td>Lorem Lorem</td>
                         <td className="text-bold-500">Lorem Lorem</td>
-                        <td>
-                          <span className="badge bg-success">Ouverte</span>
-                        </td>
+                        <td><span className="badge bg-danger">Fermée</span></td>
                         <td>
                           <section id="basic-modals">
                             {/* Button trigger for basic modal */}
@@ -145,7 +129,7 @@ function App() {
                               type="button"
                               className="btn btn-outline block"
                               data-bs-toggle="modal"
-                              data-bs-target="#default"
+                              data-bs-target="#default2"
                             >
                               <i className="fa-solid fa-eye font-medium-1"></i>
                             </button>
@@ -153,10 +137,10 @@ function App() {
                             {/*Basic Modal */}
                             <div
                               className="modal fade text-left"
-                              id="default"
+                              id="default2"
                               tabIndex="-1"
                               role="dialog"
-                              aria-labelledby="myModalLabel1"
+                              aria-labelledby="myModalLabel2"
                               aria-hidden="true"
                             >
                               <div
@@ -167,362 +151,46 @@ function App() {
                                   <div className="modal-header">
                                     <h5
                                       className="modal-title"
-                                      id="myModalLabel1"
+                                      id="myModalLabel2"
                                     >
                                       Réclamation
                                     </h5>
                                     <button
                                       type="button"
-                                      className="close rounded-pill"
+                                      className="btn-close"
                                       data-bs-dismiss="modal"
                                       aria-label="Close"
-                                    >
-                                      <i data-feather="x"></i>
-                                    </button>
+                                    ></button>
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll. Toffee sugar plum
-                                      sugar plum jelly-o jujubes bonbon dessert
-                                      carrot cake. Cookie dessert tart muffin
-                                      topping donut icing fruitcake. Sweet roll
-                                      cotton candy dragée danish Candy canes
+                                      Bonbon caramels muffin. Chocolate bar
+                                      oat cake cookie pastry dragée pastry.
+                                      Carrot cake chocolate tootsie roll
+                                      chocolate bar candy canes biscuit.
+                                      Gummies bonbon apple pie fruitcake icing
+                                      biscuit apple pie jelly-o sweet roll.
+                                      Toffee sugar plum sugar plum jelly-o
+                                      jujubes bonbon dessert carrot cake.
+                                      Cookie dessert tart muffin topping donut
+                                      icing fruitcake. Sweet roll cotton candy
+                                      dragée danish Candy canes
                                     </p>
-                                  </div>
-                                  <div className="card-body">
-                                    <div className="form-group with-title mb-3">
-                                      <textarea
-                                        className="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                      ></textarea>
-                                    </div>
                                   </div>
                                   <div className="modal-footer">
                                     <button
                                       type="button"
-                                      className="btn"
+                                      className="btn btn-secondary"
                                       data-bs-dismiss="modal"
                                     >
-                                      <i className="bx bx-x d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Férme
-                                      </span>
+                                      Fermer
                                     </button>
                                     <button
                                       type="button"
-                                      className="btn btn-primary ms-1"
+                                      className="btn btn-primary"
                                       data-bs-dismiss="modal"
                                     >
-                                      <i className="bx bx-check d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Envoyer
-                                      </span>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </td>
-                      </tr>
-                      <tr className="table">
-                        <td className="text-bold-500">10/10/2024</td>
-                        <td>Lorem Lorem</td>
-                        <td className="text-bold-500">Lorem Lorem</td>
-                        <td>
-                          <span className="badge bg-danger">Fermée</span>
-                        </td>
-                        <td>
-                          <section id="basic-modals">
-                            {/* Button trigger for basic modal */}
-                            <button
-                              type="button"
-                              className="btn btn-outline block"
-                              data-bs-toggle="modal"
-                              data-bs-target="#default"
-                            >
-                              <i className="fa-solid fa-eye font-medium-1"></i>
-                            </button>
-
-                            {/*Basic Modal */}
-                            <div
-                              className="modal fade text-left"
-                              id="default"
-                              tabIndex="-1"
-                              role="dialog"
-                              aria-labelledby="myModalLabel1"
-                              aria-hidden="true"
-                            >
-                              <div
-                                className="modal-dialog modal-dialog-scrollable"
-                                role="document"
-                              >
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5
-                                      className="modal-title"
-                                      id="myModalLabel1"
-                                    >
-                                      Réclamation
-                                    </h5>
-                                    <button
-                                      type="button"
-                                      className="close rounded-pill"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    >
-                                      <i data-feather="x"></i>
-                                    </button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll. Toffee sugar plum
-                                      sugar plum jelly-o jujubes bonbon dessert
-                                      carrot cake. Cookie dessert tart muffin
-                                      topping donut icing fruitcake. Sweet roll
-                                      cotton candy dragée danish Candy canes
-                                    </p>
-                                  </div>
-                                  <div className="card-body">
-                                    <div className="form-group with-title mb-3">
-                                      <textarea
-                                        className="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                      ></textarea>
-                                    </div>
-                                  </div>
-                                  <div className="modal-footer">
-                                    <button
-                                      type="button"
-                                      className="btn"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-x d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Férme
-                                      </span>
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-primary ms-1"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-check d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Envoyer
-                                      </span>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </td>
-                      </tr>
-                      <tr className="table">
-                        <td className="text-bold-500">10/10/2024</td>
-                        <td>Lorem Lorem</td>
-                        <td className="text-bold-500">Lorem Lorem</td>
-                        <td>
-                          <span className="badge bg-danger">Fermée</span>
-                        </td>
-                        <td>
-                          <section id="basic-modals">
-                            {/* Button trigger for basic modal */}
-                            <button
-                              type="button"
-                              className="btn btn-outline block"
-                              data-bs-toggle="modal"
-                              data-bs-target="#default"
-                            >
-                              <i className="fa-solid fa-eye font-medium-1"></i>
-                            </button>
-
-                            {/*Basic Modal */}
-                            <div
-                              className="modal fade text-left"
-                              id="default"
-                              tabIndex="-1"
-                              role="dialog"
-                              aria-labelledby="myModalLabel1"
-                              aria-hidden="true"
-                            >
-                              <div
-                                className="modal-dialog modal-dialog-scrollable"
-                                role="document"
-                              >
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5
-                                      className="modal-title"
-                                      id="myModalLabel1"
-                                    >
-                                      Réclamation
-                                    </h5>
-                                    <button
-                                      type="button"
-                                      className="close rounded-pill"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    >
-                                      <i data-feather="x"></i>
-                                    </button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll. Toffee sugar plum
-                                      sugar plum jelly-o jujubes bonbon dessert
-                                      carrot cake. Cookie dessert tart muffin
-                                      topping donut icing fruitcake. Sweet roll
-                                      cotton candy dragée danish Candy canes
-                                    </p>
-                                  </div>
-                                  <div className="card-body">
-                                    <div className="form-group with-title mb-3">
-                                      <textarea
-                                        className="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                      ></textarea>
-                                    </div>
-                                  </div>
-                                  <div className="modal-footer">
-                                    <button
-                                      type="button"
-                                      className="btn"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-x d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Férme
-                                      </span>
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-primary ms-1"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-check d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Envoyer
-                                      </span>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </td>
-                      </tr>
-                      <tr className="table">
-                        <td className="text-bold-500">10/10/2024</td>
-                        <td>Lorem Lorem</td>
-                        <td className="text-bold-500">Lorem Lorem</td>
-                        <td>
-                          <span className="badge bg-success">Ouverte</span>
-                        </td>
-                        <td>
-                          <section id="basic-modals">
-                            {/* Button trigger for basic modal */}
-                            <button
-                              type="button"
-                              className="btn btn-outline block"
-                              data-bs-toggle="modal"
-                              data-bs-target="#default"
-                            >
-                              <i className="fa-solid fa-eye font-medium-1"></i>
-                            </button>
-
-                            {/*Basic Modal */}
-                            <div
-                              className="modal fade text-left"
-                              id="default"
-                              tabIndex="-1"
-                              role="dialog"
-                              aria-labelledby="myModalLabel1"
-                              aria-hidden="true"
-                            >
-                              <div
-                                className="modal-dialog modal-dialog-scrollable"
-                                role="document"
-                              >
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5
-                                      className="modal-title"
-                                      id="myModalLabel1"
-                                    >
-                                      Réclamation
-                                    </h5>
-                                    <button
-                                      type="button"
-                                      className="close rounded-pill"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    >
-                                      <i data-feather="x"></i>
-                                    </button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll. Toffee sugar plum
-                                      sugar plum jelly-o jujubes bonbon dessert
-                                      carrot cake. Cookie dessert tart muffin
-                                      topping donut icing fruitcake. Sweet roll
-                                      cotton candy dragée danish Candy canes
-                                    </p>
-                                  </div>
-                                  <div className="card-body">
-                                    <div className="form-group with-title mb-3">
-                                      <textarea
-                                        className="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                      ></textarea>
-                                    </div>
-                                  </div>
-                                  <div className="modal-footer">
-                                    <button
-                                      type="button"
-                                      className="btn"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-x d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Férme
-                                      </span>
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-primary ms-1"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      <i className="bx bx-check d-block d-sm-none"></i>
-                                      <span className="d-none d-sm-block">
-                                        Envoyer
-                                      </span>
+                                      Envoyer
                                     </button>
                                   </div>
                                 </div>
@@ -549,9 +217,9 @@ function App() {
           <div className="float-end">
             <p>
               Crafted with
-              <span className="text-danger">
-                <i className="bi bi-heart-fill icon-mid"></i>
-              </span>
+              <span className="text-danger"
+                ><i className="bi bi-heart-fill icon-mid"></i
+              ></span>
               by <a href="https://TSAST.me">TSAST</a>
             </p>
           </div>
