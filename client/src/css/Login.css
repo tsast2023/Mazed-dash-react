@@ -57,7 +57,7 @@ html {
 }
 
 
-label {
+/* label {
     font-family: 'Karla';
     font-size: 12px;
     line-height: 12px;
@@ -76,8 +76,8 @@ input {
 }
 
 input:focus {
-    outline: none; /* Remove a borda de foco */
-  }
+    outline: none;
+  } */
 
 .forgot-password{
     align-self: flex-end;

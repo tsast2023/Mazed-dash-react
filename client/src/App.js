@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/navbar';
 import Home from './pages/Home';
 import Categories from './pages/catCreate';
+import ListeCategories from './pages/catList'
 import Login from './pages/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/CreationCat' element={<Categories />} />
+              <Route path='/ListeCat' element={<ListeCategories />} />
             </Routes>
           </div>
         )}

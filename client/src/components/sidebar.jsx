@@ -174,7 +174,15 @@ const Playground = () => {
                 >
                   Création de catégorie
                 </MenuItem>
-                <MenuItem> Liste de catégorie </MenuItem>
+                <MenuItem
+                  component={<Link to="/ListeCat" />}
+                  onClick={() => setActiveLink("/ListeCat")}
+                  style={
+                    activeLink === "/ListeCat" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste de catégories
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Produits"
