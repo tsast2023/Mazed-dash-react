@@ -161,33 +161,17 @@ function CategoryList() {
                           <td className="text-bold-500">Michael Right</td>
                           <td>
                             <a href="cat-parente-table.html">
-                              <i className="bi bi-eye-fill"></i>
+                            <i className="fa-solid fa-eye"></i>
                             </a>
                           </td>
                           <td>
                             <a href="cat-edit.html">
-                              <i className="bi bi-pencil-square"></i>
+                            <i className="fa-solid fa-pen-to-square"></i>
                             </a>
                           </td>
-                          <td><i className="bi bi-ban banIcon" onClick={handleBan}></i></td>
-                          <td><i className="bi bi-trash3-fill deleteIcon" onClick={handleDelete}></i></td>
-                          <td><i className="bi bi-arrow-90deg-right arrowIcon" onClick={handleArrowClick}></i></td>
-                        </tr>
-                        <tr>
-                          <td className="text-bold-500">Michael Right</td>
-                          <td>
-                            <a href="cat-fille-table.html">
-                              <i className="bi bi-eye-fill"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a href="cat-edit.html">
-                              <i className="bi bi-pencil-square"></i>
-                            </a>
-                          </td>
-                          <td><i className="bi bi-ban banIcon" onClick={handleBan}></i></td>
-                          <td><i className="bi bi-trash3-fill deleteIcon" onClick={handleDelete}></i></td>
-                          <td><i className="bi bi-arrow-90deg-right arrowIcon" onClick={handleArrowClick}></i></td>
+                          <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
+                          <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
+                          <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
                         </tr>
                       </tbody>
                     </table>
