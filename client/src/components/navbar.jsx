@@ -44,9 +44,6 @@ const Navbar = ({ username }) => {
           <i className="fas fa-times"></i>
         </div>
       </div>
-      <div className="user-profile">
-        <img src="./user.png" alt="User" className="user-image" title={`Hello, ${username}`} />
-      </div>
     </div>
   );
 };
