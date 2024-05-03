@@ -195,7 +195,15 @@ const Playground = () => {
                 >
                   Création de produit
                 </MenuItem>
-                <MenuItem> Liste de produits </MenuItem>
+                <MenuItem
+                  component={<Link to="/ProdListe" />}
+                  onClick={() => setActiveLink("/ProdListe")}
+                  style={
+                    activeLink === "/ProdListe" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste de produits 
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Enchère"
@@ -210,7 +218,15 @@ const Playground = () => {
                 label="Participants"
                 icon={<i className="fa-solid fa-users"></i>}
               >
-                <MenuItem> Création d'un participant </MenuItem>
+                                <MenuItem
+                  component={<Link to="/CreationPart" />}
+                  onClick={() => setActiveLink("/CreationPart")}
+                  style={
+                    activeLink === "/CreationPart" ? menuItemStyles.active : null
+                  }
+                >
+                  Création d'un participant
+                </MenuItem>
                 <MenuItem> Liste des participants </MenuItem>
               </SubMenu>
               <SubMenu
