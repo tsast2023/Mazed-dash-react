@@ -38,7 +38,6 @@ const App = () => {
   };
 
   return (
-    <div className="content-container">
       <div id="main">
         <header className="mb-3">
           <a href="#" className="burger-btn d-block d-xl-none">
@@ -216,7 +215,6 @@ const App = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

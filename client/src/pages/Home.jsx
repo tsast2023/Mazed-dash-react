@@ -63,13 +63,15 @@ const Dashboard = () => {
       },
     };
 
-    const barChart = new ApexCharts(barChartRef.current, options1);
-    const lineChart = new ApexCharts(lineChartRef.current, options2);
-    const candleChart = new ApexCharts(candleChartRef.current, options3);
+    if (barChartRef.current && lineChartRef.current && candleChartRef.current) {
+      const barChart = new ApexCharts(barChartRef.current, options1);
+      const lineChart = new ApexCharts(lineChartRef.current, options2);
+      const candleChart = new ApexCharts(candleChartRef.current, options3);
 
-    barChart.render();
-    lineChart.render();
-    candleChart.render();
+      barChart.render();
+      lineChart.render();
+      candleChart.render();
+    }
   }, []);
 
   return (
