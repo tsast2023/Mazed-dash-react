@@ -176,7 +176,7 @@ function CategoryList() {
                             </Link>
                           </td>
                           <td>
-                          <Link to={"/catdetail"}>
+                          <Link to={"/catmodif"}>
                             <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </td>
