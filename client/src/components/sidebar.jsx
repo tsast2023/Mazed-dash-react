@@ -101,7 +101,7 @@ const Playground = () => {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden",  }}>
       <Sidebar
         style={{ overflowY: "auto" }}
         collapsed={collapsed}
@@ -186,8 +186,24 @@ const Playground = () => {
                 label="Produits"
                 icon={<i className="fa-solid fa-diamond"></i>}
               >
-                <MenuItem> Création de produit </MenuItem>
-                <MenuItem> Liste de produits </MenuItem>
+                <MenuItem
+                  component={<Link to="/CreationProd" />}
+                  onClick={() => setActiveLink("/CreationProd")}
+                  style={
+                    activeLink === "/CreationProd" ? menuItemStyles.active : null
+                  }
+                >
+                  Création de produit
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/ProdListe" />}
+                  onClick={() => setActiveLink("/ProdListe")}
+                  style={
+                    activeLink === "/ProdListe" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste de produits 
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Enchère"
@@ -202,8 +218,16 @@ const Playground = () => {
                 label="Participants"
                 icon={<i className="fa-solid fa-users"></i>}
               >
-                <MenuItem component={<Link to='/ParticipantForm'/>}> Création d'un participant </MenuItem>
-                <MenuItem component={<Link to='/TableParticipant'/>}> Liste des participants </MenuItem>
+                                <MenuItem
+                  component={<Link to="/CreationPart" />}
+                  onClick={() => setActiveLink("/CreationPart")}
+                  style={
+                    activeLink === "/CreationPart" ? menuItemStyles.active : null
+                  }
+                >
+                  Création d'un participant
+                </MenuItem>
+                <MenuItem> Liste des participants </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Vendeurs"
@@ -253,7 +277,14 @@ const Playground = () => {
               >
                 Réclamations
               </MenuItem>
-              <MenuItem icon={<i className="fa-solid fa-right-left"></i>}>
+              <MenuItem
+                component={<Link to="/Transferts" />}
+                icon={<i className="fa-solid fa-right-left"></i>}
+                onClick={() => setActiveLink("/Transferts")}
+                style={
+                  activeLink === "/Transferts" ? menuItemStyles.active : null
+                }
+              >
                 Demandes de transferts
               </MenuItem>
               <MenuItem

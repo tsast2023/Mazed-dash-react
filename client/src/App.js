@@ -9,6 +9,11 @@ import Login from './pages/Login';
 import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
 import Tutoriel from './pages/tutoriel';
+import Transferts from './pages/transfer';
+import Produits from './pages/prodCreate';
+import Participants from './pages/partCreate';
+import ProduitsListe from './pages/prodList'
+import CatParentTab from './pages/catPartentTab'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EnchèreCreation from './pages/EnchèreCreation';
 import Configuration from './pages/configuration';
@@ -20,6 +25,8 @@ import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 import TableParticipant from './pages/TableParticipant';
 import ParticipantDetail from './pages/ParticipantDetail';
+import { DataProvider } from './GlobalState';
+import DataTable from './pages/catPartentTab';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -27,9 +34,10 @@ const App = () => {
 
 
   return (
+    <DataProvider>
     <Router>
       <div className='app-container'>
-        {!token && (
+        {!!token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
@@ -55,6 +63,12 @@ const App = () => {
               <Route path='/Réclamations' element={<Réclamations />} />
               <Route path='/Cartes' element={<Cartes />} />
               <Route path='/Tutoriel' element={<Tutoriel />} />
+              <Route path='/Transferts' element={<Transferts />} />
+              <Route path='/CreationProd' element={<Produits />} />
+              <Route path='/CreationPart' element={<Participants />} />
+              <Route path='/ProdListe' element={<ProduitsListe />} />
+              <Route path="/catPartentTab" component={<CatParentTab />} />
+              <Route path='/catdetail' element={<DataTable/>}/>
             </Routes>
           </div>
         )}
@@ -62,6 +76,7 @@ const App = () => {
         {token && <Login setToken={setToken} />}
       
     </Router>
+    </DataProvider>
   );
 };
 

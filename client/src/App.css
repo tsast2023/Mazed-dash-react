@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito";
+}
+
+a {
+  text-decoration: none;
+}
 body {
   background-color: #f2f7ff;
 }
@@ -51,7 +61,8 @@ input {
 .card-header {
   background-color: #fff;
   border: none;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
+  padding: 30px;
 }
 
 .card-footer {
@@ -59,4 +70,6 @@ input {
   border: none;
 }
 
-
+.new-price {
+  font-family: "Nunito";
+}
