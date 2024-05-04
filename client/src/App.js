@@ -17,6 +17,9 @@ import CatParentTab from './pages/catPartentTab'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
+import DataTable2 from './pages/catFilleTab';
+import CatEdit from './pages/catEdit';
+
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -27,7 +30,7 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!!token && (
+        {!token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
@@ -46,8 +49,9 @@ const App = () => {
               <Route path='/CreationProd' element={<Produits />} />
               <Route path='/CreationPart' element={<Participants />} />
               <Route path='/ProdListe' element={<ProduitsListe />} />
-              <Route path="/catPartentTab" component={<CatParentTab />} />
               <Route path='/catdetail' element={<DataTable/>}/>
+              <Route path='/catdetail2' element={<DataTable2/>}/>
+              <Route path='/catmodif' element={<CatEdit/>}/>
             </Routes>
           </div>
         )}

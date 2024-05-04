@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
-import { Link } from 'react-router-dom';
 
 function CategoryList() {
   const handleDelete = () => {
@@ -170,7 +169,7 @@ function CategoryList() {
                             </Link>
                           </td>
                           <td>
-                          <Link to={"/catdetail"}>
+                          <Link to={"/catmodif"}>
                             <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </td>
@@ -181,14 +180,14 @@ function CategoryList() {
                         <tr>
                           <td className="text-bold-500">Michael Right</td>
                           <td>
-                            <Link to={"/catdetail"}>
+                            <Link to={"/catdetail2"}>
                             <i className="fa-solid fa-eye"></i>
                             </Link>
                           </td>
                           <td>
-                            <a href="cat-edit.html">
+                          <Link to={"/catmodif"}>
                             <i className="fa-solid fa-pen-to-square"></i>
-                            </a>
+                            </Link>
                           </td>
                           <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
                           <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
