@@ -27,7 +27,7 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!!token && (
+        {!token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
@@ -46,8 +46,7 @@ const App = () => {
               <Route path='/CreationProd' element={<Produits />} />
               <Route path='/CreationPart' element={<Participants />} />
               <Route path='/ProdListe' element={<ProduitsListe />} />
-              <Route path="/catPartentTab" component={<CatParentTab />} />
-              <Route path='/catdetail' element={<DataTable/>}/>
+              <Route path='/catdetail/:id' element={<DataTable/>}/>
             </Routes>
           </div>
         )}

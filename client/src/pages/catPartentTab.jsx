@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
-import SimpleDataTable from "assets/extensions/simple-datatables/umd/simple-datatables.js";
-import "assets/static/js/pages/simple-datatables.js";
-import "assets/compiled/css/table-datatable.css";
+import { useParams } from "react-router-dom";
 
 const DataTable = () => {
+  let { data } = useParams();
   useEffect(() => {
 
     document.querySelectorAll(".deleteIcon").forEach((icon) => {
