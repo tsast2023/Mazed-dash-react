@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function CategoryList() {
@@ -161,14 +162,14 @@ function CategoryList() {
                         <tr>
                           <td className="text-bold-500">Michael Right</td>
                           <td>
-                            <a href="cat-parente-table.html">
+                            <Link to={'/catPartentTab'}>
                             <i className="fa-solid fa-eye"></i>
-                            </a>
+                            </Link>
                           </td>
                           <td>
-                            <a href="cat-edit.html">
+                            <Link to={'/DataTable'}>
                             <i className="fa-solid fa-pen-to-square"></i>
-                            </a>
+                            </Link>
                           </td>
                           <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
                           <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>

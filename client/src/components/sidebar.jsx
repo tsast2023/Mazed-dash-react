@@ -194,16 +194,16 @@ const Playground = () => {
                 icon={<i className="fa-solid fa-gavel"></i>}
               >
                 <MenuItem component={<Link to ='/EnchèreCreation'/>}> Création de enchère </MenuItem>
-                <MenuItem> Liste de enchère </MenuItem>
-                <MenuItem> Création des offres </MenuItem>
-                <MenuItem> Configuration </MenuItem>
+                <MenuItem component={<Link to ='EnchereListe'/>}> Liste de enchère </MenuItem>
+                <MenuItem component={<Link to='/OffreEnchere'/>}> Création des offres </MenuItem>
+                <MenuItem component={<Link to='/ConfigurationEnchere'/>}> Configuration </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Participants"
                 icon={<i className="fa-solid fa-users"></i>}
               >
-                <MenuItem> Création d'un participant </MenuItem>
-                <MenuItem> Liste des participants </MenuItem>
+                <MenuItem component={<Link to='/ParticipantForm'/>}> Création d'un participant </MenuItem>
+                <MenuItem component={<Link to='/TableParticipant'/>}> Liste des participants </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Vendeurs"
