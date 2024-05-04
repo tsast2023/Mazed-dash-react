@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "apexcharts": "^3.49.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "choices.js": "^10.2.0",
@@ -18,6 +19,8 @@
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "react-sweetalert2": "^0.6.0",
+    "react-table": "^7.8.0",
+    "simple-datatables": "^9.0.3",
     "web-vitals": "^2.1.4"
   },
   "proxy": "http://192.168.0.126:8081",

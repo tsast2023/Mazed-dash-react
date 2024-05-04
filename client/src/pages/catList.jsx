@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import { Link } from 'react-router-dom';
 
 function CategoryList() {
   const handleDelete = () => {
@@ -19,11 +20,7 @@ function CategoryList() {
       if (result.isConfirmed) {
         // Call deleteItem function
         deleteItem();
-        Swal.fire(
-          "Supprimé(e) !",
-          "Votre élément a été supprimé.",
-          "success"
-        );
+        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "success");
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
       }
@@ -89,61 +86,67 @@ function CategoryList() {
 
   return (
     <div className="content-container">
-    <div id="main">
-      <header className="mb-3">
-        <a href="#" className="burger-btn d-block d-xl-none">
-          <i className="bi bi-justify fs-3"></i>
-        </a>
-      </header>
+      <div id="main">
+        <header className="mb-3">
+          <a href="#" className="burger-btn d-block d-xl-none">
+            <i className="bi bi-justify fs-3"></i>
+          </a>
+        </header>
 
-      <div className="page-heading">
-        <div className="page-title">
-          <div className="row">
-            <div className="col-12 col-md-6 order-md-1 order-last">
-              <p className="text-subtitle text-muted"></p>
+        <div className="page-heading">
+          <div className="page-title">
+            <div className="row">
+              <div className="col-12 col-md-6 order-md-1 order-last">
+                <p className="text-subtitle text-muted"></p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <section className="section">
-          <div className="row" id="table-head">
-            <div className="col-12">
-              <div className="card">
-                <div className="card-header">
-                  <h2 className="new-price">Liste de catégories</h2>
-                </div>
-                <div className="row" style={{ padding: "0 20px" }}>
-                  <div className="col-md-4 mb-4">
-                    <h6>Type</h6>
-                    <fieldset className="form-group">
-                      <select className="form-select" id="basicSelect1">
-                        <option disabled selected>Choisissez le type</option>
-                        <option>Parente</option>
-                        <option>Fille</option>
-                      </select>
-                    </fieldset>
+          <section className="section">
+            <div className="row" id="table-head">
+              <div className="col-12">
+                <div className="card">
+                  <div className="card-header">
+                    <h2 className="new-price">Liste de catégories</h2>
                   </div>
-                  <div className="col-md-4 mb-4">
-                    <h6>Statut</h6>
-                    <fieldset className="form-group">
-                      <select className="form-select" id="basicSelect2">
-                        <option disabled selected>Choisissez le statut</option>
-                        <option>Publiée</option>
-                        <option>Brouillon</option>
-                      </select>
-                    </fieldset>
+                  <div className="row" style={{ padding: "0 20px" }}>
+                    <div className="col-md-4 mb-4">
+                      <h6>Type</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect1">
+                          <option disabled selected>
+                            Choisissez le type
+                          </option>
+                          <option>Parente</option>
+                          <option>Fille</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6>Statut</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect2">
+                          <option disabled selected>
+                            Choisissez le statut
+                          </option>
+                          <option>Publiée</option>
+                          <option>Brouillon</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6>Etat</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect3">
+                          <option disabled selected>
+                            Choisissez État
+                          </option>
+                          <option>Activée</option>
+                          <option>Désactivée</option>
+                        </select>
+                      </fieldset>
+                    </div>
                   </div>
-                  <div className="col-md-4 mb-4">
-                    <h6>Etat</h6>
-                    <fieldset className="form-group">
-                      <select className="form-select" id="basicSelect3">
-                        <option disabled selected>Choisissez État</option>
-                        <option>Activée</option>
-                        <option>Désactivée</option>
-                      </select>
-                    </fieldset>
-                  </div>
-                </div>
 
                 <div className="card-content">
                   <div className="table-responsive">
@@ -197,10 +200,10 @@ function CategoryList() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
