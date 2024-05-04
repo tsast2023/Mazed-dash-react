@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
-import SimpleDataTable from "assets/extensions/simple-datatables/umd/simple-datatables.js";
-import "assets/static/js/pages/simple-datatables.js";
-import "assets/compiled/css/table-datatable.css";
+
 
 const DataTable = () => {
   useEffect(() => {
-    const table = new SimpleDataTable("#table1");
+    // const table = new SimpleDataTable("#table1");
 
     document.querySelectorAll(".deleteIcon").forEach((icon) => {
       icon.addEventListener("click", () => {
@@ -173,6 +171,7 @@ const DataTable = () => {
         </footer>
       </div>
     </div>
+    
   );
 };
 
