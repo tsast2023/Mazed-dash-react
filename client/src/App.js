@@ -13,7 +13,6 @@ import Transferts from './pages/transfer';
 import Produits from './pages/prodCreate';
 import Participants from './pages/partCreate';
 import ProduitsListe from './pages/prodList'
-import CatParentTab from './pages/catPartentTab'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EnchèreCreation from './pages/EnchèreCreation';
 import Configuration from './pages/configuration';
@@ -27,6 +26,11 @@ import TableParticipant from './pages/TableParticipant';
 import ParticipantDetail from './pages/ParticipantDetail';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
+import DataTable2 from './pages/catFilleTab';
+import CatEdit from './pages/catEdit';
+import ParticipantsListe from './pages/partList';
+import ParticipantDetail from './pages/partDetail';
+
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -67,8 +71,11 @@ const App = () => {
               <Route path='/CreationProd' element={<Produits />} />
               <Route path='/CreationPart' element={<Participants />} />
               <Route path='/ProdListe' element={<ProduitsListe />} />
-              <Route path="/catPartentTab" component={<CatParentTab />} />
+              <Route path='/catdetail/:id' element={<DataTable/>}/>
               <Route path='/catdetail' element={<DataTable/>}/>
+              <Route path='/catmodif' element={<CatEdit/>}/>
+              <Route path='/PartListe' element={<ParticipantsListe/>}/>
+              <Route path='/partdetail' element={<ParticipantDetail/>}/>
             </Routes>
           </div>
         )}
