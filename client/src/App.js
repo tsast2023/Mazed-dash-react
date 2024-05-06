@@ -31,7 +31,6 @@ import CatEdit from './pages/catEdit';
 import ParticipantsListe from './pages/partList';
 import ProductDetail from './pages/prodDétail';
 import ProductEditForm from './pages/prodEdit';
-// import ParticipantDetail from './pages/partDetail';
 
 
 const App = () => {

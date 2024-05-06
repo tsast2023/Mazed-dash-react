@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 Supprimer
               </button>
               <button
-                className="btn btn-primary"
+                className="btn btn-primary me-3"
                 onClick={() => confirmAction("add auction")}
               >
                 Ajouter une enchère
