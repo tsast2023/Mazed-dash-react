@@ -74,3 +74,7 @@ input {
 .new-price {
   font-family: "Nunito";
 }
+
+.modal-footer {
+  margin-top: 20px;
+}

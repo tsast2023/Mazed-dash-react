@@ -28,13 +28,12 @@ import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
 import CatEdit from './pages/catEdit';
 import ParticipantsListe from './pages/partList';
-import ParticipantDetail from './pages/partDetail';
+import ProductDetail from './pages/prodDétail';
+import ProductEditForm from './pages/prodEdit';
 
 
 const App = () => {
   const [token, setToken] = useState(null);
-
-
 
   return (
     <DataProvider>
@@ -74,13 +73,14 @@ const App = () => {
               <Route path='/catmodif' element={<CatEdit/>}/>
               <Route path='/PartListe' element={<ParticipantsListe/>}/>
               <Route path='/partdetail' element={<ParticipantDetail/>}/>
+              <Route path='/prodDétail' element={<ProductDetail/>} />
+              <Route path='/prodEdit' element={<ProductEditForm/>} />
             </Routes>
           </div>
         )}
         </div>
         {token && <Login setToken={setToken} />}
-      
-    </Router>
+      </Router>
     </DataProvider>
   );
 };
