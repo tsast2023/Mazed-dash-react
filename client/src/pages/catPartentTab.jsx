@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
-import SimpleDataTable from "assets/extensions/simple-datatables/umd/simple-datatables.js";
-import "assets/static/js/pages/simple-datatables.js";
-import "assets/compiled/css/table-datatable.css";
+
 
 const DataTable = () => {
   useEffect(() => {

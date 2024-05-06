@@ -164,12 +164,12 @@ function CategoryList() {
                         <tr>
                           <td className="text-bold-500">Michael Right</td>
                           <td>
-                            <a href="cat-parente-table.html">
+                          <Link to={"/catdetail"}>
                             <i className="fa-solid fa-eye"></i>
                             </Link>
                           </td>
                           <td>
-                            <a href="cat-edit.html">
+                          <Link to={"/catdetail"}>
                             <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </td>

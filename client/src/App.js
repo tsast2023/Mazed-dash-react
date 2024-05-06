@@ -37,7 +37,7 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!!token && (
+        {!token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
