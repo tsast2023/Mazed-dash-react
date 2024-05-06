@@ -39,7 +39,8 @@ getAllProducts();
   } , [token])
   
    const state ={
-    
+    Categories : Categories,
+    Products : Products
     
 
 

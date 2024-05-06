@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { GlobalState } from "../GlobalState";
 
 function CategoryList() {
+  const state = useContext(GlobalState);
+  const categories = state.Categories;
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
@@ -161,10 +164,14 @@ function CategoryList() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="text-bold-500">Michael Right</td>
+                        {categories?categories.map((cat)=>(
+                          <tr>
+                          <td className="text-bold-500">{cat.libeléCategorie}</td>
                           <td>
-                          <Link to={"/catdetail"}>
+                          <Link to={{
+                pathname: `/editcat/${cat.id}`,
+                state: { catData: cat }
+              }}>
                             <i className="fa-solid fa-eye"></i>
                             </Link>
                           </td>
@@ -177,22 +184,9 @@ function CategoryList() {
                           <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
                           <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
                         </tr>
-                        <tr>
-                          <td className="text-bold-500">Michael Right</td>
-                          <td>
-                            <Link to={"/catdetail2"}>
-                            <i className="fa-solid fa-eye"></i>
-                            </Link>
-                          </td>
-                          <td>
-                          <Link to={"/catmodif"}>
-                            <i className="fa-solid fa-pen-to-square"></i>
-                            </Link>
-                          </td>
-                          <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
-                          <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
-                          <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
-                        </tr>
+                        )):<div>loading</div>}
+                        
+                        
                       </tbody>
                     </table>
                   </div>
