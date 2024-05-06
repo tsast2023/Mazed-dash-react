@@ -50,7 +50,6 @@ const App = () => {
               <Route path='/CreationPart' element={<Participants />} />
               <Route path='/ProdListe' element={<ProduitsListe />} />
               <Route path='/catdetail/:id' element={<DataTable/>}/>
-              <Route path='/catdetail' element={<DataTable/>}/>
               <Route path='/catmodif' element={<CatEdit/>}/>
             </Routes>
           </div>
