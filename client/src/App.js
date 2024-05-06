@@ -14,6 +14,16 @@ import Produits from './pages/prodCreate';
 import Participants from './pages/partCreate';
 import ProduitsListe from './pages/prodList'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EnchèreCreation from './pages/EnchèreCreation';
+import Configuration from './pages/configuration';
+import EnchereListe from './pages/EnchereListe';
+import DetailEnchere from './pages/DetailEnchere';
+import ModificationDetailsEnchere from './pages/ModificationDetailsEnchere';
+import OffreEnchere from './pages/OffreEnchere';
+import ConfigurationEnchere from './ConfigurationEnchere';
+import ParticipantForm from './ParticipantForm';
+import TableParticipant from './pages/TableParticipant';
+import ParticipantDetail from './pages/ParticipantDetail';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
@@ -41,6 +51,17 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path='/EnchèreCreation' element={<EnchèreCreation/>}/>
+              <Route path='/EnchereListe' element={<EnchereListe/>}/>
+              <Route path='/ModificationDetailsEnchere' element={<ModificationDetailsEnchere/>}/>
+              <Route path='/DetailEnchere' element={<DetailEnchere/>}/>
+              {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
+              <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
+              <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
+              <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/>
+              <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
+              <Route path='/TableParticipant' element={<TableParticipant/>}/>
+              <Route path='/configuration' element={<Configuration/>}/>
               <Route path='/CreationCat' element={<Categories />} />
               <Route path='/ListeCat' element={<ListeCategories />} />
               <Route path='/Réclamations' element={<Réclamations />} />
