@@ -13,12 +13,13 @@ import Transferts from './pages/transfer';
 import Produits from './pages/prodCreate';
 import Participants from './pages/partCreate';
 import ProduitsListe from './pages/prodList'
-import CatParentTab from './pages/catPartentTab'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
 import CatEdit from './pages/catEdit';
+import ParticipantsListe from './pages/partList';
+import ParticipantDetail from './pages/partDetail';
 
 
 const App = () => {
@@ -51,6 +52,8 @@ const App = () => {
               <Route path='/ProdListe' element={<ProduitsListe />} />
               <Route path='/catdetail/:id' element={<DataTable/>}/>
               <Route path='/catmodif' element={<CatEdit/>}/>
+              <Route path='/PartListe' element={<ParticipantsListe/>}/>
+              <Route path='/partdetail' element={<ParticipantDetail/>}/>
             </Routes>
           </div>
         )}
