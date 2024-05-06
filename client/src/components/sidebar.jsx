@@ -227,7 +227,15 @@ const Playground = () => {
                 >
                   Création d'un participant
                 </MenuItem>
-                <MenuItem> Liste des participants </MenuItem>
+                <MenuItem
+                  component={<Link to="/PartListe" />}
+                  onClick={() => setActiveLink("/PartListe")}
+                  style={
+                    activeLink === "/PartListe" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste des participants
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Vendeurs"
