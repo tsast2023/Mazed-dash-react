@@ -30,8 +30,7 @@ import CatEdit from './pages/catEdit';
 import ParticipantsListe from './pages/partList';
 import ProductDetail from './pages/prodDétail';
 import ProductEditForm from './pages/prodEdit';
-
-
+import ParticipantDetail from './pages/ParticipantDetail'
 const App = () => {
   const [token, setToken] = useState(null);
 
@@ -56,7 +55,6 @@ const App = () => {
               {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
               <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
               <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
-              <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/>
               <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
               <Route path='/TableParticipant' element={<TableParticipant/>}/>
               <Route path='/configuration' element={<Configuration/>}/>
