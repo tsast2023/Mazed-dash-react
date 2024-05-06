@@ -23,7 +23,6 @@ import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 import TableParticipant from './pages/TableParticipant';
-import ParticipantDetail from './pages/ParticipantDetail';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
