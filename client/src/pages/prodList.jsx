@@ -63,7 +63,7 @@ function ProdList() {
                           <th>
                             <section id="basic-modals">
                               <Link
-                                to="/pordDétail"
+                                to="/prodDétail"
                                 className="btn btn-outline block"
                               >
                                 <i className="fa-solid fa-eye font-medium-1"></i>

@@ -14,12 +14,23 @@ import Produits from './pages/prodCreate';
 import Participants from './pages/partCreate';
 import ProduitsListe from './pages/prodList'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EnchèreCreation from './pages/EnchèreCreation';
+import Configuration from './pages/configuration';
+import EnchereListe from './pages/EnchereListe';
+import DetailEnchere from './pages/DetailEnchere';
+import ModificationDetailsEnchere from './pages/ModificationDetailsEnchere';
+import OffreEnchere from './pages/OffreEnchere';
+import ConfigurationEnchere from './ConfigurationEnchere';
+import ParticipantForm from './ParticipantForm';
+import TableParticipant from './pages/TableParticipant';
+import ParticipantDetail from './pages/ParticipantDetail';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
 import CatEdit from './pages/catEdit';
 import ParticipantsListe from './pages/partList';
-import ParticipantDetail from './pages/partDetail';
+import ProductDetail from './pages/prodDétail';
+// import ParticipantDetail from './pages/partDetail';
 
 
 const App = () => {
@@ -39,6 +50,17 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path='/EnchèreCreation' element={<EnchèreCreation/>}/>
+              <Route path='/EnchereListe' element={<EnchereListe/>}/>
+              <Route path='/ModificationDetailsEnchere' element={<ModificationDetailsEnchere/>}/>
+              <Route path='/DetailEnchere' element={<DetailEnchere/>}/>
+              {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
+              <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
+              <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
+              <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/>
+              <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
+              <Route path='/TableParticipant' element={<TableParticipant/>}/>
+              <Route path='/configuration' element={<Configuration/>}/>
               <Route path='/CreationCat' element={<Categories />} />
               <Route path='/ListeCat' element={<ListeCategories />} />
               <Route path='/Réclamations' element={<Réclamations />} />
@@ -49,10 +71,10 @@ const App = () => {
               <Route path='/CreationPart' element={<Participants />} />
               <Route path='/ProdListe' element={<ProduitsListe />} />
               <Route path='/catdetail/:id' element={<DataTable/>}/>
-              <Route path='/catdetail' element={<DataTable/>}/>
               <Route path='/catmodif' element={<CatEdit/>}/>
               <Route path='/PartListe' element={<ParticipantsListe/>}/>
               <Route path='/partdetail' element={<ParticipantDetail/>}/>
+              <Route path='/prodDétail' element={<ProductDetail/>} />
             </Routes>
           </div>
         )}
