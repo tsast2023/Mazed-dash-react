@@ -30,6 +30,7 @@ import DataTable2 from './pages/catFilleTab';
 import CatEdit from './pages/catEdit';
 import ParticipantsListe from './pages/partList';
 import ProductDetail from './pages/prodDétail';
+import ProductEditForm from './pages/prodEdit';
 // import ParticipantDetail from './pages/partDetail';
 
 
@@ -75,6 +76,7 @@ const App = () => {
               <Route path='/PartListe' element={<ParticipantsListe/>}/>
               <Route path='/partdetail' element={<ParticipantDetail/>}/>
               <Route path='/prodDétail' element={<ProductDetail/>} />
+              <Route path='/prodEdit' element={<ProductEditForm/>} />
             </Routes>
           </div>
         )}
