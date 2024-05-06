@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
+import { GlobalState } from "../GlobalState";
 
 const CatCreate = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [inputs, setInputs] = useState([]);
-
+  const state = useContext(GlobalState);
+  const categoriess = state.Categories;
   useEffect(() => {
+    console.log('cat from here' , categoriess)
     const select = new Choices("#category-select", {
       removeItemButton: true,
       placeholder: true,
@@ -74,10 +77,11 @@ const CatCreate = () => {
                   multiple
                 >
                   <optgroup>
-                    <option value="romboid">catégorie1</option>
-                    <option value="trapeze">catégorie2</option>
-                    <option value="triangle">catégorie3</option>
-                    <option value="polygon">catégorie4</option>
+                    {categoriess? categoriess.map((item)=>(
+                      <option value={item}>{item.libeléCategorie}</option>
+                    )):<option>loading</option>}
+                    
+                    
                   </optgroup>
                 </select>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/EnchèreCreation.css'
-
+import {Link} from 'react-router-dom'
 function EnchèreCreation() {
   return (
 <div className='content-container'>
@@ -87,7 +87,7 @@ function EnchèreCreation() {
                         </div>
                       </div>
                       <div className="col-12 d-flex justify-content-end">
-                        <button type="submit" className="btn btn-primary me-1 mb-1"><a style={{color: 'white'}}  href="configuration.html">Suivant</a> </button>
+                        <Link to={"/configuration"} type="submit" className="btn btn-primary me-1 mb-1"><a style={{color: 'white'}}  >Suivant</a> </Link>
                         <button type="reset" className="btn btn-light-secondary me-1 mb-1">Annuler</button>
                       </div>
                     </div>

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { useLocation } from "react-router-dom";
 function CategoryList() {
+  // Get the location object
+  const location = useLocation();
+
+  // Access the cat object from the state
+  const cat = location.state && location.state.cat;
+  useEffect(()=>{
+    console.log(location.state.cat)
+  })
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
@@ -98,9 +106,10 @@ function CategoryList() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td className="text-bold-500">Michael Right</td>
-                            <th><button class="btn btn-success">Publié</button></th>
+                          {cat && cat.categories? cat.categories.map((item)=>(
+                            <tr>
+                            <td className="text-bold-500">{item?.libeléCategorie}</td>
+                            <th><button class="btn btn-success">{item?.status}</button></th>
                             <td>
                               <i
                                 className="fa-solid fa-ban"
@@ -114,22 +123,9 @@ function CategoryList() {
                               ></i>
                             </td>
                           </tr>
-                          <tr>
-                            <td className="text-bold-500">Michael Right</td>
-                            <th><button class="btn btn-success">Publié</button></th>
-                            <td>
-                              <i
-                                className="fa-solid fa-ban"
-                                onClick={handleBan}
-                              ></i>
-                            </td>
-                            <td>
-                              <i
-                                className="fa-solid fa-trash deleteIcon"
-                                onClick={handleDelete}
-                              ></i>
-                            </td>
-                          </tr>
+                          )):<div>loading</div>}
+                          
+                         
                         </tbody>
                       </table>
                     </div>

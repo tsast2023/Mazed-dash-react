@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
+import { useNavigate } from 'react-router-dom';
 
 function CategoryList() {
+  const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const handleDelete = () => {
@@ -168,12 +170,9 @@ function CategoryList() {
                           <tr>
                           <td className="text-bold-500">{cat.libeléCategorie}</td>
                           <td>
-                          <Link to={{
-                pathname: `/editcat/${cat.id}`,
-                state: { catData: cat }
-              }}>
+                          <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
                             <i className="fa-solid fa-eye"></i>
-                            </Link>
+                            </a>
                           </td>
                           <td>
                           <Link to={"/catmodif"}>
