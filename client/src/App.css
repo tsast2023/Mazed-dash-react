@@ -105,6 +105,7 @@ td, th {
 .card-stats {
   display: flex;
   margin-bottom: 5rem;
+  margin-top: 2rem;
 }
 
 .fa-trash {
