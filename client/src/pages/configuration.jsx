@@ -16,7 +16,7 @@ function Configuration() {
                 <div className="card">
                   <div className="card-header">
                     <h2 className="new-price" id="myModalLabel33">
-                      Configuration
+                      Configuration De L'enchere
                     </h2>
                   </div>
                   <div className="card-content">

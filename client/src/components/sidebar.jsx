@@ -241,15 +241,15 @@ const Playground = () => {
                 label="Vendeurs"
                 icon={<i className="fa-solid fa-user-clock"></i>}
               >
-                <MenuItem> Création d'un vendeur </MenuItem>
-                <MenuItem> Liste des vendeurs </MenuItem>
+                <MenuItem component={<Link to='/VendeurForm'/>}> Création d'un vendeur </MenuItem>
+                <MenuItem component={<Link to='/TableVendeurs'/>}> Liste des vendeurs </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Utilisateurs"
                 icon={<i className="fa-solid fa-user-check"></i>}
               >
-                <MenuItem> Création d'un utilisateur </MenuItem>
-                <MenuItem> Liste des utilisateurs </MenuItem>
+                <MenuItem component={<Link to='/UtilisateurForm'/>}> Création d'un utilisateur </MenuItem>
+                <MenuItem component={<Link to='/TableUtilisateur'/>}> Liste des utilisateurs </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Annoces"
@@ -270,15 +270,15 @@ const Playground = () => {
                 label="Questions fréquents"
                 icon={<i className="fa-solid fa-file-circle-question"></i>}
               >
-                <MenuItem> Création d'un question </MenuItem>
-                <MenuItem> Liste des questions </MenuItem>
+                <MenuItem component={<Link to='/QuestionForm'/>}> Création d'un question </MenuItem>
+                <MenuItem component={<Link to='/QuestionList'/>}> Liste des questions </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Termes et conditions"
                 icon={<i className="fa-solid fa-clipboard"></i>}
               >
-                <MenuItem> Création d'un terme</MenuItem>
-                <MenuItem> Termes et conditions </MenuItem>
+                <MenuItem component={<Link to='/TermsForm'/> }> Création d'un terme</MenuItem>
+                <MenuItem component={<Link to='/TermesList'/>}> Termes et conditions </MenuItem>
               </SubMenu>
             </Menu>
 

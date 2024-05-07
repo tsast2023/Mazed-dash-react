@@ -16,7 +16,7 @@ function PartDetail() {
               <Card.Body>
                 <div className="d-flex justify-content-center align-items-center flex-column">
                   <div className="avatar avatar-xl">
-                    <img src="assets/static/images/faces/2.jpg" alt="Avatar" />
+                    <img style={{width:'48px',height:'48px',borderRadius:'5px'}}  src="assets/static/images/faces/2.jpg" alt="Avatar" />
                   </div>
                   <h3 className="mt-3">Nom et Prénom</h3>
                   <p className="text-small">Pseudo</p>
@@ -46,28 +46,7 @@ function PartDetail() {
             </Card>
           </Col>
           <Col xs={12}>
-            <Card>
-              <Card.Header>
-                <h5>Liste de achats</h5>
-              </Card.Header>
-              <Card.Body>
-                <Table responsive>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Produit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* Data would be dynamically inserted here */}
-                    <tr>
-                      <td>01/01/2024</td>
-                      <td>Product Name</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card.Body>
-            </Card>
+          
           </Col>
           {/* Repeat for other sections like auctions and transactions */}
         </Row>

@@ -29,6 +29,18 @@ function EnchèreCreation() {
                       <div className="col-12">
                         <div className="form-group">
                           <label htmlFor="email-id-vertical">Prix Mazed Online</label>
+                          <input type="text" id="email-id-vertical" className="form-control" name="email-id" placeholder="prix mazad" required />
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="form-group">
+                          <label htmlFor="email-id-vertical">Notaire</label>
+                          <input type="text" id="email-id-vertical" className="form-control" name="email-id" placeholder="prix mazad" required />
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="form-group">
+                          <label htmlFor="email-id-vertical">Avocat</label>
                           <input type="number" id="email-id-vertical" className="form-control" name="email-id" placeholder="prix mazad" required />
                         </div>
                       </div>
