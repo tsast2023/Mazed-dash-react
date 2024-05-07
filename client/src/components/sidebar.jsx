@@ -8,14 +8,14 @@ const themes = {
   light: {
     sidebar: {
       backgroundColor: "#ffffff",
-      color: "#607489",
+      color: "#000",
     },
     menu: {
       menuContent: "#fbfcfd",
-      icon: "#607489",
+      icon: "#000",
       hover: {
-        backgroundColor: "#f9df86",
-        color: "#44596e",
+        backgroundColor: "#b0210e",
+        color: "#fff",
       },
       disabled: {
         color: "#9fb6cf",
@@ -108,7 +108,6 @@ const Playground = () => {
         toggled={toggled}
         onBackdropClick={() => setToggled(false)}
         onBreakPoint={setBroken}
-        image="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
         breakPoint="md"
         backgroundColor={hexToRgba(
           themes[theme].sidebar.backgroundColor,
