@@ -8,11 +8,9 @@ export const DataProvider = ({children}) => {
  const token = Cookies.get('token');
   const [Categories , setCategories] = useState();
   const [Products , setProducts] = useState();
-//   const [Avis , setAvis] = useState();
-//   const [workers , setWorkers] = useState();
-//   const [orderCount , SetOrderCount] = useState(0);
-//   const [userCount , SetUsersCount] = useState(0);
-//   const [avisCount , SetAvisCount] = useState(0);
+  const [tutoriel , setTutotiel]= useState();
+  const [carteRech , setCarteRech] = useState();
+  const[bids , setBids] = useState();
   useEffect(()=>{
     
     const getAllCategories = async() =>{
@@ -33,14 +31,45 @@ export const DataProvider = ({children}) => {
             console.log(error);
         }
     }
- 
+    const getAllTuto = async ()=>{
+      try {
+        const res = await axios.get('http://192.168.0.126:8081/api/tuto/getAll');
+          console.log('tutorial:' , res.data);
+          setTutotiel(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getCarteRechar = async()=>{
+      try {
+        const res = await res.get('');
+        console.log('cartes:' , res.data);
+        setCarteRech(res.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getAllBids = async()=>{
+      try {
+        const res = await res.get('http://192.168.0.126:8081/api/bid/getAll')
+        console.log("all bids:" , res.data)
+        setBids(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
 getAllCategories();
 getAllProducts();
+getAllTuto();
+getAllBids();
   } , [token])
   
    const state ={
     Categories : Categories,
-    Products : Products
+    Products : Products,
+    tutorials : tutoriel,
+    bids : bids
     
 
 

@@ -8,14 +8,14 @@ const themes = {
   light: {
     sidebar: {
       backgroundColor: "#ffffff",
-      color: "#607489",
+      color: "#000",
     },
     menu: {
       menuContent: "#fbfcfd",
-      icon: "#607489",
+      icon: "#000",
       hover: {
-        backgroundColor: "#f9df86",
-        color: "#44596e",
+        backgroundColor: "#b0210e",
+        color: "#fff",
       },
       disabled: {
         color: "#9fb6cf",
@@ -101,14 +101,13 @@ const Playground = () => {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden",  }}>
+    <div style={{ display: "flex", overflow: "hidden"  }}>
       <Sidebar
         style={{ overflowY: "auto" }}
         collapsed={collapsed}
         toggled={toggled}
         onBackdropClick={() => setToggled(false)}
         onBreakPoint={setBroken}
-        image="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
         breakPoint="md"
         backgroundColor={hexToRgba(
           themes[theme].sidebar.backgroundColor,
@@ -252,7 +251,7 @@ const Playground = () => {
                 <MenuItem component={<Link to='/TableUtilisateur'/>}> Liste des utilisateurs </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Annoces"
+                label="Annonces"
                 icon={<i className="fa-solid fa-volume-low"></i>}
               >
                   <MenuItem
@@ -264,7 +263,15 @@ const Playground = () => {
                 >
                   Création d'une annonce
                 </MenuItem>
-                <MenuItem> Liste des annonce </MenuItem>
+                <MenuItem
+                  component={<Link to="/ListeAds" />}
+                  onClick={() => setActiveLink("/ListeAds")}
+                  style={
+                    activeLink === "/ListeAds" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste des annonce
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Questions fréquents"
@@ -312,6 +319,16 @@ const Playground = () => {
                 }
               >
                 Cartes recharges
+              </MenuItem>
+              <MenuItem
+                component={<Link to="/Commandes" />}
+                icon={<i className="fa-solid fa-bag-shopping"></i>}
+                onClick={() => setActiveLink("/Commandes")}
+                style={
+                  activeLink === "/Commandes" ? menuItemStyles.active : null
+                }
+              >
+                Commandes
               </MenuItem>
               <MenuItem
                 component={<Link to="/Tutoriel" />}

@@ -10,6 +10,7 @@
 a {
   text-decoration: none;
 }
+
 body {
   background-color: #f2f7ff;
 }
@@ -36,6 +37,7 @@ input {
   flex: 1;
   overflow-y: auto;
   margin-top: 80px;
+  
 }
 
 .card {
@@ -72,4 +74,35 @@ input {
 
 .new-price {
   font-family: "Nunito";
+}
+
+.modal-footer {
+  margin-top: 20px;
+}
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.stats-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #b0210e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20%;
+  justify-content: center;
+}
+
+.stats-text, .stats-number {
+  display: flex;
+  text-align: center;
+  font-size: 16px;
+}
+
+.card-stats {
+  display: flex;
+  margin-bottom: 5rem;
 }

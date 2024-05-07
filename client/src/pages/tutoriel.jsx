@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
-
+import { GlobalState } from "../GlobalState";
+import axios from "axios";
 const App = () => {
-  const handleDelete = () => {
+  const [tuto , setTuto]= useState({ordre : 0 , description:"" , file:""});
+  const state =useContext(GlobalState);
+  const tutorials = state.tutorials
+  const handleDelete = (id) => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: "Are you sure?",
@@ -16,17 +20,44 @@ const App = () => {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem();
+        deleteItem(id);
         Swal.fire("Deleted!", "Your item has been deleted.", "success");
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }
     });
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // Get the selected file
+    const reader = new FileReader();
 
-  const deleteItem = () => {
-    // Functionality to delete item
+    reader.onloadend = () => {
+      // When reading is completed, set the image data to state
+      setTuto({ ...tuto, file: reader.result });
+    };
+
+    // Read the file as base64
+    reader.readAsDataURL(file);
   };
+  const deleteItem = async(id) => {
+   try {
+    const res = await axios.delete(`http://192.168.0.126:8081/api/tuto/deleteTuto?id=${id}`);
+    console.log(res.data);
+   } catch (error) {
+    console.log(error)
+   }
+  };
+  const addTuto = async(e) =>{
+    console.log(tuto);
+    console.log(tuto.ordre);
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://192.168.0.126:8081/api/tuto/publishNow',tuto)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div id="app">
@@ -82,7 +113,7 @@ const App = () => {
                                       aria-label="Close"
                                     ></button>
                             </div>
-                            <form action="#">
+                            <form onSubmit={addTuto} action="#">
                               <div className="modal-body">
                                 <label htmlFor="email">Image</label>
                                 <div className="form-group">
@@ -92,6 +123,7 @@ const App = () => {
                                     placeholder="Écrivez ici"
                                     className="form-control"
                                     maxLength="25"
+                                    onChange={handleImageChange}
                                   />
                                 </div>
                                 <label htmlFor="email">Ordre</label>
@@ -102,6 +134,18 @@ const App = () => {
                                     placeholder="Écrivez ici"
                                     className="form-control"
                                     maxLength="25"
+                                    onChange={e=>setTuto({...tuto , ordre: e.target.value})}
+                                  />
+                                </div>
+                                <label htmlFor="email">Description</label>
+                                <div className="form-group">
+                                  <textarea
+                                    id="email"
+                                    type="text"
+                                    placeholder="Écrivez ici"
+                                    className="form-control"
+                                    maxLength="25"
+                                    onChange={e=>setTuto({...tuto , description: e.target.value})}
                                   />
                                 </div>
                               </div>
@@ -117,12 +161,13 @@ const App = () => {
                                   </span>
                                 </button>
                                 <button
-                                  type="button"
+                                  
                                   className="btn btn-primary ms-1"
                                   data-bs-dismiss="modal"
+                                  type="submit"
                                 >
                                   <i className="bx bx-check d-block d-sm-none"></i>
-                                  <span className="d-none d-sm-block">
+                                  <span  className="d-none d-sm-block">
                                     Enregistrer
                                   </span>
                                 </button>
@@ -150,55 +195,29 @@ const App = () => {
                     <thead>
                       <tr>
                         <th>Images</th>
+                        <th>Ordre</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="text-bold-500">Image ici</td>
+                      {tutorials? tutorials.map((item)=>(
+                        <tr>
+                        <td className="text-bold-500"> <img
+                                src={item.file}
+                                alt="tuto_image"
+                                style={{ width: "auto", height: "150px" }}
+                              /></td>
+                        <td>{item.ordre}</td>
                         <th>
                           <i
                             className="fa-solid fa-trash deleteIcon"
-                            onClick={handleDelete}
+                            onClick={()=>handleDelete(item.id)}
                           ></i>
-                        </th>
+                        </th> 
                       </tr>
-                      <tr>
-                        <td className="text-bold-500">Image ici</td>
-                        <th>
-                          <i
-                            className="fa-solid fa-trash deleteIcon"
-                            onClick={handleDelete}
-                          ></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td className="text-bold-500">Image ici</td>
-                        <th>
-                          <i
-                            className="fa-solid fa-trash deleteIcon"
-                            onClick={handleDelete}
-                          ></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td className="text-bold-500">Image ici</td>
-                        <th>
-                          <i
-                            className="fa-solid fa-trash deleteIcon"
-                            onClick={handleDelete}
-                          ></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td className="text-bold-500">Image ici</td>
-                        <th>
-                          <i
-                            className="fa-solid fa-trash deleteIcon"
-                            onClick={handleDelete}
-                          ></i>
-                        </th>
-                      </tr>
+                      )):<div>loading</div>}
+                      
+                 
                     </tbody>
                   </table>
                 </div>

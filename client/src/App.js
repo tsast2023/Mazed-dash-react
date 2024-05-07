@@ -23,6 +23,7 @@ import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 // import TableParticipant from './pages/TableParticipant';
+
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
@@ -43,12 +44,15 @@ import QuestionEdit from './pages/QuestionEdit';
 import TermsForm from './pages/TermsForm';
 import TermesList from './pages/TermesList';
 import TermsAcheteur from './pages/TermsAcheteur';
-
+import ProductDetail from './pages/prodDétail';
+import ProductEditForm from './pages/prodEdit';
+// import ParticipantDetail from './pages/ParticipantDetail'
+import AnnonceCreator from './pages/adsCreate';
+import AnnonceList from './pages/adsList';
+import Commandes from './pages/commandes';
 
 const App = () => {
   const [token, setToken] = useState(null);
-
-
 
   return (
     <DataProvider>
@@ -84,8 +88,10 @@ const App = () => {
               {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
               <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
               <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
+
               <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
               {/* <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/> */}
+
               <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
               {/* <Route path='/TableParticipant' element={<TableParticipant/>}/> */}
               <Route path='/configuration' element={<Configuration/>}/>
@@ -102,13 +108,17 @@ const App = () => {
               <Route path='/catmodif' element={<CatEdit/>}/>
               <Route path='/PartListe' element={<ParticipantsListe/>}/>
               <Route path='/partdetail' element={<ParticipantDetail/>}/>
+              <Route path='/prodDétail' element={<ProductDetail/>} />
+              <Route path='/prodEdit' element={<ProductEditForm/>} />
+              <Route path='/CreationAd' element={<AnnonceCreator/>} />
+              <Route path='/ListeAds' element={<AnnonceList />} />
+              <Route path='/Commandes' element={<Commandes />} />
             </Routes>
           </div>
         )}
         </div>
         {token && <Login setToken={setToken} />}
-      
-    </Router>
+      </Router>
     </DataProvider>
   );
 };
