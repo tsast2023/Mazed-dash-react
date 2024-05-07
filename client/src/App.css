@@ -36,7 +36,7 @@ input {
 .content-container {
   flex: 1;
   overflow-y: auto;
-  margin-top: 80px;
+  margin-top: 60px;
   
 }
 
@@ -105,4 +105,17 @@ td, th {
 .card-stats {
   display: flex;
   margin-bottom: 5rem;
+}
+
+.fa-trash {
+  color: #b0210e;
+}
+
+.btn-primary {
+  background-color:#b0210e;
+  border: #000;
+}
+
+.btn-primary:hover {
+  background-color: #b0210e;
 }

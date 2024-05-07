@@ -109,12 +109,6 @@ const ProductDetail = () => {
             </div>
             <div className="form-group">
               <button
-                className="btn btn-primary me-3"
-                onClick={() => confirmAction("edit")}
-              >
-                Modifier
-              </button>
-              <button
                 className="btn btn-primary me-3 banIcon"
                 onClick={() => confirmAction("deactivate")}
               >
