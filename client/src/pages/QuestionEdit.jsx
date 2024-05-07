@@ -4,11 +4,6 @@ function QuestionEdit() {
   return (
     <div className="content-container">
       <div id="main">
-        <header className="mb-3">
-          <a href="#" className="burger-btn d-block d-xl-none">
-            <i className="bi bi-justify fs-3" />
-          </a>
-        </header>
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
@@ -76,22 +71,6 @@ function QuestionEdit() {
             </div>
           </div>
         </div>
-        <footer>
-          <div className="footer clearfix mb-0 text-muted">
-            <div className="float-start">
-              <p>2024 © Mazed</p>
-            </div>
-            <div className="float-end">
-              <p>
-                Crafted with
-                <span className="text-danger">
-                  <i className="bi bi-heart-fill icon-mid" />
-                </span>
-                by <a href="https://TSAST.me">TSAST</a>
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );

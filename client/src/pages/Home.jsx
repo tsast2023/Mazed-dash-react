@@ -29,7 +29,7 @@ const Dashboard = () => {
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     },
-    colors: ['#b0210e'] // Set the color of the line chart
+    colors: ['#b0210e']
   };
 
   const chartSeries = [{
