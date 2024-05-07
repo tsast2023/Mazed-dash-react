@@ -22,13 +22,14 @@ const Dashboard = () => {
     },
     grid: {
       row: {
-        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        colors: ['#f3f3f3', 'transparent'],
         opacity: 0.5
       },
     },
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-    }
+    },
+    colors: ['#b0210e'] // Set the color of the line chart
   };
 
   const chartSeries = [{

@@ -89,7 +89,8 @@ td, th {
   font-size: 20px;
   display: flex;
   align-items: center;
-  background-color: rgb(190, 188, 214);
+  background-color: #b0210e;
+  color: #fff;
   padding: 20px;
   border-radius: 20%;
   justify-content: center;
