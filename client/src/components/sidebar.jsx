@@ -322,6 +322,16 @@ const Playground = () => {
                 Cartes recharges
               </MenuItem>
               <MenuItem
+                component={<Link to="/Commandes" />}
+                icon={<i className="fa-solid fa-bag-shopping"></i>}
+                onClick={() => setActiveLink("/Commandes")}
+                style={
+                  activeLink === "/Commandes" ? menuItemStyles.active : null
+                }
+              >
+                Commandes
+              </MenuItem>
+              <MenuItem
                 component={<Link to="/Tutoriel" />}
                 icon={<i class="fa-solid fa-video"></i>}
                 onClick={() => setActiveLink("/Tutoriel")}

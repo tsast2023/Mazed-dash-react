@@ -33,6 +33,7 @@ import ProductEditForm from './pages/prodEdit';
 import ParticipantDetail from './pages/ParticipantDetail'
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
+import Commandes from './pages/commandes';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -78,6 +79,7 @@ const App = () => {
               <Route path='/prodEdit' element={<ProductEditForm/>} />
               <Route path='/CreationAd' element={<AnnonceCreator/>} />
               <Route path='/ListeAds' element={<AnnonceList />} />
+              <Route path='/Commandes' element={<Commandes />} />
             </Routes>
           </div>
         )}
