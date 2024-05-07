@@ -10,6 +10,7 @@
 a {
   text-decoration: none;
 }
+
 body {
   background-color: #f2f7ff;
 }
@@ -82,4 +83,25 @@ input {
 td, th {
   text-align: center;
   vertical-align: middle;
+}
+
+.stats-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(190, 188, 214);
+  padding: 20px;
+  border-radius: 20%;
+  justify-content: center;
+}
+
+.stats-text, .stats-number {
+  display: flex;
+  text-align: center;
+  font-size: 16px;
+}
+
+.card-stats {
+  display: flex;
+  margin-bottom: 5rem;
 }
