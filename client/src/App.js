@@ -31,6 +31,9 @@ import ParticipantsListe from './pages/partList';
 import ProductDetail from './pages/prodDétail';
 import ProductEditForm from './pages/prodEdit';
 import ParticipantDetail from './pages/ParticipantDetail'
+import AnnonceCreator from './pages/adsCreate';
+import AnnonceList from './pages/adsList';
+
 const App = () => {
   const [token, setToken] = useState(null);
 
@@ -73,6 +76,8 @@ const App = () => {
               <Route path='/partdetail' element={<ParticipantDetail/>}/>
               <Route path='/prodDétail' element={<ProductDetail/>} />
               <Route path='/prodEdit' element={<ProductEditForm/>} />
+              <Route path='/CreationAd' element={<AnnonceCreator/>} />
+              <Route path='/ListeAds' element={<AnnonceList />} />
             </Routes>
           </div>
         )}

@@ -252,7 +252,7 @@ const Playground = () => {
                 <MenuItem> Liste des utilisateurs </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Annoces"
+                label="Annonces"
                 icon={<i className="fa-solid fa-volume-low"></i>}
               >
                   <MenuItem
@@ -264,7 +264,15 @@ const Playground = () => {
                 >
                   Création d'une annonce
                 </MenuItem>
-                <MenuItem> Liste des annonce </MenuItem>
+                <MenuItem
+                  component={<Link to="/ListeAds" />}
+                  onClick={() => setActiveLink("/ListeAds")}
+                  style={
+                    activeLink === "/ListeAds" ? menuItemStyles.active : null
+                  }
+                >
+                  Liste des annonce
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Questions fréquents"
