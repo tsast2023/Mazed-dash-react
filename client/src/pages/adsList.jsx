@@ -18,7 +18,7 @@ function AdsList() {
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
+        Swal.fire('Deleted!', 'Your item has been deleted.', 'secondary');
       } else {
         Swal.fire('Cancelled', 'Your item is safe :)', 'error');
       }

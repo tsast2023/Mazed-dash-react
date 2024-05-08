@@ -15,36 +15,24 @@ function VendeurDetails() {
             <div className="page-title">
               <div className="row">
                 <div className="col-12 col-md-6 order-md-1 order-last">
-                  <h3> Détails d’un vendeur</h3>
+                  <h3>Détails d’un vendeur</h3>
                 </div>
-                <div className="col-12 col-md-6 order-md-2 order-first">
-                  {/* <nav
-                    aria-label="breadcrumb"
-                    className="breadcrumb-header float-start float-lg-end"
-                  >
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <a href="index.html">Dashboard</a>
-                      </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Profile
-                      </li>
-                    </ol>
-                  </nav> */}
-                </div>
+                <div className="col-12 col-md-6 order-md-2 order-first"></div>
               </div>
             </div>
             <section className="section">
               <div className="row">
                 <div className="col-12">
-                  <div className="card">
+                  <div className="card mb-4"> {/* Added mb-4 for spacing */}
                     <div className="card-body">
                       <div className="d-flex justify-content-center align-items-center flex-column">
                         <div className="avatar avatar-xl">
                           <img
+                            style={{
+                              width: "48px",
+                              height: "48px",
+                              borderRadius: "5px",
+                            }}
                             src="assets/static/images/faces/2.jpg"
                             alt="Avatar"
                           />
@@ -125,10 +113,10 @@ function VendeurDetails() {
                             />
                           </div>
                           <div className="form-group">
-                            <button type="submit" className="btn btn-danger">
+                            <button type="submit" className="btn btn-danger me-2">
                               Bloquer
                             </button>
-                            <button type="submit" className="btn btn-success">
+                            <button type="submit" className="btn btn-secondary">
                               Débloquer
                             </button>
                           </div>

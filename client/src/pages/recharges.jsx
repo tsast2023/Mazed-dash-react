@@ -16,7 +16,7 @@ function recharges() {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call your delete function here
-        Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        Swal.fire("Deleted!", "Your item has been deleted.", "secondary");
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }
@@ -46,7 +46,7 @@ function recharges() {
                     {/* Button trigger for login form modal */}
                     <button
                       type="button"
-                      className="btn btn-outline-success"
+                      className="btn btn-outline-secondary"
                       data-bs-toggle="modal"
                       data-bs-target="#inlineForm"
                     >
@@ -171,7 +171,7 @@ function recharges() {
                     <tr>
                       <td className="text-bold-500">001245648987557</td>
                       <td>
-                        <span className="badge bg-success">Non utilisé</span>
+                        <span className="badge bg-secondary">Non utilisé</span>
                       </td>
                       <td>50</td>
                       <td>
@@ -184,7 +184,7 @@ function recharges() {
                     <tr>
                       <td className="text-bold-500">001245648987557</td>
                       <td>
-                        <span className="badge bg-success">Non utilisé</span>
+                        <span className="badge bg-secondary">Non utilisé</span>
                       </td>
                       <td>50</td>
                       <td>

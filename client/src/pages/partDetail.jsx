@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form, Table, Container, Row, Col, Card } from 'react-bootstrap';
+import React, { useState } from "react";
+import {
+  Modal,
+  Button,
+  Form,
+  Table,
+  Container,
+  Row,
+  Col,
+  Card,
+} from "react-bootstrap";
 
 function PartDetail() {
   const [showModal, setShowModal] = useState(false);
@@ -16,7 +25,15 @@ function PartDetail() {
               <Card.Body>
                 <div className="d-flex justify-content-center align-items-center flex-column">
                   <div className="avatar avatar-xl">
-                    <img style={{width:'48px',height:'48px',borderRadius:'5px'}}  src="assets/static/images/faces/2.jpg" alt="Avatar" />
+                    <img
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        borderRadius: "5px",
+                      }}
+                      src="assets/static/images/faces/2.jpg"
+                      alt="Avatar"
+                    />
                   </div>
                   <h3 className="mt-3">Nom et Prénom</h3>
                   <p className="text-small">Pseudo</p>
@@ -24,11 +41,19 @@ function PartDetail() {
                 <Form>
                   <Form.Group className="mb-3">
                     <Form.Label>Numéro de téléphone</Form.Label>
-                    <Form.Control type="number" placeholder="+12222222222" disabled />
+                    <Form.Control
+                      type="number"
+                      placeholder="+12222222222"
+                      disabled
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Date d’inscription</Form.Label>
-                    <Form.Control type="text" placeholder="01/01/2024" disabled />
+                    <Form.Control
+                      type="text"
+                      placeholder="01/01/2024"
+                      disabled
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Nombre d’achats</Form.Label>
@@ -38,16 +63,20 @@ function PartDetail() {
                     <Form.Label>Nombre d’enchères</Form.Label>
                     <Form.Control type="number" placeholder="22" disabled />
                   </Form.Group>
-                  <Button variant="danger" type="submit">Bloquer</Button>
-                  <Button variant="success" type="submit">Débloquer</Button>
-                  <Button variant="primary" onClick={handleModalShow}>Ajouter du solde</Button>
+                  <Button variant="danger" type="submit" className="me-2">
+                    Bloquer
+                  </Button>
+                  <Button variant="secondary" type="submit" className="me-2">
+                    Débloquer
+                  </Button>
+                  <Button variant="primary" onClick={handleModalShow}>
+                    Ajouter du solde
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12}>
-          
-          </Col>
+          <Col xs={12}></Col>
           {/* Repeat for other sections like auctions and transactions */}
         </Row>
       </Container>
@@ -72,7 +101,9 @@ function PartDetail() {
                 <option value="trapeze">Carte de recharge</option>
               </Form.Select>
             </Form.Group>
-            <Button variant="primary" type="submit">Ajouter</Button>
+            <Button variant="primary" type="submit">
+              Ajouter
+            </Button>
           </Form>
         </Modal.Body>
       </Modal>

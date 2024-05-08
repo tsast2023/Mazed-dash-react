@@ -21,9 +21,9 @@ function TermesList() {
       if (result.isConfirmed) {
         // If user confirms deletion, perform the delete action here
         // For example, you can make an AJAX request to delete the item from the server
-        // After successful deletion, you can update the UI accordingly
+        // After secondaryful deletion, you can update the UI accordingly
         deleteItem();
-        Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        Swal.fire("Deleted!", "Your item has been deleted.", "secondary");
       } else {
         // If user cancels deletion, do nothing or show a message
         Swal.fire("Cancelled", "Your item is safe :)", "error");
@@ -35,7 +35,7 @@ function TermesList() {
   const deleteItem = () => {
     // Perform the delete action here
     // For example, you can make an AJAX request to delete the item from the server
-    // After successful deletion, you can update the UI accordingly
+    // After secondaryful deletion, you can update the UI accordingly
   };
 
   return (

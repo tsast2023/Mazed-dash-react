@@ -21,7 +21,7 @@ const App = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(id);
-        Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        Swal.fire("Deleted!", "Your item has been deleted.", "secondary");
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }
@@ -81,7 +81,7 @@ const App = () => {
                       </h2>
                       <button
                         type="button"
-                        className="btn btn-outline-success"
+                        className="btn btn-outline-secondary"
                         data-bs-toggle="modal"
                         data-bs-target="#inlineForm"
                       >

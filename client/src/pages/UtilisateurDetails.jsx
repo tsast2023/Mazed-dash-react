@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function UtilisateurDetails() {
   return (
@@ -17,24 +18,7 @@ function UtilisateurDetails() {
                 <div className="col-12 col-md-6 order-md-1 order-last">
                   <h3> Détails d’utilisateur </h3>
                 </div>
-                <div className="col-12 col-md-6 order-md-2 order-first">
-                  {/* <nav
-                    aria-label="breadcrumb"
-                    className="breadcrumb-header float-start float-lg-end"
-                  >
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <a href="index.html">Dashboard</a>
-                      </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Profile
-                      </li>
-                    </ol>
-                  </nav> */}
-                </div>
+                <div className="col-12 col-md-6 order-md-2 order-first"></div>
               </div>
             </div>
             <section className="section">
@@ -44,7 +28,12 @@ function UtilisateurDetails() {
                     <div className="card-body">
                       <div className="d-flex justify-content-center align-items-center flex-column">
                         <div className="avatar avatar-xl">
-                          <img style={{width:'48px',height:'48px', borderRadius:'25px'}}
+                          <img
+                            style={{
+                              width: "48px",
+                              height: "48px",
+                              borderRadius: "25px",
+                            }}
                             src="assets/static/images/faces/2.jpg"
                             alt="Avatar"
                           />
@@ -113,18 +102,24 @@ function UtilisateurDetails() {
                             />
                           </div>
                           <div className="form-group">
-                            <button type="submit" className="btn btn-danger">
+                            <button
+                              type="submit"
+                              className="btn btn-danger me-2"
+                            >
                               Bloquer
                             </button>
-                            <button type="submit" className="btn btn-success">
+                            <button
+                              type="submit"
+                              className="btn btn-secondary me-2"
+                            >
                               Débloquer
                             </button>
-                            <a
-                              href="utilisateur-edit.html"
-                              className="btn btn-success"
+                            <Link
+                              to="/UtilisateurEdit"
+                              className="btn btn-secondary"
                             >
                               Editer
-                            </a>
+                            </Link>
                           </div>
                         </form>
                       </div>

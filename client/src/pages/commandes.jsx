@@ -34,7 +34,7 @@ function Commandes() {
                       <td>500</td>
                       <td>800</td>
                       <td>2000000</td>
-                      <td><span className="badge bg-success">Terminé</span></td>
+                      <td><span className="badge bg-secondary">Terminé</span></td>
                     </tr>
                   </tbody>
                   <tbody>

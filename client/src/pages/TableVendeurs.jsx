@@ -17,7 +17,7 @@ function TableVendeurs() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disable.", "success");
+        Swal.fire("Disabled!", "Your item has been disable.", "secondary");
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }
@@ -38,7 +38,7 @@ function TableVendeurs() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disable.", "success");
+        Swal.fire("Disabled!", "Your item has been disable.", "secondary");
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }

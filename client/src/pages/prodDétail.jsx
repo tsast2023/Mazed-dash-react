@@ -41,7 +41,7 @@ const ProductDetail = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Implement the action based on actionType
-        Swal.fire("Completed!", `The item has been ${actionType}.`, "success");
+        Swal.fire("Completed!", `The item has been ${actionType}.`, "secondary");
       }
     });
   };

@@ -24,7 +24,7 @@ function CategoryList() {
       if (result.isConfirmed) {
         // Call deleteItem function
         deleteItem();
-        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "success");
+        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "secondary");
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
       }
@@ -49,7 +49,7 @@ function CategoryList() {
         Swal.fire(
           "Désactivé(e) !",
           "Votre élément a été désactivé.",
-          "success"
+          "secondary"
         );
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
@@ -71,14 +71,14 @@ function CategoryList() {
       if (result.isConfirmed) {
         // Appeler la fonction deleteItem
         deleteItem();
-        Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "success");
+        Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "secondary");
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
       }
     });
   };
 
-  const deleteItem = () => {
+  const deleteItem = () => {  
     // Implement your delete logic here
   };
 
