@@ -433,28 +433,10 @@ const Playground = () => {
               <div style={{ marginBottom: 16 }}>
                 <div style={{ marginBottom: 16 }}>
                   <div style={{ marginBottom: 16 }}>
-                    <div style={{ marginBottom: 16 }}>
-                      {/* <Switch
-                        id="collapse"
-                        checked={collapsed}
-                        onChange={() => setCollapsed(!collapsed)}
-                        label="Collapse"
-                      /> */}
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                      {/* <Switch id="rtl" checked={rtl} onChange={handleRTLChange} label="RTL" /> */}
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                      {/* <Switch
-                        id="theme"
-                        checked={theme === 'dark'}
-                        onChange={handleThemeChange}
-                        label="Dark theme"
-                      /> */}
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                      {/* <Switch id="image" checked={hasImage} onChange={handleImageChange} label="Image" /> */}
-                    </div>
+                    <div style={{ marginBottom: 16 }}></div>
+                    <div style={{ marginBottom: 16 }}></div>
+                    <div style={{ marginBottom: 16 }}></div>
+                    <div style={{ marginBottom: 16 }}></div>
                   </div>
                 </div>
               </div>

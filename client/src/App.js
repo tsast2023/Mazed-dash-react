@@ -23,7 +23,6 @@ import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 // import TableParticipant from './pages/TableParticipant';
-
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
@@ -50,6 +49,7 @@ import ProductEditForm from './pages/prodEdit';
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
+import Messagerie from './pages/Messagerie';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -113,6 +113,7 @@ const App = () => {
               <Route path='/CreationAd' element={<AnnonceCreator/>} />
               <Route path='/ListeAds' element={<AnnonceList />} />
               <Route path='/Commandes' element={<Commandes />} />
+              <Route path='/Messagerie' element={<Messagerie />} />
             </Routes>
           </div>
         )}

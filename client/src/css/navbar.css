@@ -8,6 +8,7 @@
   right: 0;
   z-index: 1000;
   width: 100%;
+  position: fixed;
 }
 
 .navbar-content {
@@ -37,13 +38,19 @@
 
 .notification-menu {
   display: none;
-  background-color: white;
+  background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
+  margin: 20px;
   padding: 10px;
   position: absolute;
   top: 50px;
   z-index: 9999;
+  border-radius: 5%;
+  box-shadow: #000;
+  position: "absolute";
+  right: 0;
+  top: "20px";
 }
 
 .notification-menu.open {
