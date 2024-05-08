@@ -61,7 +61,9 @@ const Navbar = ({ username }) => {
       >
         <div className="notification-content">
           <div className="notification-item">
+            <Link to="/Profile">
             <i className="fas fa-user-circle me-2"></i> Profile
+            </Link>
           </div>
           <div className="notification-item">
             <Link to ="/Messagerie">

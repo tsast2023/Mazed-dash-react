@@ -50,6 +50,7 @@ import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
 import Messagerie from './pages/Messagerie';
+import Profile from './pages/Profile';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -114,6 +115,7 @@ const App = () => {
               <Route path='/ListeAds' element={<AnnonceList />} />
               <Route path='/Commandes' element={<Commandes />} />
               <Route path='/Messagerie' element={<Messagerie />} />
+              <Route path='/Profile' element={<Profile />} />
             </Routes>
           </div>
         )}
