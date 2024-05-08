@@ -100,7 +100,7 @@ const Playground = () => {
   };
 
   return (
-    <div style={{ display: "flex", overflow: "hidden"  }}>
+    <div style={{ display: "flex", overflow: "hidden" }}>
       <Sidebar
         style={{ overflowY: "auto" }}
         collapsed={collapsed}
@@ -188,7 +188,9 @@ const Playground = () => {
                   component={<Link to="/CreationProd" />}
                   onClick={() => setActiveLink("/CreationProd")}
                   style={
-                    activeLink === "/CreationProd" ? menuItemStyles.active : null
+                    activeLink === "/CreationProd"
+                      ? menuItemStyles.active
+                      : null
                   }
                 >
                   Création de produit
@@ -200,18 +202,59 @@ const Playground = () => {
                     activeLink === "/ProdListe" ? menuItemStyles.active : null
                   }
                 >
-                  Liste de produits 
+                  Liste de produits
                 </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Enchère"
                 icon={<i className="fa-solid fa-gavel"></i>}
               >
-                <MenuItem component={<Link to ='/EnchèreCreation'/>}> Création de enchère </MenuItem>
-                <MenuItem component={<Link to ='EnchereListe'/>}> Liste de enchère </MenuItem>
-                <MenuItem component={<Link to='/OffreEnchere'/>}> Création des offres </MenuItem>
-                <MenuItem component={<Link to='/ConfigurationEnchere'/>}> Configuration </MenuItem>
+                <MenuItem
+                  component={<Link to="/EnchèreCreation" />}
+                  onClick={() => setActiveLink("/EnchèreCreation")}
+                  style={
+                    activeLink === "/EnchèreCreation"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Création de enchère
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/EnchereListe" />}
+                  onClick={() => setActiveLink("/EnchereListe")}
+                  style={
+                    activeLink === "/EnchereListe"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Liste de enchère
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/OffreEnchere" />}
+                  onClick={() => setActiveLink("/OffreEnchere")}
+                  style={
+                    activeLink === "/OffreEnchere"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Création des offres
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/ConfigurationEnchere" />}
+                  onClick={() => setActiveLink("/ConfigurationEnchere")}
+                  style={
+                    activeLink === "/ConfigurationEnchere"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Configuration
+                </MenuItem>
               </SubMenu>
+
               <SubMenu
                 label="Participants"
                 icon={<i className="fa-solid fa-users"></i>}
@@ -220,7 +263,9 @@ const Playground = () => {
                   component={<Link to="/CreationPart" />}
                   onClick={() => setActiveLink("/CreationPart")}
                   style={
-                    activeLink === "/CreationPart" ? menuItemStyles.active : null
+                    activeLink === "/CreationPart"
+                      ? menuItemStyles.active
+                      : null
                   }
                 >
                   Création d'un participant
@@ -239,21 +284,33 @@ const Playground = () => {
                 label="Vendeurs"
                 icon={<i className="fa-solid fa-user-clock"></i>}
               >
-                <MenuItem component={<Link to='/VendeurForm'/>}> Création d'un vendeur </MenuItem>
-                <MenuItem component={<Link to='/TableVendeurs'/>}> Liste des vendeurs </MenuItem>
+                <MenuItem component={<Link to="/VendeurForm" />}>
+                  {" "}
+                  Création d'un vendeur{" "}
+                </MenuItem>
+                <MenuItem component={<Link to="/TableVendeurs" />}>
+                  {" "}
+                  Liste des vendeurs{" "}
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Utilisateurs"
                 icon={<i className="fa-solid fa-user-check"></i>}
               >
-                <MenuItem component={<Link to='/UtilisateurForm'/>}> Création d'un utilisateur </MenuItem>
-                <MenuItem component={<Link to='/TableUtilisateur'/>}> Liste des utilisateurs </MenuItem>
+                <MenuItem component={<Link to="/UtilisateurForm" />}>
+                  {" "}
+                  Création d'un utilisateur{" "}
+                </MenuItem>
+                <MenuItem component={<Link to="/TableUtilisateur" />}>
+                  {" "}
+                  Liste des utilisateurs{" "}
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Annonces"
                 icon={<i className="fa-solid fa-volume-low"></i>}
               >
-                  <MenuItem
+                <MenuItem
                   component={<Link to="/CreationAd" />}
                   onClick={() => setActiveLink("/CreationAd")}
                   style={
@@ -276,15 +333,27 @@ const Playground = () => {
                 label="Questions fréquents"
                 icon={<i className="fa-solid fa-file-circle-question"></i>}
               >
-                <MenuItem component={<Link to='/QuestionForm'/>}> Création d'un question </MenuItem>
-                <MenuItem component={<Link to='/QuestionList'/>}> Liste des questions </MenuItem>
+                <MenuItem component={<Link to="/QuestionForm" />}>
+                  {" "}
+                  Création d'un question{" "}
+                </MenuItem>
+                <MenuItem component={<Link to="/QuestionList" />}>
+                  {" "}
+                  Liste des questions{" "}
+                </MenuItem>
               </SubMenu>
               <SubMenu
                 label="Termes et conditions"
                 icon={<i className="fa-solid fa-clipboard"></i>}
               >
-                <MenuItem component={<Link to='/TermsForm'/> }> Création d'un terme</MenuItem>
-                <MenuItem component={<Link to='/TermesList'/>}> Termes et conditions </MenuItem>
+                <MenuItem component={<Link to="/TermsForm" />}>
+                  {" "}
+                  Création d'un terme
+                </MenuItem>
+                <MenuItem component={<Link to="/TermesList" />}>
+                  {" "}
+                  Termes et conditions{" "}
+                </MenuItem>
               </SubMenu>
             </Menu>
 
@@ -313,9 +382,7 @@ const Playground = () => {
                 component={<Link to="/Cartes" />}
                 icon={<i className="fa-solid fa-credit-card"></i>}
                 onClick={() => setActiveLink("/Cartes")}
-                style={
-                  activeLink === "/Cartes" ? menuItemStyles.active : null
-                }
+                style={activeLink === "/Cartes" ? menuItemStyles.active : null}
               >
                 Cartes recharges
               </MenuItem>
