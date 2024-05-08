@@ -58,24 +58,22 @@ function CategoryList() {
   };
 
   const handleArrowClick = () => {
-    // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: "Êtes-vous sûr(e) ?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: "Oui, mettre à l'une !",
+      cancelButtonText: "Non, annuler !",
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call deleteItem function
+        // Appeler la fonction deleteItem
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disabled.", "success");
+        Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "success");
       } else {
-        Swal.fire("Cancelled", "Your item is safe :)", "error");
+        Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
       }
     });
   };

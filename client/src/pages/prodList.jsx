@@ -85,29 +85,22 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Are you sure?",
-                                  text: "Once deleted, you will not be able to recover this item!",
+                                  title: "Êtes-vous sûr(e) ?",
+                                  text: "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Yes, delete it!",
-                                  cancelButtonText: "No, cancel!",
+                                  confirmButtonText: "Oui, supprimez-le !",
+                                  cancelButtonText: "Non, annuler !",
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
+                                    // Call deleteItem function
                                     deleteItem();
-                                    Swal.fire(
-                                      "Deleted!",
-                                      "Your item has been deleted.",
-                                      "success"
-                                    );
+                                    Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "success");
                                   } else {
-                                    Swal.fire(
-                                      "Cancelled",
-                                      "Your item is safe :)",
-                                      "error"
-                                    );
+                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
                                   }
                                 });
                               }}
@@ -119,29 +112,24 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Are you sure?",
-                                  text: "Once disabled, you will not be able to recover this item!",
+                                  title: "Êtes-vous sûr(e) ?",
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Yes, delete it!",
-                                  cancelButtonText: "No, cancel!",
+                                  confirmButtonText: "Oui, désactivez-le !",
+                                  cancelButtonText: "Non, annuler !",
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
                                     deleteItem();
                                     Swal.fire(
-                                      "Disabled!",
-                                      "Your item has been disable.",
+                                      "Désactivé(e) !",
+                                      "Votre élément a été désactivé.",
                                       "success"
                                     );
                                   } else {
-                                    Swal.fire(
-                                      "Cancelled",
-                                      "Your item is safe :)",
-                                      "error"
-                                    );
+                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
                                   }
                                 });
                               }}
@@ -153,29 +141,21 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Are you sure?",
-                                  text: "Once disabled, you will not be able to recover this item!",
+                                  title: "Êtes-vous sûr(e) ?",
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Yes, delete it!",
-                                  cancelButtonText: "No, cancel!",
+                                  confirmButtonText: "Oui, mettre à l'une !",
+                                  cancelButtonText: "Non, annuler !",
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
+                                    // Appeler la fonction deleteItem
                                     deleteItem();
-                                    Swal.fire(
-                                      "Disabled!",
-                                      "Your item has been disable.",
-                                      "success"
-                                    );
+                                    Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "success");
                                   } else {
-                                    Swal.fire(
-                                      "Cancelled",
-                                      "Your item is safe :)",
-                                      "error"
-                                    );
+                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
                                   }
                                 });
                               }}

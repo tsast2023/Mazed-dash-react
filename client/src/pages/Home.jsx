@@ -17,7 +17,6 @@ const Dashboard = () => {
       curve: 'straight'
     },
     title: {
-      text: 'Product Trends by Month',
       align: 'left'
     },
     grid: {
