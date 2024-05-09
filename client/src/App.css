@@ -10,6 +10,7 @@
 a {
   text-decoration: none;
 }
+
 body {
   background-color: #f2f7ff;
 }
@@ -35,7 +36,7 @@ input {
 .content-container {
   flex: 1;
   overflow-y: auto;
-  margin-top: 80px;
+  margin-top: 60px;
   
 }
 
@@ -77,4 +78,45 @@ input {
 
 .modal-footer {
   margin-top: 20px;
+}
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.stats-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #b0210e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20%;
+  justify-content: center;
+}
+
+.stats-text, .stats-number {
+  display: flex;
+  text-align: center;
+  font-size: 16px;
+}
+
+.card-stats {
+  display: flex;
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+}
+
+.fa-trash {
+  color: #b0210e;
+}
+
+.btn-primary {
+  background-color:#b0210e;
+  border: #000;
+}
+
+.btn-primary:hover {
+  background-color: #b0210e;
 }

@@ -8,8 +8,9 @@ const CatCreate = () => {
   const [inputs, setInputs] = useState([]);
   const state = useContext(GlobalState);
   const categoriess = state.Categories;
+
   useEffect(() => {
-    console.log('cat from here' , categoriess)
+    console.log('cat from here', categoriess);
     const select = new Choices("#category-select", {
       removeItemButton: true,
       placeholder: true,
@@ -17,12 +18,11 @@ const CatCreate = () => {
       shouldSort: false,
     });
 
-    // Handle changes in selection to enable/disable the "+" button and manage input fields
     const handleSelectChange = () => {
       const hasSelection = select.getValue().length > 0;
       setIsEnabled(hasSelection);
       if (!hasSelection) {
-        setInputs([]); // Remove all inputs if no options are selected
+        setInputs([]);
       }
     };
 
@@ -39,7 +39,7 @@ const CatCreate = () => {
       id: inputs.length + 1,
       value: ""
     };
-    setInputs([...inputs, newInput]); // Add new input to the inputs array
+    setInputs([...inputs, newInput]);
   };
 
   return (
@@ -49,9 +49,10 @@ const CatCreate = () => {
           <h2 className="card-title">Créer une catégorie</h2>
           <button 
             type="button" 
-            className="btn btn-primary"  // Changed from btn-success to btn-primary
+            className="btn btn-primary"
             onClick={handleAddInput}
             disabled={!isEnabled}
+            style={{ backgroundColor: !isEnabled ? '#b0210e' : '' }}
           >
             +
           </button>
@@ -77,11 +78,9 @@ const CatCreate = () => {
                   multiple
                 >
                   <optgroup>
-                    {categoriess? categoriess.map((item)=>(
+                    {categoriess ? categoriess.map((item) => (
                       <option value={item}>{item.libeléCategorie}</option>
-                    )):<option>loading</option>}
-                    
-                    
+                    )) : <option>loading</option>}
                   </optgroup>
                 </select>
               </div>

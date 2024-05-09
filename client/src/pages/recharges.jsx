@@ -68,7 +68,7 @@ const deleteCarte = async(id)=>{
                     {/* Button trigger for login form modal */}
                     <button
                       type="button"
-                      className="btn btn-outline-success"
+                      className="btn btn-outline-secondary"
                       data-bs-toggle="modal"
                       data-bs-target="#inlineForm"
                     >

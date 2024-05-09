@@ -35,7 +35,7 @@ function App() {
                         <td>Lorem Lorem</td>
                         <td className="text-bold-500">Lorem Lorem</td>
                         <td>
-                          <span className="badge bg-success">Ouverte</span>
+                          <span className="badge bg-secondary">Ouverte</span>
                         </td>
                         <td>
                           <section id="basic-modals">

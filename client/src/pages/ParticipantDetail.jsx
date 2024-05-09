@@ -20,7 +20,7 @@ function ParticipantDetail() {
         Swal.fire(
           "Effectué!",
           `L'utilisateur a été ${action === "block" ? "bloqué" : "débloqué"}.`,
-          "success"
+          "secondary"
         );
       }
     });
@@ -127,7 +127,7 @@ function ParticipantDetail() {
                             </button>
                             <button
                               type="submit"
-                              className="btn btn-success me-3"
+                              className="btn btn-secondary me-3"
                               onClick={() => handleActionClick("unblock")}
                             >
                               Débloquer

@@ -32,7 +32,7 @@ function ParticipantList() {
         Swal.fire(
           `${action.charAt(0).toUpperCase() + action.slice(1)}ed!`,
           `Your item has been ${action}ed.`,
-          "success"
+          "secondary"
         );
       } else {
         Swal.fire("Cancelled", `Your item is safe :)`, "error");
@@ -46,6 +46,60 @@ function ParticipantList() {
         <div className="card-header">
           <h2>Liste des participants</h2>
         </div>
+        <div className="row" style={{ padding: "0 20px" }}>
+              <div className="col-md-3 mb-4">
+                <h6>Etat</h6>
+                <fieldset className="form-group">
+                  <select className="form-select" id="basicSelect1">
+                    <option disabled selected>
+                      Choose Etat
+                    </option>{" "}
+                    {/* Not selected by default */}
+                    <option>Active</option>
+                    <option>Inactive</option>
+                  </select>
+                </fieldset>
+              </div>
+              <div className="col-md-3 mb-4">
+                <h6>Participe</h6>
+                <fieldset className="form-group">
+                  <select className="form-select" id="basicSelect2">
+                    <option disabled selected>
+                      Choose Participe
+                    </option>{" "}
+                    {/* Not selected by default */}
+                    <option>Oui</option>
+                    <option>Non</option>
+                  </select>
+                </fieldset>
+              </div>
+              <div className="col-md-3 mb-4">
+                <h6>Gagnant</h6>
+                <fieldset className="form-group">
+                  <select className="form-select" id="basicSelect3">
+                    <option disabled selected>
+                      Choose Gagnant
+                    </option>{" "}
+                    {/* Not selected by default */}
+                    <option>Oui</option>
+                    <option>Non</option>
+                  </select>
+                </fieldset>
+              </div>
+              <div className="col-md-3 mb-4">
+                <h6>Statut</h6>
+                <fieldset className="form-group">
+                  <select className="form-select" id="basicSelect3">
+                    <option disabled selected>
+                      Choose Statut
+                    </option>{" "}
+                    {/* Not selected by default */}
+                    <option>Nouveau</option>
+                    <option>Ancien</option>
+                  </select>
+                </fieldset>
+              </div>
+            </div>
         <div className="card-body">
           <Table responsive="sm">
             <thead>

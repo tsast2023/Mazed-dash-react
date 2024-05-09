@@ -41,7 +41,7 @@ const ProductDetail = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Implement the action based on actionType
-        Swal.fire("Completed!", `The item has been ${actionType}.`, "success");
+        Swal.fire("Completed!", `The item has been ${actionType}.`, "secondary");
       }
     });
   };
@@ -108,12 +108,6 @@ const ProductDetail = () => {
               </ul>
             </div>
             <div className="form-group">
-              <button
-                className="btn btn-primary me-3"
-                onClick={() => confirmAction("edit")}
-              >
-                Modifier
-              </button>
               <button
                 className="btn btn-primary me-3 banIcon"
                 onClick={() => confirmAction("deactivate")}

@@ -97,7 +97,7 @@ html {
 button {
     font-size: 18px;
     letter-spacing: 1px;
-    color: #fff;
+    /* color: #fff; */
     border: 2px solid #006241;
     text-decoration: none;
     padding: 8px 50px;

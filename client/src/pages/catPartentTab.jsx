@@ -27,7 +27,7 @@ function CategoryList() {
       if (result.isConfirmed) {
         // Call deleteItem function
         deleteItem();
-        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "success");
+        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "secondary");
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
       }
@@ -52,7 +52,7 @@ function CategoryList() {
         Swal.fire(
           "Désactivé(e) !",
           "Votre élément a été désactivé.",
-          "success"
+          "secondary"
         );
       } else {
         Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
@@ -109,7 +109,7 @@ function CategoryList() {
                           {cat && cat.categories? cat.categories.map((item)=>(
                             <tr>
                             <td className="text-bold-500">{item?.libeléCategorie}</td>
-                            <th><button class="btn btn-success">{item?.status}</button></th>
+                            <th><button class="btn btn-secondary">{item?.status}</button></th>
                             <td>
                               <i
                                 className="fa-solid fa-ban"
