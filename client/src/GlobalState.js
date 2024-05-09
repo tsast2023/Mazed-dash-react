@@ -42,7 +42,7 @@ export const DataProvider = ({children}) => {
     }
     const getCarteRechar = async()=>{
       try {
-        const res = await res.get('');
+        const res = await axios.get('http://192.168.0.126:8081/api/carte/getAll');
         console.log('cartes:' , res.data);
         setCarteRech(res.data);
       } catch (error) {
@@ -63,13 +63,15 @@ getAllCategories();
 getAllProducts();
 getAllTuto();
 getAllBids();
+getCarteRechar();
   } , [token])
   
    const state ={
     Categories : Categories,
     Products : Products,
     tutorials : tutoriel,
-    bids : bids
+    bids : bids,
+    cartes: carteRech
     
 
 

@@ -52,7 +52,6 @@ const App = () => {
               <Route path='/EnchereListe' element={<EnchereListe/>}/>
               <Route path='/ModificationDetailsEnchere' element={<ModificationDetailsEnchere/>}/>
               <Route path='/DetailEnchere' element={<DetailEnchere/>}/>
-              {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
               <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
               <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
               <Route path='/ParticipantForm' element={<ParticipantForm/>}/>

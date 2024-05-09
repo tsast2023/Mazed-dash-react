@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
-
-function recharges() {
-  const handleDelete = () => {
+import { GlobalState } from "../GlobalState";
+import axios from "axios";
+function Recharges() {
+  const state = useContext(GlobalState);
+  const cartes = state.cartes;
+  const [carteRech , setCarteRech] = useState({numSérie : "" , valeur:""});
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this item!",
@@ -15,14 +19,32 @@ function recharges() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call your delete function here
+        deleteCarte(id);
         Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        window.location.reload();
       } else {
         Swal.fire("Cancelled", "Your item is safe :)", "error");
       }
     });
   };
-
+const addCarte = async(e)=>{
+  e.preventDefault();
+  try {
+    const res = await axios.post('http://192.168.0.126:8081/api/carte/publishNow' , carteRech);
+    console.log(res.data);
+    window.location.reload();
+  } catch (error) {
+    console.log(error)
+  }
+}
+const deleteCarte = async(id)=>{
+  try {
+    const res = await axios.delete(`http://192.168.0.126:8081/api/carte/deleteCarte?id=${id}`);
+    console.log(res.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
   return (
     <div id="main">
       <header className="mb-3">
@@ -79,7 +101,7 @@ function recharges() {
                                       aria-label="Close"
                                     ></button>
                           </div>
-                          <form action="#">
+                          <form  onSubmit={addCarte}>
                             <div className="modal-body">
                               <label htmlFor="serialNumber">
                                 Numéro de série
@@ -91,6 +113,7 @@ function recharges() {
                                   placeholder="Écrivez ici"
                                   className="form-control"
                                   maxLength="25"
+                                  onChange={e=>setCarteRech({...carteRech , numSérie:e.target.value})}
                                 />
                               </div>
                               <label htmlFor="value">Valeur</label>
@@ -101,6 +124,7 @@ function recharges() {
                                   placeholder="Écrivez ici"
                                   className="form-control"
                                   maxLength="25"
+                                  onChange={e=>setCarteRech({...carteRech , valeur:e.target.value})}
                                 />
                               </div>
                             </div>
@@ -116,7 +140,7 @@ function recharges() {
                                 </span>
                               </button>
                               <button
-                                type="button"
+                                type="submit"
                                 className="btn btn-primary ms-1"
                                 data-bs-dismiss="modal"
                               >
@@ -155,71 +179,23 @@ function recharges() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="text-bold-500">001245648987557</td>
+                    {cartes? cartes.map((item)=>(
+                      <tr>
+                      <td className="text-bold-500">{item.numSérie}</td>
                       <td>
-                        <span className="badge bg-danger">Utilisé</span>
+                        <span className={item.statuscarte==="NONUTILISER"?"badge bg-success":"badge bg-danger"}>{item.statuscarte}</span>
                       </td>
-                      <td>50</td>
-                      <td>
-                        <i
-                          className="fa-solid fa-trash deleteIcon"
-                          onClick={handleDelete}
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="text-bold-500">001245648987557</td>
-                      <td>
-                        <span className="badge bg-success">Non utilisé</span>
-                      </td>
-                      <td>50</td>
+                      <td>{item.valeur}</td>
                       <td>
                         <i
                           className="fa-solid fa-trash deleteIcon"
-                          onClick={handleDelete}
+                          onClick={()=>handleDelete(item.id)}
                         ></i>
                       </td>
                     </tr>
-                    <tr>
-                      <td className="text-bold-500">001245648987557</td>
-                      <td>
-                        <span className="badge bg-success">Non utilisé</span>
-                      </td>
-                      <td>50</td>
-                      <td>
-                        <i
-                          className="fa-solid fa-trash deleteIcon"
-                          onClick={handleDelete}
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="text-bold-500">001245648987557</td>
-                      <td>
-                        <span className="badge bg-danger">Utilisé</span>
-                      </td>
-                      <td>50</td>
-                      <td>
-                        <i
-                          className="fa-solid fa-trash deleteIcon"
-                          onClick={handleDelete}
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="text-bold-500">001245648987557</td>
-                      <td>
-                        <span className="badge bg-danger">Utilisé</span>
-                      </td>
-                      <td>50</td>
-                      <td>
-                        <i
-                          className="fa-solid fa-trash deleteIcon"
-                          onClick={handleDelete}
-                        ></i>
-                      </td>
-                    </tr>
+                    )):<div>loading</div>}
+                    
+                  
                   </tbody>
                 </table>
               </div>
@@ -231,4 +207,4 @@ function recharges() {
   );
 }
 
-export default recharges;
+export default Recharges;
