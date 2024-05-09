@@ -5,6 +5,11 @@ function Profile() {
     name: "John Doe",
     email: "john.doe@example.net",
     phone: "083xxxxxxxxx",
+    // Ensure these state values are initialized to avoid undefined errors
+    birthday: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: ""
   });
 
   const handleChange = (event) => {
@@ -24,7 +29,7 @@ function Profile() {
     <section className="section">
       <div className="row">
         <div className="col-12">
-          <div className="card">
+          <div className="card mb-4"> {/* Added margin-bottom here */}
             <div className="card-body">
               <div className="d-flex justify-content-center align-items-center flex-column">
                 <div className="avatar avatar-xl">
@@ -45,7 +50,7 @@ function Profile() {
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name" className="form-label">
-                      Name
+                      Nom & Prénom
                     </label>
                     <input
                       type="text"
@@ -73,7 +78,7 @@ function Profile() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="phone" className="form-label">
-                      Phone
+                      Num Tél
                     </label>
                     <input
                       type="text"
@@ -87,7 +92,7 @@ function Profile() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="birthday" className="form-label">
-                      Birthday
+                    Date de naissance
                     </label>
                     <input
                       type="date"
@@ -101,7 +106,7 @@ function Profile() {
                   </div>
                   <div className="form-group">
                     <button type="submit" className="btn btn-primary">
-                      Save Changes
+                    Sauvegarder
                     </button>
                   </div>
                 </form>
@@ -118,7 +123,7 @@ function Profile() {
               <form onSubmit={handleSubmit}>
                 <div className="form-group my-2">
                   <label htmlFor="current_password" className="form-label">
-                    Current Password
+                  Mot de passe actuel
                   </label>
                   <input
                     type="password"
@@ -126,13 +131,13 @@ function Profile() {
                     id="current_password"
                     className="form-control"
                     placeholder="Enter your current password"
-                    defaultValue={formData.currentPassword}
+                    value={formData.currentPassword}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="form-group my-2">
                   <label htmlFor="newPassword" className="form-label">
-                    New Password
+                  Nouveau mot de passe
                   </label>
                   <input
                     type="password"
@@ -146,7 +151,7 @@ function Profile() {
                 </div>
                 <div className="form-group my-2">
                   <label htmlFor="confirmPassword" className="form-label">
-                    Confirm Password
+                  Confirmez le mot de passe
                   </label>
                   <input
                     type="password"
@@ -159,9 +164,9 @@ function Profile() {
                   />
                 </div>
 
-                <div className="form-group my-2 d-flex justify-content-end">
+                <div className="form-group my-2 d-flex justify-content-start">
                   <button type="submit" className="btn btn-primary">
-                    Save Changes
+                  Sauvegarder
                   </button>
                 </div>
               </form>

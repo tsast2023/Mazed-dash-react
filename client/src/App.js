@@ -51,6 +51,7 @@ import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
 import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
+import ProdAction from './pages/ProdAction';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -116,6 +117,7 @@ const App = () => {
               <Route path='/Commandes' element={<Commandes />} />
               <Route path='/Messagerie' element={<Messagerie />} />
               <Route path='/Profile' element={<Profile />} />
+              <Route path='/ProdAction' element={<ProdAction />} />
             </Routes>
           </div>
         )}

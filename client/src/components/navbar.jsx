@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Ensure Link is imported
+import { Link } from "react-router-dom";
 import "../css/navbar.css";
 
 const Navbar = ({ username }) => {
@@ -9,14 +9,23 @@ const Navbar = ({ username }) => {
 
   const handleNotificationToggle = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Close other menus when notifications are toggled
+    setIsLangMenuOpen(false);
+    setIsSettingsMenuOpen(false);
   };
 
   const handleLanguageToggle = () => {
     setIsLangMenuOpen(!isLangMenuOpen);
+    // Close other menus when language menu is toggled
+    setIsMenuOpen(false);
+    setIsSettingsMenuOpen(false);
   };
 
   const handleSettingsToggle = () => {
     setIsSettingsMenuOpen(!isSettingsMenuOpen);
+    // Close other menus when settings are toggled
+    setIsMenuOpen(false);
+    setIsLangMenuOpen(false);
   };
 
   return (
