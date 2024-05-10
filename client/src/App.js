@@ -55,6 +55,7 @@ import CreationAdministrateur from './pages/CreationAdministrateur';
 import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
+import TermeEdit from './pages/TermeEdit';
 import './i18n';
 
 const App = () => {
@@ -123,6 +124,7 @@ const App = () => {
               <Route path='/Messagerie' element={<Messagerie />} />
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
+              <Route path='/TermeEdit' element={<TermeEdit />} />
             </Routes>
           </div>
         )}

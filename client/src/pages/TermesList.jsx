@@ -69,7 +69,7 @@ function TermesList() {
                           </Link>
                         </th>
                         <th>
-                          <Link to='/QuestionEdit'>
+                          <Link to='/TermeEdit'>
                             <i class="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </th>
@@ -86,7 +86,7 @@ function TermesList() {
                           </Link>
                         </th>
                         <th>
-                          <Link to='/QuestionEdit'>
+                          <Link to='/TermeEdit'>
                             <i class="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </th>
@@ -103,7 +103,7 @@ function TermesList() {
                           </Link>
                         </th>
                         <th>
-                          <Link to='/QuestionEdit'>
+                          <Link to='/TermeEdit'>
                             <i class="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </th>
@@ -120,7 +120,7 @@ function TermesList() {
                           </Link>
                         </th>
                         <th>
-                          <Link to='/QuestionEdit'>
+                          <Link to='/TermeEdit'>
                             <i class="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </th>
