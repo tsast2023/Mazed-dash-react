@@ -32,7 +32,7 @@ function ParticipantList() {
         Swal.fire(
           `${action.charAt(0).toUpperCase() + action.slice(1)}ed!`,
           `Your item has been ${action}ed.`,
-          "success"
+          "secondary"
         );
       } else {
         Swal.fire("Cancelled", `Your item is safe :)`, "error");

@@ -17,7 +17,6 @@ const Dashboard = () => {
       curve: 'straight'
     },
     title: {
-      text: 'Product Trends by Month',
       align: 'left'
     },
     grid: {
@@ -29,7 +28,7 @@ const Dashboard = () => {
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     },
-    colors: ['#b0210e'] // Set the color of the line chart
+    colors: ['#b0210e']
   };
 
   const chartSeries = [{

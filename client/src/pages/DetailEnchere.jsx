@@ -143,9 +143,9 @@ function DetailEnchere() {
                         <p>numéro du téléphone</p>
                         <button
                           type="button"
-                          className="btn btn-outline-success"
+                          className="btn btn-outline-secondary"
                           data-bs-toggle="modal"
-                          data-bs-target="#success"
+                          data-bs-target="#secondary"
                         >
                           Publier
                         </button>
@@ -177,18 +177,18 @@ function DetailEnchere() {
                     <p>Date de Lancement</p>
                   </div>
                   <div style={{ textAlign: "center" }} className="buuttt">
-                    <div className="modal-success me-1 mb-1 d-inline-block">
+                    <div className="modal-secondary me-1 mb-1 d-inline-block">
                       <button
                         type="button"
-                        className="btn btn-outline-success pub"
+                        className="btn btn-outline-secondary pub"
                         data-bs-toggle="modal"
-                        data-bs-target="#success"
+                        data-bs-target="#secondary"
                       >
                         Publier
                       </button>
                       <div
                         className="modal fade text-left"
-                        id="success"
+                        id="secondary"
                         tabIndex={-1}
                         role="dialog"
                         aria-labelledby="myModalLabel110"
@@ -199,12 +199,12 @@ function DetailEnchere() {
                           role="document"
                         >
                           <div className="modal-content">
-                            <div className="modal-header bg-success">
+                            <div className="modal-header bg-secondary">
                               <h5
                                 className="modal-title white"
                                 id="myModalLabel110"
                               >
-                                Success Modal
+                                secondary Modal
                               </h5>
                               <button
                                 type="button"
@@ -233,7 +233,7 @@ function DetailEnchere() {
                               </button>
                               <button
                                 type="button"
-                                className="btn btn-success ms-1"
+                                className="btn btn-secondary ms-1"
                                 data-bs-dismiss="modal"
                               >
                                 <i className="bx bx-check d-block d-sm-none" />

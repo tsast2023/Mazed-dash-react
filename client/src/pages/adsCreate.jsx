@@ -125,7 +125,7 @@ function AnnonceCreator() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="light" onClick={() => setShowPlanifierModal(false)}>Annuler</Button>
-          <Button variant="success">Planifier</Button>
+          <Button variant="secondary">Planifier</Button>
         </Modal.Footer>
       </Modal>
     </div>

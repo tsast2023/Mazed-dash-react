@@ -59,8 +59,8 @@ function EnchereListe() {
                     <td className="text-bold-500">Michael Right</td>
                     <td>$15/hr</td>
                     <td>
-                      <a href="#" className="btn btn-success">
-                        Success
+                      <a href="#" className="btn btn-secondary">
+                        secondary
                       </a>
                     </td>
                     <td>
@@ -92,8 +92,8 @@ function EnchereListe() {
                     <td className="text-bold-500">Michael Right</td>
                     <td>$15/hr</td>
                     <td>
-                      <a href="#" className="btn btn-success">
-                        Success
+                      <a href="#" className="btn btn-secondary">
+                        secondary
                       </a>
                     </td>
                     <td>
@@ -127,8 +127,8 @@ function EnchereListe() {
                     <td className="text-bold-500">Michael Right</td>
                     <td>$15/hr</td>
                     <td>
-                      <a href="#" className="btn btn-success">
-                        Success
+                      <a href="#" className="btn btn-secondary">
+                        secondary
                       </a>
                     </td>
                     <td>
@@ -162,8 +162,8 @@ function EnchereListe() {
                     <td className="text-bold-500">Michael Right</td>
                     <td>$15/hr</td>
                     <td>
-                      <a href="#" className="btn btn-success">
-                        Success
+                      <a href="#" className="btn btn-secondary">
+                        secondary
                       </a>
                     </td>
                     <td>
@@ -197,8 +197,8 @@ function EnchereListe() {
                     <td className="text-bold-500">Michael Right</td>
                     <td>$15/hr</td>
                     <td>
-                      <a href="#" className="btn btn-success">
-                        Success
+                      <a href="#" className="btn btn-secondary">
+                        secondary
                       </a>
                     </td>
                     <td>

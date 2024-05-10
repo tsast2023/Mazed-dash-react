@@ -18,14 +18,12 @@ function AdsList() {
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Here you would normally handle the deletion logic
-        Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
+        Swal.fire('Deleted!', 'Your item has been deleted.', 'secondary');
       } else {
         Swal.fire('Cancelled', 'Your item is safe :)', 'error');
       }
     });
   };
-
   return (
     <section className="section">
       <div className="card">
@@ -99,8 +97,6 @@ function AdsList() {
           </div>
         </div>
       </div>
-
-      {/* Image Modal */}
       <Modal show={showImageModal} onHide={() => setShowImageModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Image</Modal.Title>
@@ -120,8 +116,6 @@ function AdsList() {
           <Button variant="secondary" onClick={() => setShowImageModal(false)}>Fermer</Button>
         </Modal.Footer>
       </Modal>
-
-      {/* Video Modal */}
       <Modal show={showVideoModal} onHide={() => setShowVideoModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Video</Modal.Title>
@@ -141,8 +135,6 @@ function AdsList() {
           <Button variant="secondary" onClick={() => setShowVideoModal(false)}>Fermer</Button>
         </Modal.Footer>
       </Modal>
-
-      {/* Carousel Modal */}
       <Modal show={showCarouselModal} onHide={() => setShowCarouselModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Carousel</Modal.Title>

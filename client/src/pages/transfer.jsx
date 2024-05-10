@@ -94,7 +94,7 @@ function transfer() {
       note: "Lorem",
       status: {
         text: "Accepté",
-        color: "success",
+        color: "secondary",
       },
     },
     {
