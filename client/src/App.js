@@ -22,6 +22,7 @@ import ModificationDetailsEnchere from './pages/ModificationDetailsEnchere';
 import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
+import CreationRole from './pages/CreationRole';
 // import TableParticipant from './pages/TableParticipant';
 
 import { DataProvider } from './GlobalState';
@@ -50,6 +51,8 @@ import ProductEditForm from './pages/prodEdit';
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
+import ListeAdministrateur from './pages/ListeAdministrateur';
+import CreationAdministrateur from './pages/CreationAdministrateur';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -88,7 +91,9 @@ const App = () => {
               {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
               <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
               <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
-
+              <Route path='/CreationRole' element={<CreationRole/>}/>
+              <Route path='/ListeAdministrateur' element={<ListeAdministrateur/>}/>
+              <Route path='/CreationAdministrateur' element={<CreationAdministrateur/>}/>
               <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
               {/* <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/> */}
 

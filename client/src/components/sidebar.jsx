@@ -138,24 +138,46 @@ const Playground = () => {
                 icon={<i className="fa-solid fa-user-tie"></i>}
               >
                 <MenuItem
-                  component={<Link to="/google-maps" />}
-                  onClick={() => setActiveLink("/google-maps")}
+                  component={<Link to="/CreationRole" />}
+                  onClick={() => setActiveLink("/CreationRole")}
                   style={
                     activeLink === "/google-maps" ? menuItemStyles.active : null
                   }
                 >
-                  Google maps
+                  Creation D'un Role
                 </MenuItem>
                 <MenuItem
-                  component={<Link to="/open-street-maps" />}
-                  onClick={() => setActiveLink("/open-street-maps")}
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active
                       : null
                   }
                 >
-                  Open street maps
+                 Liste des Administrateur
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/CreationAdministrateur" />}
+                  onClick={() => setActiveLink("/CreationAdministrateur")}
+                  style={
+                    activeLink === "/open-street-maps"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Créer un Administrateur
+                </MenuItem>
+                <MenuItem
+                  component={<Link to="/open" />}
+                  onClick={() => setActiveLink("/open")}
+                  style={
+                    activeLink === "/open-street-maps"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Demandes 
                 </MenuItem>
               </SubMenu>
               <SubMenu
