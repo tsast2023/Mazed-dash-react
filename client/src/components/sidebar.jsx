@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "../css/sidebar.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
+
 const Theme = "light";
 
 const themes = {
@@ -50,6 +53,7 @@ const hexToRgba = (hex, alpha) => {
 };
 
 const Playground = () => {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
   const [toggled, setToggled] = useState(false);
   const [broken, setBroken] = useState(false);
@@ -130,7 +134,7 @@ const Playground = () => {
                 onClick={() => setActiveLink("/")}
                 style={activeLink === "/" ? menuItemStyles.active : null}
               >
-                Tableau de bord
+                {t("Tableau de bord")}
               </MenuItem>
               <SubMenu
                 label="Super Admin"
@@ -333,13 +337,27 @@ const Playground = () => {
                 label="Questions fréquents"
                 icon={<i className="fa-solid fa-file-circle-question"></i>}
               >
-                <MenuItem component={<Link to="/QuestionForm" />}>
-                  {" "}
-                  Création d'un question{" "}
+                <MenuItem
+                  component={<Link to="/QuestionForm" />}
+                  onClick={() => setActiveLink("/QuestionForm")}
+                  style={
+                    activeLink === "/QuestionForm"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Création d'un question
                 </MenuItem>
-                <MenuItem component={<Link to="/QuestionList" />}>
-                  {" "}
-                  Liste des questions{" "}
+                <MenuItem
+                  component={<Link to="/QuestionList" />}
+                  onClick={() => setActiveLink("/QuestionList")}
+                  style={
+                    activeLink === "/QuestionList"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                  Liste des questions
                 </MenuItem>
               </SubMenu>
               <SubMenu

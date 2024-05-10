@@ -52,6 +52,7 @@ import Commandes from './pages/commandes';
 import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
+import './i18n';
 
 const App = () => {
   const [token, setToken] = useState(null);
