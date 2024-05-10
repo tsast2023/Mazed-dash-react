@@ -22,6 +22,7 @@ import ModificationDetailsEnchere from './pages/ModificationDetailsEnchere';
 import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
+import CreationRole from './pages/CreationRole';
 // import TableParticipant from './pages/TableParticipant';
 import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
@@ -49,6 +50,8 @@ import ProductEditForm from './pages/prodEdit';
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
+import ListeAdministrateur from './pages/ListeAdministrateur';
+import CreationAdministrateur from './pages/CreationAdministrateur';
 import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
@@ -88,10 +91,11 @@ const App = () => {
               <Route path='/TermsForm' element={<TermsForm/>}/>
               <Route path='/TermesList' element={<TermesList/>}/>
               <Route path='/TermsAcheteur' element={<TermsAcheteur/>}/>
-              {/* <Route path='/catPartentTab' element={<catPartentTab/>}/> */}
               <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
               <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
-
+              <Route path='/CreationRole' element={<CreationRole/>}/>
+              <Route path='/ListeAdministrateur' element={<ListeAdministrateur/>}/>
+              <Route path='/CreationAdministrateur' element={<CreationAdministrateur/>}/>
               <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
               {/* <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/> */}
 
