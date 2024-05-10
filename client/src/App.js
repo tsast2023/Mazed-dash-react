@@ -20,7 +20,7 @@ import EnchereListe from './pages/EnchereListe';
 import DetailEnchere from './pages/DetailEnchere';
 import ModificationDetailsEnchere from './pages/ModificationDetailsEnchere';
 import OffreEnchere from './pages/OffreEnchere';
-import ConfigurationEnchere from './ConfigurationEnchere';
+import ConfigurationEnchere from './pages/ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 import CreationRole from './pages/CreationRole';
 // import TableParticipant from './pages/TableParticipant';

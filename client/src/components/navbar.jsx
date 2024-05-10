@@ -7,23 +7,27 @@ const Navbar = ({ username }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+  const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
 
   const handleNotificationToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsNotificationMenuOpen(!isNotificationMenuOpen);
     setIsLangMenuOpen(false);
     setIsSettingsMenuOpen(false);
+    setIsMenuOpen(false);
   };
 
   const handleLanguageToggle = () => {
     setIsLangMenuOpen(!isLangMenuOpen);
     setIsMenuOpen(false);
     setIsSettingsMenuOpen(false);
+    setIsNotificationMenuOpen(false);
   };
 
   const handleSettingsToggle = () => {
     setIsSettingsMenuOpen(!isSettingsMenuOpen);
     setIsMenuOpen(false);
     setIsLangMenuOpen(false);
+    setIsNotificationMenuOpen(false);
   };
 
   return (
@@ -37,10 +41,29 @@ const Navbar = ({ username }) => {
             <i className="fas fa-bell"></i>
           </div>
           <div className="profile-icon">
-            <img src="./logo192.png" alt="Profile" className="profile-image" />
+            <img src="./user.png" alt="Profile" className="profile-image" />
           </div>
         </div>
       </div>
+
+      <div className={`notification-menu ${isNotificationMenuOpen ? "open" : ""}`}
+        style={{ position: "absolute", right: 0, top: "50px" }}>
+        <div className="notification-content">
+          <div className="notification-item">
+            New message from John
+          </div>
+          <div className="notification-item">
+            Meeting reminder at 3:00 PM
+          </div>
+          <div className="notification-item">
+            System update available
+          </div>
+        </div>
+        <div className="close-button" onClick={handleNotificationToggle}>
+          <i className="fas fa-times"></i>
+        </div>
+      </div>
+
       <div
         className={`notification-menu ${isLangMenuOpen ? "open" : ""}`}
         style={{ position: "absolute", right: 0, top: "50px" }}
