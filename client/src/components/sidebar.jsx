@@ -52,6 +52,8 @@ const hexToRgba = (hex, alpha) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
+
+
 const Playground = () => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
@@ -60,6 +62,9 @@ const Playground = () => {
   const [hasImage, setHasImage] = useState(false);
   const [theme, setTheme] = useState(Theme);
 
+  const toggleSidebar = () => {
+    setToggled(!toggled);
+  };
   // State to manage active link
   const [activeLink, setActiveLink] = useState("");
 
@@ -460,12 +465,13 @@ const Playground = () => {
         <div style={{ padding: "16px 24px", color: "#44596e" }}>
           <div style={{ marginBottom: "16px" }}>
             {broken && (
-              <button
-                className="sb-button"
-                onClick={() => setToggled(!toggled)}
-              >
-                <i className="fa-solid fa-bars"></i>
-              </button>
+          <button
+          className="sb-button"
+          onClick={toggleSidebar}
+          style={{ marginRight: 'auto' }}
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
             )}
           </div>
           <div style={{ marginBottom: "48px" }}>
