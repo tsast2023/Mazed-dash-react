@@ -50,13 +50,13 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Email</label>
+                            <label htmlFor="email-id-icon">Identifiant</label>
                             <div className="position-relative">
                               <input
-                                type="email"
+                                type="text"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Pseudo"
+                                placeholder="Identifiant"
                                 maxLength={25}
                               />
                             </div>
@@ -118,13 +118,6 @@ function CreationAdministrateur() {
             </div>
           </div>
         </div>
-        <footer>
-          <div className="footer clearfix mb-0 text-muted">
-            <div className="float-end">
-              <p>2024 © Mazed</p>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );

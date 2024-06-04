@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState , useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
@@ -8,6 +8,7 @@ function CategoryList() {
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
+  const [isMobile , setIsMobile] = useState(false)
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
@@ -85,7 +86,20 @@ function CategoryList() {
   const activateDeactivateItem = () => {
     // Implement your activate/deactivate logic here
   };
-
+  useEffect(() => {
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
+    // Initial check
+    handleResize();
+  
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <div className="content-container">
       <div id="main">
@@ -152,40 +166,74 @@ function CategoryList() {
 
                 <div className="card-content">
                   <div className="table-responsive">
-                    <table className="table" id="table1">
-                      <thead>
-                        <tr>
+                   {isMobile?  <table className="table" id="table1">
+                    <thead>
+                      <tr>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {categories?categories.map((cat)=>(
+                        <td>
                           <th>Libellé</th>
-                          <th>Détail</th>
-                          <th>Modifier</th>
-                          <th>Désactiver</th>
-                          <th>Supprimer</th>
-                          <th>Mettre a l'une</th>
+                        <tr className="text-bold-500">{cat.libeléCategorie}</tr>
+                        <th>Détail</th>
+                        <tr>
+                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
+                          <i className="fa-solid fa-eye"></i>
+                          </a>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {categories?categories.map((cat)=>(
-                          <tr>
-                          <td className="text-bold-500">{cat.libeléCategorie}</td>
-                          <td>
-                          <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
-                            <i className="fa-solid fa-eye"></i>
-                            </a>
-                          </td>
-                          <td>
-                          <Link to={"/catmodif"}>
-                            <i className="fa-solid fa-pen-to-square"></i>
-                            </Link>
-                          </td>
-                          <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
-                          <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
-                          <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
+                        <th>Modifier</th>
+                        <tr>
+                        <Link to={"/catmodif"}>
+                          <i className="fa-solid fa-pen-to-square"></i>
+                          </Link>
                         </tr>
-                        )):<div>loading</div>}
-                        
-                        
-                      </tbody>
-                    </table>
+                        <th>Désactiver</th>
+                        <tr><i className="fa-solid fa-ban" onClick={handleBan}></i></tr>
+                        <th>Supprimer</th>
+                        <tr><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></tr>
+                        <th>Mettre a l'une</th>
+                        <tr><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></tr>
+                      </td>
+                      )):<div>loading</div>}
+                      
+                      
+                    </tbody>
+                  </table> :
+                    <table className="table" id="table1">
+                    <thead>
+                      <tr>
+                        <th>Libellé</th>
+                        <th>Détail</th>
+                        <th>Modifier</th>
+                        <th>Désactiver</th>
+                        <th>Supprimer</th>
+                        <th>Mettre a l'une</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {categories?categories.map((cat)=>(
+                        <tr>
+                        <td className="text-bold-500">{cat.libeléCategorie}</td>
+                        <td>
+                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
+                          <i className="fa-solid fa-eye"></i>
+                          </a>
+                        </td>
+                        <td>
+                        <Link to={"/catmodif"}>
+                          <i className="fa-solid fa-pen-to-square"></i>
+                          </Link>
+                        </td>
+                        <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
+                        <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
+                        <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
+                      </tr>
+                      )):<div>loading</div>}
+                      
+                      
+                    </tbody>
+                  </table>}
                   </div>
                 </div>
               </div>
