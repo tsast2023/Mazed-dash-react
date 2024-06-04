@@ -5,7 +5,6 @@
     background-color: #f0f2f5;
 }
 
-/* Main Chat Styles */
 .chat-main {
     flex-grow: 1;
     display: flex;

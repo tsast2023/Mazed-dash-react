@@ -39,7 +39,7 @@ const Messagerie = () => {
   };
 
   return (
-    <div className="chat-app content-container">
+    <div className="chat-app content-container card">
       <main className={`chat-main ${!selectedContact ? 'hidden-mobile' : ''}`}>
         {selectedContact ? (
           <>
