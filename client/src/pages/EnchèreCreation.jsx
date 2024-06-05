@@ -89,15 +89,6 @@ function EnchèreCreation() {
                           </select>
                         </fieldset>
                       </div>
-                      
-                      <div className="col-12">
-                        <div className="form-check">
-                          <div className="checkbox">
-                            <input type="checkbox" id="checkbox3" className="form-check-input" defaultChecked />
-                            <label htmlFor="checkbox3">Remember Me</label>
-                          </div>
-                        </div>
-                      </div>
                       <div className="col-12 d-flex justify-content-end">
                         <Link to={"/configuration"} type="submit" className="btn btn-primary me-1 mb-1"><a style={{color: 'white'}}  >Suivant</a> </Link>
                         <button type="reset" className="btn btn-light-secondary me-1 mb-1">Annuler</button>

@@ -1,7 +1,10 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import i18n from "../i18n";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const chartOptions = {
     chart: {
       height: 350,
@@ -63,7 +66,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                      Nombre d'installation
+                       {t("Nombre d'installation")}
                     </h6>
                     <h6 className="stats-number mb-0">112.000</h6>
                   </div>
@@ -82,7 +85,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                      Nombre de désinstallations
+                       {t("Nombre de désinstallations")}
                     </h6>
                     <h6 className="stats-number mb-0">183.000</h6>
                   </div>
@@ -101,7 +104,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                      Nombre d'inscriptions
+                       {t("Nombre d'inscriptions")}
                     </h6>
                     <h6 className="stats-number mb-0">80.000</h6>
                   </div>
@@ -114,7 +117,7 @@ const Dashboard = () => {
           <div className="col-12 col-md-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
-                <h4>Traffic sur les produits</h4>
+                <h4>{t("Traffic sur les produits")}</h4>
               </div>
               <div className="card-body">
                 <ReactApexChart
@@ -129,7 +132,7 @@ const Dashboard = () => {
           <div className="col-12 col-md-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
-                <h4>Traffic sur les enchères</h4>
+                <h4>{t("Traffic sur les enchères")}</h4>
               </div>
               <div className="card-body">
                 <ReactApexChart
@@ -144,7 +147,7 @@ const Dashboard = () => {
           <div className="col-12 col-md-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
-                <h4>Traffic sur les catégories</h4>
+                <h4>{t("Traffic sur les catégories")}</h4>
               </div>
               <div className="card-body">
                 <ReactApexChart

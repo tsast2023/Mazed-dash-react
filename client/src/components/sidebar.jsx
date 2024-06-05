@@ -52,8 +52,6 @@ const hexToRgba = (hex, alpha) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-
-
 const Playground = () => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
@@ -142,7 +140,7 @@ const Playground = () => {
                 {t("Tableau de bord")}
               </MenuItem>
               <SubMenu
-                label="Super Admin"
+                label={t("Super Admin")}
                 icon={<i className="fa-solid fa-user-tie"></i>}
               >
                 <MenuItem
@@ -163,7 +161,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                 Liste des Administrateur
+                  Liste des Administrateur
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/CreationAdministrateur" />}
@@ -185,11 +183,11 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demandes 
+                  Demandes
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Catégories"
+                label={t("Catégories")}
                 icon={<i className="fa-solid fa-layer-group"></i>}
               >
                 <MenuItem
@@ -199,7 +197,7 @@ const Playground = () => {
                     activeLink === "/CreationCat" ? menuItemStyles.active : null
                   }
                 >
-                  Création de catégorie
+                  {t("Création de catégorie")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeCat" />}
@@ -208,11 +206,11 @@ const Playground = () => {
                     activeLink === "/ListeCat" ? menuItemStyles.active : null
                   }
                 >
-                  Liste de catégories
+                  {t("Liste de catégories")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Produits"
+                label={t("Produits")}
                 icon={<i className="fa-solid fa-diamond"></i>}
               >
                 <MenuItem
@@ -224,7 +222,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Création de produit
+                  {t("Création de produit")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ProdListe" />}
@@ -233,11 +231,11 @@ const Playground = () => {
                     activeLink === "/ProdListe" ? menuItemStyles.active : null
                   }
                 >
-                  Liste de produits
+                  {t("Liste de produits")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Enchère"
+                label={t("Enchère")}
                 icon={<i className="fa-solid fa-gavel"></i>}
               >
                 <MenuItem
@@ -249,7 +247,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Création de enchère
+                  {t("Création de enchère")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/EnchereListe" />}
@@ -260,7 +258,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Liste de enchère
+                  {t("Liste de enchère")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/OffreEnchere" />}
@@ -271,7 +269,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Création des offres
+                  {t("Création des offres")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ConfigurationEnchere" />}
@@ -282,12 +280,12 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Configuration
+                  {t("Configuration")}
                 </MenuItem>
               </SubMenu>
 
               <SubMenu
-                label="Participants"
+                label={t("Participants")}
                 icon={<i className="fa-solid fa-users"></i>}
               >
                 <MenuItem
@@ -299,7 +297,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Création d'un participant
+                  {t("Création d'un participant")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/PartListe" />}
@@ -308,37 +306,33 @@ const Playground = () => {
                     activeLink === "/PartListe" ? menuItemStyles.active : null
                   }
                 >
-                  Liste des participants
+                  {t("Liste des participants")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Vendeurs"
+                label={t("Vendeurs")}
                 icon={<i className="fa-solid fa-user-clock"></i>}
               >
                 <MenuItem component={<Link to="/VendeurForm" />}>
-                  {" "}
-                  Création d'un vendeur{" "}
+                  {t("Création d'un vendeur")}
                 </MenuItem>
                 <MenuItem component={<Link to="/TableVendeurs" />}>
-                  {" "}
-                  Liste des vendeurs{" "}
+                  {t("Liste des vendeurs")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Utilisateurs"
+                label={t("Utilisateurs")}
                 icon={<i className="fa-solid fa-user-check"></i>}
               >
                 <MenuItem component={<Link to="/UtilisateurForm" />}>
-                  {" "}
-                  Création d'un utilisateur{" "}
+                  {t("Création d'un utilisateur")}
                 </MenuItem>
                 <MenuItem component={<Link to="/TableUtilisateur" />}>
-                  {" "}
-                  Liste des utilisateurs{" "}
+                  {t("Liste des utilisateurs")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Annonces"
+                label={t("Annonces")}
                 icon={<i className="fa-solid fa-volume-low"></i>}
               >
                 <MenuItem
@@ -348,7 +342,7 @@ const Playground = () => {
                     activeLink === "/CreationAd" ? menuItemStyles.active : null
                   }
                 >
-                  Création d'une annonce
+                  {t("Création d'une annonce")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAds" />}
@@ -357,11 +351,11 @@ const Playground = () => {
                     activeLink === "/ListeAds" ? menuItemStyles.active : null
                   }
                 >
-                  Liste des annonce
+                  {t("Liste des annonce")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Questions fréquents"
+                label={t("Questions fréquents")}
                 icon={<i className="fa-solid fa-file-circle-question"></i>}
               >
                 <MenuItem
@@ -373,7 +367,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Création d'un question
+                  {t("Création d'un question")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/QuestionList" />}
@@ -384,20 +378,18 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Liste des questions
+                  {t("Liste des questions")}
                 </MenuItem>
               </SubMenu>
               <SubMenu
-                label="Termes et conditions"
+                label={t("Termes et conditions")}
                 icon={<i className="fa-solid fa-clipboard"></i>}
               >
                 <MenuItem component={<Link to="/TermsForm" />}>
-                  {" "}
-                  Création d'un terme
+                  {t("Création d'un terme")}
                 </MenuItem>
                 <MenuItem component={<Link to="/TermesList" />}>
-                  {" "}
-                  Termes et conditions{" "}
+                  {t("Termes et conditions")}
                 </MenuItem>
               </SubMenu>
             </Menu>
@@ -411,7 +403,7 @@ const Playground = () => {
                   activeLink === "/Réclamations" ? menuItemStyles.active : null
                 }
               >
-                Réclamations
+                {t("Réclamations")}
               </MenuItem>
               <MenuItem
                 component={<Link to="/Transferts" />}
@@ -421,7 +413,7 @@ const Playground = () => {
                   activeLink === "/Transferts" ? menuItemStyles.active : null
                 }
               >
-                Demandes de transferts
+                {t("Demandes de transferts")}
               </MenuItem>
               <MenuItem
                 component={<Link to="/Cartes" />}
@@ -429,7 +421,7 @@ const Playground = () => {
                 onClick={() => setActiveLink("/Cartes")}
                 style={activeLink === "/Cartes" ? menuItemStyles.active : null}
               >
-                Cartes recharges
+                {t("Cartes recharges")}
               </MenuItem>
               <MenuItem
                 component={<Link to="/Commandes" />}
@@ -439,7 +431,7 @@ const Playground = () => {
                   activeLink === "/Commandes" ? menuItemStyles.active : null
                 }
               >
-                Commandes
+                {t("Commandes")}
               </MenuItem>
               <MenuItem
                 component={<Link to="/Tutoriel" />}
@@ -449,12 +441,12 @@ const Playground = () => {
                   activeLink === "/Tutoriel" ? menuItemStyles.active : null
                 }
               >
-                Tutoriel
+                {t("Tutoriel")}
               </MenuItem>
               <MenuItem
                 icon={<i className="fa-solid fa-right-from-bracket"></i>}
               >
-                Déconnexion
+                {t("Déconnexion")}
               </MenuItem>
             </Menu>
           </div>
@@ -465,13 +457,13 @@ const Playground = () => {
         <div style={{ padding: "16px 24px", color: "#44596e" }}>
           <div style={{ marginBottom: "16px" }}>
             {broken && (
-          <button
-          className="sb-button"
-          onClick={toggleSidebar}
-          style={{ marginRight: 'auto' }}
-        >
-          <i className="fa-solid fa-bars"></i>
-        </button>
+              <button
+                className="sb-button"
+                onClick={toggleSidebar}
+                style={{ marginRight: "auto" }}
+              >
+                <i className="fa-solid fa-bars"></i>
+              </button>
             )}
           </div>
           <div style={{ marginBottom: "48px" }}>

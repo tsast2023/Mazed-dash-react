@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "../css/navbar.css";
-import i18n from '../i18n'
+import i18n from '../i18n';
 
 const Navbar = ({ username }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
   const [isNotificationMenuOpen, setIsNotificationMenuOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleNotificationToggle = () => {
     setIsNotificationMenuOpen(!isNotificationMenuOpen);
@@ -30,6 +33,11 @@ const Navbar = ({ username }) => {
     setIsNotificationMenuOpen(false);
   };
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setIsLangMenuOpen(false); // Close the language menu after selecting a language
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-content">
@@ -50,13 +58,13 @@ const Navbar = ({ username }) => {
         style={{ position: "absolute", right: 0, top: "50px" }}>
         <div className="notification-content">
           <div className="notification-item">
-            New message from John
+            {t('New message from John')}
           </div>
           <div className="notification-item">
-            Meeting reminder at 3:00 PM
+            {t('Meeting reminder at 3:00 PM')}
           </div>
           <div className="notification-item">
-            System update available
+            {t('System update available')}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>
@@ -69,9 +77,9 @@ const Navbar = ({ username }) => {
         style={{ position: "absolute", right: 0, top: "50px" }}
       >
         <div className="notification-content">
-          <div className="notification-item" onClick={() => i18n.changeLanguage('en')}>English</div>
-          <div className="notification-item" onClick={() => i18n.changeLanguage('fr')}>Français</div>
-          <div className="notification-item" onClick={() => i18n.changeLanguage('ar')}>العربية</div>
+          <div className="notification-item" onClick={() => changeLanguage('en')}>English</div>
+          <div className="notification-item" onClick={() => changeLanguage('fr')}>Français</div>
+          <div className="notification-item" onClick={() => changeLanguage('ar')}>العربية</div>
         </div>
         <div className="close-button" onClick={handleLanguageToggle}>
           <i className="fas fa-times"></i>
@@ -84,19 +92,19 @@ const Navbar = ({ username }) => {
         <div className="notification-content">
           <div className="notification-item">
             <Link to="/Profile">
-              <i className="fas fa-user-circle me-2"></i> Profile
+              <i className="fas fa-user-circle me-2"></i> {t('Profile')}
             </Link>
           </div>
           <div className="notification-item">
             <Link to="/Messagerie">
-              <i className="fa-solid fa-comments me-2"></i> Messagerie
+              <i className="fa-solid fa-comments me-2"></i> {t('Messagerie')}
             </Link>
           </div>
           <div className="notification-item" onClick={handleLanguageToggle}>
-            <i className="fas fa-globe me-2"></i> Languages
+            <i className="fas fa-globe me-2"></i> {t('Languages')}
           </div>
           <div className="notification-item">
-            <i className="fas fa-sign-out-alt me-2"></i> Déconnexion
+            <i className="fas fa-sign-out-alt me-2"></i> {t('Déconnexion')}
           </div>
         </div>
         <div className="close-button" onClick={handleSettingsToggle}>

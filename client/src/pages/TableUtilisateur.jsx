@@ -59,7 +59,7 @@ function TableUtilisateur() {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">Liste des participants</h2>
+            <h2 className="new-price">Liste des utilisateurs</h2>
           </div>
           <div className="card-body">
             <div className="table-responsive">
