@@ -137,7 +137,7 @@ function ProdList() {
                           </th>
                           <th>
                             <i
-                              className="fa-solid fa-box-archive arrowIcon"
+                              className="fa-solid fa-star arrowIcon"
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({

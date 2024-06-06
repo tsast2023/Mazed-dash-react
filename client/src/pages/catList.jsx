@@ -195,7 +195,7 @@ function CategoryList() {
                         <th>{t("Supprimer")}</th>
                         <tr><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></tr>
                         <th>{t("Mettre a l'une")}</th>
-                        <tr><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></tr>
+                        <tr><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></tr>
                       </td>
                       )):<div>loading</div>}
                       
@@ -229,7 +229,7 @@ function CategoryList() {
                         </td>
                         <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
                         <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
-                        <td><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></td>
+                        <td><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></td>
                       </tr>
                       )):<div>loading</div>}
                       
