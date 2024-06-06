@@ -62,21 +62,21 @@ function CategoryList() {
 
   const handleArrowClick = () => {
     Swal.fire({
-      title: "Êtes-vous sûr(e) ?",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Oui, mettre à l'une !",
-      cancelButtonText: "Non, annuler !",
+      confirmButtonText: t("Oui, mettre à l'une !"),
+      cancelButtonText: t("Non, annuler !"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         // Appeler la fonction deleteItem
         deleteItem();
-        Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "secondary");
+        Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "secondary");
       } else {
-        Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
