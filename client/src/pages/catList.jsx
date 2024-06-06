@@ -14,22 +14,22 @@ function CategoryList() {
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: "Êtes-vous sûr(e) ?",
-      text: "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
+      title: t("Êtes-vous sûr(e) ?"),
+      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Oui, supprimez-le !",
-      cancelButtonText: "Non, annuler !",
+      confirmButtonText: t("Oui, supprimez-le !"),
+      cancelButtonText: t("Non, annuler !"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         // Call deleteItem function
         deleteItem();
-        Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "secondary");
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
       } else {
-        Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
@@ -37,12 +37,12 @@ function CategoryList() {
   const handleBan = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: "Êtes-vous sûr(e) ?",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Oui, désactivez-le !",
-      cancelButtonText: "Non, annuler !",
+      confirmButtonText: t("Oui, désactivez-le !"),
+      cancelButtonText: t("Non, annuler !"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
@@ -50,12 +50,12 @@ function CategoryList() {
         // Call activateDeactivateItem function
         activateDeactivateItem();
         Swal.fire(
-          "Désactivé(e) !",
-          "Votre élément a été désactivé.",
+          t("Désactivé(e) !"),
+          t("Votre élément a été désactivé."),
           "secondary"
         );
       } else {
-        Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };

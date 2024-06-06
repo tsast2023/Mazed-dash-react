@@ -247,6 +247,12 @@ const resources = {
       "Liste des images": "Image List",
       "Choisissez le statut": "Choose status",
       "Choisissez État": "Choose Status",
+      "Oui, désactivez-le !": "Yes, deactivate it!",
+"Désactivé(e) !": "Deactivated!",
+"Votre élément a été désactivé.": "Your item has been deactivated.",
+"Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !": "Once deleted, you will not be able to recover this item!",
+"Oui, supprimez-le !": "Yes, delete it!",
+
       
     }
   },
@@ -502,13 +508,25 @@ const resources = {
       "Effectué !": "Effectué !",
       "Votre élément a été mis à l'une.": "Votre élément a été mis à l'une.",
       "Annulé": "Annulé",
-      "Votre élément est en sécurité :)":  "Votre élément est en sécurité :)"
+      "Votre élément est en sécurité :)":  "Votre élément est en sécurité :)",
+      "Oui, désactivez-le !": "Oui, désactivez-le !",
+      "Désactivé(e) !": "Désactivé(e) !",
+      "Votre élément a été désactivé.": "Votre élément a été désactivé.",
+      "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !": "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
+      "Oui, supprimez-le !": "Oui, supprimez-le !",
+      
+
 
       
     }
   },
   ar: {
     translation: {
+      "Oui, supprimez-le !": "نعم، احذفه!",
+      "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !": "بمجرد حذفه، لن تتمكن من استرداد هذا العنصر!",
+      "Votre élément a été désactivé.": "لقد تم إلغاء تنشيط العنصر الخاص بك.",
+      "Désactivé(e) !": "تعطيل",
+      "Oui, désactivez-le !": "نعم، أطفئه!",
       "Tableau de bord": "لوحة القيادة",
       "Super Admin": "مشرف فائق",
       "Google maps": "خرائط جوجل",
