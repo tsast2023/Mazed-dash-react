@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 function ProdList() {
+  const { t } = useTranslation();
   const deleteItem = () => {
     // Function to delete item
   };
@@ -28,24 +30,24 @@ function ProdList() {
             <section className="section">
               <div className="card">
                 <div className="card-header">
-                  <h2 className="new-price">Listes des Produits</h2>
+                  <h2 className="new-price">{t("Listes des Produits")}</h2>
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
                     <table className="table" id="table1">
                       <thead>
                         <tr>
-                          <th>Réf</th>
-                          <th>Libellé</th>
-                          <th>Image</th>
-                          <th>Stock initial</th>
-                          <th>Stock actuel</th>
-                          <th>Statut</th>
-                          <th>Détail</th>
-                          <th>Editer</th>
-                          <th>Supprimer</th>
-                          <th>Désactiver</th>
-                          <th>Mettre a l'une</th>
+                          <th>{t("Réf")}</th>
+                          <th>{t("Libellé")}</th>
+                          <th>{t("Image")}</th>
+                          <th>{t("Stock initial")}</th>
+                          <th>{t("Stock actuel")}</th>
+                          <th>{t("Statut")}</th>
+                          <th>{t("Détail")}</th>
+                          <th>{t("Editer")}</th>
+                          <th>{t("Supprimer")}</th>
+                          <th>{t("Désactiver")}</th>
+                          <th>{t("Mettre à l'une")}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -58,7 +60,9 @@ function ProdList() {
                           <th>50</th>
                           <th>10</th>
                           <th>
-                            <button className="btn btn-secondary">Publié</button>
+                            <button className="btn btn-secondary">
+                              {t("Publié")}
+                            </button>
                           </th>
                           <th>
                             <section id="basic-modals">
@@ -72,7 +76,8 @@ function ProdList() {
                           </th>
                           <th>
                             <section id="basic-modals">
-                              <Link to="/prodEdit"
+                              <Link
+                                to="/prodEdit"
                                 className="btn btn-outline block"
                               >
                                 <i className="fa-solid fa-pen-to-square font-medium-1"></i>
@@ -85,22 +90,30 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Êtes-vous sûr(e) ?",
-                                  text: "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
+                                  title: t("Êtes-vous sûr(e) ?"),
+                                  text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Oui, supprimez-le !",
-                                  cancelButtonText: "Non, annuler !",
+                                  confirmButtonText: t("Oui, supprimez-le !"),
+                                  cancelButtonText: t("Non, annuler !"),
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
                                     // Call deleteItem function
                                     deleteItem();
-                                    Swal.fire("Supprimé(e) !", "Votre élément a été supprimé.", "secondary");
+                                    Swal.fire(
+                                      t("Supprimé(e) !"),
+                                      t("Votre élément a été supprimé."),
+                                      "secondary"
+                                    );
                                   } else {
-                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+                                    Swal.fire(
+                                      t("Annulé"),
+                                      t("Votre élément est en sécurité :)"),
+                                      "error"
+                                    );
                                   }
                                 });
                               }}
@@ -112,24 +125,28 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Êtes-vous sûr(e) ?",
+                                  title: t("Êtes-vous sûr(e) ?"),
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Oui, désactivez-le !",
-                                  cancelButtonText: "Non, annuler !",
+                                  confirmButtonText: t("Oui, désactivez-le !"),
+                                  cancelButtonText: t("Non, annuler !"),
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
                                     deleteItem();
                                     Swal.fire(
-                                      "Désactivé(e) !",
-                                      "Votre élément a été désactivé.",
+                                      t("Désactivé(e) !"),
+                                      t("Votre élément a été désactivé."),
                                       "secondary"
                                     );
                                   } else {
-                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+                                    Swal.fire(
+                                      t("Annulé"),
+                                      t("Votre élément est en sécurité :)"),
+                                      "error"
+                                    );
                                   }
                                 });
                               }}
@@ -141,21 +158,29 @@ function ProdList() {
                               onClick={() => {
                                 // Show SweetAlert confirmation dialog
                                 Swal.fire({
-                                  title: "Êtes-vous sûr(e) ?",
+                                  title: t("Êtes-vous sûr(e) ?"),
                                   icon: "warning",
                                   showCancelButton: true,
                                   confirmButtonColor: "#DD6B55",
-                                  confirmButtonText: "Oui, mettre à l'une !",
-                                  cancelButtonText: "Non, annuler !",
+                                  confirmButtonText: t("Oui, mettre à l'une !"),
+                                  cancelButtonText: t("Non, annuler !"),
                                   closeOnConfirm: false,
                                   closeOnCancel: false,
                                 }).then((result) => {
                                   if (result.isConfirmed) {
                                     // Appeler la fonction deleteItem
                                     deleteItem();
-                                    Swal.fire("Effectué !", "Votre élément a été mis à l'une.", "secondary");
+                                    Swal.fire(
+                                      t("Effectué !"),
+                                      t("Votre élément a été mis à l'une."),
+                                      "secondary"
+                                    );
                                   } else {
-                                    Swal.fire("Annulé", "Votre élément est en sécurité :)", "error");
+                                    Swal.fire(
+                                      t("Annulé"),
+                                      t("Votre élément est en sécurité :)"),
+                                      "error"
+                                    );
                                   }
                                 });
                               }}

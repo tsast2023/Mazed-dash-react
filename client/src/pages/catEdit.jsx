@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 function CategoryModificationForm() {
+  const { t } = useTranslation();
   const [label, setLabel] = useState('');
   const [type, setType] = useState('');
 
@@ -24,10 +26,11 @@ function CategoryModificationForm() {
   };
 
   return (
+    <div className="content-container">
     <div className="col-md-12">
       <div className="card">
         <div className="card-header">
-          <h2 className="new-price">Modification d'une catégorie</h2>
+          <h2 className="new-price">{t("Modification d'une catégorie")}</h2>
         </div>
         <div className="card-content">
           <div className="card-body">
@@ -36,7 +39,7 @@ function CategoryModificationForm() {
                 <div className="row">
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="email-id-icon">Libellé</label>
+                      <label htmlFor="email-id-icon">{t("Libellé")}</label>
                       <input
                         type="text"
                         className="form-control"
@@ -47,7 +50,7 @@ function CategoryModificationForm() {
                       />
                     </div>
                   </div>
-                  <label>Type</label>
+                  <label>{t("Type")}</label>
                   <div className="input-group mb-3">
                     <select
                       className="form-select"
@@ -55,8 +58,8 @@ function CategoryModificationForm() {
                       value={type}
                       onChange={handleTypeChange}
                     >
-                      <option value="1">Parente</option>
-                      <option value="2">Fille</option>
+                      <option value="1">{t("Parente")}</option>
+                      <option value="2">{t("Fille")}</option>
                     </select>
                   </div>
                   <div className="modal-footer">
@@ -65,14 +68,14 @@ function CategoryModificationForm() {
                       className="btn btn-light-secondary me-2"
                       onClick={handleCancel}
                     >
-                      Annuler
+                      {t("Annuler")}
                     </button>
                     <button
                       type="submit"
                       className="btn btn-dark"
                       id="suivantBtn"
                     >
-                      Enregister
+                      {t("Enregistrer")}
                     </button>
                   </div>
                 </div>
@@ -81,6 +84,7 @@ function CategoryModificationForm() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import Swal from "sweetalert2";
+import { useTranslation } from 'react-i18next';
 
 function Modal() {
   return (
@@ -52,7 +54,7 @@ function Modal() {
   );
 }
 
-function TableRow({ userData, status }) {
+function TableRow({ userData, status, onAccept }) {
   return (
     <tr>
       <td>{userData.name}</td>
@@ -64,7 +66,10 @@ function TableRow({ userData, status }) {
         <span className={`badge bg-${status.color}`}>{status.text}</span>
       </td>
       <td>
-        <i class="fa-solid fa-circle-check"></i>
+        <i
+          className="fa-solid fa-circle-check"
+          onClick={onAccept}
+        ></i>
       </td>
       <td>
         <section id="basic-modals">
@@ -84,7 +89,9 @@ function TableRow({ userData, status }) {
   );
 }
 
-function transfer() {
+function Transfer() {
+  const { t } = useTranslation();
+
   const data = [
     {
       name: "Graiden",
@@ -120,6 +127,40 @@ function transfer() {
       },
     },
   ];
+
+  const handleAccept = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call deleteItem function or equivalent action
+        deleteItem();
+        Swal.fire(
+          t("Accepté"),
+          t("Votre élément a été Accepté."),
+          "secondary"
+        );
+      } else {
+        Swal.fire(
+          t("Annulé"),
+          t("Votre élément est en sécurité :)"),
+          "error"
+        );
+      }
+    });
+  };
+
+  // Dummy deleteItem function for demonstration
+  const deleteItem = () => {
+    console.log("Item deleted");
+  };
 
   return (
     <div className="content-container">
@@ -157,6 +198,7 @@ function transfer() {
                           key={index}
                           userData={item}
                           status={item.status}
+                          onAccept={handleAccept}
                         />
                       ))}
                     </tbody>
@@ -171,4 +213,4 @@ function transfer() {
   );
 }
 
-export default transfer;
+export default Transfer;

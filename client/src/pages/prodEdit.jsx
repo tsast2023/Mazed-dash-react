@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ProductEditForm = () => {
+  const { t } = useTranslation();
   const [label, setLabel] = useState("");
   const [image, setImage] = useState(null);
   const [initialStock, setInitialStock] = useState("");
@@ -30,7 +32,7 @@ const ProductEditForm = () => {
     <div className="col-md-12">
       <div className="card">
         <div className="card-header">
-          <h2 className="new-price">Editer de Produit</h2>
+          <h2 className="new-price">{t("Editer de Produit")}</h2>
         </div>
         <div className="card-content">
           <div className="card-body">
@@ -39,7 +41,7 @@ const ProductEditForm = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="first-name-icon">Libellé</label>
+                      <label htmlFor="first-name-icon">{t("Libellé")}</label>
                       <div className="position-relative">
                         <input
                           type="text"
@@ -54,7 +56,7 @@ const ProductEditForm = () => {
                   </div>
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="email-id-icon">image</label>
+                      <label htmlFor="email-id-icon">{t("Image")}</label>
                       <div className="position-relative">
                         <input
                           type="file"
@@ -70,7 +72,7 @@ const ProductEditForm = () => {
                   </div>
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="mobile-id-icon">Stock initial</label>
+                      <label htmlFor="mobile-id-icon">{t("Stock initial")}</label>
                       <div className="position-relative">
                         <input
                           type="number"
@@ -84,7 +86,7 @@ const ProductEditForm = () => {
                   </div>
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="password-id-icon">Stock actuel</label>
+                      <label htmlFor="password-id-icon">{t("Stock actuel")}</label>
                       <div className="position-relative">
                         <input
                           type="number"
@@ -98,7 +100,7 @@ const ProductEditForm = () => {
                   </div>
                   <div className="col-12">
                     <div className="form-group">
-                      <label htmlFor="color-picker">Couleurs</label>
+                      <label htmlFor="color-picker">{t("Couleurs")}</label>
                       <input
                         type="color"
                         className="form-control"
@@ -111,7 +113,7 @@ const ProductEditForm = () => {
                   <div className="col-12">
                     <div className="form-group">
                       <label htmlFor="exampleFormControlTextarea1">
-                        Description
+                        {t("Description")}
                       </label>
                       <textarea
                         className="form-control"
@@ -124,10 +126,10 @@ const ProductEditForm = () => {
                   </div>
                   <div className="card-footer d-flex justify-content-end">
                     <button type="button" className="btn btn-secondary me-3">
-                      Annuler
+                      {t("Annuler")}
                     </button>
                     <button type="button" className="btn btn-primary">
-                      Enregistrer
+                    {t("Enregister")}
                     </button>
                   </div>
                 </div>

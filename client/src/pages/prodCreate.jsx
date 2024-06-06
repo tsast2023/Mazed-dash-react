@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const App = () => {
   const [imageFiles, setImageFiles] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Initialize Choices for select inputs
@@ -49,7 +51,7 @@ const App = () => {
       <div className="col-md-12">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">Ajouter un nouveau produit</h2>
+            <h2 className="new-price">{t("Ajouter un nouveau produit")}</h2>
           </div>
           <div className="card-content">
             <div className="card-body">
@@ -58,7 +60,7 @@ const App = () => {
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="first-name-icon">Libellé</label>
+                        <label htmlFor="first-name-icon">{t("Libellé")}</label>
                         <div className="position-relative">
                           <input
                             type="text"
@@ -72,7 +74,7 @@ const App = () => {
                     </div>
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="email-id-icon">Commerçant</label>
+                        <label htmlFor="email-id-icon">{t("Commerçant")}</label>
                         <div className="position-relative">
                           <input
                             type="text"
@@ -86,7 +88,7 @@ const App = () => {
                     </div>
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="mobile-id-icon">Prix</label>
+                        <label htmlFor="mobile-id-icon">{t("Prix")}</label>
                         <div className="position-relative">
                           <input
                             type="number"
@@ -98,7 +100,7 @@ const App = () => {
                       </div>
                     </div>
                     <div className="col-12">
-                      <label>Catégories</label>
+                      <label>{t("Catégories")}</label>
                       <div className="form-group">
                         <select
                           className="choices category-choices form-select multiple-remove"
@@ -116,7 +118,7 @@ const App = () => {
                       </div>
                     </div>
                     <div className="col-12">
-                      <label>Sous Catégories</label>
+                      <label>{t("Sous Catégories")}</label>
                       <div className="form-group">
                         <select
                           className="choices sub-category-choices form-select multiple-remove"
@@ -135,7 +137,7 @@ const App = () => {
                     </div>
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="password-id-icon">Image</label>
+                        <label htmlFor="password-id-icon">{t("Image")}</label>
                         <div className="position-relative">
                           <input
                             type="file"
@@ -151,7 +153,7 @@ const App = () => {
 
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="password-id-icon">Stock</label>
+                        <label htmlFor="password-id-icon">{t("Stock")}</label>
                         <div className="position-relative">
                           <input
                             type="number"
@@ -164,7 +166,7 @@ const App = () => {
                     </div>
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="color-picker">Couleurs</label>
+                        <label htmlFor="color-picker">{t("Couleurs")}</label>
                         <input
                           type="color"
                           className="form-control"
@@ -179,7 +181,7 @@ const App = () => {
                           htmlFor="exampleFormControlTextarea1"
                           className="form-label"
                         >
-                          Description
+                          {t("Description")}
                         </label>
                         <textarea
                           className="form-control"
@@ -196,7 +198,7 @@ const App = () => {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none"></i>
-                        <span className="d-none d-sm-block">Annuler</span>
+                        <span className="d-none d-sm-block">{t("Annuler")}</span>
                       </button>
                         <button
                           type="button"
@@ -206,7 +208,7 @@ const App = () => {
                           <Link
                             to="/ProdAction"
                           >
-                            Suivant
+                            {t("Suivant")}
                           </Link>
                         </button>
                     </div>
