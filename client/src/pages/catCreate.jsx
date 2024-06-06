@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 import { GlobalState } from "../GlobalState";
+import { useTranslation } from "react-i18next";
 
 const CatCreate = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [inputs, setInputs] = useState([]);
   const state = useContext(GlobalState);
   const categoriess = state.Categories;
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.log('cat from here', categoriess);
@@ -46,7 +48,7 @@ const CatCreate = () => {
     <div className="content-container">
       <div className="card">
         <div className="card-header d-flex justify-content-between align-items-center">
-          <h2 className="card-title">Créer une catégorie</h2>
+          <h2 className="card-title">{t("Créer une catégorie")}</h2>
           <button 
             type="button" 
             className="btn btn-primary"
@@ -61,7 +63,7 @@ const CatCreate = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="form-group">
-                <label htmlFor="basicInput">Libellé</label>
+                <label htmlFor="basicInput">{t("Libellé")}</label>
                 <input
                   type="text"
                   className="form-control"
@@ -71,7 +73,7 @@ const CatCreate = () => {
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label htmlFor="category-select">Catégories</label>
+                <label htmlFor="category-select">{t("Catégories")}</label>
                 <select
                   id="category-select"
                   className="choices form-select multiple-remove"
@@ -104,8 +106,8 @@ const CatCreate = () => {
           </div>
         </div>
         <div className="card-footer d-flex justify-content-end">
-          <button type="button" className="btn btn-secondary me-3">Annuler</button>
-          <button type="button" className="btn btn-primary">Enregistrer</button>
+          <button type="button" className="btn btn-secondary me-3">{t("Annuler")}</button>
+          <button type="button" className="btn btn-primary">{t("Enregistrer")}</button>
         </div>
       </div>
     </div>

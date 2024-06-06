@@ -244,7 +244,9 @@ const resources = {
       "Vous souhaitez ajouter une nouvelle image ?": "Do you want to add a new image?",
       "Ajouter une nouvelle image": "Add a New Image",
       "Ordre": "Order",
-      "Liste des images": "Image List"
+      "Liste des images": "Image List",
+      "Choisissez le statut": "Choose status",
+      "Choisissez État": "Choose Status",
       
     }
   },
@@ -491,7 +493,17 @@ const resources = {
       "Vous souhaitez ajouter une nouvelle image ?": "Vous souhaitez ajouter une nouvelle image ?",
       "Ajouter une nouvelle image": "Ajouter une nouvelle image",
       "Ordre": "Ordre",
-      "Liste des images": "Liste des images"
+      "Liste des images": "Liste des images",
+      "Choisissez le statut": "Choisissez le statut",
+      "Choisissez État": "Choisissez État",
+      "Êtes-vous sûr(e) ?" : "Êtes-vous sûr(e) ?",
+      "Oui, mettre à l'une !" : "Oui, mettre à l'une !",
+      "Non, annuler !": "Non, annuler !",
+      "Effectué !": "Effectué !",
+      "Votre élément a été mis à l'une.": "Votre élément a été mis à l'une.",
+      "Annulé": "Annulé",
+      "Votre élément est en sécurité :)":  "Votre élément est en sécurité :)"
+
       
     }
   },
@@ -738,7 +750,20 @@ const resources = {
 "Ajouter une nouvelle image": "إضافة صورة جديدة",
 "Ordre": "الترتيب",
 "Liste des images": "قائمة الصور",
-"Termes et conditions": "الأحكام والشروط"
+"Termes et conditions": "الأحكام والشروط",
+"Choisissez le statut": "اختر الحالة",
+"Choisissez État": "اختر الحالة",
+"Êtes-vous sûr(e) ?": "هل انت متأكد ؟",
+"Oui, mettre à l'une !": "نعم، ارتدي واحدة!",
+"Non, annuler !": "لا، إلغاء!",
+"Effectué !": "تم تنفيذها !",
+"Votre élément a été mis à l'une.": "لقد تم نقل العنصر الخاص بك إلى واحد.",
+"Annulé": "ألغيت",
+"Votre élément est en sécurité :)":"المنتج الخاص بك آمن :)"
+
+
+
+
     }
   }
 };

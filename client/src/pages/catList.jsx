@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 function CategoryList() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
@@ -123,42 +125,42 @@ function CategoryList() {
               <div className="col-12">
                 <div className="card">
                   <div className="card-header">
-                    <h2 className="new-price">Liste de catégories</h2>
+                    <h2 className="new-price">{t("Liste de catégories")}</h2>
                   </div>
                   <div className="row" style={{ padding: "0 20px" }}>
                     <div className="col-md-4 mb-4">
-                      <h6>Type</h6>
+                      <h6>{t("Type")}</h6>
                       <fieldset className="form-group">
                         <select className="form-select" id="basicSelect1">
                           <option disabled selected>
-                            Choisissez le type
+                            {t("Choisissez le type")}
                           </option>
-                          <option>Parente</option>
-                          <option>Fille</option>
+                          <option>{t("Parente")}</option>
+                          <option>{t("Fille")}</option>
                         </select>
                       </fieldset>
                     </div>
                     <div className="col-md-4 mb-4">
-                      <h6>Statut</h6>
+                      <h6>{t("Statut")}</h6>
                       <fieldset className="form-group">
                         <select className="form-select" id="basicSelect2">
                           <option disabled selected>
-                            Choisissez le statut
+                            {t("Choisissez le statut")}
                           </option>
-                          <option>Publiée</option>
-                          <option>Brouillon</option>
+                          <option>{t("Publiée")}</option>
+                          <option>{t("Brouillon")}</option>
                         </select>
                       </fieldset>
                     </div>
                     <div className="col-md-4 mb-4">
-                      <h6>Etat</h6>
+                      <h6>{t("Etat")}</h6>
                       <fieldset className="form-group">
                         <select className="form-select" id="basicSelect3">
                           <option disabled selected>
-                            Choisissez État
+                            {t("Choisissez État")}
                           </option>
-                          <option>Activée</option>
-                          <option>Désactivée</option>
+                          <option>{t("Activée")}</option>
+                          <option>{t("Désactivée")}</option>
                         </select>
                       </fieldset>
                     </div>
@@ -174,25 +176,25 @@ function CategoryList() {
                     <tbody>
                       {categories?categories.map((cat)=>(
                         <td>
-                          <th>Libellé</th>
+                          <th>{t("Libellé")}</th>
                         <tr className="text-bold-500">{cat.libeléCategorie}</tr>
-                        <th>Détail</th>
+                        <th>{t("Détail")}</th>
                         <tr>
                         <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
                           <i className="fa-solid fa-eye"></i>
                           </a>
                         </tr>
-                        <th>Modifier</th>
+                        <th>{t("Modifier")}</th>
                         <tr>
                         <Link to={"/catmodif"}>
                           <i className="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </tr>
-                        <th>Désactiver</th>
+                        <th>{t("Désactiver")}</th>
                         <tr><i className="fa-solid fa-ban" onClick={handleBan}></i></tr>
-                        <th>Supprimer</th>
+                        <th>{t("Supprimer")}</th>
                         <tr><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></tr>
-                        <th>Mettre a l'une</th>
+                        <th>{t("Mettre a l'une")}</th>
                         <tr><i className="fa-solid fa-box-archive arrowIcon" onClick={handleArrowClick}></i></tr>
                       </td>
                       )):<div>loading</div>}
@@ -203,12 +205,12 @@ function CategoryList() {
                     <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Libellé</th>
-                        <th>Détail</th>
-                        <th>Modifier</th>
-                        <th>Désactiver</th>
-                        <th>Supprimer</th>
-                        <th>Mettre a l'une</th>
+                        <th>{t("Libellé")}</th>
+                        <th>{t("Détail")}</th>
+                        <th>{t("Modifier")}</th>
+                        <th>{t("Désactiver")}</th>
+                        <th>{t("Supprimer")}</th>
+                        <th>{t("Mettre a l'une")}</th>
                       </tr>
                     </thead>
                     <tbody>
