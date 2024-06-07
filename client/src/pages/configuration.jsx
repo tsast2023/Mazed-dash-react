@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Configuration() {
+  const { t } = useTranslation();
+
   return (
     <div className="content-container">
       <div id="main">
@@ -11,12 +14,12 @@ function Configuration() {
         </header>
         <div className="page-heading">
           <section id="basic-vertical-layouts">
-            <div className=" match-height">
+            <div className="match-height">
               <div>
                 <div className="card">
                   <div className="card-header">
                     <h2 className="new-price" id="myModalLabel33">
-                      Configuration De L'enchere
+                      {t("Configuration De L'enchere")}
                     </h2>
                   </div>
                   <div className="card-content">
@@ -27,14 +30,14 @@ function Configuration() {
                             <div className="col-12">
                               <div className="form-group">
                                 <label htmlFor="first-name-vertical">
-                                  Cout Du Participation{" "}
+                                  {t("Cout Du Participation")}
                                 </label>
                                 <input
                                   type="number"
                                   id="first-name-vertical"
                                   className="form-control"
                                   name="référence"
-                                  placeholder="Ecrire Ici"
+                                  placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
@@ -42,14 +45,14 @@ function Configuration() {
                             <div className="col-12">
                               <div className="form-group">
                                 <label htmlFor="email-id-vertical">
-                                  Cout Du Clic
+                                  {t("Cout Du Clic")}
                                 </label>
                                 <input
                                   type="number"
                                   id="email-id-vertical"
                                   className="form-control"
                                   name="email-id"
-                                  placeholder="Ecrire Ici"
+                                  placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
@@ -57,14 +60,14 @@ function Configuration() {
                             <div className="col-12">
                               <div className="form-group">
                                 <label htmlFor="email-id-vertical">
-                                  Valeur De Majoration{" "}
+                                  {t("Valeur De Majoration")}
                                 </label>
                                 <input
                                   type="number"
                                   id="email-id-vertical"
                                   className="form-control"
                                   name="email-id"
-                                  placeholder="Ecrire Ici"
+                                  placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
@@ -78,9 +81,9 @@ function Configuration() {
                                 id="checkbox1"
                                 className="col-1 form-check-input"
                                 defaultChecked
-                                onclick
+                                onClick
                               />{" "}
-                              <span>Remboursement</span>
+                              <span>{t("Remboursement")}</span>
                             </div>
                             <div className="col-12">
                               <input
@@ -88,7 +91,7 @@ function Configuration() {
                                 id="email-id-vertical1"
                                 className="col-6 form-control"
                                 name="email-id"
-                                placeholder="Ecrire Ici"
+                                placeholder={t("Ecrire Ici")}
                                 required
                               />
                             </div>
@@ -101,9 +104,9 @@ function Configuration() {
                                   id="checkbox2"
                                   className="col-6 form-check-input"
                                   defaultChecked
-                                  onclick
+                                  onClick
                                 />{" "}
-                                <span>Facilité</span>
+                                <span>{t("Facilité")}</span>
                               </div>
                               <div className="col-6">
                                 <input
@@ -111,7 +114,7 @@ function Configuration() {
                                   id="email-id-vertical2"
                                   className="col-6 form-control"
                                   name="email-id"
-                                  placeholder="Ecrire Ici"
+                                  placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
@@ -125,8 +128,8 @@ function Configuration() {
                                   id="basicSelect"
                                   required
                                 >
-                                  <option>Mois</option>
-                                  <option>L'année</option>
+                                  <option>{t("Mois")}</option>
+                                  <option>{t("L'année")}</option>
                                 </select>
                               </fieldset>
                             </div>
@@ -136,14 +139,14 @@ function Configuration() {
                         <div className="col-12">
                           <div className="form-group">
                             <label htmlFor="email-id-vertical">
-                              Nb De Mois
+                              {t("Nb De Mois")}
                             </label>
                             <input
                               type="number"
                               id="email-id-vertical"
                               className="form-control"
-                              name
-                              placeholder="Ecrire Ici"
+                              name="email-id"
+                              placeholder={t("Ecrire Ici")}
                               required
                             />
                           </div>
@@ -160,7 +163,7 @@ function Configuration() {
             >
               <div className="modal-header">
                 <h2 className="new-price" id="myModalLabel33">
-                  Ajouter une nouvelle Configuration
+                  {t("Ajouter une nouvelle Configuration")}
                 </h2>
                 <br />
                 <br />
@@ -169,34 +172,33 @@ function Configuration() {
               </div>
               <form action="#">
                 <div className="modal-body">
-                  <label htmlFor="email">Nb attendu des participants</label>
+                  <label htmlFor="email">
+                    {t("Nb attendu des participants")}
+                  </label>
                   <div className="form-group">
                     <input
-                      id
                       type="number"
-                      placeholder="Écrivez ici"
+                      placeholder={t("Écrivez ici")}
                       className="form-control"
                       maxLength={25}
                       required
                     />
                   </div>
-                  <label htmlFor="email">Date de Lancement</label>
+                  <label htmlFor="email">{t("Date de Lancement")}</label>
                   <div className="form-group">
                     <input
-                      id
                       type="datetime-local"
-                      placeholder="Écrivez ici"
+                      placeholder={t("Écrivez ici")}
                       className="form-control"
                       maxLength={25}
                       required
                     />
                   </div>
-                  <label htmlFor="email">Date de Fermeture</label>
+                  <label htmlFor="email">{t("Date de Fermeture")}</label>
                   <div className="form-group">
                     <input
-                      id
                       type="datetime-local"
-                      placeholder="Écrivez ici"
+                      placeholder={t("Écrivez ici")}
                       className="form-control"
                       maxLength={25}
                       required
@@ -211,7 +213,7 @@ function Configuration() {
                     data-bs-dismiss="modal"
                   >
                     <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">Planifier</span>
+                    <span className="d-none d-sm-block">{t("Planifier")}</span>
                   </button>
                   <button
                     type="button"
@@ -219,7 +221,7 @@ function Configuration() {
                     data-bs-dismiss="modal"
                   >
                     <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">Publier</span>
+                    <span className="d-none d-sm-block">{t("Publier")}</span>
                   </button>
                   <button
                     type="button"
@@ -227,7 +229,7 @@ function Configuration() {
                     data-bs-dismiss="modal"
                   >
                     <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">Enregister</span>
+                    <span className="d-none d-sm-block">{t("Enregister")}</span>
                   </button>
                 </div>
               </form>

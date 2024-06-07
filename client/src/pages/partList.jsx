@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Modal, Button, Table, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function ParticipantList() {
+  const { t } = useTranslation();
   const [modalShow, setModalShow] = useState(false);
 
   const participants = [
@@ -20,100 +22,93 @@ function ParticipantList() {
 
   const handleLockUnlock = (action, item) => {
     Swal.fire({
-      title: `Are you sure you want to ${action}?`,
-      text: `Once ${action}ed, you will not be able to revert this!`,
+      title: t(`Êtes-vous sûr?`),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: `Yes, ${action} it!`,
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t(`Oui`),
+      cancelButtonText: t("Non, annuler!"),
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          `${action.charAt(0).toUpperCase() + action.slice(1)}ed!`,
-          `Your item has been ${action}ed.`,
-          "secondary"
+          t(`Fait`),
         );
       } else {
-        Swal.fire("Cancelled", `Your item is safe :)`, "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
-  };
+  }
 
   return (
     <section className="section">
       <div className="card">
         <div className="card-header">
-          <h2>Liste des participants</h2>
+          <h2>{t("Liste des participants")}</h2>
         </div>
         <div className="row" style={{ padding: "0 20px" }}>
-              <div className="col-md-3 mb-4">
-                <h6>Etat</h6>
-                <fieldset className="form-group">
-                  <select className="form-select" id="basicSelect1">
-                    <option disabled selected>
-                      Choose Etat
-                    </option>{" "}
-                    {/* Not selected by default */}
-                    <option>Active</option>
-                    <option>Inactive</option>
-                  </select>
-                </fieldset>
-              </div>
-              <div className="col-md-3 mb-4">
-                <h6>Participe</h6>
-                <fieldset className="form-group">
-                  <select className="form-select" id="basicSelect2">
-                    <option disabled selected>
-                      Choose Participe
-                    </option>{" "}
-                    {/* Not selected by default */}
-                    <option>Oui</option>
-                    <option>Non</option>
-                  </select>
-                </fieldset>
-              </div>
-              <div className="col-md-3 mb-4">
-                <h6>Gagnant</h6>
-                <fieldset className="form-group">
-                  <select className="form-select" id="basicSelect3">
-                    <option disabled selected>
-                      Choose Gagnant
-                    </option>{" "}
-                    {/* Not selected by default */}
-                    <option>Oui</option>
-                    <option>Non</option>
-                  </select>
-                </fieldset>
-              </div>
-              <div className="col-md-3 mb-4">
-                <h6>Statut</h6>
-                <fieldset className="form-group">
-                  <select className="form-select" id="basicSelect3">
-                    <option disabled selected>
-                      Choose Statut
-                    </option>{" "}
-                    {/* Not selected by default */}
-                    <option>Nouveau</option>
-                    <option>Ancien</option>
-                  </select>
-                </fieldset>
-              </div>
-            </div>
+          <div className="col-md-3 mb-4">
+            <h6>{t("Etat")}</h6>
+            <fieldset className="form-group">
+              <select className="form-select" id="basicSelect1">
+                <option disabled selected>
+                  {t("Choose Etat")}
+                </option>
+                <option>{t("Active")}</option>
+                <option>{t("Inactive")}</option>
+              </select>
+            </fieldset>
+          </div>
+          <div className="col-md-3 mb-4">
+            <h6>{t("Participe")}</h6>
+            <fieldset className="form-group">
+              <select className="form-select" id="basicSelect2">
+                <option disabled selected>
+                  {t("Choose Participe")}
+                </option>
+                <option>{t("Oui")}</option>
+                <option>{t("Non")}</option>
+              </select>
+            </fieldset>
+          </div>
+          <div className="col-md-3 mb-4">
+            <h6>{t("Gagnant")}</h6>
+            <fieldset className="form-group">
+              <select className="form-select" id="basicSelect3">
+                <option disabled selected>
+                  {t("Choose Gagnant")}
+                </option>
+                <option>{t("Oui")}</option>
+                <option>{t("Non")}</option>
+              </select>
+            </fieldset>
+          </div>
+          <div className="col-md-3 mb-4">
+            <h6>{t("Statut")}</h6>
+            <fieldset className="form-group">
+              <select className="form-select" id="basicSelect3">
+                <option disabled selected>
+                  {t("Choose Statut")}
+                </option>
+                <option>{t("Nouveau")}</option>
+                <option>{t("Ancien")}</option>
+              </select>
+            </fieldset>
+          </div>
+        </div>
         <div className="card-body">
           <Table responsive="sm">
             <thead>
               <tr>
-                <th>Nom et prénom</th>
-                <th>Pseudo</th>
-                <th>Num tél</th>
-                <th>Date inscri</th>
-                <th>Nbr d'achats</th>
-                <th>Nbr d'enchères</th>
-                <th>Détail</th>
-                <th>Bloquer</th>
-                <th>Débloquer</th>
-                <th>Solde</th>
+                <th>{t("Nom et prénom")}</th>
+                <th>{t("Pseudo")}</th>
+                <th>{t("Num tél")}</th>
+                <th>{t("Date inscri")}</th>
+                <th>{t("Nbr d'achats")}</th>
+                <th>{t("Nbr d'enchères")}</th>
+                <th>{t("Détail")}</th>
+                <th>{t("Bloquer")}</th>
+                <th>{t("Débloquer")}</th>
+                <th>{t("Solde")}</th>
               </tr>
             </thead>
             <tbody>
@@ -159,26 +154,26 @@ function ParticipantList() {
 
       <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter Montant</Modal.Title>
+          <Modal.Title>{t("Ajouter Montant")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Montant:</Form.Label>
-              <Form.Control type="number" placeholder="Entrez le montant" />
+              <Form.Label>{t("Montant")}</Form.Label>
+              <Form.Control type="number" placeholder={t("Entrez le montant")} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Manière de recharge</Form.Label>
+              <Form.Label>{t("Manière de recharge")}</Form.Label>
               <Form.Select>
-                <option>Virement bancaire</option>
-                <option>Chèque</option>
-                <option>Transfert du solde</option>
-                <option>Visite Bureau Mazed</option>
-                <option>Carte de recharge</option>
+                <option>{t("Virement bancaire")}</option>
+                <option>{t("Chèque")}</option>
+                <option>{t("Transfert du solde")}</option>
+                <option>{t("Visite Bureau Mazed")}</option>
+                <option>{t("Carte de recharge")}</option>
               </Form.Select>
             </Form.Group>
             <Button variant="primary" type="submit">
-              Ajouter
+              {t("Ajouter")}
             </Button>
           </Form>
         </Modal.Body>

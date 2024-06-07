@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 
 function UtilisateurForm() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
       <div id="main">
@@ -12,7 +15,7 @@ function UtilisateurForm() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Ajouter un Utilisateur</h2>
+              <h2 className="new-price">{t("Ajouter un Utilisateur")}</h2>
             </div>
             <div className="card-content">
               <div className="card-body">
@@ -21,13 +24,13 @@ function UtilisateurForm() {
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Nom</label>
+                          <label htmlFor="email-id-icon">{t("Nom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Nom"
+                              placeholder={t("Nom")}
                               maxLength={25}
                             />
                           </div>
@@ -35,13 +38,13 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Prénom</label>
+                          <label htmlFor="email-id-icon">{t("Prénom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Prénom"
+                              placeholder={t("Prénom")}
                               maxLength={25}
                             />
                           </div>
@@ -49,13 +52,13 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Email</label>
+                          <label htmlFor="email-id-icon">{t("Email")}</label>
                           <div className="position-relative">
                             <input
                               type="email"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Pseudo"
+                              placeholder={t("Email")}
                               maxLength={25}
                             />
                           </div>
@@ -63,7 +66,7 @@ function UtilisateurForm() {
                       </div>
                       <div className="form-group">
                         <label htmlFor="email-id-icon">
-                          Numéro de téléphone
+                          {t("Numéro de téléphone")}
                         </label>
                         <div className="input-group mb-3">
                           <span className="input-group-text" id="basic-addon1">
@@ -79,12 +82,12 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Role</label>
+                          <label htmlFor="email-id-icon">{t("Role")}</label>
                           <fieldset className="form-group mb-3">
                             <select className="form-select" id="basicSelect">
-                              <option>IT</option>
-                              <option>Blade Runner</option>
-                              <option>Thor Ragnarok</option>
+                              <option>{t("IT")}</option>
+                              <option>{t("Blade Runner")}</option>
+                              <option>{t("Thor Ragnarok")}</option>
                             </select>
                           </fieldset>
                         </div>
@@ -97,14 +100,14 @@ function UtilisateurForm() {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-none d-sm-block">Annuler</span>
+                        <span className="d-none d-sm-block">{t("Annuler")}</span>
                       </button>
                       <button
                         type="button"
                         className="btn btn-dark"
                         id="suivantBtn"
                       >
-                        Enregistrer
+                        {t("Enregister")}
                       </button>
                     </div>
                   </div>

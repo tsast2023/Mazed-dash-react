@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function VendeurForm() {
+  const { t } = useTranslation();
+
   return (
     <div className='content-container'>
       <div id="main">
@@ -12,7 +15,7 @@ function VendeurForm() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Ajouter un Vendeur</h2>
+              <h2 className="new-price">{t("Ajouter un Vendeur")}</h2>
             </div>
             <div className="card-content">
               <div className="card-body">
@@ -21,13 +24,13 @@ function VendeurForm() {
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Nom</label>
+                          <label htmlFor="email-id-icon">{t("Nom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Nom"
+                              placeholder={t("Nom")}
                               maxLength={25}
                             />
                           </div>
@@ -35,13 +38,13 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Prénom</label>
+                          <label htmlFor="email-id-icon">{t("Prénom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Prénom"
+                              placeholder={t("Prénom")}
                               maxLength={25}
                             />
                           </div>
@@ -49,13 +52,13 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Pseudo</label>
+                          <label htmlFor="email-id-icon">{t("Pseudo")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
                               id="email-id-icon"
-                              placeholder="Pseudo"
+                              placeholder={t("Pseudo")}
                               maxLength={25}
                             />
                           </div>
@@ -63,7 +66,7 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">Email</label>
+                          <label htmlFor="email-id-icon">{t("Email")}</label>
                           <div className="position-relative">
                             <input
                               type="Email"
@@ -77,7 +80,7 @@ function VendeurForm() {
                       </div>
                       <div className="form-group">
                         <label htmlFor="email-id-icon">
-                          Numéro de téléphone
+                          {t("Numéro de téléphone")}
                         </label>
                         <div className="input-group mb-3">
                           <span className="input-group-text" id="basic-addon1">
@@ -93,34 +96,7 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">CIN</label>
-                          <div className="position-relative">
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="email-id-icon"
-                              placeholder="CIN"
-                              maxLength={8}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label htmlFor="email-id-icon">CIN Image</label>
-                          <div className="position-relative">
-                            <input
-                              type="file"
-                              className="form-control"
-                              id="email-id-icon"
-                              placeholder="CIN"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label htmlFor="email-id-icon">Patente</label>
+                          <label htmlFor="email-id-icon">{t("Patente")}</label>
                           <div className="position-relative">
                             <input
                               type="file"
@@ -140,14 +116,14 @@ function VendeurForm() {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-none d-sm-block">Annuler</span>
+                        <span className="d-none d-sm-block">{t("Annuler")}</span>
                       </button>
                       <button
                         type="button"
                         className="btn btn-dark"
                         id="suivantBtn"
                       >
-                        Valider
+                        {t("Valider")}
                       </button>
                     </div>
                   </div>
@@ -161,4 +137,4 @@ function VendeurForm() {
   );
 }
 
-export default VendeurForm
+export default VendeurForm;

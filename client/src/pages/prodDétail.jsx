@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import "../css/prod-detail.css";
+import { useTranslation } from "react-i18next";
 
 const ProductDetail = () => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(0);
   const images = [
     "https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg",
@@ -29,22 +31,22 @@ const ProductDetail = () => {
     updateImagePosition();
   };
 
-  const confirmAction = (actionType) => {
-    Swal.fire({
-      title: `Are you sure you want to ${actionType}?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: `Yes, ${actionType} it!`,
-      cancelButtonText: "No, cancel!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Implement the action based on actionType
-        Swal.fire("Completed!", `The item has been ${actionType}.`, "secondary");
-      }
-    });
-  };
+const confirmAction = (actionType) => {
+  Swal.fire({
+    title: t("Êtes-vous sûr?"),
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: t("Oui"),
+    cancelButtonText: t("Non, annuler!"),
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(t("Terminé"), t("L'élément a été ajoutée"), "secondary");
+    }
+  });
+};
+
 
   return (
     <section className="section">
@@ -86,24 +88,24 @@ const ProductDetail = () => {
             </a>
             <div className="product-price">
               <p className="new-price">
-                Prix: <span>$249.00</span>
+                {t("Prix")}: <span>$249.00</span>
               </p>
             </div>
             <div className="product-detail">
-              <h2>Description</h2>
+              <h2>{t("Description")}</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
               <ul>
                 <li>
-                  Stock initial : <span>20</span>
+                  {t("Stock initial")} : <span>20</span>
                 </li>
                 <li>
-                  Stock actuel : <span>10</span>
+                  {t("Stock actuel")} : <span>10</span>
                 </li>
                 <li>
-                  Couleurs : <span>Black</span>
+                  {t("Couleurs")} : <span>Black</span>
                 </li>
                 <li>
-                  Statut : <span>Publié</span>
+                  {t("Statut")} : <span>Publié</span>
                 </li>
               </ul>
             </div>
@@ -112,19 +114,19 @@ const ProductDetail = () => {
                 className="btn btn-primary me-3 banIcon"
                 onClick={() => confirmAction("deactivate")}
               >
-                Désactiver
+                {t("Désactiver")}
               </button>
               <button
                 className="btn btn-primary me-3 deleteIcon"
                 onClick={() => confirmAction("delete")}
               >
-                Supprimer
+                {t("Supprimer")}
               </button>
               <button
                 className="btn btn-primary me-3"
                 onClick={() => confirmAction("add auction")}
               >
-                Ajouter une enchère
+                {t("Ajouter une enchère")}
               </button>
             </div>
           </div>

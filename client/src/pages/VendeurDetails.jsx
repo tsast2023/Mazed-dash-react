@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function VendeurDetails() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
       <div id="main">
@@ -15,7 +17,7 @@ function VendeurDetails() {
             <div className="page-title">
               <div className="row">
                 <div className="col-12 col-md-6 order-md-1 order-last">
-                  <h3>Détails d’un vendeur</h3>
+                  <h3>{t("Détails d’un vendeur")}</h3>
                 </div>
                 <div className="col-12 col-md-6 order-md-2 order-first"></div>
               </div>
@@ -37,14 +39,14 @@ function VendeurDetails() {
                             alt="Avatar"
                           />
                         </div>
-                        <h3 className="mt-3">Nom et Prénom</h3>
-                        <p className="text-small">Pseudo</p>
+                        <h3 className="mt-3">{t("Nom et Prénom")}</h3>
+                        <p className="text-small">{t("Pseudo")}</p>
                       </div>
                       <div className="card-body">
                         <form action="#" method="get">
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              Date d'inscription
+                              {t("Date d’inscription")}
                             </label>
                             <input
                               type="text"
@@ -58,7 +60,7 @@ function VendeurDetails() {
                           </div>
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              Nombre de produits déposés dans la boutique
+                              {t("Nombre de produits déposés dans la boutique")}
                             </label>
                             <input
                               type="text"
@@ -72,7 +74,7 @@ function VendeurDetails() {
                           </div>
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              Les ventes
+                              {t("Les ventes")}
                             </label>
                             <input
                               type="number"
@@ -86,7 +88,7 @@ function VendeurDetails() {
                           </div>
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              L’évaluation
+                              {t("L’évaluation")}
                             </label>
                             <input
                               type="number"
@@ -100,7 +102,7 @@ function VendeurDetails() {
                           </div>
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              Les réclamations
+                              {t("Les réclamations")}
                             </label>
                             <input
                               type="number"
@@ -114,10 +116,10 @@ function VendeurDetails() {
                           </div>
                           <div className="form-group">
                             <button type="submit" className="btn btn-danger me-2">
-                              Bloquer
+                              {t("Bloquer")}
                             </button>
                             <button type="submit" className="btn btn-secondary">
-                              Débloquer
+                              {t("Débloquer")}
                             </button>
                           </div>
                         </form>
@@ -133,19 +135,19 @@ function VendeurDetails() {
                   <section className="section">
                     <div className="card">
                       <div className="card-header">
-                        <h5 className="card-title">Ventes</h5>
+                        <h5 className="card-title">{t("Ventes")}</h5>
                       </div>
                       <div className="card-body">
                         <div className="table-responsive datatable-minimal">
                           <table className="table" id="table2">
                             <thead>
                               <tr>
-                                <th>Le stock à l’entrée</th>
-                                <th>Le stock actuel</th>
-                                <th>Le prix de vente</th>
-                                <th>Les promotions</th>
-                                <th>L’évaluation</th>
-                                <th>Le nombre de visites sur produit</th>
+                                <th>{t("Le stock à l’entrée")}</th>
+                                <th>{t("Le stock actuel")}</th>
+                                <th>{t("Le prix de vente")}</th>
+                                <th>{t("Les promotions")}</th>
+                                <th>{t("L’évaluation")}</th>
+                                <th>{t("Le nombre de visites sur produit")}</th>
                               </tr>
                             </thead>
                             <tbody>

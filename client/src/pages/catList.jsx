@@ -72,7 +72,6 @@ function CategoryList() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Appeler la fonction deleteItem
         deleteItem();
         Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "secondary");
       } else {
@@ -82,7 +81,6 @@ function CategoryList() {
   };
 
   const deleteItem = () => {  
-    // Implement your delete logic here
   };
 
   const activateDeactivateItem = () => {

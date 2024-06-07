@@ -1,49 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useTranslation } from 'react-i18next';
 
 function TableVendeurs() {
+  const { t } = useTranslation();
   const handleBlockClick = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Block it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disable.", "secondary");
+        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "secondary");
       } else {
-        Swal.fire("Cancelled", "Your item is safe :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
-
+  
   const handleUnblockClick = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Unblock it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disable.", "secondary");
+        Swal.fire(t("Débloquer"), t("Votre élément a été débloquer."), "secondary");
       } else {
-        Swal.fire("Cancelled", "Your item is safe :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
+  
 
   const deleteItem = () => {
     // Your delete logic here
@@ -60,25 +61,25 @@ function TableVendeurs() {
         <section className="section">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Liste des vendeurs</h2>
+              <h2 className="new-price">{t("Liste des vendeurs")}</h2>
             </div>
             <div className="row" style={{ padding: "0 20px" }}>
               <div className="col-md-6 mb-4">
-                <h6>Statut</h6>
+                <h6>{t("Statut")}</h6>
                 <fieldset className="form-group">
                   <select className="form-select" id="basicSelect1">
-                    <option>Particulier</option>
-                    <option>Professionel</option>
+                    <option>{t("Particulier")}</option>
+                    <option>{t("Professionel")}</option>
                   </select>
                 </fieldset>
               </div>
               <div className="col-md-6 mb-4">
-                <h6>Etat</h6>
+                <h6>{t("Etat")}</h6>
                 <fieldset className="form-group">
                   <select className="form-select" id="basicSelect2">
-                    <option>Accepte</option>
-                    <option>Non confirmé</option>
-                    <option>Refuse</option>
+                    <option>{t("Accepte")}</option>
+                    <option>{t("Non confirmé")}</option>
+                    <option>{t("Refuse")}</option>
                   </select>
                 </fieldset>
               </div>
@@ -88,14 +89,14 @@ function TableVendeurs() {
                 <table className="table" id="table1">
                   <thead>
                     <tr>
-                      <th>Nom</th>
-                      <th>Pseudo</th>
-                      <th>Date inscription</th>
-                      <th>Produits déposés dans boutique</th>
-                      <th>Produits déposés aux enchères</th>
-                      <th>Détail</th>
-                      <th>Bloquer</th>
-                      <th>Débloquer</th>
+                      <th>{t("Nom")}</th>
+                      <th>{t("Pseudo")}</th>
+                      <th>{t("Date inscription")}</th>
+                      <th>{t("Produits déposés dans boutique")}</th>
+                      <th>{t("Produits déposés aux enchères")}</th>
+                      <th>{t("Détail")}</th>
+                      <th>{t("Bloquer")}</th>
+                      <th>{t("Débloquer")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -107,13 +108,15 @@ function TableVendeurs() {
                       <td>1</td>
                       <td>
                         <Link to='/VendeurDetails' >
-                        <i  class="fa-solid fa-eye"></i>
+                          <i className="fa-solid fa-eye"></i>
                         </Link>
                       </td>
                       <th>
-                      <i onClick={handleBlockClick } class="fa-solid fa-lock"></i>                      </th>
+                        <i onClick={handleBlockClick} className="fa-solid fa-lock"></i>
+                      </th>
                       <td>
-                      <i onClick={handleUnblockClick} class="fa-solid fa-unlock"></i>                      </td>
+                        <i onClick={handleUnblockClick} className="fa-solid fa-unlock"></i>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

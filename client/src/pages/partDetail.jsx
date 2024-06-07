@@ -9,8 +9,10 @@ import {
   Col,
   Card,
 } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 function PartDetail() {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
   const handleModalClose = () => setShowModal(false);
@@ -35,12 +37,12 @@ function PartDetail() {
                       alt="Avatar"
                     />
                   </div>
-                  <h3 className="mt-3">Nom et Prénom</h3>
-                  <p className="text-small">Pseudo</p>
+                  <h3 className="mt-3">{t("Nom et Prénom")}</h3>
+                  <p className="text-small">{t("Pseudo")}</p>
                 </div>
                 <Form>
                   <Form.Group className="mb-3">
-                    <Form.Label>Numéro de téléphone</Form.Label>
+                    <Form.Label>{t("Numéro de téléphone")}</Form.Label>
                     <Form.Control
                       type="number"
                       placeholder="+12222222222"
@@ -48,7 +50,7 @@ function PartDetail() {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Date d’inscription</Form.Label>
+                    <Form.Label>{t("Date d’inscription")}</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="01/01/2024"
@@ -56,21 +58,21 @@ function PartDetail() {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Nombre d’achats</Form.Label>
+                    <Form.Label>{t("Nombre d’achats")}</Form.Label>
                     <Form.Control type="number" placeholder="222" disabled />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Nombre d’enchères</Form.Label>
+                    <Form.Label>{t("Nombre d’enchères")}</Form.Label>
                     <Form.Control type="number" placeholder="22" disabled />
                   </Form.Group>
                   <Button variant="danger" type="submit" className="me-2">
-                    Bloquer
+                    {t("Bloquer")}
                   </Button>
                   <Button variant="secondary" type="submit" className="me-2">
-                    Débloquer
+                    {t("Débloquer")}
                   </Button>
                   <Button variant="primary" onClick={handleModalShow}>
-                    Ajouter du solde
+                    {t("Ajouter du solde")}
                   </Button>
                 </Form>
               </Card.Body>
@@ -83,26 +85,26 @@ function PartDetail() {
 
       <Modal show={showModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter du solde</Modal.Title>
+          <Modal.Title>{t("Ajouter du solde")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Montant:</Form.Label>
-              <Form.Control type="number" placeholder="Entrez le montant" />
+              <Form.Label>{t("Montant")}</Form.Label>
+              <Form.Control type="number" placeholder={t("Entrez le montant")} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Manière de recharge</Form.Label>
+              <Form.Label>{t("Manière de recharge")}</Form.Label>
               <Form.Select>
-                <option value="square">Virement bancaire</option>
-                <option value="rectangle">Chèque</option>
-                <option value="rombo">Transfert du solde</option>
-                <option value="romboid">Visite Bureau Mazed</option>
-                <option value="trapeze">Carte de recharge</option>
+                <option value="square">{t("Virement bancaire")}</option>
+                <option value="rectangle">{t("Chèque")}</option>
+                <option value="rombo">{t("Transfert du solde")}</option>
+                <option value="romboid">{t("Visite Bureau Mazed")}</option>
+                <option value="trapeze">{t("Carte de recharge")}</option>
               </Form.Select>
             </Form.Group>
             <Button variant="primary" type="submit">
-              Ajouter
+              {t("Ajouter")}
             </Button>
           </Form>
         </Modal.Body>
