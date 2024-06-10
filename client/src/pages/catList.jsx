@@ -167,15 +167,14 @@ function CategoryList() {
 
                 <div className="card-content">
                   <div >
-                   {isMobile?  <table >
-                    <thead>
-                      <tr>
-                      </tr>
-                    </thead>
+                   {isMobile?  <table style={{width:"100%", textAlign:"center"}}>
                     <tbody>
                       
                       {categories?categories.map((cat)=>(
-                        <td>
+                       
+                          <tr style={{display:"flex" , justifyContent:"center" , flexDirection:"column"}}>
+                            <hr/>
+                          <td style={{display:"flex" , justifyContent:"center" , flexDirection:"column"}}>
                         <th>{t("Libellé")}</th>
                         <tr className="text-bold-500">{cat.libeléCategorie}</tr>
                         <th>{t("Détail")}</th>
@@ -197,6 +196,8 @@ function CategoryList() {
                         <th>{t("Mettre a l'une")}</th>
                         <tr><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></tr>
                       </td>
+                          </tr>
+
                       )):<div>loading</div>}
                       
                       
