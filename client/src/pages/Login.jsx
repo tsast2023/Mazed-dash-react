@@ -17,7 +17,7 @@ export default function Login() {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid login-container">
       <div className="background-image"></div>
       <div className="login-form-container">
         <div className="login-form">
