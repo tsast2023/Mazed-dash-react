@@ -65,12 +65,12 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!token && (
+        {token && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
         )}
-        {!token && (
+        {token && (
           <div className='content-container'>
             <Navbar />
             <Routes>
@@ -129,7 +129,7 @@ const App = () => {
           </div>
         )}
         </div>
-        {token && <Login setToken={setToken} />}
+        {!token && <Login setToken={setToken} />}
       </Router>
     </DataProvider>
   );

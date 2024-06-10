@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,22 @@ function ProdList() {
   const deleteItem = () => {
     // Function to delete item
   };
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="content-container">
@@ -34,7 +50,7 @@ function ProdList() {
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
-                    <table className="table" id="table1">
+                    <table className={`table ${isMobile ? "mobile-table" : ""}`} id="table1">
                       <thead>
                         <tr>
                           <th>{t("Réf")}</th>

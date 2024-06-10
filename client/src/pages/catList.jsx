@@ -165,82 +165,144 @@ function CategoryList() {
                     </div>
                   </div>
 
-                <div className="card-content">
-                  <div >
-                   {isMobile?  <table style={{width:"100%", textAlign:"center"}}>
-                    <tbody>
-                      
-                      {categories?categories.map((cat)=>(
-                       
-                          <tr style={{display:"flex" , justifyContent:"center" , flexDirection:"column"}}>
-                            <hr/>
-                          <td style={{display:"flex" , justifyContent:"center" , flexDirection:"column"}}>
-                        <th>{t("Libellé")}</th>
-                        <tr className="text-bold-500">{cat.libeléCategorie}</tr>
-                        <th>{t("Détail")}</th>
-                        <tr>
-                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
-                          <i className="fa-solid fa-eye"></i>
-                          </a>
-                        </tr>
-                        <th>{t("Modifier")}</th>
-                        <tr>
-                        <Link to={"/catmodif"}>
-                          <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </tr>
-                        <th>{t("Désactiver")}</th>
-                        <tr><i className="fa-solid fa-ban" onClick={handleBan}></i></tr>
-                        <th>{t("Supprimer")}</th>
-                        <tr><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></tr>
-                        <th>{t("Mettre a l'une")}</th>
-                        <tr><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></tr>
-                      </td>
-                          </tr>
-
-                      )):<div>loading</div>}
-                      
-                      
-                    </tbody>
-                  </table> :
-                    <table className="table" id="table1">
-                    <thead>
-                      <tr>
-                        <th>{t("Libellé")}</th>
-                        <th>{t("Détail")}</th>
-                        <th>{t("Modifier")}</th>
-                        <th>{t("Désactiver")}</th>
-                        <th>{t("Supprimer")}</th>
-                        <th>{t("Mettre a l'une")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {categories?categories.map((cat)=>(
-                        <tr>
-                        <td className="text-bold-500">{cat.libeléCategorie}</td>
-                        <td>
-                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
-                          <i className="fa-solid fa-eye"></i>
-                          </a>
-                        </td>
-                        <td>
-                        <Link to={"/catmodif"}>
-                          <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </td>
-                        <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
-                        <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
-                        <td><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></td>
-                      </tr>
-                      )):<div>loading</div>}
-                      
-                      
-                    </tbody>
-                  </table>}
+                  <div className="card-content">
+                    <div>
+                      {isMobile ? (
+                        <table style={{ width: "100%", textAlign: "center" }}>
+                          <tbody>
+                            {categories ? (
+                              categories.map((cat) => (
+                                <tr
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    flexDirection: "column",
+                                  }}
+                                >
+                                  <hr />
+                                  <td
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      flexDirection: "column",
+                                    }}
+                                  >
+                                    <th>{t("Libellé")}</th>
+                                    <tr className="text-bold-500">
+                                      {cat.libeléCategorie}
+                                    </tr>
+                                    <th>{t("Détail")}</th>
+                                    <tr>
+                                      <a
+                                        onClick={() =>
+                                          navigate(`/catdetail/${cat.id}`, {
+                                            state: { cat },
+                                          })
+                                        }
+                                      >
+                                        <i className="fa-solid fa-eye"></i>
+                                      </a>
+                                    </tr>
+                                    <th>{t("Modifier")}</th>
+                                    <tr>
+                                      <Link to={"/catmodif"}>
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                      </Link>
+                                    </tr>
+                                    <th>{t("Désactiver")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-ban"
+                                        onClick={handleBan}
+                                      ></i>
+                                    </tr>
+                                    <th>{t("Supprimer")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-trash deleteIcon"
+                                        onClick={handleDelete}
+                                      ></i>
+                                    </tr>
+                                    <th>{t("Mettre a l'une")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-star arrowIcon"
+                                        onClick={handleArrowClick}
+                                      ></i>
+                                    </tr>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <div>loading</div>
+                            )}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <table className="table" id="table1">
+                          <thead>
+                            <tr>
+                              <th>{t("Libellé")}</th>
+                              <th>{t("Détail")}</th>
+                              <th>{t("Modifier")}</th>
+                              <th>{t("Désactiver")}</th>
+                              <th>{t("Supprimer")}</th>
+                              <th>{t("Mettre a l'une")}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {categories ? (
+                              categories.map((cat) => (
+                                <tr>
+                                  <td className="text-bold-500">
+                                    {cat.libeléCategorie}
+                                  </td>
+                                  <td>
+                                    <a
+                                      onClick={() =>
+                                        navigate(`/catdetail/${cat.id}`, {
+                                          state: { cat },
+                                        })
+                                      }
+                                    >
+                                      <i className="fa-solid fa-eye"></i>
+                                    </a>
+                                  </td>
+                                  <td>
+                                    <Link to={"/catmodif"}>
+                                      <i className="fa-solid fa-pen-to-square"></i>
+                                    </Link>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-ban"
+                                      onClick={handleBan}
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-trash deleteIcon"
+                                      onClick={handleDelete}
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-star arrowIcon"
+                                      onClick={handleArrowClick}
+                                    ></i>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <div>loading</div>
+                            )}
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           </section>
         </div>
