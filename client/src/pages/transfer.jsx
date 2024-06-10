@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useTranslation } from 'react-i18next';
 
 function Modal() {
+  const { t } = useTranslation();
   return (
     <div
       className="modal fade text-left"
@@ -16,7 +17,7 @@ function Modal() {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="myModalLabel1">
-              Cause
+              {t("Cause")}
             </h5>
             <button
               type="button"
@@ -37,7 +38,7 @@ function Modal() {
           <div className="modal-footer">
             <button type="button" className="btn" data-bs-dismiss="modal">
               <i className="bx bx-x d-block d-sm-none"></i>
-              <span className="d-none d-sm-block">Férme</span>
+              <span className="d-none d-sm-block">{t("Annulé")}</span>
             </button>
             <button
               type="button"
@@ -45,7 +46,7 @@ function Modal() {
               data-bs-dismiss="modal"
             >
               <i className="bx bx-check d-block d-sm-none"></i>
-              <span className="d-none d-sm-block">Envoyer</span>
+              <span className="d-none d-sm-block">{t("Envoyer")}</span>
             </button>
           </div>
         </div>
@@ -55,6 +56,7 @@ function Modal() {
 }
 
 function TableRow({ userData, status, onAccept }) {
+  const { t } = useTranslation();
   return (
     <tr>
       <td>{userData.name}</td>
@@ -63,7 +65,7 @@ function TableRow({ userData, status, onAccept }) {
       <td>{userData.location}</td>
       <td>{userData.note}</td>
       <td>
-        <span className={`badge bg-${status.color}`}>{status.text}</span>
+        <span className={`badge bg-${status.color}`}>{t(status.text)}</span>
       </td>
       <td>
         <i
@@ -175,21 +177,21 @@ function Transfer() {
           <section className="section">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Demandes de transferts</h2>
+                <h2 className="new-price">{t("Demandes de transferts")}</h2>
               </div>
               <div className="card-body">
                 <div className="table-responsive datatable-minimal">
                   <table className="table" id="table2">
                     <thead>
                       <tr>
-                        <th>Date</th>
-                        <th>Utilisateur</th>
-                        <th>Valeur</th>
-                        <th>Type</th>
-                        <th>Pièce jointe</th>
-                        <th>Statut</th>
-                        <th>Accepter</th>
-                        <th>Refuser</th>
+                        <th>{t("Date")}</th>
+                        <th>{t("Utilisateur")}</th>
+                        <th>{t("Valeur")}</th>
+                        <th>{t("Type")}</th>
+                        <th>{t("Pièce jointe")}</th>
+                        <th>{t("Statut")}</th>
+                        <th>{t("Accepter")}</th>
+                        <th>{t("Refuser")}</th>
                       </tr>
                     </thead>
                     <tbody>

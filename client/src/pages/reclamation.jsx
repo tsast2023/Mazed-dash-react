@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
     <div id="main">
@@ -14,7 +16,7 @@ function App() {
           <div className="col-12">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Tableau de Réclamation</h2>
+                <h2 className="new-price">{t("Tableau de Réclamation")}</h2>
               </div>
               <div className="card-content">
                 {/* table contextual / colored */}
@@ -22,20 +24,20 @@ function App() {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th>Date</th>
-                        <th>Utilisateur</th>
-                        <th>Sujet</th>
-                        <th>Statut</th>
-                        <th>ACTION</th>
+                        <th>{t("Date")}</th>
+                        <th>{t("Utilisateur")}</th>
+                        <th>{t("Sujet")}</th>
+                        <th>{t("Statut")}</th>
+                        <th>{t("Détail")}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td className="text-bold-500">10/10/2024</td>
-                        <td>Lorem Lorem</td>
-                        <td className="text-bold-500">Lorem Lorem</td>
+                        <td>{t("Lorem Lorem")}</td>
+                        <td className="text-bold-500">{t("Lorem Lorem")}</td>
                         <td>
-                          <span className="badge bg-secondary">Ouverte</span>
+                          <span className="badge bg-secondary">{t("Ouverte")}</span>
                         </td>
                         <td>
                           <section id="basic-modals">
@@ -65,7 +67,7 @@ function App() {
                                       className="modal-title"
                                       id="myModalLabel1"
                                     >
-                                      Réclamation
+                                      {t("Réclamations")}
                                     </h5>
                                     <button
                                       type="button"
@@ -76,12 +78,7 @@ function App() {
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll.
+                                      {t("Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry. Carrot cake chocolate tootsie roll chocolate bar candy canes biscuit. Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.")}
                                     </p>
                                     <div className="card-body">
                                       <div className="form-group with-title mb-3">
@@ -99,14 +96,14 @@ function App() {
                                       className="btn btn-secondary"
                                       data-bs-dismiss="modal"
                                     >
-                                      Fermer
+                                      {t("Fermer")}
                                     </button>
                                     <button
                                       type="button"
                                       className="btn btn-primary"
                                       data-bs-dismiss="modal"
                                     >
-                                      Envoyer
+                                      {t("Envoyer")}
                                     </button>
                                   </div>
                                 </div>
@@ -117,10 +114,10 @@ function App() {
                       </tr>
                       <tr>
                         <td className="text-bold-500">10/10/2024</td>
-                        <td>Lorem Lorem</td>
-                        <td className="text-bold-500">Lorem Lorem</td>
+                        <td>{t("Lorem Lorem")}</td>
+                        <td className="text-bold-500">{t("Lorem Lorem")}</td>
                         <td>
-                          <span className="badge bg-danger">Fermée</span>
+                          <span className="badge bg-danger">{t("Fermée")}</span>
                         </td>
                         <td>
                           <section id="basic-modals">
@@ -150,7 +147,7 @@ function App() {
                                       className="modal-title"
                                       id="myModalLabel2"
                                     >
-                                      Réclamation
+                                      {t("Réclamation")}
                                     </h5>
                                     <button
                                       type="button"
@@ -161,12 +158,7 @@ function App() {
                                   </div>
                                   <div className="modal-body">
                                     <p>
-                                      Bonbon caramels muffin. Chocolate bar oat
-                                      cake cookie pastry dragée pastry. Carrot
-                                      cake chocolate tootsie roll chocolate bar
-                                      candy canes biscuit. Gummies bonbon apple
-                                      pie fruitcake icing biscuit apple pie
-                                      jelly-o sweet roll.
+                                      {t("Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry. Carrot cake chocolate tootsie roll chocolate bar candy canes biscuit. Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.")}
                                     </p>
                                     <div className="card-body">
                                       <div className="form-group with-title mb-3">
@@ -184,14 +176,14 @@ function App() {
                                       className="btn btn-secondary"
                                       data-bs-dismiss="modal"
                                     >
-                                      Fermer
+                                      {t("Fermer")}
                                     </button>
                                     <button
                                       type="button"
                                       className="btn btn-primary"
                                       data-bs-dismiss="modal"
                                     >
-                                      Envoyer
+                                      {t("Envoyer")}
                                     </button>
                                   </div>
                                 </div>

@@ -11,6 +11,7 @@ function CategoryList() {
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile , setIsMobile] = useState(false)
+  
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
