@@ -85,6 +85,7 @@ const resources = {
       "Prix Mazed Online": "Mazed Online Price",
       "Notaire": "Notary",
       "Avocat": "Lawyer",
+      "Détail d’utilisateur": "User detail",
       "Produits": "Products",
       "Configuration De L'enchere": "Auction Configuration",
       "Cout Du Participation": "Participation Cost",
@@ -576,6 +577,7 @@ const resources = {
       "Visite Bureau Mazed": "Visite Bureau Mazed",
       "Carte de recharge": "Carte de recharge",
       "Les ventes": "Les ventes",
+      "Détail d’utilisateur": "Détail d’utilisateur",
       "Le prix de vente": "Le prix de vente",
       "Le nombre de visites sur produit": "Le nombre de visites sur produit",
       "Le stock à l’entrée": "Le stock à l’entrée",
@@ -873,6 +875,7 @@ const resources = {
       "Nombre d’enchères": "عدد المزادات",
       "Ajouter du solde": "إضافة الرصيد",
       "Fait": "تمت",
+      "Détail d’utilisateur": "تفاصيل المستخدم",
       "Votre élément a été débloquer.": "لقد تم فتح العنصر الخاص بك.",
       "Nombre de produits déposés dans la boutique": "عدد المنتجات المعروضة في المتجر"
     }

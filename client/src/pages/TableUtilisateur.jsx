@@ -1,46 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 function TableUtilisateur() {
+  const { t } = useTranslation();
+
   const handleBlockClick = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disabled.", "secondary");
+        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "secondary");
       } else {
-        Swal.fire("Cancelled", "Your item is safe :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
 
   const handleUnblockClick = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire("Disabled!", "Your item has been disabled.", "secondary");
+        Swal.fire(t("Débloqué(e)"), t("Votre élément a été débloqué."), "secondary");
       } else {
-        Swal.fire("Cancelled", "Your item is safe :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
@@ -59,20 +60,20 @@ function TableUtilisateur() {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">Liste des utilisateurs</h2>
+            <h2 className="new-price">{t("Liste des utilisateurs")}</h2>
           </div>
           <div className="card-body">
             <div className="table-responsive">
               <table className="table" id="table1">
                 <thead>
                   <tr>
-                    <th>Nom</th>
-                    <th>Pseudo</th>
-                    <th>Role</th>
-                    <th>Détail</th>
-                    <th>Edit</th>
-                    <th>Bloquer</th>
-                    <th>Débloquer</th>
+                    <th>{t("Nom")}</th>
+                    <th>{t("Pseudo")}</th>
+                    <th>{t("Role")}</th>
+                    <th>{t("Détail")}</th>
+                    <th>{t("Modifier")}</th>
+                    <th>{t("Bloquer")}</th>
+                    <th>{t("Débloquer")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,13 +82,9 @@ function TableUtilisateur() {
                     <td>vehi</td>
                     <td>Lorem</td>
                     <td><Link to='/UtilisateurDetails'><i className="fa-solid fa-eye"></i></Link></td>
-                    
-                    <td>
-                      <Link to='/UtilisateurEdit' ><i className="fa-solid fa-pen-to-square"></i></Link>
-                    </td>
+                    <td><Link to='/UtilisateurEdit'><i className="fa-solid fa-pen-to-square"></i></Link></td>
                     <td><i className="fa-solid fa-lock" onClick={handleBlockClick}></i></td>
                     <td><i className="fa-solid fa-lock-open" onClick={handleUnblockClick}></i></td>
-                  
                   </tr>
                 </tbody>
               </table>
