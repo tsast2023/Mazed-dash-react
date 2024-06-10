@@ -166,16 +166,17 @@ function CategoryList() {
                   </div>
 
                 <div className="card-content">
-                  <div className="table-responsive">
-                   {isMobile?  <table className="table" id="table1">
+                  <div >
+                   {isMobile?  <table >
                     <thead>
                       <tr>
                       </tr>
                     </thead>
                     <tbody>
+                      
                       {categories?categories.map((cat)=>(
                         <td>
-                          <th>{t("Libellé")}</th>
+                        <th>{t("Libellé")}</th>
                         <tr className="text-bold-500">{cat.libeléCategorie}</tr>
                         <th>{t("Détail")}</th>
                         <tr>
