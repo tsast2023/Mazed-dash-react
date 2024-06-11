@@ -134,20 +134,20 @@ function CategoryList() {
                           <option disabled selected>
                             {t("Choisissez le type")}
                           </option>
-                          <option>{t("Parente")}</option>
-                          <option>{t("Fille")}</option>
+                          <option> Parente </option>
+                          <option> Fille </option>
                         </select>
                       </fieldset>
                     </div>
                     <div className="col-md-4 mb-4">
-                      <h6>{t("Statut")}</h6>
+                      <h6> Statut </h6>
                       <fieldset className="form-group">
                         <select className="form-select" id="basicSelect2">
                           <option disabled selected>
                             {t("Choisissez le statut")}
                           </option>
-                          <option>{t("Publiée")}</option>
-                          <option>{t("Brouillon")}</option>
+                          <option> Publiée </option>
+                          <option> Brouillon </option>
                         </select>
                       </fieldset>
                     </div>
@@ -158,8 +158,8 @@ function CategoryList() {
                           <option disabled selected>
                             {t("Choisissez État")}
                           </option>
-                          <option>{t("Activée")}</option>
-                          <option>{t("Désactivée")}</option>
+                          <option> Activée </option>
+                          <option> Désactivée </option>
                         </select>
                       </fieldset>
                     </div>

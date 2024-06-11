@@ -83,8 +83,8 @@ function TableVendeurs() {
                 <h6>{t("Statut")}</h6>
                 <fieldset className="form-group">
                   <select className="form-select" id="basicSelect1">
-                    <option>{t("Particulier")}</option>
-                    <option>{t("Professionel")}</option>
+                    <option> Particulier </option>
+                    <option> Professionel </option>
                   </select>
                 </fieldset>
               </div>
@@ -92,9 +92,9 @@ function TableVendeurs() {
                 <h6>{t("Etat")}</h6>
                 <fieldset className="form-group">
                   <select className="form-select" id="basicSelect2">
-                    <option>{t("Accepte")}</option>
-                    <option>{t("Non confirmé")}</option>
-                    <option>{t("Refuse")}</option>
+                    <option> Accepte </option>
+                    <option> Non confirmé </option>
+                    <option> Refuse </option>
                   </select>
                 </fieldset>
               </div>

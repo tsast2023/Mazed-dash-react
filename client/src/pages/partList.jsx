@@ -69,20 +69,20 @@ function ParticipantList() {
                 <option disabled selected>
                   {t("Choose Etat")}
                 </option>
-                <option>{t("Active")}</option>
-                <option>{t("Inactive")}</option>
+                <option> Active </option>
+                <option> Inactive </option>
               </select>
             </fieldset>
           </div>
           <div className="col-md-3 mb-4">
-            <h6>{t("Participe")}</h6>
+            <h6> Participe </h6>
             <fieldset className="form-group">
               <select className="form-select" id="basicSelect2">
                 <option disabled selected>
                   {t("Choose Participe")}
                 </option>
-                <option>{t("Oui")}</option>
-                <option>{t("Non")}</option>
+                <option> Oui </option>
+                <option> Non </option>
               </select>
             </fieldset>
           </div>
@@ -93,8 +93,8 @@ function ParticipantList() {
                 <option disabled selected>
                   {t("Choose Gagnant")}
                 </option>
-                <option>{t("Oui")}</option>
-                <option>{t("Non")}</option>
+                <option> Oui </option>
+                <option> Non </option>
               </select>
             </fieldset>
           </div>
@@ -105,8 +105,8 @@ function ParticipantList() {
                 <option disabled selected>
                   {t("Choose Statut")}
                 </option>
-                <option>{t("Nouveau")}</option>
-                <option>{t("Ancien")}</option>
+                <option> Nouveau </option>
+                <option> Ancien </option>
               </select>
             </fieldset>
           </div>
