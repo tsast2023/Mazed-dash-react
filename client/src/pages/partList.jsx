@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { Modal, Button, Table, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -7,6 +7,21 @@ import { useTranslation } from "react-i18next";
 function ParticipantList() {
   const { t } = useTranslation();
   const [modalShow, setModalShow] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const participants = [
     {
@@ -37,9 +52,10 @@ function ParticipantList() {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
-  }
+  };
 
   return (
+    <div className="content-container">
     <section className="section">
       <div className="card">
         <div className="card-header">
@@ -96,59 +112,134 @@ function ParticipantList() {
           </div>
         </div>
         <div className="card-body">
-          <Table responsive="sm">
-            <thead>
-              <tr>
-                <th>{t("Nom et prénom")}</th>
-                <th>{t("Pseudo")}</th>
-                <th>{t("Num tél")}</th>
-                <th>{t("Date inscri")}</th>
-                <th>{t("Nbr d'achats")}</th>
-                <th>{t("Nbr d'enchères")}</th>
-                <th>{t("Détail")}</th>
-                <th>{t("Bloquer")}</th>
-                <th>{t("Débloquer")}</th>
-                <th>{t("Solde")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {participants.map((participant) => (
-                <tr key={participant.id}>
-                  <td>{participant.name}</td>
-                  <td>{participant.username}</td>
-                  <td>{participant.phone}</td>
-                  <td>{participant.registrationDate}</td>
-                  <td>{participant.purchaseCount}</td>
-                  <td>{participant.bidCount}</td>
-                  <td>
-                    <Button variant="link" onClick={() => setModalShow(true)}>
-                      <Link to="/partdetail">
-                        <i className="fa-solid fa-eye"></i>
-                      </Link>
-                    </Button>
-                  </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-lock"
-                      onClick={() => handleLockUnlock("lock", participant.id)}
-                    ></i>
-                  </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-unlock"
-                      onClick={() => handleLockUnlock("unlock", participant.id)}
-                    ></i>
-                  </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-sack-dollar"
-                      onClick={() => setModalShow(true)}
-                    ></i>
-                  </td>
+          {isMobile ? (
+            <Table responsive="sm">
+              <tbody>
+                {participants.map((participant) => (
+                  <React.Fragment key={participant.id}>
+                    <tr>
+                      <td>{t("Nom et prénom")}</td>
+                      <td>{participant.name}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Pseudo")}</td>
+                      <td>{participant.username}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Num tél")}</td>
+                      <td>{participant.phone}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Date inscri")}</td>
+                      <td>{participant.registrationDate}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Nbr d'achats")}</td>
+                      <td>{participant.purchaseCount}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Nbr d'enchères")}</td>
+                      <td>{participant.bidCount}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Détail")}</td>
+                      <td>
+                        <Button variant="link" onClick={() => setModalShow(true)}>
+                          <Link to="/partdetail">
+                            <i className="fa-solid fa-eye"></i>
+                          </Link>
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Bloquer")}</td>
+                      <td>
+                        <i
+                          className="fa-solid fa-lock"
+                          onClick={() => handleLockUnlock("lock", participant.id)}
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Débloquer")}</td>
+                      <td>
+                        <i
+                          className="fa-solid fa-unlock"
+                          onClick={() => handleLockUnlock("unlock", participant.id)}
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Solde")}</td>
+                      <td>
+                        <i
+                          className="fa-solid fa-sack-dollar"
+                          onClick={() => setModalShow(true)}
+                        ></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2"><hr /></td>
+                    </tr>
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            <Table responsive="sm">
+              <thead>
+                <tr>
+                  <th>{t("Nom et prénom")}</th>
+                  <th>{t("Pseudo")}</th>
+                  <th>{t("Num tél")}</th>
+                  <th>{t("Date inscri")}</th>
+                  <th>{t("Nbr d'achats")}</th>
+                  <th>{t("Nbr d'enchères")}</th>
+                  <th>{t("Détail")}</th>
+                  <th>{t("Bloquer")}</th>
+                  <th>{t("Débloquer")}</th>
+                  <th>{t("Solde")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {participants.map((participant) => (
+                  <tr key={participant.id}>
+                    <td>{participant.name}</td>
+                    <td>{participant.username}</td>
+                    <td>{participant.phone}</td>
+                    <td>{participant.registrationDate}</td>
+                    <td>{participant.purchaseCount}</td>
+                    <td>{participant.bidCount}</td>
+                    <td>
+                      <Button variant="link" onClick={() => setModalShow(true)}>
+                        <Link to="/partdetail">
+                          <i className="fa-solid fa-eye"></i>
+                        </Link>
+                      </Button>
+                    </td>
+                    <td>
+                      <i
+                        className="fa-solid fa-lock"
+                        onClick={() => handleLockUnlock("lock", participant.id)}
+                      ></i>
+                    </td>
+                    <td>
+                      <i
+                        className="fa-solid fa-unlock"
+                        onClick={() => handleLockUnlock("unlock", participant.id)}
+                      ></i>
+                    </td>
+                    <td>
+                      <i
+                        className="fa-solid fa-sack-dollar"
+                        onClick={() => setModalShow(true)}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
         </div>
       </div>
 
@@ -179,6 +270,7 @@ function ParticipantList() {
         </Modal.Body>
       </Modal>
     </section>
+    </div>
   );
 }
 

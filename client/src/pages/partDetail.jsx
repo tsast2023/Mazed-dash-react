@@ -19,6 +19,7 @@ function PartDetail() {
   const handleModalShow = () => setShowModal(true);
 
   return (
+    <div className="content-container">
     <div className="page-content">
       <Container fluid>
         <Row>
@@ -109,6 +110,7 @@ function PartDetail() {
           </Form>
         </Modal.Body>
       </Modal>
+    </div>
     </div>
   );
 }
