@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-function App() {
+function Reclamation() {
   const { t } = useTranslation();
   return (
     <div className="content-container">
@@ -205,4 +205,4 @@ function App() {
   );
 }
 
-export default App;
+export default Reclamation;

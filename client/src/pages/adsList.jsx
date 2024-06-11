@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { useTranslation } from "react-i18next";
@@ -8,9 +8,23 @@ function AdsList() {
   const [showImageModal, setShowImageModal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [showCarouselModal, setShowCarouselModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleDelete = () => {
-    // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
@@ -23,7 +37,6 @@ function AdsList() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call deleteItem function
         deleteItem();
         Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
       } else {
@@ -41,75 +54,126 @@ function AdsList() {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">{t("List des annonces")}</h2>
+            <h2 className="new-price">{t("Liste des annonces")}</h2>
           </div>
           <div className="card-body">
             <div className="table-responsive">
-              <table className="table" id="table1">
-                <thead>
-                  <tr>
-                    <th>{t("Date de création")}</th>
-                    <th>{t("Date de publication")}</th>
-                    <th>{t("Type")}</th>
-                    <th>{t("Voir")}</th>
-                    <th>{t("Editer")}</th>
-                    <th>{t("Supprimer")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>01/01/2024</td>
-                    <td>05/05/2024</td>
-                    <td>{t("Image")}</td>
-                    <th>
-                      <Button onClick={() => setShowImageModal(true)}>
-                        <i className="fa-solid fa-eye"></i>
-                      </Button>
-                    </th>
-                    <th>
-                      <a href="annonces-edit.html?id=1"><i className="fa-solid fa-pen-to-square"></i></a>
-                    </th>
-                    <th>
-                      <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td>02/01/2024</td>
-                    <td>06/05/2024</td>
-                    <td>{t("Video")}</td>
-                    <th>
-                      <Button onClick={() => setShowVideoModal(true)}>
-                        <i className="fa-solid fa-eye"></i>
-                      </Button>
-                    </th>
-                    <th>
-                      <a href="annonces-edit.html"><i className="fa-solid fa-pen-to-square"></i></a>
-                    </th>
-                    <th>
-                      <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td>03/01/2024</td>
-                    <td>07/05/2024</td>
-                    <td>{t("Carousel")}</td>
-                    <th>
-                      <Button onClick={() => setShowCarouselModal(true)}>
-                        <i className="fa-solid fa-eye"></i>
-                      </Button>
-                    </th>
-                    <th>
-                      <a href="annonces-edit.html"><i className="fa-solid fa-pen-to-square"></i></a>
-                    </th>
-                    <th>
-                      <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
+              {isMobile ? (
+                <table className="table" id="table1">
+                  <tbody>
+                    <tr>
+                      <td>{t("Date de création")}</td>
+                      <td>01/01/2024</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Date de publication")}</td>
+                      <td>05/05/2024</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Type")}</td>
+                      <td>{t("Image")}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Voir")}</td>
+                      <td>
+                        <Button onClick={() => setShowImageModal(true)}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Editer")}</td>
+                      <td>
+                        <a href="annonces-edit.html?id=1">
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Supprimer")}</td>
+                      <td>
+                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2"><hr /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <table className="table" id="table1">
+                  <thead>
+                    <tr>
+                      <th>{t("Date de création")}</th>
+                      <th>{t("Date de publication")}</th>
+                      <th>{t("Type")}</th>
+                      <th>{t("Voir")}</th>
+                      <th>{t("Editer")}</th>
+                      <th>{t("Supprimer")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01/01/2024</td>
+                      <td>05/05/2024</td>
+                      <td>{t("Image")}</td>
+                      <td>
+                        <Button onClick={() => setShowImageModal(true)}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Button>
+                      </td>
+                      <td>
+                        <a href="annonces-edit.html?id=1">
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>02/01/2024</td>
+                      <td>06/05/2024</td>
+                      <td>{t("Video")}</td>
+                      <td>
+                        <Button onClick={() => setShowVideoModal(true)}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Button>
+                      </td>
+                      <td>
+                        <a href="annonces-edit.html">
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>03/01/2024</td>
+                      <td>07/05/2024</td>
+                      <td>{t("Carousel")}</td>
+                      <td>
+                        <Button onClick={() => setShowCarouselModal(true)}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Button>
+                      </td>
+                      <td>
+                        <a href="annonces-edit.html">
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
+
         <Modal show={showImageModal} onHide={() => setShowImageModal(false)} centered>
           <Modal.Header closeButton>
             <Modal.Title>{t("Image")}</Modal.Title>
@@ -129,6 +193,7 @@ function AdsList() {
             <Button variant="secondary" onClick={() => setShowImageModal(false)}>{t("Fermer")}</Button>
           </Modal.Footer>
         </Modal>
+
         <Modal show={showVideoModal} onHide={() => setShowVideoModal(false)} centered>
           <Modal.Header closeButton>
             <Modal.Title>{t("Video")}</Modal.Title>
@@ -148,6 +213,7 @@ function AdsList() {
             <Button variant="secondary" onClick={() => setShowVideoModal(false)}>{t("Fermer")}</Button>
           </Modal.Footer>
         </Modal>
+
         <Modal show={showCarouselModal} onHide={() => setShowCarouselModal(false)} centered>
           <Modal.Header closeButton>
             <Modal.Title>{t("Carousel")}</Modal.Title>

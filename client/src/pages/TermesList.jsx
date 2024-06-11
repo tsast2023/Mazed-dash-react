@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 function TermesList() {
   const { t } = useTranslation();
+
   // Function to handle item deletion
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
