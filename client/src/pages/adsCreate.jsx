@@ -67,14 +67,14 @@ function AnnonceCreator() {
                 </div>
                 <div className="modal-footer">
                   <Button
-                    variant="light"
+                    variant="secondary"
                     className="me-2"
                     onClick={() => setShowSuivantModal(false)}
                   >
                     {t("Annuler")}
                   </Button>
                   <Button
-                    variant="dark"
+                    variant="primary"
                     className="ms-2"
                     onClick={() => setShowSuivantModal(true)}
                   >

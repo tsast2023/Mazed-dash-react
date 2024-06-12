@@ -66,7 +66,9 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="phone-number">{t("Numéro de téléphone")}</label>
+                          <label htmlFor="phone-number">
+                            {t("Numéro de téléphone")}
+                          </label>
                           <div className="input-group mb-1 phone-input-group">
                             <input
                               type="text"
@@ -91,21 +93,16 @@ function UtilisateurForm() {
                         </div>
                       </div>
                     </div>
-                    <div className="modal-footer d-flex justify-content-between">
+                    <div className="card-footer d-flex justify-content-end">
                       <button
                         type="button"
-                        className="btn btn-light-secondary"
-                        data-bs-dismiss="modal"
+                        className="btn btn-secondary me-3"
                       >
-                        <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-sm-block btn btn-dark">{t("Annuler")}</span>
+                        {t("Annuler")}
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-dark"
-                        id="suivantBtn"
-                      >
-                        {t("Enregister")}
+
+                      <button type="button" className="btn btn-primary">
+                        {t("Enregistrer")}
                       </button>
                     </div>
                   </div>

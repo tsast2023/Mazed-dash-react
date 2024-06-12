@@ -82,10 +82,7 @@ function VendeurForm() {
                         <label htmlFor="email-id-icon">
                           {t("Numéro de téléphone")}
                         </label>
-                        <div className="input-group mb-3">
-                          <span className="input-group-text" id="basic-addon1">
-                            +216
-                          </span>
+                        <div className="input-group mb-2">
                           <input
                             type="text"
                             className="form-control"
@@ -116,11 +113,11 @@ function VendeurForm() {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-none d-sm-block">{t("Annuler")}</span>
+                        <span className="btn btn-secondary me-3">{t("Annuler")}</span>
                       </button>
                       <button
                         type="button"
-                        className="btn btn-dark"
+                        className="btn btn-primary"
                         id="suivantBtn"
                       >
                         {t("Valider")}

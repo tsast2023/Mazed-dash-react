@@ -66,10 +66,7 @@ function UtilisateurEdit() {
                       />
                     </div>
                     <label>{t("Numéro de téléphone")}</label>
-                    <div className="input-group mb-3">
-                      <span className="input-group-text" id="basic-addon1">
-                        +216
-                      </span>
+                    <div className="input-group mb-2">
                       <input
                         type="text"
                         className="form-control"
@@ -92,49 +89,17 @@ function UtilisateurEdit() {
                         <option value={3}>{t("Three")}</option>
                       </select>
                     </div>
-                    <div className="modal-footer">
-                      {/* Cancel Button */}
+                    <div className="card-footer d-flex justify-content-end">
                       <button
                         type="button"
-                        className="btn btn-light-secondary me-2"
-                        data-bs-dismiss="modal"
+                        className="btn btn-secondary me-3"
                       >
-                        <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-none d-sm-block">{t("Annuler")}</span>
+                        {t("Annuler")}
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-dark"
-                        id="suivantBtn"
-                      >
-                        {t("Enregister")}
+
+                      <button type="button" className="btn btn-primary">
+                        {t("Enregistrer")}
                       </button>
-                      {/* Bloquer and Débloquer Buttons */}
-                      <div
-                        className="btn-group"
-                        role="group"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          marginLeft: "auto",
-                        }}
-                      >
-                        {/* <button
-                          type="button"
-                          className="btn btn-light-secondary me-2"
-                          data-bs-dismiss="modal"
-                        >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">{t("Bloquer")}</span>
-                        </button> */}
-                        {/* <button
-                          type="button"
-                          className="btn btn-dark"
-                          id="suivantBtn"
-                        >
-                          {t("Débloquer")}
-                        </button> */}
-                      </div>
                     </div>
                   </div>
                 </div>

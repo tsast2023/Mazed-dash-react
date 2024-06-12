@@ -159,22 +159,22 @@ const App = () => {
                               <div className="modal-footer">
                                 <button
                                   type="button"
-                                  className="btn btn-light-secondary"
+                                  className="btn btn-secondary"
                                   data-bs-dismiss="modal"
                                 >
                                   <i className="bx bx-x d-block d-sm-none"></i>
-                                  <span className="d-none d-sm-block">
+                                  <span className="btn btn-secondary">
                                     {t("Annuler")}
                                   </span>
                                 </button>
                                 <button
                                   
-                                  className="btn btn-primary ms-1"
+                                  className="btn btn-primary"
                                   data-bs-dismiss="modal"
                                   type="submit"
                                 >
                                   <i className="bx bx-check d-block d-sm-none"></i>
-                                  <span  className="d-none d-sm-block">
+                                  <span  className="btn btn-primary">
                                     {t("Enregister")}
                                   </span>
                                 </button>

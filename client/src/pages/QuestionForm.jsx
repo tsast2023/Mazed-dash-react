@@ -19,10 +19,7 @@ function QuestionForm() {
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group has-icon-left">
-                          <label
-                            htmlFor="question"
-                            className="form-label"
-                          >
+                          <label htmlFor="question" className="form-label">
                             {t("La question")}
                           </label>
                           <textarea
@@ -32,10 +29,7 @@ function QuestionForm() {
                           />
                         </div>
                         <div className="form-group has-icon-left">
-                          <label
-                            htmlFor="reponse"
-                            className="form-label"
-                          >
+                          <label htmlFor="reponse" className="form-label">
                             {t("La réponse")}
                           </label>
                           <textarea
@@ -45,21 +39,16 @@ function QuestionForm() {
                           />
                         </div>
                       </div>
-                      <div className="modal-footer d-flex justify-content-between">
+                      <div className="card-footer d-flex justify-content-end">
                         <button
                           type="button"
-                          className="btn btn-light-secondary"
-                          data-bs-dismiss="modal"
+                          className="btn btn-secondary me-3"
                         >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-sm-block btn btn-dark">{t("Annuler")}</span>
+                          {t("Annuler")}
                         </button>
-                        <button
-                          type="button"
-                          className="btn btn-dark"
-                          id="suivantBtn"
-                        >
-                          {t("Enregister")}
+
+                        <button type="button" className="btn btn-primary">
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

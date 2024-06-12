@@ -144,17 +144,17 @@ const deleteCarte = async(id)=>{
                                 data-bs-dismiss="modal"
                               >
                                 <i className="bx bx-x d-block d-sm-none"></i>
-                                <span className="d-none d-sm-block">
+                                <span className="btn btn-secondary">
                                   {t("Annuler")}
                                 </span>
                               </button>
                               <button
                                 type="submit"
-                                className="btn btn-primary ms-1"
+                                className="btn btn-primary"
                                 data-bs-dismiss="modal"
                               >
                                 <i className="bx bx-check d-block d-sm-none"></i>
-                                <span className="d-none d-sm-block">
+                                <span className="btn btn-primary">
                                   {t("Enregister")}
                                 </span>
                               </button>

@@ -50,14 +50,14 @@ function TermsForm() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">{t("Annuler")}</span>
+                          <span className="btn btn-secondary">{t("Annuler")}</span>
                         </button>
                         <br />
                         <br />
                         <br />
                         <button
                           type="button"
-                          className="btn btn-dark"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
                           {t("Enregister")}

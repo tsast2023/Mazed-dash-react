@@ -19,6 +19,7 @@ function ProdAction() {
   const handleCloseModal = () => setShowModal(false);
 
   return (
+    <div className="content-container">
     <div className="col-12">
       <div className="card">
         <div className="card-header">
@@ -43,7 +44,7 @@ function ProdAction() {
                   </div>
 
                   <div className="col-12">
-                    <Button variant="light" className="me-2 mb-1" onClick={goBack}>
+                    <Button variant="secondary" className="me-2 mb-1" onClick={goBack}>
                       {t("Retour")}
                     </Button>
                     <Button variant="success" className="me-2 mb-1" onClick={showNotification}>
@@ -86,6 +87,7 @@ function ProdAction() {
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 }

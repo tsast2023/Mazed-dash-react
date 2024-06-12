@@ -26,6 +26,7 @@ function Profile() {
   };
 
   return (
+    <div className="content-container">
     <section className="section">
       <div className="row">
         <div className="col-12">
@@ -175,6 +176,7 @@ function Profile() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 
