@@ -15,7 +15,7 @@ const Login = () => {
                   <input type="email" className="form-control" id="email" placeholder="Enter email" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password">Mot de passe:</label>
                   <input type="password" className="form-control" id="password" placeholder="Enter password" />
                 </div>
                 <button type="submit" className="btn btn-primary">Se connecter</button>

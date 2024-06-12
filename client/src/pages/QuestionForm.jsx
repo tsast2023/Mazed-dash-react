@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 function QuestionForm() {
   const { t } = useTranslation();
+
   return (
     <div className="content-container">
       <div id="main">
@@ -19,46 +20,40 @@ function QuestionForm() {
                       <div className="col-12">
                         <div className="form-group has-icon-left">
                           <label
-                            htmlFor="exampleFormControlTextarea1"
+                            htmlFor="question"
                             className="form-label"
                           >
                             {t("La question")}
                           </label>
                           <textarea
                             className="form-control"
-                            id="exampleFormControlTextarea1"
+                            id="question"
                             rows={3}
-                            defaultValue={""}
                           />
                         </div>
                         <div className="form-group has-icon-left">
                           <label
-                            htmlFor="exampleFormControlTextarea1"
+                            htmlFor="reponse"
                             className="form-label"
                           >
                             {t("La réponse")}
                           </label>
                           <textarea
                             className="form-control"
-                            id="exampleFormControlTextarea1"
+                            id="reponse"
                             rows={3}
-                            defaultValue={""}
                           />
                         </div>
                       </div>
-                      
-                      <div className="modal-footer">
+                      <div className="modal-footer d-flex justify-content-between">
                         <button
                           type="button"
-                          className="btn btn-light-secondary me-2"
+                          className="btn btn-light-secondary"
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">{t("Annuler")}</span>
+                          <span className="d-sm-block btn btn-dark">{t("Annuler")}</span>
                         </button>
-                        <br/>
-                        <br/>
-                        <br/>
                         <button
                           type="button"
                           className="btn btn-dark"
