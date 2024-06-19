@@ -51,14 +51,14 @@ function QuestionEdit() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Supprimer</span>
+                          <span className="btn btn-secondary">Supprimer</span>
                         </button>
                         <br/>
                         <br/>
                         <br/>
                         <button
                           type="button"
-                          className="btn btn-dark"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
                           Editer

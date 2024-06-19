@@ -12,6 +12,9 @@ const Dashboard = () => {
       zoom: {
         enabled: false,
       },
+      toolbar: {
+        show: false, // Remove the download button
+      },
     },
     dataLabels: {
       enabled: false,

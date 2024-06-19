@@ -1,39 +1,34 @@
-import React from 'react'
-import "../css/Login.css"
-import { useState } from 'react';
-import axios from 'axios';
-export default function Login() {
-  const [user , setUser] = useState({email: "" , password: ""});
+import React from 'react';
+import '../css/Login.css';
 
-  const handleLogin = async(e)=>{
-    e.preventDefault();
-    try {
-      const res = await axios.post('' , user);
-      console.log(res.data);
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+const Login = () => {
   return (
-   <div className="container">
-  <div className="login-container">
-    <h1>Login</h1>
-    <form onSubmit={handleLogin} action="#" className="form-login">
-      <div className="textfield">
-        <label className='label' htmlFor="email"> E-mail</label>
-        <input className='input' type="email" name="usuario" placeholder="E-mail" onChange={e=>setUser({...user , email:e.target.value})} />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-lg-6 login-container">
+          <div className="card-log">
+            <div className="card-body">
+              <h3 className="card-title">Bienvenue</h3>
+              <form>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" className="form-control" id="email" placeholder="Enter email" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Mot de passe:</label>
+                  <input type="password" className="form-control" id="password" placeholder="Enter password" />
+                </div>
+                <button type="submit" className="btn btn-primary">Se connecter</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-6 image-container">
+          <img src="./Mazed.jpg" alt="login" className="img-fluid" />
+        </div>
       </div>
-      <div className="textfield">
-        <label className='label' htmlFor="senha"> password</label>  
-        <input className='input' type="password" name="email" placeholder="email" onChange={e=>setUser({...user , password:e.target.value})} />
-      </div>
-      {/* <a className="forgot-password" href="#"></a> */}
-      <button type='submit' className="btn-login">Login </button>
-    </form>
-    <div>
-    </div></div></div>
-
-  )
+    </div>
+  );
 }
+
+export default Login;

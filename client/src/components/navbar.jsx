@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "../css/navbar.css";
-import i18n from '../i18n';
+import i18n from "../i18n";
 
 const Navbar = ({ username }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +35,7 @@ const Navbar = ({ username }) => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    setIsLangMenuOpen(false); // Close the language menu after selecting a language
+    setIsLangMenuOpen(false);
   };
 
   return (
@@ -54,17 +54,28 @@ const Navbar = ({ username }) => {
         </div>
       </div>
 
-      <div className={`notification-menu ${isNotificationMenuOpen ? "open" : ""}`}
-        style={{ position: "absolute", right: 0, top: "50px" }}>
+      <div
+        className={`notification-menu ${isNotificationMenuOpen ? "open" : ""}`}
+        style={{ position: "absolute", right: 0, top: "50px" }}
+      >
         <div className="notification-content">
           <div className="notification-item">
-            {t('New message from John')}
+            <div className="icon-circle">
+              <i className="fas fa-envelope"></i>
+            </div>
+            {t("New message from John")}
           </div>
           <div className="notification-item">
-            {t('Meeting reminder at 3:00 PM')}
+            <div className="icon-circle">
+              <i className="fas fa-calendar-alt"></i>
+            </div>
+            {t("Meeting reminder at 3:00 PM")}
           </div>
           <div className="notification-item">
-            {t('System update available')}
+            <div className="icon-circle">
+              <i className="fas fa-exclamation-circle"></i>
+            </div>
+            {t("System update available")}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>
@@ -77,34 +88,47 @@ const Navbar = ({ username }) => {
         style={{ position: "absolute", right: 0, top: "50px" }}
       >
         <div className="notification-content">
-          <div className="notification-item" onClick={() => changeLanguage('en')}>English</div>
-          <div className="notification-item" onClick={() => changeLanguage('fr')}>Français</div>
-          <div className="notification-item" onClick={() => changeLanguage('ar')}>العربية</div>
+          <div
+            className="notification-item"
+            onClick={() => changeLanguage("en")}
+          >
+            English
+          </div>
+          <div
+            className="notification-item"
+            onClick={() => changeLanguage("fr")}
+          >
+            Français
+          </div>
+          <div
+            className="notification-item"
+            onClick={() => changeLanguage("ar")}
+          >
+            العربية
+          </div>
         </div>
         <div className="close-button" onClick={handleLanguageToggle}>
           <i className="fas fa-times"></i>
         </div>
       </div>
 
-      <div
-        className={`notification-menu ${isSettingsMenuOpen ? "open" : ""}`}
-      >
+      <div className={`notification-menu ${isSettingsMenuOpen ? "open" : ""}`}>
         <div className="notification-content">
           <div className="notification-item">
             <Link to="/Profile">
-              <i className="fas fa-user-circle me-2"></i> {t('Profile')}
+              <i className="fas fa-user-circle me-2"></i> {t("Profile")}
             </Link>
           </div>
           <div className="notification-item">
             <Link to="/Messagerie">
-              <i className="fa-solid fa-comments me-2"></i> {t('Messagerie')}
+              <i className="fa-solid fa-comments me-2"></i> {t("Messagerie")}
             </Link>
           </div>
           <div className="notification-item" onClick={handleLanguageToggle}>
-            <i className="fas fa-globe me-2"></i> {t('Languages')}
+            <i className="fas fa-globe me-2"></i> {t("Languages")}
           </div>
           <div className="notification-item">
-            <i className="fas fa-sign-out-alt me-2"></i> {t('Déconnexion')}
+            <i className="fas fa-sign-out-alt me-2"></i> {t("Déconnexion")}
           </div>
         </div>
         <div className="close-button" onClick={handleSettingsToggle}>

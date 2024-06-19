@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-
 function UtilisateurForm() {
   const { t } = useTranslation();
+
   return (
     <div className="content-container">
       <div id="main">
@@ -24,12 +24,12 @@ function UtilisateurForm() {
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Nom")}</label>
+                          <label htmlFor="nom">{t("Nom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
-                              id="email-id-icon"
+                              id="nom"
                               placeholder={t("Nom")}
                               maxLength={25}
                             />
@@ -38,12 +38,12 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Prénom")}</label>
+                          <label htmlFor="prenom">{t("Prénom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
-                              id="email-id-icon"
+                              id="prenom"
                               placeholder={t("Prénom")}
                               maxLength={25}
                             />
@@ -52,39 +52,39 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Email")}</label>
+                          <label htmlFor="email">{t("Email")}</label>
                           <div className="position-relative">
                             <input
                               type="email"
                               className="form-control"
-                              id="email-id-icon"
+                              id="email"
                               placeholder={t("Email")}
                               maxLength={25}
                             />
                           </div>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="email-id-icon">
-                          {t("Numéro de téléphone")}
-                        </label>
-                        <div className="input-group mb-3">
-                          <span className="input-group-text" id="basic-addon1">
-                            +216
-                          </span>
-                          <input
-                            type="text"
-                            className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                          />
+                      <div className="col-12">
+                        <div className="form-group">
+                          <label htmlFor="phone-number">
+                            {t("Numéro de téléphone")}
+                          </label>
+                          <div className="input-group mb-1 phone-input-group">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="phone-number"
+                              aria-label="PhoneNumber"
+                              defaultValue="+216"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Role")}</label>
+                          <label htmlFor="role">{t("Role")}</label>
                           <fieldset className="form-group mb-3">
-                            <select className="form-select" id="basicSelect">
+                            <select className="form-select" id="role">
                               <option>{t("IT")}</option>
                               <option>{t("Blade Runner")}</option>
                               <option>{t("Thor Ragnarok")}</option>
@@ -93,21 +93,16 @@ function UtilisateurForm() {
                         </div>
                       </div>
                     </div>
-                    <div className="modal-footer">
+                    <div className="card-footer d-flex justify-content-end">
                       <button
                         type="button"
-                        className="btn btn-light-secondary me-2"
-                        data-bs-dismiss="modal"
+                        className="btn btn-secondary me-3"
                       >
-                        <i className="bx bx-x d-block d-sm-none" />
-                        <span className="d-none d-sm-block">{t("Annuler")}</span>
+                        {t("Annuler")}
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-dark"
-                        id="suivantBtn"
-                      >
-                        {t("Enregister")}
+
+                      <button type="button" className="btn btn-primary">
+                        {t("Enregistrer")}
                       </button>
                     </div>
                   </div>

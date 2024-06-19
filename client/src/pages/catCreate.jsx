@@ -11,8 +11,12 @@ const CatCreate = () => {
   const categoriess = state.Categories;
   const { t } = useTranslation();
 
+  const goBack = () => {
+    window.history.back(); // Simulate a browser back button
+  };
+
   useEffect(() => {
-    console.log('cat from here', categoriess);
+    console.log("cat from here", categoriess);
     const select = new Choices("#category-select", {
       removeItemButton: true,
       placeholder: true,
@@ -28,10 +32,13 @@ const CatCreate = () => {
       }
     };
 
-    select.passedElement.element.addEventListener('change', handleSelectChange);
+    select.passedElement.element.addEventListener("change", handleSelectChange);
 
     return () => {
-      select.passedElement.element.removeEventListener('change', handleSelectChange);
+      select.passedElement.element.removeEventListener(
+        "change",
+        handleSelectChange
+      );
       select.destroy();
     };
   }, []);
@@ -39,7 +46,7 @@ const CatCreate = () => {
   const handleAddInput = () => {
     const newInput = {
       id: inputs.length + 1,
-      value: ""
+      value: "",
     };
     setInputs([...inputs, newInput]);
   };
@@ -49,12 +56,12 @@ const CatCreate = () => {
       <div className="card">
         <div className="card-header d-flex justify-content-between align-items-center">
           <h2 className="card-title">{t("Créer une catégorie")}</h2>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn btn-primary"
             onClick={handleAddInput}
             disabled={!isEnabled}
-            style={{ backgroundColor: !isEnabled ? '#b0210e' : '' }}
+            style={{ backgroundColor: !isEnabled ? "#b0210e" : "" }}
           >
             +
           </button>
@@ -80,15 +87,23 @@ const CatCreate = () => {
                   multiple
                 >
                   <optgroup>
-                    {categoriess ? categoriess.map((item) => (
-                      <option value={item}>{item.libeléCategorie}</option>
-                    )) : <option>loading</option>}
+                    {categoriess ? (
+                      categoriess.map((item) => (
+                        <option value={item}>{item.libeléCategorie}</option>
+                      ))
+                    ) : (
+                      <option>loading</option>
+                    )}
                   </optgroup>
                 </select>
               </div>
 
               {inputs.map((input, index) => (
-                <div key={index} className="form-group" style={{ marginTop: "15px" }}>
+                <div
+                  key={index}
+                  className="form-group"
+                  style={{ marginTop: "15px" }}
+                >
                   <input
                     type="text"
                     className="form-control"
@@ -106,8 +121,16 @@ const CatCreate = () => {
           </div>
         </div>
         <div className="card-footer d-flex justify-content-end">
-          <button type="button" className="btn btn-secondary me-3">{t("Annuler")}</button>
-          <button type="button" className="btn btn-primary">{t("Enregistrer")}</button>
+          <button
+            type="button"
+            className="btn btn-secondary me-3"
+            onClick={goBack}
+          >
+            {t("Annuler")}
+          </button>
+          <button type="button" className="btn btn-primary">
+            {t("Enregistrer")}
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 
 function Commandes() {
+  const { t } = useTranslation();
   return (
     <div className='content-container'>
     <section className="section">
@@ -8,21 +10,21 @@ function Commandes() {
         <div className="col-12">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Tableau de Commandes</h2>
+              <h2 className="new-price">{t("Tableau de Commandes")}</h2>
             </div>
             <div className="card-content">
               <div className="table-responsive">
                 <table className="table" id="table1">
                   <thead>
                     <tr>
-                      <th>Num Commande</th>
-                      <th>Produit</th>
-                      <th>Image Produit</th>
-                      <th>Prix Produit</th>
-                      <th>Status</th>
-                      <th>Quantité</th>
-                      <th>Prix Total</th>
-                      <th>Date De Commande</th>
+                      <th>{t("Num Commande")}</th>
+                      <th>{t("Produit")}</th>
+                      <th>{t("Image Produit")}</th>
+                      <th>{t("Prix Produit")}</th>
+                      <th>{t("Status")}</th>
+                      <th>{t("Quantité")}</th>
+                      <th>{t("Prix Total")}</th>
+                      <th>{t("Date De Commande")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -34,7 +36,7 @@ function Commandes() {
                       <td>500</td>
                       <td>800</td>
                       <td>2000000</td>
-                      <td><span className="badge bg-secondary">Terminé</span></td>
+                      <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
                     </tr>
                   </tbody>
                   <tbody>
@@ -46,7 +48,7 @@ function Commandes() {
                       <td>500</td>
                       <td>800</td>
                       <td>2000000</td>
-                      <td><span className="badge bg-warning">En Cours</span></td>
+                      <td><span className="badge bg-warning">{t("En Cours")}</span></td>
                     </tr>
                   </tbody>
                 </table>

@@ -129,7 +129,7 @@ const App = () => {
           </div>
         )}
         </div>
-        {token && <Login setToken={setToken} />}
+        {!token && <Login setToken={setToken} />}
       </Router>
     </DataProvider>
   );

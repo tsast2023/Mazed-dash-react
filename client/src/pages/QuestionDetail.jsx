@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function QuestionDetail() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
       <div id="main">
@@ -12,7 +14,7 @@ function QuestionDetail() {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Détail de Question</h2>
+              <h2 className="new-price">{t("Détail de Question")}</h2>
             </div>
             <div className="card-content">
               <div className="card-body">
@@ -25,7 +27,7 @@ function QuestionDetail() {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            La Question
+                            {t("La Question")}
                           </label>
                           <textarea
                             className="form-control"
@@ -39,7 +41,7 @@ function QuestionDetail() {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            La Réponse
+                            {t("La Réponse")}
                           </label>
                           <textarea
                             className="form-control"
@@ -56,17 +58,17 @@ function QuestionDetail() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Annuler</span>
+                          <span className="d-none d-sm-block">{t("Annuler")}</span>
                         </button>
-                        <br/>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
+                        <br />
                         <button
                           type="button"
                           className="btn btn-dark"
                           id="suivantBtn"
                         >
-                          Enregistrer
+                          {t("Enregister")}
                         </button>
                       </div>
                     </div>

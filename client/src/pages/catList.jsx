@@ -11,6 +11,7 @@ function CategoryList() {
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile , setIsMobile] = useState(false)
+  
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
@@ -133,20 +134,20 @@ function CategoryList() {
                           <option disabled selected>
                             {t("Choisissez le type")}
                           </option>
-                          <option>{t("Parente")}</option>
-                          <option>{t("Fille")}</option>
+                          <option> Parente </option>
+                          <option> Fille </option>
                         </select>
                       </fieldset>
                     </div>
                     <div className="col-md-4 mb-4">
-                      <h6>{t("Statut")}</h6>
+                      <h6> Statut </h6>
                       <fieldset className="form-group">
                         <select className="form-select" id="basicSelect2">
                           <option disabled selected>
                             {t("Choisissez le statut")}
                           </option>
-                          <option>{t("Publiée")}</option>
-                          <option>{t("Brouillon")}</option>
+                          <option> Publiée </option>
+                          <option> Brouillon </option>
                         </select>
                       </fieldset>
                     </div>
@@ -157,87 +158,151 @@ function CategoryList() {
                           <option disabled selected>
                             {t("Choisissez État")}
                           </option>
-                          <option>{t("Activée")}</option>
-                          <option>{t("Désactivée")}</option>
+                          <option> Activée </option>
+                          <option> Désactivée </option>
                         </select>
                       </fieldset>
                     </div>
                   </div>
 
-                <div className="card-content">
-                  <div className="table-responsive">
-                   {isMobile?  <table className="table" id="table1">
-                    <thead>
-                      <tr>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {categories?categories.map((cat)=>(
-                        <td>
-                          <th>{t("Libellé")}</th>
-                        <tr className="text-bold-500">{cat.libeléCategorie}</tr>
-                        <th>{t("Détail")}</th>
-                        <tr>
-                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
-                          <i className="fa-solid fa-eye"></i>
-                          </a>
-                        </tr>
-                        <th>{t("Modifier")}</th>
-                        <tr>
-                        <Link to={"/catmodif"}>
-                          <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </tr>
-                        <th>{t("Désactiver")}</th>
-                        <tr><i className="fa-solid fa-ban" onClick={handleBan}></i></tr>
-                        <th>{t("Supprimer")}</th>
-                        <tr><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></tr>
-                        <th>{t("Mettre a l'une")}</th>
-                        <tr><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></tr>
-                      </td>
-                      )):<div>loading</div>}
-                      
-                      
-                    </tbody>
-                  </table> :
-                    <table className="table" id="table1">
-                    <thead>
-                      <tr>
-                        <th>{t("Libellé")}</th>
-                        <th>{t("Détail")}</th>
-                        <th>{t("Modifier")}</th>
-                        <th>{t("Désactiver")}</th>
-                        <th>{t("Supprimer")}</th>
-                        <th>{t("Mettre a l'une")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {categories?categories.map((cat)=>(
-                        <tr>
-                        <td className="text-bold-500">{cat.libeléCategorie}</td>
-                        <td>
-                        <a onClick={()=>navigate(`/catdetail/${cat.id}`, { state: { cat } })} >
-                          <i className="fa-solid fa-eye"></i>
-                          </a>
-                        </td>
-                        <td>
-                        <Link to={"/catmodif"}>
-                          <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </td>
-                        <td><i className="fa-solid fa-ban" onClick={handleBan}></i></td>
-                        <td><i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i></td>
-                        <td><i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i></td>
-                      </tr>
-                      )):<div>loading</div>}
-                      
-                      
-                    </tbody>
-                  </table>}
+                  <div className="card-content">
+                    <div>
+                      {isMobile ? (
+                        <table style={{ width: "100%", textAlign: "center" }}>
+                          <tbody>
+                            {categories ? (
+                              categories.map((cat) => (
+                                <tr
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    flexDirection: "column",
+                                  }}
+                                >
+                                  <hr />
+                                  <td
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      flexDirection: "column",
+                                    }}
+                                  >
+                                    <th>{t("Libellé")}</th>
+                                    <tr className="text-bold-500">
+                                      {cat.libeléCategorie}
+                                    </tr>
+                                    <th>{t("Détail")}</th>
+                                    <tr>
+                                      <a
+                                        onClick={() =>
+                                          navigate(`/catdetail/${cat.id}`, {
+                                            state: { cat },
+                                          })
+                                        }
+                                      >
+                                        <i className="fa-solid fa-eye"></i>
+                                      </a>
+                                    </tr>
+                                    <th>{t("Modifier")}</th>
+                                    <tr>
+                                      <Link to={"/catmodif"}>
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                      </Link>
+                                    </tr>
+                                    <th>{t("Désactiver")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-ban"
+                                        onClick={handleBan}
+                                      ></i>
+                                    </tr>
+                                    <th>{t("Supprimer")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-trash deleteIcon"
+                                        onClick={handleDelete}
+                                      ></i>
+                                    </tr>
+                                    <th>{t("Mettre a l'une")}</th>
+                                    <tr>
+                                      <i
+                                        className="fa-solid fa-star arrowIcon"
+                                        onClick={handleArrowClick}
+                                      ></i>
+                                    </tr>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <div>loading</div>
+                            )}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <table className="table" id="table1">
+                          <thead>
+                            <tr>
+                              <th>{t("Libellé")}</th>
+                              <th>{t("Détail")}</th>
+                              <th>{t("Modifier")}</th>
+                              <th>{t("Désactiver")}</th>
+                              <th>{t("Supprimer")}</th>
+                              <th>{t("Mettre a l'une")}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {categories ? (
+                              categories.map((cat) => (
+                                <tr>
+                                  <td className="text-bold-500">
+                                    {cat.libeléCategorie}
+                                  </td>
+                                  <td>
+                                    <a
+                                      onClick={() =>
+                                        navigate(`/catdetail/${cat.id}`, {
+                                          state: { cat },
+                                        })
+                                      }
+                                    >
+                                      <i className="fa-solid fa-eye"></i>
+                                    </a>
+                                  </td>
+                                  <td>
+                                    <Link to={"/catmodif"}>
+                                      <i className="fa-solid fa-pen-to-square"></i>
+                                    </Link>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-ban"
+                                      onClick={handleBan}
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-trash deleteIcon"
+                                      onClick={handleDelete}
+                                    ></i>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="fa-solid fa-star arrowIcon"
+                                      onClick={handleArrowClick}
+                                    ></i>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <div>loading</div>
+                            )}
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           </section>
         </div>

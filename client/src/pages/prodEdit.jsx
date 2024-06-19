@@ -29,6 +29,7 @@ const ProductEditForm = () => {
   };
 
   return (
+    <div className="content-container">
     <div className="col-md-12">
       <div className="card">
         <div className="card-header">
@@ -138,6 +139,7 @@ const ProductEditForm = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -392,10 +392,24 @@ const Playground = () => {
                 label={t("Vendeurs")}
                 icon={<i className="fa-solid fa-user-clock"></i>}
               >
-                <MenuItem component={<Link to="/VendeurForm" />}>
+                <MenuItem
+                  component={<Link to="/VendeurForm" />}
+                  onClick={() => setActiveLink("/VendeurForm")}
+                  style={
+                    activeLink === "/VendeurForm" ? menuItemStyles.active : null
+                  }
+                >
                   {t("Création d'un vendeur")}
                 </MenuItem>
-                <MenuItem component={<Link to="/TableVendeurs" />}>
+                <MenuItem
+                  component={<Link to="/TableVendeurs" />}
+                  onClick={() => setActiveLink("/TableVendeurs")}
+                  style={
+                    activeLink === "/TableVendeurs"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
                   {t("Liste des vendeurs")}
                 </MenuItem>
               </SubMenu>
@@ -403,10 +417,26 @@ const Playground = () => {
                 label={t("Utilisateurs")}
                 icon={<i className="fa-solid fa-user-check"></i>}
               >
-                <MenuItem component={<Link to="/UtilisateurForm" />}>
+                <MenuItem
+                  component={<Link to="/UtilisateurForm" />}
+                  onClick={() => setActiveLink("/UtilisateurForm")}
+                  style={
+                    activeLink === "/UtilisateurForm"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
                   {t("Création d'un utilisateur")}
                 </MenuItem>
-                <MenuItem component={<Link to="/TableUtilisateur" />}>
+                <MenuItem
+                  component={<Link to="/TableUtilisateur" />}
+                  onClick={() => setActiveLink("/TableUtilisateur")}
+                  style={
+                    activeLink === "/TableUtilisateur"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
                   {t("Liste des utilisateurs")}
                 </MenuItem>
               </SubMenu>

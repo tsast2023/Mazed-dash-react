@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function TermsForm() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
       <div id="main">
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Ajouter un terme</h2>
+              <h2 className="new-price">{t("Ajouter un terme")}</h2>
             </div>
             <div className="card-content">
               <div className="card-body">
@@ -20,7 +22,7 @@ function TermsForm() {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            Text
+                            {t("Text")}
                           </label>
                           <textarea
                             className="form-control"
@@ -32,12 +34,12 @@ function TermsForm() {
                       </div>
                       <div className="col-12">
                         <fieldset className="form-group">
-                          <label>Sujet</label>
+                          <label>{t("Sujet")}</label>
                           <select className="form-select" id="basicSelect">
-                            <option>Création d'un compte acheteur</option>
-                            <option>Création d'un compte vendeur</option>
-                            <option>Participation à une enchère</option>
-                            <option>enchérir</option>
+                            <option>{t("Création d'un compte acheteur")}</option>
+                            <option>{t("Création d'un compte vendeur")}</option>
+                            <option>{t("Participation à une enchère")}</option>
+                            <option>{t("enchérir")}</option>
                           </select>
                         </fieldset>
                       </div>
@@ -48,17 +50,17 @@ function TermsForm() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Annuler</span>
+                          <span className="btn btn-secondary">{t("Annuler")}</span>
                         </button>
-                        <br/>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
+                        <br />
                         <button
                           type="button"
-                          className="btn btn-dark"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
-                          Enregistrer
+                          {t("Enregister")}
                         </button>
                       </div>
                     </div>

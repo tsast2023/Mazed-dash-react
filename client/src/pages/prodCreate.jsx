@@ -8,6 +8,10 @@ const App = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const { t } = useTranslation();
 
+  const goBack = () => {
+    window.history.back(); // Simulate a browser back button
+  };
+
   useEffect(() => {
     // Initialize Choices for select inputs
     const categoryChoices = new Choices(".category-choices", {
@@ -198,19 +202,28 @@ const App = () => {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none"></i>
-                        <span className="d-none d-sm-block">{t("Annuler")}</span>
-                      </button>
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          id="suivantBtn"
+                        <span
+                          className="d-none d-sm-block btn btn-secondary me-3"
+                          onClick={goBack}
                         >
-                          <Link
-                            to="/ProdAction"
-                          >
-                            {t("Suivant")}
-                          </Link>
-                        </button>
+                          {t("Annuler")}
+                        </span>
+                      </button>
+
+                      {/* Suivant Button */}
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        id="suivantBtn"
+                      >
+                        <Link
+                          to="/ProdAction"
+                          className="btn-link text-white text-decoration-none"
+                          style={{ textDecoration: "none" }} // Added inline style to ensure no underline
+                        >
+                          {t("Suivant")}
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

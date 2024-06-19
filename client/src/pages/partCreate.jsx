@@ -1,5 +1,5 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const { t } = useTranslation();
@@ -80,9 +80,10 @@ function App() {
                         </div>
                       </div>
                       <div className="col-12">
-                        <label className="mb-1">{t("Numéro de téléphone")}</label>
+                        <label className="mb-1">
+                          {t("Numéro de téléphone")}
+                        </label>
                         <div className="input-group mb-4">
-                          <span className="input-group-text" id="basic-addon1">+216</span>
                           <input
                             type="number"
                             className="form-control"
@@ -99,14 +100,12 @@ function App() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none"></i>
-                          <span className="d-none d-sm-block">{t("Annuler")}</span>
+                          <span className="btn btn-secondary me-3">
+                            {t("Annuler")}
+                          </span>
                         </button>
-                        <button
-                          type="button"
-                          className="btn btn-dark"
-                          id="suivantBtn"
-                        >
-                          {t("Enregister")}
+                        <button type="button" className="btn btn-primary">
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

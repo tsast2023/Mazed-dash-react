@@ -1,7 +1,60 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Swal from "sweetalert2";
 
 function UtilisateurDetails() {
+  const { t } = useTranslation();
+  const handleBlockClick = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(
+          t("Désactivé(e) !"),
+          t("Votre élément a été désactivé."),
+          "secondary"
+        );
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
+
+  const handleUnblockClick = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(
+          t("Débloqué(e)"),
+          t("Votre élément a été débloqué."),
+          "secondary"
+        );
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
+  const deleteItem = () => {
+    // Your delete logic here
+  };
   return (
     <div className="content-container">
       <div id="main">
@@ -16,7 +69,7 @@ function UtilisateurDetails() {
             <div className="page-title">
               <div className="row">
                 <div className="col-12 col-md-6 order-md-1 order-last">
-                  <h3> Détails d’utilisateur </h3>
+                  <h3>{t("Détail d’utilisateur")}</h3>
                 </div>
                 <div className="col-12 col-md-6 order-md-2 order-first"></div>
               </div>
@@ -35,7 +88,7 @@ function UtilisateurDetails() {
                               borderRadius: "25px",
                             }}
                             src="assets/static/images/faces/2.jpg"
-                            alt="Avatar"
+                            alt={t("Avatar")}
                           />
                         </div>
                       </div>
@@ -43,60 +96,56 @@ function UtilisateurDetails() {
                         <form action="#" method="get">
                           <div className="form-group">
                             <label htmlFor="name" className="form-label">
-                              {" "}
-                              Nom
+                              {t("Nom")}
                             </label>
                             <input
                               type="text"
                               name="name"
                               id="name"
                               className="form-control"
-                              placeholder={12222222222}
+                              placeholder={t("Entrez le nom")}
                               defaultValue="John Doe"
                               disabled
                             />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="name" className="form-label">
-                              {" "}
-                              Prénom
+                            <label htmlFor="firstname" className="form-label">
+                              {t("Prénom")}
                             </label>
                             <input
                               type="text"
-                              name="name"
-                              id="name"
+                              name="firstname"
+                              id="firstname"
                               className="form-control"
-                              placeholder={12222222222}
+                              placeholder={t("Entrez le prénom")}
                               defaultValue="John Doe"
                               disabled
                             />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="name" className="form-label">
-                              {" "}
-                              Pseudo
+                            <label htmlFor="username" className="form-label">
+                              {t("Pseudo")}
                             </label>
                             <input
                               type="text"
-                              name="name"
-                              id="name"
+                              name="username"
+                              id="username"
                               className="form-control"
-                              placeholder={12222222222}
+                              placeholder={t("Entrez le pseudo")}
                               defaultValue="John Doe"
                               disabled
                             />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="name" className="form-label">
-                              {" "}
-                              Rôle
+                            <label htmlFor="role" className="form-label">
+                              {t("Role")}
                             </label>
                             <input
                               type="text"
-                              name="name"
-                              id="name"
+                              name="role"
+                              id="role"
                               className="form-control"
-                              placeholder={12222222222}
+                              placeholder={t("Entrez le rôle")}
                               defaultValue="John Doe"
                               disabled
                             />
@@ -105,20 +154,22 @@ function UtilisateurDetails() {
                             <button
                               type="submit"
                               className="btn btn-danger me-2"
+                              onClick={handleBlockClick}
                             >
-                              Bloquer
+                              {t("Bloquer")}
                             </button>
                             <button
                               type="submit"
                               className="btn btn-secondary me-2"
+                              onClick={handleUnblockClick}
                             >
-                              Débloquer
+                              {t("Débloquer")}
                             </button>
                             <Link
                               to="/UtilisateurEdit"
                               className="btn btn-secondary"
                             >
-                              Editer
+                              {t("Editer")}
                             </Link>
                           </div>
                         </form>
