@@ -178,7 +178,7 @@ const Playground = () => {
               </SubMenu>
               <MenuItem
                 component={<Link to="/Commandes" />}
-                icon={<i className="fa-solid fa-bag-shopping"></i>}
+                icon={<i className="fa-solid fa-bookmark"></i>}
                 onClick={() => setActiveLink("/Commandes")}
                 style={
                   activeLink === "/Commandes" ? menuItemStyles.active : null
@@ -188,7 +188,7 @@ const Playground = () => {
               </MenuItem>
               <SubMenu
                 label={t("Demande Vendeur")}
-                icon={<i className="fa-solid fa-user-tie"></i>}
+                icon={<i className="fa-solid fa-bookmark"></i>}
               >
         
                 <MenuItem
@@ -217,7 +217,7 @@ const Playground = () => {
               </SubMenu>
               <SubMenu
                 label={t("Demande Administrateur")}
-                icon={<i className="fa-solid fa-user-tie"></i>}
+                icon={<i className="fa-solid fa-bookmark"></i>}
               >
         
                 <MenuItem
@@ -339,28 +339,6 @@ const Playground = () => {
                 >
                   {t("Liste de enchère")}
                 </MenuItem>
-                {/* <MenuItem
-                  component={<Link to="/OffreEnchere" />}
-                  onClick={() => setActiveLink("/OffreEnchere")}
-                  style={
-                    activeLink === "/OffreEnchere"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  {t("Création des offres")}
-                </MenuItem> */}
-                {/* <MenuItem
-                  component={<Link to="/ConfigurationEnchere" />}
-                  onClick={() => setActiveLink("/ConfigurationEnchere")}
-                  style={
-                    activeLink === "/ConfigurationEnchere"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  {t("Configuration")}
-                </MenuItem> */}
               </SubMenu>
 
               <SubMenu

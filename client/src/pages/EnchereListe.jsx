@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function EnchereListe() {
+  const { t } = useTranslation();
+
   return (
     <div className="content-container">
       <div id="main">
@@ -12,14 +15,16 @@ function EnchereListe() {
         </header>
         <section className="section">
           <div className="card">
-            <div style={{display:"flex",justifyContent:"space-between"}} className="card-header">
-              <h2 className="new-price">Liste d'enchére</h2>
-              {/* <Link to={"/ConfigurationEnchere"} className="btn btn-primary me-1 mb-1">Confuguration</Link> */}
+            <div
+              style={{ display: "flex", justifyContent: "space-between" }}
+              className="card-header"
+            >
+              <h2 className="new-price">{t("Liste d'enchére")}</h2>
             </div>
             <div className="card-body">
               <div className="row ">
                 <div className="col-6 form-group">
-                  <h6>Catégories</h6>
+                  <h6>{t("Catégories")}</h6>
                   <select className="choices form-select">
                     <option value="square">Square</option>
                     <option value="rectangle">Rectangle</option>
@@ -31,7 +36,7 @@ function EnchereListe() {
                   </select>
                 </div>
                 <div className="col-6 form-group">
-                  <h6 htmlFor="basicInput">Statut</h6>
+                  <h6 htmlFor="basicInput">{t("Statut")}</h6>
                   <select className="choices form-select">
                     <option value="square">Square</option>
                     <option value="rectangle">Rectangle</option>
@@ -41,16 +46,16 @@ function EnchereListe() {
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Produit</th>
-                    <th>Prix Mazed</th>
-                    <th>Nb de Participant</th>
-                    <th>Date de Publication</th>
-                    <th>Date de Déclenchement</th>
-                    <th>Statut</th>
-                    <th>Configuration</th>
-                    <th>Voir</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
+                    <th>{t("Produit")}</th>
+                    <th>{t("Prix")}</th>
+                    <th>{t("Nb de Participant")}</th>
+                    <th>{t("Date de Publication")}</th>
+                    <th>{t("Date de Déclenchement")}</th>
+                    <th>{t("Statut")}</th>
+                    <th>{t("Configuration")}</th>
+                    <th>{t("Voir")}</th>
+                    <th>{t("Modifier")}</th>
+                    <th>{t("Supprimer")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -67,63 +72,21 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/ConfigurationEnchere'}  className="btn">
-                        <i className="fas fa-cog"></i>
+                        <Link to={"/ConfigurationEnchere"} className="btn">
+                          <i className="fas fa-cog"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/DetailEnchere'}  className="btn">
-                        <i className="fa-solid fa-eye"></i>
+                        <Link to={"/DetailEnchere"} className="btn">
+                          <i className="fa-solid fa-eye"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/EnchèreCreation'} className="btn">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/ConfigurationEnchere'}  className="btn">
-                        <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/DetailEnchere'}  className="btn">
-                        <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/EnchèreCreation'}
-                          className="btn"
-                        >
+                        <Link to={"/EnchèreCreation"} className="btn">
                           <i class="fa-solid fa-pen-to-square"></i>
                         </Link>
                       </div>
@@ -131,7 +94,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                        <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -149,23 +112,21 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/ConfigurationEnchere'}  className="btn">
-                        <i className="fas fa-cog"></i>
+                        <Link to={"/ConfigurationEnchere"} className="btn">
+                          <i className="fas fa-cog"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/DetailEnchere'}  className="btn">
-                        <i className="fa-solid fa-eye"></i>
+                        <Link to={"/DetailEnchere"} className="btn">
+                          <i className="fa-solid fa-eye"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/EnchèreCreation'}
-                          className="btn"
-                        >
+                        <Link to={"/EnchèreCreation"} className="btn">
                           <i class="fa-solid fa-pen-to-square"></i>
                         </Link>
                       </div>
@@ -173,7 +134,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                        <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -191,65 +152,21 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/ConfigurationEnchere'}  className="btn">
-                        <i className="fas fa-cog"></i>
+                        <Link to={"/ConfigurationEnchere"} className="btn">
+                          <i className="fas fa-cog"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/DetailEnchere'}  className="btn">
-                        <i className="fa-solid fa-eye"></i>
+                        <Link to={"/DetailEnchere"} className="btn">
+                          <i className="fa-solid fa-eye"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={'/EnchèreCreation'}
-                          className="btn"
-                        >
-                         <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/ConfigurationEnchere'}  className="btn">
-                        <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/DetailEnchere'}  className="btn">
-                        <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={'/EnchèreCreation'}
-                          className="btn"
-                        >
+                        <Link to={"/EnchèreCreation"} className="btn">
                           <i class="fa-solid fa-pen-to-square"></i>
                         </Link>
                       </div>
@@ -257,7 +174,87 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                        <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="text-bold-500">Michael Right</td>
+                    <td>$15/hr</td>
+                    <td className="text-bold-500">UI/UX</td>
+                    <td className="text-bold-500">Michael Right</td>
+                    <td>$15/hr</td>
+                    <td>
+                      <a href="#" className="btn btn-secondary">
+                        secondary
+                      </a>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/ConfigurationEnchere"} className="btn">
+                          <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/DetailEnchere"} className="btn">
+                          <i className="fa-solid fa-eye"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/EnchèreCreation"} className="btn">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <a className="btn">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="text-bold-500">Michael Right</td>
+                    <td>$15/hr</td>
+                    <td className="text-bold-500">UI/UX</td>
+                    <td className="text-bold-500">Michael Right</td>
+                    <td>$15/hr</td>
+                    <td>
+                      <a href="#" className="btn btn-secondary">
+                        secondary
+                      </a>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/ConfigurationEnchere"} className="btn">
+                          <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/DetailEnchere"} className="btn">
+                          <i className="fa-solid fa-eye"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={"/EnchèreCreation"} className="btn">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <a className="btn">
+                          <i class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -267,7 +264,6 @@ function EnchereListe() {
             </div>
           </div>
         </section>
-    
       </div>
     </div>
   );

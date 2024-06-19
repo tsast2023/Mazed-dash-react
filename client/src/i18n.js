@@ -296,6 +296,7 @@ const resources = {
       "La Réponse": "The Answer",
       "Action": "Action",
       "Vous souhaitez ajouter une nouvelle image ?" : "You want to join a new picture?",
+      "Liste d'enchére": "Auction List",
   
     }
   },
@@ -600,6 +601,7 @@ const resources = {
       "Détail de Question": "Détail de Question",
       "La Question": "La Question",
       "La Réponse": "La Réponse",
+      "Liste d'enchére": "Liste d'enchére",
     }
   },
   ar: {
@@ -903,6 +905,8 @@ const resources = {
       "La Question": "السؤال",
       "La Réponse": "الجواب",
       "Vous souhaitez ajouter une nouvelle image ?": "هل ترغب في إضافة صورة جديدة؟",
+      "Liste d'enchére": "قائمة المزاد",
+      
     }
   }
 };

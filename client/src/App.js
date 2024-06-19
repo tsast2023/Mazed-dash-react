@@ -5,7 +5,7 @@ import Navbar from './components/navbar';
 import Home from './pages/Home';
 import Categories from './pages/catCreate';
 import ListeCategories from './pages/catList'
-import Login from './pages/Login';
+// import Login from './pages/Login';
 import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
 import Tutoriel from './pages/tutoriel';
@@ -129,7 +129,7 @@ const App = () => {
           </div>
         )}
         </div>
-        {!token && <Login setToken={setToken} />}
+        {/* {!token && <Login setToken={setToken} />} */}
       </Router>
     </DataProvider>
   );
