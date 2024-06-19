@@ -4,19 +4,19 @@ import { GlobalState } from "../GlobalState";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-
 const App = () => {
   const { t } = useTranslation();
-  const [tuto , setTuto]= useState({ordre : 0 , description:"" , file:""});
-  const state =useContext(GlobalState);
-  const tutorials = state.tutorials
+  const [tuto, setTuto] = useState({ ordre: 0, description: "", file: "" });
+  const state = useContext(GlobalState);
+  const tutorials = state.tutorials;
 
-  
   const handleDelete = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
-      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
+      text: t(
+        "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"
+      ),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
@@ -28,7 +28,11 @@ const App = () => {
       if (result.isConfirmed) {
         // Call deleteItem function
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+        Swal.fire(
+          t("Supprimé(e) !"),
+          t("Votre élément a été supprimé."),
+          "secondary"
+        );
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
@@ -47,25 +51,30 @@ const App = () => {
     // Read the file as base64
     reader.readAsDataURL(file);
   };
-  const deleteItem = async(id) => {
-   try {
-    const res = await axios.delete(`http://192.168.0.126:8081/api/tuto/deleteTuto?id=${id}`);
-    console.log(res.data);
-   } catch (error) {
-    console.log(error)
-   }
+  const deleteItem = async (id) => {
+    try {
+      const res = await axios.delete(
+        `http://192.168.0.126:8081/api/tuto/deleteTuto?id=${id}`
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const addTuto = async(e) =>{
+  const addTuto = async (e) => {
     console.log(tuto);
     console.log(tuto.ordre);
     e.preventDefault();
     try {
-      const res = await axios.post('http://192.168.0.126:8081/api/tuto/publishNow',tuto)
-      console.log(res.data)
+      const res = await axios.post(
+        "http://192.168.0.126:8081/api/tuto/publishNow",
+        tuto
+      );
+      console.log(res.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div id="app">
@@ -114,11 +123,11 @@ const App = () => {
                                 {t("Ajouter une nouvelle image")}
                               </h4>
                               <button
-                                      type="button"
-                                      className="btn-close"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    ></button>
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
                             </div>
                             <form onSubmit={addTuto} action="#">
                               <div className="modal-body">
@@ -141,10 +150,17 @@ const App = () => {
                                     placeholder={t("Écrivez ici")}
                                     className="form-control"
                                     maxLength="25"
-                                    onChange={e=>setTuto({...tuto , ordre: e.target.value})}
+                                    onChange={(e) =>
+                                      setTuto({
+                                        ...tuto,
+                                        ordre: e.target.value,
+                                      })
+                                    }
                                   />
                                 </div>
-                                <label htmlFor="email">{t("Description")}</label>
+                                <label htmlFor="email">
+                                  {t("Description")}
+                                </label>
                                 <div className="form-group">
                                   <textarea
                                     id="email"
@@ -152,7 +168,12 @@ const App = () => {
                                     placeholder={t("Écrivez ici")}
                                     className="form-control"
                                     maxLength="25"
-                                    onChange={e=>setTuto({...tuto , description: e.target.value})}
+                                    onChange={(e) =>
+                                      setTuto({
+                                        ...tuto,
+                                        description: e.target.value,
+                                      })
+                                    }
                                   />
                                 </div>
                               </div>
@@ -168,13 +189,12 @@ const App = () => {
                                   </span>
                                 </button>
                                 <button
-                                  
                                   className="btn btn-primary"
                                   data-bs-dismiss="modal"
                                   type="submit"
                                 >
                                   <i className="bx bx-check d-block d-sm-none"></i>
-                                  <span  className="btn btn-primary">
+                                  <span className="btn btn-primary">
                                     {t("Enregister")}
                                   </span>
                                 </button>
@@ -207,23 +227,29 @@ const App = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {tutorials? tutorials.map((item)=>(
-                        <tr>
-                        <td className="text-bold-500"> <img
+                      {tutorials ? (
+                        tutorials.map((item) => (
+                          <tr>
+                            <td className="text-bold-500">
+                              {" "}
+                              <img
                                 src={item.file}
                                 alt="tuto_image"
                                 style={{ width: "auto", height: "150px" }}
-                              /></td>
-                        <td>{item.ordre}</td>
-                        <th>
-                          <i
-                            className="fa-solid fa-trash deleteIcon"
-                            onClick={()=>handleDelete(item.id)}
-                          ></i>
-                        </th> 
-                      </tr>
-                      )):<div>loading</div>}
-                      
+                              />
+                            </td>
+                            <td>{item.ordre}</td>
+                            <th>
+                              <i
+                                className="fa-solid fa-trash deleteIcon"
+                                onClick={() => handleDelete(item.id)}
+                              ></i>
+                            </th>
+                          </tr>
+                        ))
+                      ) : (
+                        <div>loading</div>
+                      )}
                     </tbody>
                   </table>
                 </div>
