@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Modal, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function ProdList() {
@@ -9,7 +10,7 @@ function ProdList() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 750);
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);
@@ -88,140 +89,134 @@ function ProdList() {
 
   return (
     <div className="content-container">
-      <div id="app">
-        <div id="main">
-          <header className="mb-3">
-            <a href="#" className="burger-btn d-block d-xl-none">
-              <i className="bi bi-justify fs-3"></i>
-            </a>
-          </header>
-
-          <div className="page-heading">
-            <div className="page-title">
-              <div className="row">
-                <div className="col-12 col-md-6 order-md-1 order-last">
-                  {/* <h3>Produits</h3> */}
-                </div>
-              </div>
-            </div>
-            <section className="section">
-              <div className="card">
-                <div className="card-header">
-                  <h2 className="new-price">{t("Listes des Produits")}</h2>
-                </div>
-                <div className="card-body">
-                  <div className="table-responsive">
-                    {isMobile ? (
-                      <table style={{ width: "100%", textAlign: "center" }}>
-                        <tbody>
-                          {/* Replace this with dynamic content */}
-                          <tr style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                            <hr />
-                            <td style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                              <th>{t("Réf")}</th>
-                              <tr className="text-bold-500">01121</tr>
-                              <th>{t("Libellé")}</th>
-                              <tr className="text-bold-500">Lorem</tr>
-                              <th>{t("Image")}</th>
-                              <tr>
-                                <img src="" alt="img" />
-                              </tr>
-                              <th>{t("Stock initial")}</th>
-                              <tr className="text-bold-500">50</tr>
-                              <th>{t("Stock actuel")}</th>
-                              <tr className="text-bold-500">10</tr>
-                              <th>{t("Statut")}</th>
-                              <tr>
-                                <button className="btn btn-secondary">{t("Publié")}</button>
-                              </tr>
-                              <th>{t("Détail")}</th>
-                              <tr>
-                                <Link to="/prodDétail" className="btn btn-outline block">
-                                  <i className="fa-solid fa-eye font-medium-1"></i>
-                                </Link>
-                              </tr>
-                              <th>{t("Editer")}</th>
-                              <tr>
-                                <Link to="/prodEdit" className="btn btn-outline block">
-                                  <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                                </Link>
-                              </tr>
-                              <th>{t("Supprimer")}</th>
-                              <tr>
-                                <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                              </tr>
-                              <th>{t("Désactiver")}</th>
-                              <tr>
-                                <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                              </tr>
-                              <th>{t("Mettre à l'une")}</th>
-                              <tr>
-                                <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                              </tr>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    ) : (
-                      <table className="table" id="table1">
-                        <thead>
-                          <tr>
-                            <th>{t("Réf")}</th>
-                            <th>{t("Libellé")}</th>
-                            <th>{t("Image")}</th>
-                            <th>{t("Stock initial")}</th>
-                            <th>{t("Stock actuel")}</th>
-                            <th>{t("Statut")}</th>
-                            <th>{t("Détail")}</th>
-                            <th>{t("Editer")}</th>
-                            <th>{t("Supprimer")}</th>
-                            <th>{t("Désactiver")}</th>
-                            <th>{t("Mettre à l'une")}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {/* Replace this with dynamic content */}
-                          <tr>
-                            <td>01121</td>
-                            <td>Lorem</td>
-                            <td>
-                              <img src="" alt="img" />
-                            </td>
-                            <th>50</th>
-                            <th>10</th>
-                            <th>
-                              <button className="btn btn-secondary">{t("Publié")}</button>
-                            </th>
-                            <th>
-                              <Link to="/prodDétail" className="btn btn-outline block">
-                                <i className="fa-solid fa-eye font-medium-1"></i>
-                              </Link>
-                            </th>
-                            <th>
-                              <Link to="/prodEdit" className="btn btn-outline block">
-                                <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                              </Link>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                            </th>
-                          </tr>
-                        </tbody>
-                      </table>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </section>
+      <section className="section">
+        <div className="card">
+          <div className="card-header">
+            <h2 className="new-price">{t("Listes des Produits")}</h2>
+          </div>
+          <div className="card-body">
+            {isMobile ? (
+              <Table responsive="sm">
+                <tbody>
+                  <tr>
+                    <td>{t("Réf")}</td>
+                    <td className="text-bold-500">01121</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Libellé")}</td>
+                    <td className="text-bold-500">Lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Image")}</td>
+                    <td>
+                      <img src="" alt="img" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Stock initial")}</td>
+                    <td className="text-bold-500">50</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Stock actuel")}</td>
+                    <td className="text-bold-500">10</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Statut")}</td>
+                    <td>
+                      <button className="btn btn-secondary">{t("Publié")}</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Détail")}</td>
+                    <td>
+                      <Link to="/prodDétail" className="btn btn-outline block">
+                        <i className="fa-solid fa-eye font-medium-1"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Editer")}</td>
+                    <td>
+                      <Link to="/prodEdit" className="btn btn-outline block">
+                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Supprimer")}</td>
+                    <td>
+                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Désactiver")}</td>
+                    <td>
+                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Mettre à l'une")}</td>
+                    <td>
+                      <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            ) : (
+              <Table responsive="sm">
+                <thead>
+                  <tr>
+                    <th>{t("Réf")}</th>
+                    <th>{t("Libellé")}</th>
+                    <th>{t("Image")}</th>
+                    <th>{t("Stock initial")}</th>
+                    <th>{t("Stock actuel")}</th>
+                    <th>{t("Statut")}</th>
+                    <th>{t("Détail")}</th>
+                    <th>{t("Editer")}</th>
+                    <th>{t("Supprimer")}</th>
+                    <th>{t("Désactiver")}</th>
+                    <th>{t("Mettre à l'une")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01121</td>
+                    <td>Lorem</td>
+                    <td>
+                      <img src="" alt="img" />
+                    </td>
+                    <td>50</td>
+                    <td>10</td>
+                    <td>
+                      <button className="btn btn-secondary">{t("Publié")}</button>
+                    </td>
+                    <td>
+                      <Link to="/prodDétail" className="btn btn-outline block">
+                        <i className="fa-solid fa-eye font-medium-1"></i>
+                      </Link>
+                    </td>
+                    <td>
+                      <Link to="/prodEdit" className="btn btn-outline block">
+                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
+                      </Link>
+                    </td>
+                    <td>
+                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
+                    </td>
+                    <td>
+                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
+                    </td>
+                    <td>
+                      <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            )}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
