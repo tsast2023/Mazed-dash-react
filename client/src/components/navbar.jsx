@@ -59,23 +59,35 @@ const Navbar = ({ username }) => {
         style={{ position: "absolute", right: 0, top: "50px" }}
       >
         <div className="notification-content">
-          <div className="notification-item">
+        <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-envelope"></i>
+              <i className="fa-solid fa-user-plus"></i> 
             </div>
-            {t("New message from John")}
+            {t("Demande Création de vendeur")}
           </div>
           <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-calendar-alt"></i>
+              <i className="fa-solid fa-gavel"></i> 
             </div>
-            {t("Meeting reminder at 3:00 PM")}
+            {t("Demande Enchére")}
           </div>
           <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-exclamation-circle"></i>
+              <i className="fa-solid fa-money-bill-transfer"></i> 
             </div>
-            {t("System update available")}
+            {t("Demande transfert de solde")}
+          </div>
+          <div className="notification-item">
+            <div className="icon-circle">
+              <i className="fa-solid fa-layer-group"></i>
+            </div>
+            {t("Demande Catégorie")}
+          </div>
+          <div className="notification-item">
+            <div className="icon-circle">
+              <i className="fa-solid fa-diamond"></i>
+            </div>
+            {t("Demande de Produit")}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>

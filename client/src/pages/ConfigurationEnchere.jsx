@@ -3,6 +3,7 @@ import React from "react";
 function ConfigurationEnchere() {
   return (
     <div className="content-container">
+      <div className="card">
       <div id="main">
         <header className="mb-3">
           <a href="#" className="burger-btn d-block d-xl-none">
@@ -154,6 +155,7 @@ function ConfigurationEnchere() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
