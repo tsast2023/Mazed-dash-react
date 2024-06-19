@@ -6,7 +6,7 @@ function Configuration() {
 
   return (
     <div className="content-container">
-      <div id="main">
+      <div  id="main">
         <header className="mb-3">
           <a href="#" className="burger-btn d-block d-xl-none">
             <i className="bi bi-justify fs-3" />
@@ -16,8 +16,8 @@ function Configuration() {
           <section id="basic-vertical-layouts">
             <div className="match-height">
               <div>
-                <div className="card">
-                  <div className="card-header">
+                <div  className="card">
+                  <div  className="card-header">
                     <h2 className="new-price" id="myModalLabel33">
                       {t("Configuration De L'enchere")}
                     </h2>

@@ -109,8 +109,13 @@ function EnchèreCreation() {
                               </select>
                             </fieldset>
                           </div>
+                          <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                           <div className="col-12 d-flex justify-content-end">
-                            <Link to={"/configuration"} type="submit" className="btn btn-primary me-1 mb-1">
+                            
+                            <Link to={"/configuration"} type="stubmi" className="btn btn-primary me-1 mb-1">
                               <a style={{ color: 'white' }}>{t("Suivant")}</a>
                             </Link>
                             <button type="reset" className="btn btn-light-secondary me-1 mb-1">

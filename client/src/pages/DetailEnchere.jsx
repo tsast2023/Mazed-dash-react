@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";import '../css/DetailEnchere.css'
 import { Link } from "react-router-dom";
+import '../css/DetailEnchere.css'
 
 function DetailEnchere() {
 
@@ -46,6 +47,7 @@ function DetailEnchere() {
           <div id="timer" />
         </header>
         <section className="section">
+       
           <div className="card-wrapper">
             <div className="cardss">
               {/* card left */}
@@ -53,20 +55,20 @@ function DetailEnchere() {
                 <div className="img-display">
                   <div className="img-showcase">
                     <img
-                      src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg"
-                      alt="shoe image"
+                        src="https://www.maisonsclairlogis.fr/wp-content/uploads/maison-contemporaine_onyx-version-nuit.jpg"
+                        alt="shoe image"
                     />
                     <img
-                      src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg"
-                      alt="shoe image"
+                        src="https://cdn.futura-sciences.com/sources/images/diaporama/609-maison-en-bois/--609-maisonbois.jpg"
+                        alt="shoe image"
                     />
                     <img
-                      src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg"
-                      alt="shoe image"
+                        src="https://www.maisonsclairlogis.fr/wp-content/uploads/maison-contemporaine_onyx-version-nuit.jpg"
+                        alt="shoe image"
                     />
                     <img
-                      src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg"
-                      alt="shoe image"
+                        src="https://cdn.futura-sciences.com/sources/images/diaporama/609-maison-en-bois/--609-maisonbois.jpg"
+                        alt="shoe image"
                     />
                   </div>
                 </div>
@@ -74,7 +76,7 @@ function DetailEnchere() {
                   <div className="img-item">
                     <a href="#" data-id={1}>
                       <img
-                        src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg"
+                        src="https://www.maisonsclairlogis.fr/wp-content/uploads/maison-contemporaine_onyx-version-nuit.jpg"
                         alt="shoe image"
                       />
                     </a>
@@ -82,7 +84,7 @@ function DetailEnchere() {
                   <div className="img-item">
                     <a href="#" data-id={2}>
                       <img
-                        src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg"
+                        src="https://www.maisonsarchidesign.com/wp-content/uploads/2019/11/Modele-Manoir-1-R1-5.jpg"
                         alt="shoe image"
                       />
                     </a>
@@ -90,7 +92,7 @@ function DetailEnchere() {
                   <div className="img-item">
                     <a href="#" data-id={3}>
                       <img
-                        src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg"
+                        src="https://www.maisonsclairlogis.fr/wp-content/uploads/maison-contemporaine_onyx-version-nuit.jpg"
                         alt="shoe image"
                       />
                     </a>
@@ -98,7 +100,7 @@ function DetailEnchere() {
                   <div className="img-item">
                     <a href="#" data-id={4}>
                       <img
-                        src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg"
+                        src="https://cdn.futura-sciences.com/sources/images/diaporama/609-maison-en-bois/--609-maisonbois.jpg"
                         alt="shoe image"
                       />
                     </a>
@@ -112,7 +114,7 @@ function DetailEnchere() {
                 </p>
                 <div className="product-price">
                   {/* <p class="last-price">Old Price: <span>$257.00</span></p> */}
-                  <div className="col-md-12 mb-4">
+                  <div className="col-md-12  mb-4">
                     <div
                       style={{
                         margin: 0,
@@ -153,6 +155,7 @@ function DetailEnchere() {
                     </div>
                   </div>
                 </div>
+                <br/>
                 <div
                   style={{ backgroundColor: "white", padding: 20 }}
                   className="row product-detail"
@@ -176,6 +179,7 @@ function DetailEnchere() {
                     <p>Date de Fermeture</p>
                     <p>Date de Lancement</p>
                   </div>
+                  
                   <div style={{ textAlign: "center" }} className="buuttt">
                     <div className="modal-secondary me-1 mb-1 d-inline-block">
                       <button
@@ -327,8 +331,8 @@ function DetailEnchere() {
             </div>
           </div>
         </section>
-        <br />
-        <br />
+   <br/>
+   <br/>
         <section className="section">
           <div className="card">
             <div className="card-header">
@@ -385,6 +389,8 @@ function DetailEnchere() {
             </div>
           </div>
         </section>
+        <br />
+        <br />
         <footer>
           <div className="footer clearfix mb-0 text-muted">
             <div className="float-start">

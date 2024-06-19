@@ -12,8 +12,9 @@ function EnchereListe() {
         </header>
         <section className="section">
           <div className="card">
-            <div className="card-header">
+            <div style={{display:"flex",justifyContent:"space-between"}} className="card-header">
               <h2 className="new-price">Liste d'enchére</h2>
+              {/* <Link to={"/ConfigurationEnchere"} className="btn btn-primary me-1 mb-1">Confuguration</Link> */}
             </div>
             <div className="card-body">
               <div className="row ">
@@ -46,6 +47,7 @@ function EnchereListe() {
                     <th>Date de Publication</th>
                     <th>Date de Déclenchement</th>
                     <th>Statut</th>
+                    <th>Configuration</th>
                     <th>Voir</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
@@ -62,6 +64,13 @@ function EnchereListe() {
                       <a href="#" className="btn btn-secondary">
                         secondary
                       </a>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={'/ConfigurationEnchere'}  className="btn">
+                        <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
                     </td>
                     <td>
                       <div className="buttons">
@@ -98,6 +107,13 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
+                        <Link to={'/ConfigurationEnchere'}  className="btn">
+                        <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
                         <Link to={'/DetailEnchere'}  className="btn">
                         <i className="fa-solid fa-eye"></i>
                         </Link>
@@ -133,6 +149,13 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
+                        <Link to={'/ConfigurationEnchere'}  className="btn">
+                        <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="buttons">
                         <Link to={'/DetailEnchere'}  className="btn">
                         <i className="fa-solid fa-eye"></i>
                         </Link>
@@ -165,6 +188,13 @@ function EnchereListe() {
                       <a href="#" className="btn btn-secondary">
                         secondary
                       </a>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={'/ConfigurationEnchere'}  className="btn">
+                        <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
                     </td>
                     <td>
                       <div className="buttons">
@@ -200,6 +230,13 @@ function EnchereListe() {
                       <a href="#" className="btn btn-secondary">
                         secondary
                       </a>
+                    </td>
+                    <td>
+                      <div className="buttons">
+                        <Link to={'/ConfigurationEnchere'}  className="btn">
+                        <i className="fas fa-cog"></i>
+                        </Link>
+                      </div>
                     </td>
                     <td>
                       <div className="buttons">
