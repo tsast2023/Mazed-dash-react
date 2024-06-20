@@ -121,4 +121,9 @@ td, th {
   background-color: #b0210e;
 }
 
+hr {
+  border: none;
+  height: 5px;
+  background-color: #b0210e;
+}
 

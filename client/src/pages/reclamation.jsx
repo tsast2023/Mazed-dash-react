@@ -1,206 +1,169 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function Reclamation() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="content-container">
-    <div id="main">
-      <header className="mb-3">
-        <a href="#" className="burger-btn d-block d-xl-none">
-          <i className="bi bi-justify fs-3"></i>
-        </a>
-      </header>
-      <section className="section">
-        <div className="row" id="table-contexual">
-          <div className="col-12">
-            <div className="card">
-              <div className="card-header">
-                <h2 className="new-price">{t("Tableau de Réclamation")}</h2>
-              </div>
-              <div className="card-content">
-                {/* table contextual / colored */}
-                <div className="table-responsive">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>{t("Date")}</th>
-                        <th>{t("Utilisateur")}</th>
-                        <th>{t("Sujet")}</th>
-                        <th>{t("Statut")}</th>
-                        <th>{t("Détail")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="text-bold-500">10/10/2024</td>
-                        <td>{t("Lorem Lorem")}</td>
-                        <td className="text-bold-500">{t("Lorem Lorem")}</td>
-                        <td>
-                          <span className="badge bg-secondary">{t("Ouverte")}</span>
-                        </td>
-                        <td>
-                          <section id="basic-modals">
-                            <button
-                              type="button"
-                              className="btn btn-outline block"
-                              data-bs-toggle="modal"
-                              data-bs-target="#default1"
-                            >
-                              <i className="fa-solid fa-eye font-medium-1"></i>
-                            </button>
-                            <div
-                              className="modal fade text-left"
-                              id="default1"
-                              tabIndex="-1"
-                              role="dialog"
-                              aria-labelledby="myModalLabel1"
-                              aria-hidden="true"
-                            >
-                              <div
-                                className="modal-dialog modal-dialog-scrollable"
-                                role="document"
+      <div id="main">
+        <header className="mb-3">
+          <a href="#" className="burger-btn d-block d-xl-none">
+            <i className="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+        <section className="section">
+          <div className="row" id="table-contexual">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="new-price">{t("Tableau de Réclamation")}</h2>
+                </div>
+                <div className="card-content">
+                  <div className="table-responsive">
+                    {isMobile ? (
+                      <table className="table">
+                        <tbody>
+                          <tr>
+                            <td>{t("Date")}</td>
+                            <td>10/10/2024</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Utilisateur")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Sujet")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Statut")}</td>
+                            <td>
+                              <span className="badge bg-secondary">{t("Ouverte")}</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>{t("Détail")}</td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-outline block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#default1"
                               >
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5
-                                      className="modal-title"
-                                      id="myModalLabel1"
-                                    >
-                                      {t("Réclamations")}
-                                    </h5>
-                                    <button
-                                      type="button"
-                                      className="btn-close"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    ></button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <p>
-                                      {t("Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry. Carrot cake chocolate tootsie roll chocolate bar candy canes biscuit. Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.")}
-                                    </p>
-                                    <div className="card-body">
-                                      <div className="form-group with-title mb-3">
-                                        <textarea
-                                          className="form-control"
-                                          id="exampleFormControlTextarea1"
-                                          rows="3"
-                                        ></textarea>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="modal-footer">
-                                    <button
-                                      type="button"
-                                      className="btn btn-secondary"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      {t("Fermer")}
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-primary"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      {t("Envoyer")}
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="text-bold-500">10/10/2024</td>
-                        <td>{t("Lorem Lorem")}</td>
-                        <td className="text-bold-500">{t("Lorem Lorem")}</td>
-                        <td>
-                          <span className="badge bg-danger">{t("Fermée")}</span>
-                        </td>
-                        <td>
-                          <section id="basic-modals">
-                            <button
-                              type="button"
-                              className="btn btn-outline block"
-                              data-bs-toggle="modal"
-                              data-bs-target="#default2"
-                            >
-                              <i className="fa-solid fa-eye font-medium-1"></i>
-                            </button>
-                            <div
-                              className="modal fade text-left"
-                              id="default2"
-                              tabIndex="-1"
-                              role="dialog"
-                              aria-labelledby="myModalLabel2"
-                              aria-hidden="true"
-                            >
-                              <div
-                                className="modal-dialog modal-dialog-scrollable"
-                                role="document"
+                                <i className="fa-solid fa-eye font-medium-1"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan="2"><hr /></td>
+                          </tr>
+                          <tr>
+                            <td>{t("Date")}</td>
+                            <td>10/10/2024</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Utilisateur")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Sujet")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Statut")}</td>
+                            <td>
+                              <span className="badge bg-danger">{t("Fermée")}</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>{t("Détail")}</td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-outline block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#default2"
                               >
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5
-                                      className="modal-title"
-                                      id="myModalLabel2"
-                                    >
-                                      {t("Réclamation")}
-                                    </h5>
-                                    <button
-                                      type="button"
-                                      className="btn-close"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    ></button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <p>
-                                      {t("Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry. Carrot cake chocolate tootsie roll chocolate bar candy canes biscuit. Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.")}
-                                    </p>
-                                    <div className="card-body">
-                                      <div className="form-group with-title mb-3">
-                                        <textarea
-                                          className="form-control"
-                                          id="exampleFormControlTextarea1"
-                                          rows="3"
-                                        ></textarea>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="modal-footer">
-                                    <button
-                                      type="button"
-                                      className="btn btn-secondary"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      {t("Fermer")}
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-primary"
-                                      data-bs-dismiss="modal"
-                                    >
-                                      {t("Envoyer")}
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </section>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                                <i className="fa-solid fa-eye font-medium-1"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    ) : (
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th>{t("Date")}</th>
+                            <th>{t("Utilisateur")}</th>
+                            <th>{t("Sujet")}</th>
+                            <th>{t("Statut")}</th>
+                            <th>{t("Détail")}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="text-bold-500">10/10/2024</td>
+                            <td>{t("Lorem Lorem")}</td>
+                            <td className="text-bold-500">{t("Lorem Lorem")}</td>
+                            <td>
+                              <span className="badge bg-secondary">{t("Ouverte")}</span>
+                            </td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-outline block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#default1"
+                              >
+                                <i className="fa-solid fa-eye font-medium-1"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="text-bold-500">10/10/2024</td>
+                            <td>{t("Lorem Lorem")}</td>
+                            <td className="text-bold-500">{t("Lorem Lorem")}</td>
+                            <td>
+                              <span className="badge bg-danger">{t("Fermée")}</span>
+                            </td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-outline block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#default2"
+                              >
+                                <i className="fa-solid fa-eye font-medium-1"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </div>
   );
 }
