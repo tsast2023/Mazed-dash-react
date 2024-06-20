@@ -1003,6 +1003,10 @@ const resources = {
       'Lien Page Details': 'رابط صفحة التفاصيل',
       "Nombre d'encheres y liées": "عدد المزادات ذات الصلة",
       "Date de participation": "تاريخ المشاركة",
+      "Demande": "الطلبات",
+      "Demande Vendeur": "الطلبات البائع",
+      "Demande Administrateur": "الطلبات المشرف",
+
     }
   }
 };
