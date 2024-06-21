@@ -1,6 +1,48 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
+import Choices from "choices.js";
+
+import { GlobalState } from "../GlobalState";
+import { useTranslation } from "react-i18next";
+
 function CreationRole() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [inputs, setInputs] = useState([]);
+  const state = useContext(GlobalState);
+  const categoriess = state.Categories;
+  const { t } = useTranslation();
+
+  const goBack = () => {
+    window.history.back(); // Simulate a browser back button
+  };
+
+  useEffect(() => {
+    console.log("cat from here", categoriess);
+    const select = new Choices("#category-select", {
+      removeItemButton: true,
+      placeholder: true,
+      placeholderValue: "Select an option",
+      shouldSort: false,
+    });
+
+    const handleSelectChange = () => {
+      const hasSelection = select.getValue().length > 0;
+      setIsEnabled(hasSelection);
+      if (!hasSelection) {
+        setInputs([]);
+      }
+    };
+
+    select.passedElement.element.addEventListener("change", handleSelectChange);
+
+    return () => {
+      select.passedElement.element.removeEventListener(
+        "change",
+        handleSelectChange
+      );
+      select.destroy();
+    };
+  }, []);
   return (
     <div>
       <div id="main">
@@ -34,15 +76,24 @@ function CreationRole() {
                           />
                         </div>
                       </div>
-                      <div className="col-12">
-                        <Form.Select aria-label="Default select example">
-                      
-                          <option>Permission</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </Form.Select>
-                      </div>
+                      <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label htmlFor="category-select">{t("Role")}</label>
+                <select
+                  id="category-select"
+                  className="choices form-select multiple-remove"
+                  multiple
+                >
+                  <optgroup>
+                    {categoriess ? (
+                      categoriess.map((item) => (
+                        <option value={item}>{item.libeléCategorie}</option>
+                      ))
+                    ) : (
+                      <option>loading</option>
+                    )}
+                  </optgroup>
+                </select>
+              </div>
                       <br />
                       <br />
                       <br />

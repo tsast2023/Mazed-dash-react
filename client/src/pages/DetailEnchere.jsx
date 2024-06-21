@@ -3,8 +3,34 @@ import "../css/DetailEnchere.css";
 import { Link } from "react-router-dom";
 import "../css/DetailEnchere.css";
 import { useTranslation } from "react-i18next";
+import Swal from "sweetalert2";
 
 function DetailEnchere() {
+  const deleteItem = () => {
+    // Implement your delete logic here
+  };
+
+  
+  const handleDelete = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui, supprimez-le !"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
   const { t } = useTranslation();
   useEffect(() => {
     const imgs = document.querySelectorAll(".img-select a");
@@ -271,8 +297,7 @@ function DetailEnchere() {
                       <button
                         type="button"
                         className="btn btn-outline-danger deleteIcon"
-                        data-bs-toggle="modal"
-                        data-bs-target="#danger"
+                     onClick={handleDelete}
                       >
                         Annuler
                       </button>
