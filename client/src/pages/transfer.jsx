@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function Modal() {
   const { t } = useTranslation();
@@ -57,6 +57,31 @@ function Modal() {
 
 function TableRow({ userData, status, onAccept }) {
   const { t } = useTranslation();
+
+  const handleAccept = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(t("Accepté"), t("Votre élément a été Accepté."), "success");
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
+
+  const deleteItem = () => {
+    console.log("Item deleted");
+  };
+
   return (
     <tr>
       <td>{userData.name}</td>
@@ -68,21 +93,17 @@ function TableRow({ userData, status, onAccept }) {
         <span className={`badge bg-${status.color}`}>{t(status.text)}</span>
       </td>
       <td>
-        <i
-          className="fa-solid fa-circle-check"
-          onClick={onAccept}
-        ></i>
+        <i className="fa-solid fa-circle-check text-success" onClick={onAccept}></i>
       </td>
       <td>
         <section id="basic-modals">
-          {/* Button trigger for basic modal */}
           <button
             type="button"
             className="btn btn-outline block"
             data-bs-toggle="modal"
             data-bs-target="#default"
           >
-            <i className="fa-solid fa-circle-xmark"></i>
+            <i className="fa-solid fa-circle-xmark text-danger"></i>
           </button>
           <Modal />
         </section>
@@ -93,6 +114,45 @@ function TableRow({ userData, status, onAccept }) {
 
 function Transfer() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleAccept = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(t("Accepté"), t("Votre élément a été Accepté."), "success");
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
+
+  const deleteItem = () => {
+    console.log("Item deleted");
+  };
 
   const data = [
     {
@@ -130,40 +190,6 @@ function Transfer() {
     },
   ];
 
-  const handleAccept = () => {
-    Swal.fire({
-      title: t("Êtes-vous sûr(e) ?"),
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: t("Oui"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Call deleteItem function or equivalent action
-        deleteItem();
-        Swal.fire(
-          t("Accepté"),
-          t("Votre élément a été Accepté."),
-          "secondary"
-        );
-      } else {
-        Swal.fire(
-          t("Annulé"),
-          t("Votre élément est en sécurité :)"),
-          "error"
-        );
-      }
-    });
-  };
-
-  // Dummy deleteItem function for demonstration
-  const deleteItem = () => {
-    console.log("Item deleted");
-  };
-
   return (
     <div className="content-container">
       <div id="main">
@@ -181,30 +207,51 @@ function Transfer() {
               </div>
               <div className="card-body">
                 <div className="table-responsive datatable-minimal">
-                  <table className="table" id="table2">
-                    <thead>
-                      <tr>
-                        <th>{t("Date")}</th>
-                        <th>{t("Utilisateur")}</th>
-                        <th>{t("Valeur")}</th>
-                        <th>{t("Type")}</th>
-                        <th>{t("Pièce jointe")}</th>
-                        <th>{t("Statut")}</th>
-                        <th>{t("Accepter")}</th>
-                        <th>{t("Refuser")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data.map((item, index) => (
-                        <TableRow
-                          key={index}
-                          userData={item}
-                          status={item.status}
-                          onAccept={handleAccept}
-                        />
-                      ))}
-                    </tbody>
-                  </table>
+                  {isMobile ? (
+                    <table className="table" id="table2">
+                      <tbody>
+                        {data.map((item, index) => (
+                          <React.Fragment key={index}>
+                            <TableRow
+                              userData={item}
+                              status={item.status}
+                              onAccept={handleAccept}
+                            />
+                            <tr>
+                              <td colSpan="2">
+                                <hr />
+                              </td>
+                            </tr>
+                          </React.Fragment>
+                        ))}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <table className="table" id="table2">
+                      <thead>
+                        <tr>
+                          <th>{t("Date")}</th>
+                          <th>{t("Utilisateur")}</th>
+                          <th>{t("Valeur")}</th>
+                          <th>{t("Type")}</th>
+                          <th>{t("Pièce jointe")}</th>
+                          <th>{t("Statut")}</th>
+                          <th>{t("Accepter")}</th>
+                          <th>{t("Refuser")}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data.map((item, index) => (
+                          <TableRow
+                            key={index}
+                            userData={item}
+                            status={item.status}
+                            onAccept={handleAccept}
+                          />
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
                 </div>
               </div>
             </div>

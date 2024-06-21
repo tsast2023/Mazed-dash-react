@@ -9,7 +9,7 @@ function TableVendeurs() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 750);
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);

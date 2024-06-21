@@ -150,7 +150,7 @@ const Playground = () => {
                     activeLink === "/google-maps" ? menuItemStyles.active : null
                   }
                 >
-                  Creation D'un Role
+                  {t("Creation D'un Role")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -161,7 +161,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Liste des Administrateur
+                  {t("Liste des Administrateur")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/CreationAdministrateur" />}
@@ -172,7 +172,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Créer un Administrateur
+                  {t("Créer un Administrateur")}
                 </MenuItem>
         
               </SubMenu>
@@ -211,7 +211,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande de Création de Compte
+                  {t("Demande de Création de Compte")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -222,7 +222,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande Produit
+                  {t("Demande Produit")}
                 </MenuItem>
                 </SubMenu>
                 <SubMenu
@@ -239,7 +239,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande Produit
+                  {t("Demande Produit")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -250,7 +250,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande Enchére
+                  {t("Demande Enchére")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -261,7 +261,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande Catégorie 
+                  {t("Demande Catégorie")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -272,7 +272,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Demande Transfert de Solde
+                  {t("Demande Transfert de Solde")}
                 </MenuItem>
               </SubMenu>
           

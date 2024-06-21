@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
 function TermesList() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Function to handle item deletion
   const handleDelete = () => {
@@ -45,87 +60,157 @@ function TermesList() {
               </div>
               <div className="card-body">
                 <div className="table-responsive">
-                  <table className="table" id="table1">
-                    <thead>
-                      <tr>
-                        <th>{t("Date de création")}</th>
-                        <th>{t("Sujet")}</th>
-                        <th>{t("Voir")}</th>
-                        <th>{t("Editer")}</th>
-                        <th>{t("Supprimer")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{t("05/05/2024")}</td>
-                        <td>{t("création d'un compte acheteur")}</td>
-                        <th>
-                          <Link to="/TermsAcheteur">
-                            <i className="fa-solid fa-eye"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <Link to="/TermeEdit">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <i onClick={handleDelete} className="fa-solid fa-trash"></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>{t("05/05/2024")}</td>
-                        <td>{t("création d'un compte vendeur")}</td>
-                        <th>
-                          <Link to="/TermsAcheteur">
-                            <i className="fa-solid fa-eye"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <Link to="/TermeEdit">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <i onClick={handleDelete} className="fa-solid fa-trash"></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>{t("05/05/2024")}</td>
-                        <td>{t("participation à une enchère")}</td>
-                        <th>
-                          <Link to="/TermsAcheteur">
-                            <i className="fa-solid fa-eye"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <Link to="/TermeEdit">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <i onClick={handleDelete} className="fa-solid fa-trash"></i>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td>{t("05/05/2024")}</td>
-                        <td>{t("enchérir")}</td>
-                        <th>
-                          <Link to="/TermsAcheteur">
-                            <i className="fa-solid fa-eye"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <Link to="/TermeEdit">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </Link>
-                        </th>
-                        <th>
-                          <i onClick={handleDelete} className="fa-solid fa-trash"></i>
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {isMobile ? (
+                    <table className="table" id="table1">
+                      <tbody>
+                        <tr>
+                          <td>{t("Date de création")}</td>
+                          <td>{t("05/05/2024")}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Sujet")}</td>
+                          <td>{t("création d'un compte acheteur")}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Voir")}</td>
+                          <td>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Editer")}</td>
+                          <td>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Supprimer")}</td>
+                          <td>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan="2"><hr /></td>
+                        </tr>
+                        <tr>
+                          <td>{t("Date de création")}</td>
+                          <td>{t("05/05/2024")}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Sujet")}</td>
+                          <td>{t("création d'un compte vendeur")}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Voir")}</td>
+                          <td>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Editer")}</td>
+                          <td>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Supprimer")}</td>
+                          <td>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  ) : (
+                    <table className="table" id="table1">
+                      <thead>
+                        <tr>
+                          <th>{t("Date de création")}</th>
+                          <th>{t("Sujet")}</th>
+                          <th>{t("Voir")}</th>
+                          <th>{t("Editer")}</th>
+                          <th>{t("Supprimer")}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{t("05/05/2024")}</td>
+                          <td>{t("création d'un compte acheteur")}</td>
+                          <th>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>{t("05/05/2024")}</td>
+                          <td>{t("création d'un compte vendeur")}</td>
+                          <th>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>{t("05/05/2024")}</td>
+                          <td>{t("participation à une enchère")}</td>
+                          <th>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>{t("05/05/2024")}</td>
+                          <td>{t("enchérir")}</td>
+                          <th>
+                            <Link to="/TermsAcheteur">
+                              <i className="fa-solid fa-eye"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <Link to="/TermeEdit">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </Link>
+                          </th>
+                          <th>
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  )}
                 </div>
               </div>
             </div>

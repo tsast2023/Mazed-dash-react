@@ -9,7 +9,7 @@ function TableUtilisateur() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 750);
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);
@@ -66,6 +66,7 @@ function TableUtilisateur() {
   };
 
   return (
+    <div className="content-container">
     <div id="main">
       <header className="mb-3">
         <a href="#" className="burger-btn d-block d-xl-none">
@@ -169,6 +170,7 @@ function TableUtilisateur() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

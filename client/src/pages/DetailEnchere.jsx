@@ -219,7 +219,7 @@ function DetailEnchere() {
                         data-bs-toggle="modal"
                         data-bs-target="#secondary"
                       >
-                        Publier
+                        {t("Publier")}
                       </button>
                       <div
                         className="modal fade text-left"
@@ -234,13 +234,7 @@ function DetailEnchere() {
                           role="document"
                         >
                           <div className="modal-content">
-                            <div className="modal-header bg-secondary">
-                              <h5
-                                className="modal-title white"
-                                id="myModalLabel110"
-                              >
-                                secondary Modal
-                              </h5>
+                            <div className="modal-header">
                               <button
                                 type="button"
                                 className="close"
@@ -264,7 +258,7 @@ function DetailEnchere() {
                                 data-bs-dismiss="modal"
                               >
                                 <i className="bx bx-x d-block d-sm-none" />
-                                <span className="d-none d-sm-block">Close</span>
+                                <span className="d-none d-sm-block">{t("Close")}</span>
                               </button>
                               <button
                                 type="button"
@@ -273,7 +267,7 @@ function DetailEnchere() {
                               >
                                 <i className="bx bx-check d-block d-sm-none" />
                                 <span className="d-none d-sm-block">
-                                  Accept
+                                  {t("Accept")}
                                 </span>
                               </button>
                             </div>
@@ -289,7 +283,7 @@ function DetailEnchere() {
                           data-bs-toggle="modal"
                           data-bs-target="#primary"
                         >
-                          Modifier
+                          {t("Modifier")}
                         </button>
                       </Link>
                     </div>
@@ -299,7 +293,7 @@ function DetailEnchere() {
                         className="btn btn-outline-danger deleteIcon"
                      onClick={handleDelete}
                       >
-                        Annuler
+                        {t("Annuler")}
                       </button>
                       <div
                         className="modal fade text-left"
@@ -329,7 +323,7 @@ function DetailEnchere() {
                               </button>
                             </div>
                             <div className="modal-body">
-                              Vous Avez Sur de Supprimer !
+                              {t("Vous Avez Sur de Supprimer !")}
                             </div>
                             <div className="modal-footer">
                               <button
@@ -338,7 +332,7 @@ function DetailEnchere() {
                                 data-bs-dismiss="modal"
                               >
                                 <i className="bx bx-x d-block d-sm-none" />
-                                <span className="d-none d-sm-block">Close</span>
+                                <span className="d-none d-sm-block">{t("Close")}</span>
                               </button>
                               <button
                                 type="button"
@@ -347,7 +341,7 @@ function DetailEnchere() {
                               >
                                 <i className="bx bx-check d-block d-sm-none" />
                                 <span className="d-none d-sm-block">
-                                  Accept
+                                  {t("Accept")}
                                 </span>
                               </button>
                             </div>
@@ -367,23 +361,20 @@ function DetailEnchere() {
         <section className="section">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">Liste des Participants</h2>
+              <h2 className="new-price">{t("Liste des Participants")}</h2>
             </div>
             <div className="card-body">
               <div className="table-responsive datatable-minimal">
                 <table className="table" id="table2">
                   <thead>
                     <tr>
-                      <th>Nom de famille</th>
-                      <th>Prénom</th>
-                      <th>Pseudo</th>
-                      <th>Numéro du téléphone</th>
-                      <th>Date de participation</th>
-                      <th>Nombre d'encheres y liées</th>
-                      <th>Lien Page Details</th>
-                      {/* <th>Publier immédiatement</th>
-        <th>Modifier</th>
-        <th>Annuler</th> */}
+                      <th>{t("Nom de famille")}</th>
+                      <th>{t("Prénom")}</th>
+                      <th>{t("Pseudo")}</th>
+                      <th>{t("Numéro du téléphone")}</th>
+                      <th>{t("Date de participation")}</th>
+                      <th>{t("Nombre d'encheres y liées")}</th>
+                      <th>{t("Lien Page Details")}</th>
                     </tr>
                   </thead>
                   <tbody>
