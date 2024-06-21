@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
+import { GlobalState } from "../GlobalState";
+
 function CreationRole() {
+  const [data, setData] = useState({ name: "", permissions: [] });
+  const state = useContext(GlobalState);
+  const allPermissions = state.Permissions;
+
+  const createRole = async (e) => {
+    e.preventDefault();
+    console.log(data);
+    try {
+      const res = await axios.post(
+        "http://localhost:8081/admin/create-role",
+        data
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlePermissionChange = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setData({ ...data, permissions: selectedOptions });
+  };
+
   return (
     <div>
       <div id="main">
@@ -9,45 +35,49 @@ function CreationRole() {
             <i className="bi bi-justify fs-3" />
           </a>
         </header>
-        <div />
         <div className="col-12">
           <div className="card">
             <div className="card-header d-flex justify-content-between align-items-center">
-              <h2 className="new-price">Créer un role</h2>
+              <h2 className="new-price">Créer un rôle</h2>
               <div id="add-input-button-container" />
               {/* + Button */}
             </div>
             <div className="card-content">
               <div className="card-body">
-                <form className="form form-vertical">
+                <form className="form form-vertical" onSubmit={createRole}>
                   <div className="form-body">
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="first-name-vertical">Nom</label>
+                          <label htmlFor="role-name">Nom du rôle</label>
                           <input
                             type="text"
-                            id="first-name-vertical"
+                            id="role-name"
                             className="form-control"
-                            name="fname"
+                            name="roleName"
                             maxLength={25}
+                            onChange={(e) =>
+                              setData({ ...data, name: e.target.value })
+                            }
                           />
                         </div>
                       </div>
                       <div className="col-12">
-                        <Form.Select aria-label="Default select example">
-                      
-                          <option>Permission</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                        <Form.Select
+                          onChange={handlePermissionChange}
+                          multiple
+                          aria-label="Sélectionner les permissions"
+                          value={data.permissions}
+                        >
+                          {allPermissions &&
+                            allPermissions.map((permission) => (
+                              <option key={permission.id} value={permission.name}>
+                                {permission.name}
+                              </option>
+                            ))}
                         </Form.Select>
                       </div>
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <div className="col-12 d-flex justify-content-end">
+                      <div className="col-12 d-flex justify-content-end mt-3">
                         <button
                           type="reset"
                           className="btn btn-light-secondary me-1 mb-1"
@@ -58,7 +88,7 @@ function CreationRole() {
                           type="submit"
                           className="btn btn-primary me-1 mb-1"
                         >
-                          Enregister
+                          Enregistrer
                         </button>
                       </div>
                     </div>
