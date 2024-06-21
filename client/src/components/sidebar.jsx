@@ -176,7 +176,7 @@ const Playground = () => {
                 </MenuItem>
         
               </SubMenu>
-              <MenuItem
+              {/* <MenuItem
                 component={<Link to="/Commandes" />}
                 icon={<i className="fa-solid fa-bookmark"></i>}
                 onClick={() => setActiveLink("/Commandes")}
@@ -185,13 +185,24 @@ const Playground = () => {
                 }
               >
                 {t("Demande")}
-              </MenuItem>
+              </MenuItem> */}
               <SubMenu
-                label={t("Demande Vendeur")}
+                label={t("Demande ")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
               >
-        
-                <MenuItem
+          <SubMenu
+           label={t("Demande Vendeur ")}
+           icon={<i className="fa-solid fa-bookmark"></i>}
+           
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
+                  style={
+                    activeLink === "/open-street-maps"
+                      ? menuItemStyles.active
+                      : null
+                  }
+                >
+                      <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
                   onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
@@ -203,8 +214,8 @@ const Playground = () => {
                   {t("Demande de Création de Compte")}
                 </MenuItem>
                 <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active
@@ -213,9 +224,8 @@ const Playground = () => {
                 >
                   {t("Demande Produit")}
                 </MenuItem>
-          
-              </SubMenu>
-              <SubMenu
+                </SubMenu>
+                <SubMenu
                 label={t("Demande Administrateur")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
               >
@@ -232,8 +242,8 @@ const Playground = () => {
                   {t("Demande Produit")}
                 </MenuItem>
                 <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active
@@ -243,8 +253,8 @@ const Playground = () => {
                   {t("Demande Enchére")}
                 </MenuItem>
                 <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active
@@ -254,8 +264,8 @@ const Playground = () => {
                   {t("Demande Catégorie")}
                 </MenuItem>
                 <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
+                  component={<Link to="/ListeAdministrateur" />}
+                  onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active
@@ -265,6 +275,9 @@ const Playground = () => {
                   {t("Demande Transfert de Solde")}
                 </MenuItem>
               </SubMenu>
+          
+              </SubMenu>
+       
               <SubMenu
                 label={t("Catégories")}
                 icon={<i className="fa-solid fa-layer-group"></i>}
