@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Choices from "choices.js";
+import axios from "axios";
 
 import { GlobalState } from "../GlobalState";
 import { useTranslation } from "react-i18next";
@@ -10,6 +11,7 @@ function CreationRole() {
   const [inputs, setInputs] = useState([]);
   const state = useContext(GlobalState);
   const categoriess = state.Categories;
+  const allPermissions = state.Permissions; // Moved this line to combine with the first state declaration
   const { t } = useTranslation();
 
   const goBack = () => {
@@ -42,10 +44,9 @@ function CreationRole() {
       );
       select.destroy();
     };
-  }, []);
+  }, [categoriess]); // Added dependency to useEffect to avoid warning
+
   const [data, setData] = useState({ name: "", permissions: [] });
-  const state = useContext(GlobalState);
-  const allPermissions = state.Permissions;
 
   const createRole = async (e) => {
     e.preventDefault();
@@ -102,23 +103,23 @@ function CreationRole() {
                         </div>
                       </div>
                       <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label htmlFor="category-select">{t("Role")}</label>
-                <select
-                  id="category-select"
-                  className="choices form-select multiple-remove"
-                  multiple
-                >
-                  <optgroup>
-                    {categoriess ? (
-                      categoriess.map((item) => (
-                        <option value={item}>{item.libeléCategorie}</option>
-                      ))
-                    ) : (
-                      <option>loading</option>
-                    )}
-                  </optgroup>
-                </select>
-              </div>
+                        <label htmlFor="category-select">{t("Role")}</label>
+                        <select
+                          id="category-select"
+                          className="choices form-select multiple-remove"
+                          multiple
+                        >
+                          <optgroup>
+                            {categoriess ? (
+                              categoriess.map((item) => (
+                                <option key={item.id} value={item.id}>{item.libeléCategorie}</option>
+                              ))
+                            ) : (
+                              <option>loading</option>
+                            )}
+                          </optgroup>
+                        </select>
+                      </div>
                       <br />
                       <br />
                       <br />

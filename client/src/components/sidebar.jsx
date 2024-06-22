@@ -192,8 +192,6 @@ const Playground = () => {
               >
           <SubMenu
            label={t("Demande Vendeur ")}
-           icon={<i className="fa-solid fa-bookmark"></i>}
-           
                   component={<Link to="/ListeAdministrateur" />}
                   onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
@@ -227,7 +225,6 @@ const Playground = () => {
                 </SubMenu>
                 <SubMenu
                 label={t("Demande Administrateur")}
-                icon={<i className="fa-solid fa-bookmark"></i>}
               >
         
                 <MenuItem
