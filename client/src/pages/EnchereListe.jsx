@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function EnchereListe() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212); // Adjust this threshold as needed
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="content-container">
@@ -43,7 +58,7 @@ function EnchereListe() {
                   </select>
                 </div>
               </div>
-              <table className="table">
+              <table className={isMobile ? "table table-responsive-sm" : "table"}>
                 <thead>
                   <tr>
                     <th>{t("Produit")}</th>
@@ -87,14 +102,14 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
+                          <i className="fa-solid fa-pen-to-square"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                          <i className="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -127,134 +142,14 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
+                          <i className="fa-solid fa-pen-to-square"></i>
                         </Link>
                       </div>
                     </td>
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                          <i className="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>

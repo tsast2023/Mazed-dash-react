@@ -328,7 +328,12 @@ const resources = {
       'prenom': 'First name',
       'Lien Page Details': 'Details page link',
       "Nombre d'encheres y liées": "Number of related auctions",
-      "Date de participation": "Participation date"
+      "Date de participation": "Participation date",
+      "Changer le mot de passe": "Change Password",
+      "Mot de passe actuel": "Current Password",
+      "Nouveau mot de passe": "New Password",
+      "Confirmer le mot de passe": "Confirm password"
+
   
     }
   },
@@ -665,7 +670,11 @@ const resources = {
         'prenom': 'prenom',
         'Lien Page Details': 'Lien Page Details',
         "Nombre d'encheres y liées": "Nombre d'encheres y liées",
-        "Date de participation": "Date de participation"
+        "Date de participation": "Date de participation",
+        "Changer le mot de passe": "Changer le mot de passe",
+        "Mot de passe actuel": "Mot de passe actuel",
+        "Nouveau mot de passe": "Nouveau mot de passe",
+        "Confirmer le mot de passe": "Confirmer le mot de passe",
       
     }
   },
@@ -1006,7 +1015,10 @@ const resources = {
       "Demande": "الطلبات",
       "Demande Vendeur": "الطلبات البائع",
       "Demande Administrateur": "الطلبات المشرف",
-
+      "Changer le mot de passe": "تغيير كلمة المرور",
+      "Mot de passe actuel": "كلمة السر الحالية",
+      "Nouveau mot de passe": "كلمة مرور جديدة",
+      "Confirmer le mot de passe": "أكد كلمة المرور",
     }
   }
 };
