@@ -2,7 +2,6 @@ import React from "react";
 import Swal from "sweetalert2";
 
 function ListeAdministrateur() {
-  
   // Function to handle blocking an administrator
   const handleBlock = () => {
     // Show SweetAlert confirmation dialog
@@ -46,7 +45,11 @@ function ListeAdministrateur() {
         // Perform the unblocking action here
         // For example, you can make an AJAX request to enable the administrator
         // After successful unblocking, you can update the UI accordingly
-        Swal.fire("Unblocked!", "The administrator has been unblocked.", "success");
+        Swal.fire(
+          "Unblocked!",
+          "The administrator has been unblocked.",
+          "success"
+        );
       } else {
         Swal.fire("Cancelled", "The administrator remains blocked :)", "error");
       }
@@ -91,14 +94,16 @@ function ListeAdministrateur() {
                           </a>
                         </td>
                         <td>
-                       
-                            <i onClick={handleBlock} className="fa-solid fa-lock"></i>
-                          
+                          <i
+                            onClick={handleBlock}
+                            className="fa-solid fa-lock"
+                          ></i>
                         </td>
                         <td>
-                
-                            <i onClick={handleUnblock} className="fa-solid fa-lock-open"></i>
-                      
+                          <i
+                            onClick={handleUnblock}
+                            className="fa-solid fa-lock-open"
+                          ></i>
                         </td>
                       </tr>
                     </tbody>
@@ -108,14 +113,6 @@ function ListeAdministrateur() {
             </div>
           </section>
         </div>
-        {/* Contextual classes end */}
-        <footer>
-          <div className="footer clearfix mb-0 text-muted">
-            <div className="float-end">
-              <p>2024 © Mazed</p>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );
