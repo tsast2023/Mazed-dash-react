@@ -1,8 +1,9 @@
 import React from "react";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 function ListeAdministrateur() {
-  // Function to handle blocking an administrator
+  const { t } = useTranslation();
   const handleBlock = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
@@ -68,19 +69,19 @@ function ListeAdministrateur() {
           <section className="section">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Liste des administrateurs</h2>
+                <h2 className="new-price">{t("Liste des administrateurs")}</h2>
               </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Nom</th>
-                        <th>Pseudo</th>
-                        <th>Role</th>
-                        <th>Edit</th>
-                        <th>Bloquer</th>
-                        <th>Débloquer</th>
+                        <th>{t("Nom")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Role")}</th>
+                        <th>{t("Modifier")}</th>
+                        <th>{t("Bloquer")}</th>
+                        <th>{t("Débloquer")}</th>
                       </tr>
                     </thead>
                     <tbody>

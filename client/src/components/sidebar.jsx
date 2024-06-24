@@ -161,7 +161,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  {t("Liste des Administrateur")}
+                  {t("Liste des administrateurs")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/CreationAdministrateur" />}

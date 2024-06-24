@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function CreationAdministrateur() {
+  const { t } = useTranslation();
+
   return (
     <div className="content-container">
       <div id="app">
@@ -13,7 +16,7 @@ function CreationAdministrateur() {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Ajouter un Utilisateur</h2>
+                <h2 className="new-price">{t("Ajouter un administrateur")}</h2>
               </div>
               <div className="card-content">
                 <div className="card-body">
@@ -22,7 +25,7 @@ function CreationAdministrateur() {
                       <div className="row">
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Nom</label>
+                            <label htmlFor="email-id-icon">{t("Nom")}</label>
                             <div className="position-relative">
                               <input
                                 type="text"
@@ -36,7 +39,7 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Prénom</label>
+                            <label htmlFor="email-id-icon">{t("Prénom")}</label>
                             <div className="position-relative">
                               <input
                                 type="text"
@@ -50,7 +53,9 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Identifiant</label>
+                            <label htmlFor="email-id-icon">
+                              {t("Identifiant")}
+                            </label>
                             <div className="position-relative">
                               <input
                                 type="text"
@@ -64,15 +69,9 @@ function CreationAdministrateur() {
                         </div>
                         <div className="form-group">
                           <label htmlFor="email-id-icon">
-                            Numéro de téléphone
+                            {t("Numéro de téléphone")}
                           </label>
-                          <div className="input-group mb-3">
-                            <span
-                              className="input-group-text"
-                              id="basic-addon1"
-                            >
-                              +216
-                            </span>
+                          <div className="input-group me-3">
                             <input
                               type="text"
                               className="form-control"
@@ -83,7 +82,7 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Role</label>
+                            <label htmlFor="email-id-icon">{t("Role")}</label>
                             <fieldset className="form-group mb-3">
                               <select className="form-select" id="basicSelect">
                                 <option>IT</option>
@@ -97,18 +96,16 @@ function CreationAdministrateur() {
                       <div className="modal-footer">
                         <button
                           type="button"
-                          className="btn btn-light-secondary me-2"
-                          data-bs-dismiss="modal"
+                          className="btn btn-secondary me-2"
                         >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Annuler</span>
+                          {t("Annuler")}
                         </button>
                         <button
-                          type="button"
-                          className="btn btn-dark"
+                          type="submit"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
-                          Enregistrer
+                          {t("Enregister")}
                         </button>
                       </div>
                     </div>

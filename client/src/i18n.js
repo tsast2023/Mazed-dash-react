@@ -332,9 +332,13 @@ const resources = {
       "Changer le mot de passe": "Change Password",
       "Mot de passe actuel": "Current Password",
       "Nouveau mot de passe": "New Password",
-      "Confirmer le mot de passe": "Confirm password"
-
-  
+      "Confirmer le mot de passe": "Confirm password",
+      "Créer un rôle":"Create a role",
+      "Nom du rôle": "Role name",
+      "Creation D'un Role": "Creating a Role",
+      "Liste des administrateurs": "List of administrators",
+      "Ajouter un administrateur": "Add an administrator",
+      "Créer un Administrateur": "Create an Administrator",
     }
   },
   fr: {
@@ -675,6 +679,12 @@ const resources = {
         "Mot de passe actuel": "Mot de passe actuel",
         "Nouveau mot de passe": "Nouveau mot de passe",
         "Confirmer le mot de passe": "Confirmer le mot de passe",
+        "Créer un rôle": "Créer un rôle",
+        "Nom du rôle": "Nom du rôle",
+        "Creation D'un Role": "Creation D'un Role",
+        "Liste des administrateurs": "Liste des administrateurs",
+        "Ajouter un administrateur": "Ajouter un administrateur",
+        "Créer un Administrateur": "Créer un Administrateur",
       
     }
   },
@@ -753,6 +763,7 @@ const resources = {
       "Actions": "الإجراءات",
       "Retour": "العودة",
       "Planifier": "التخطيط",
+      "Créer un rôle": "إنشاء دور",
       "Publier immédiatement": "النشر فوراً",
       "Date": "التاريخ",
       "Heure": "الوقت",
@@ -1019,6 +1030,11 @@ const resources = {
       "Mot de passe actuel": "كلمة السر الحالية",
       "Nouveau mot de passe": "كلمة مرور جديدة",
       "Confirmer le mot de passe": "أكد كلمة المرور",
+      "Nom du rôle": "اسم الدور",
+      "Creation D'un Role": "إنشاء دور",
+      "Liste des administrateurs": "قائمة المسؤولين",
+      "Ajouter un administrateur": "إضافة مسؤول",
+      "Créer un Administrateur": "إنشاء مسؤول"
     }
   }
 };
