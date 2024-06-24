@@ -48,7 +48,7 @@ function QuestionForm() {
                         </button>
 
                         <button type="button" className="btn btn-primary">
-                          {t("Enregistrer")}
+                          {t("Enregister")}
                         </button>
                       </div>
                     </div>

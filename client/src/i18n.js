@@ -344,6 +344,9 @@ const resources = {
       "Demande Enchére": "Auction Request",
       "Demande Catégorie": "Category Request",
       "Demande Transfert de Solde": "Balance Transfer Request",
+      "création d'un compte acheteur": "creating a buyer account",
+      "création d'un compte vendeur": "creating a seller account",
+      "participation à une enchère": "participation in an auction",
     }
   },
   fr: {
@@ -695,6 +698,9 @@ const resources = {
         "Demande Enchére": "Demande Enchére",
         "Demande Catégorie": "Demande Catégorie",
         "Demande Transfert de Solde": "Demande Transfert de Solde",
+        "création d'un compte acheteur": "création d'un compte acheteur",
+        "création d'un compte vendeur": "création d'un compte vendeur",
+        "participation à une enchère": "participation à une enchère",
       
     }
   },
@@ -1050,6 +1056,9 @@ const resources = {
       "Demande Enchére": "طلبات المزاد",
       "Demande Catégorie": "طلبات الفئة",
       "Demande Transfert de Solde": "طلب تحويل الرصيد",
+      "création d'un compte acheteur": "إنشاء حساب المشتري",
+      "création d'un compte vendeur": "إنشاء حساب بائع",
+      "participation à une enchère": "المشاركة في المزاد",
     }
   }
 };
