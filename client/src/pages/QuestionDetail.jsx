@@ -68,7 +68,7 @@ function QuestionDetail() {
                           className="btn btn-dark"
                           id="suivantBtn"
                         >
-                          {t("Enregister")}
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

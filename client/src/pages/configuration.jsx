@@ -229,7 +229,7 @@ function Configuration() {
                     data-bs-dismiss="modal"
                   >
                     <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">{t("Enregister")}</span>
+                    <span className="d-none d-sm-block">{t("Enregistrer")}</span>
                   </button>
                 </div>
               </form>

@@ -129,7 +129,7 @@ const CatCreate = () => {
             {t("Annuler")}
           </button>
           <button type="button" className="btn btn-primary">
-            {t("Enregister")}
+            {t("Enregistrer")}
           </button>
         </div>
       </div>

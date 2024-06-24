@@ -91,7 +91,7 @@ function ConfigurationEnchere() {
                             type="submit"
                             className="btn btn-primary me-1 mb-1"
                           >
-                            {t("Enregister")}
+                            {t("Enregistrer")}
                           </button>
                         </div>
                       </div>

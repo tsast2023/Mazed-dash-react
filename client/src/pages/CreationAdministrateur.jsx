@@ -105,7 +105,7 @@ function CreationAdministrateur() {
                           className="btn btn-primary"
                           id="suivantBtn"
                         >
-                          {t("Enregister")}
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>
