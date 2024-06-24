@@ -339,6 +339,11 @@ const resources = {
       "Liste des administrateurs": "List of administrators",
       "Ajouter un administrateur": "Add an administrator",
       "Créer un Administrateur": "Create an Administrator",
+      "Demande de Création de Compte": "Account Creation Request",
+      "Demande Produit": "Product Request",
+      "Demande Enchére": "Auction Request",
+      "Demande Catégorie": "Category Request",
+      "Demande Transfert de Solde": "Balance Transfer Request",
     }
   },
   fr: {
@@ -685,6 +690,11 @@ const resources = {
         "Liste des administrateurs": "Liste des administrateurs",
         "Ajouter un administrateur": "Ajouter un administrateur",
         "Créer un Administrateur": "Créer un Administrateur",
+        "Demande de Création de Compte": "Demande de Création de Compte",
+        "Demande Produit": "Demande Produit",
+        "Demande Enchére": "Demande Enchére",
+        "Demande Catégorie": "Demande Catégorie",
+        "Demande Transfert de Solde": "Demande Transfert de Solde",
       
     }
   },
@@ -1034,7 +1044,12 @@ const resources = {
       "Creation D'un Role": "إنشاء دور",
       "Liste des administrateurs": "قائمة المسؤولين",
       "Ajouter un administrateur": "إضافة مسؤول",
-      "Créer un Administrateur": "إنشاء مسؤول"
+      "Créer un Administrateur": "إنشاء مسؤول",
+      "Demande de Création de Compte": "طلب إنشاء حساب",
+      "Demande Produit": "طلبات المنتج",
+      "Demande Enchére": "طلبات المزاد",
+      "Demande Catégorie": "طلبات الفئة",
+      "Demande Transfert de Solde": "طلب تحويل الرصيد",
     }
   }
 };
