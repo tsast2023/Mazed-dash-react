@@ -1,9 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
-
-function CreationAdministrateur() {
+function AdminEdit() {
   const { t } = useTranslation();
+  const { id, name, pseudo, role } = useParams();
 
   return (
     <div className="content-container">
@@ -26,39 +27,39 @@ function CreationAdministrateur() {
                       <div className="row">
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">{t("Nom")}</label>
+                            <label htmlFor="name-id">{t("Nom")}</label>
                             <div className="position-relative">
                               <input
                                 type="text"
                                 className="form-control"
-                                id="email-id-icon"
+                                id="name-id"
                                 placeholder="Nom"
                                 maxLength={25}
+                                defaultValue={name}
                               />
                             </div>
                           </div>
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">
-                              {t("Pseudo")}
-                            </label>
+                            <label htmlFor="pseudo-id">{t("Pseudo")}</label>
                             <div className="position-relative">
                               <input
                                 type="text"
                                 className="form-control"
-                                id="email-id-icon"
+                                id="pseudo-id"
                                 placeholder="Pseudo"
                                 maxLength={25}
+                                defaultValue={pseudo}
                               />
                             </div>
                           </div>
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">{t("Role")}</label>
+                            <label htmlFor="role-id">{t("Role")}</label>
                             <fieldset className="form-group mb-3">
-                              <select className="form-select" id="basicSelect">
+                              <select className="form-select" id="role-id" defaultValue={role}>
                                 <option>IT</option>
                                 <option>Blade Runner</option>
                                 <option>Thor Ragnarok</option>
@@ -68,17 +69,10 @@ function CreationAdministrateur() {
                         </div>
                       </div>
                       <div className="modal-footer">
-                        <button
-                          type="button"
-                          className="btn btn-secondary me-2"
-                        >
+                        <button type="button" className="btn btn-secondary me-2">
                           {t("Annuler")}
                         </button>
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          id="suivantBtn"
-                        >
+                        <button type="submit" className="btn btn-primary" id="suivantBtn">
                           {t("Enregistrer")}
                         </button>
                       </div>
@@ -94,4 +88,4 @@ function CreationAdministrateur() {
   );
 }
 
-export default CreationAdministrateur;
+export default AdminEdit;

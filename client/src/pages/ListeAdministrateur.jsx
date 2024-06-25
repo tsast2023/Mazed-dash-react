@@ -129,7 +129,7 @@ function ListeAdministrateur() {
                           <td>vehi</td>
                           <td>Lorem</td>
                           <td>
-                            <Link to="/adminEdit">
+                            <Link to="/AdminEdit">
                               <i className="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </td>
