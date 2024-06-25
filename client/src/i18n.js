@@ -347,6 +347,16 @@ const resources = {
       "création d'un compte acheteur": "creating a buyer account",
       "création d'un compte vendeur": "creating a seller account",
       "participation à une enchère": "participation in an auction",
+      "Demande Création de vendeur": "Request Seller Creation",
+      "Demande transfert de solde": "Balance transfer request",
+      "Demande de produit": "Product request",
+      "Permission": "Permission",
+      "Action terminée": "Action completed",
+      "L'élément a été désactivé": "The item has been disabled",
+      "Supprimé": "Deleted",
+      "L'élément a été supprimé": "The item was deleted",
+      "L'élément a été ajouté": "The item was added",
+      "Publier": "Publish",
     }
   },
   fr: {
@@ -701,6 +711,16 @@ const resources = {
         "création d'un compte acheteur": "création d'un compte acheteur",
         "création d'un compte vendeur": "création d'un compte vendeur",
         "participation à une enchère": "participation à une enchère",
+        "Demande Création de vendeur": "Demande Création de vendeur",
+        "Demande transfert de solde": "Demande transfert de solde",
+        "Demande de produit": "Demande de produit",
+        "Permission": "Permission",
+        "Action terminée": "Action terminée",
+        "L'élément a été désactivé": "L'élément a été désactivé",
+        "Supprimé": "Supprimé",
+        "L'élément a été supprimé": "L'élément a été supprimé",
+        "L'élément a été ajouté": "L'élément a été ajouté",
+        "Publier": "Publier",
       
     }
   },
@@ -1059,6 +1079,17 @@ const resources = {
       "création d'un compte acheteur": "إنشاء حساب المشتري",
       "création d'un compte vendeur": "إنشاء حساب بائع",
       "participation à une enchère": "المشاركة في المزاد",
+      "Demande Création de vendeur": "الطلب على إنشاء البائع",
+      "Demande transfert de solde": "طلب تحويل الرصيد",
+      "Demande de produit": "طلب المنتج",
+      "Permission": "إذن",
+      "Action terminée": "اكتمل الإجراء",
+      "L'élément a été désactivé": "تم تعطيل العنصر",
+      "Supprimé": "تم الحذف",
+      "L'élément a été supprimé": "تم حذف العنصر",
+      "L'élément a été ajouté": "تمت إضافة العنصر",
+      "Publier": "نشر",
+
     }
   }
 };

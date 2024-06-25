@@ -87,7 +87,7 @@ const Navbar = ({ username }) => {
             <div className="icon-circle">
               <i className="fa-solid fa-diamond"></i>
             </div>
-            {t("Demande de Produit")}
+            {t("Demande de produit")}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>

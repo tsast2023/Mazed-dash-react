@@ -102,7 +102,7 @@ function CreationRole() {
                         </div>
                       </div>
                       <div className="form-group" style={{ marginBottom: "15px" }}>
-                        <label htmlFor="category-select">{t("Role")}</label>
+                        <label htmlFor="category-select">{t("Permission")}</label>
                         <select
                           id="category-select"
                           className="choices form-select multiple-remove"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { Modal, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -24,6 +24,7 @@ function ProdList() {
 
   const deleteItem = () => {
     // Implement your delete logic here
+    console.log("Item deleted");
   };
 
   const handleDelete = () => {
@@ -32,55 +33,49 @@ function ProdList() {
       text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, supprimez-le !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
-
+  
   const handleBan = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, désactivez-le !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(); // Replace with your deactivate logic
-        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "secondary");
+        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "success");
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
-
+  
   const handleArrowClick = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, mettre à l'une !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(); // Replace with your "put to top" logic
-        Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "secondary");
+        Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "success");
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
