@@ -54,7 +54,7 @@ function QuestionDetail() {
                       <div className="modal-footer">
                         <button
                           type="button"
-                          className="btn btn-light-secondary me-2"
+                          className="btn btn-secondary me-2"
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
@@ -65,7 +65,7 @@ function QuestionDetail() {
                         <br />
                         <button
                           type="button"
-                          className="btn btn-dark"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
                           {t("Enregistrer")}

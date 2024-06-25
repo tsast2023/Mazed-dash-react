@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Modal, Button, Form } from "react-bootstrap";
 
 function Reclamation() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
+  const [reclamationText, setReclamationText] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,6 +22,14 @@ function Reclamation() {
     // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleSendReclamation = () => {
+    // Handle sending reclamation text here
+    console.log("Sending reclamation:", reclamationText);
+
+    // Close modal after sending
+    setShowModal1(false);
+  };
 
   return (
     <div className="content-container">
@@ -63,8 +75,7 @@ function Reclamation() {
                               <button
                                 type="button"
                                 className="btn btn-outline block"
-                                data-bs-toggle="modal"
-                                data-bs-target="#default1"
+                                onClick={() => setShowModal1(true)}
                               >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </button>
@@ -97,8 +108,7 @@ function Reclamation() {
                               <button
                                 type="button"
                                 className="btn btn-outline block"
-                                data-bs-toggle="modal"
-                                data-bs-target="#default2"
+                                onClick={() => setShowModal2(true)}
                               >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </button>
@@ -129,8 +139,7 @@ function Reclamation() {
                               <button
                                 type="button"
                                 className="btn btn-outline block"
-                                data-bs-toggle="modal"
-                                data-bs-target="#default1"
+                                onClick={() => setShowModal1(true)}
                               >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </button>
@@ -147,8 +156,7 @@ function Reclamation() {
                               <button
                                 type="button"
                                 className="btn btn-outline block"
-                                data-bs-toggle="modal"
-                                data-bs-target="#default2"
+                                onClick={() => setShowModal2(true)}
                               >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </button>
@@ -164,6 +172,48 @@ function Reclamation() {
           </div>
         </section>
       </div>
+
+      {/* Modals */}
+      <Modal show={showModal1} onHide={() => setShowModal1(false)}>
+        <Modal.Header closeButton>
+        <Modal.Title>{t("Réclamation")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Please provide details of your reclamation.</p>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={reclamationText}
+            onChange={(e) => setReclamationText(e.target.value)}
+            placeholder={t("Enter your reclamation here")}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleSendReclamation}>
+            {t("Envoyer")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showModal2} onHide={() => setShowModal2(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Réclamation")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Please provide details of your reclamation.</p>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            value={reclamationText}
+            onChange={(e) => setReclamationText(e.target.value)}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleSendReclamation}>
+            {t("Envoyer")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

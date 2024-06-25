@@ -7,7 +7,7 @@ function Commandes() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+      setIsMobile(window.innerWidth < 1212); // Adjust this breakpoint as needed
     };
 
     window.addEventListener("resize", handleResize);

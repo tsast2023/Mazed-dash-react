@@ -7,23 +7,21 @@ function ListeAdministrateur() {
   const handleBlock = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t(`Êtes-vous sûr?`),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Blocked it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t(`Oui`),
+      cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Perform the blocking action here
-        // For example, you can make an AJAX request to disable the administrator
-        // After successful blocking, you can update the UI accordingly
-        Swal.fire("Blocked!", "The administrator has been blocked.", "success");
+        Swal.fire(
+          t(`Fait`),
+        );
       } else {
-        Swal.fire("Cancelled", "The administrator is safe :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
@@ -32,27 +30,21 @@ function ListeAdministrateur() {
   const handleUnblock = () => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once enabled, you will not be able to recover this item!",
+      title: t(`Êtes-vous sûr?`),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Unblocked it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t(`Oui`),
+      cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Perform the unblocking action here
-        // For example, you can make an AJAX request to enable the administrator
-        // After successful unblocking, you can update the UI accordingly
         Swal.fire(
-          "Unblocked!",
-          "The administrator has been unblocked.",
-          "success"
+          t(`Fait`),
         );
       } else {
-        Swal.fire("Cancelled", "The administrator remains blocked :)", "error");
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };

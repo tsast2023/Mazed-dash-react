@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
-function Modal() {
+function ModalContent() { // Rename the Modal component
   const { t } = useTranslation();
   return (
     <div
@@ -105,7 +105,7 @@ function TableRow({ userData, status, onAccept }) {
           >
             <i className="fa-solid fa-circle-xmark text-danger"></i>
           </button>
-          <Modal />
+          <ModalContent /> {/* Use renamed ModalContent component */}
         </section>
       </td>
     </tr>
@@ -118,7 +118,7 @@ function Transfer() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1212);
+      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
     };
 
     window.addEventListener("resize", handleResize);
@@ -206,38 +206,32 @@ function Transfer() {
                 <h2 className="new-price">{t("Demandes de transferts")}</h2>
               </div>
               <div className="card-body">
-                <div className="table-responsive datatable-minimal">
+                <div className="table-responsive">
                   {isMobile ? (
-                    <table className="table" id="table2">
+                    <table className="table">
                       <tbody>
                         {data.map((item, index) => (
-                          <React.Fragment key={index}>
-                            <TableRow
-                              userData={item}
-                              status={item.status}
-                              onAccept={handleAccept}
-                            />
-                            <tr>
-                              <td colSpan="2">
-                                <hr />
-                              </td>
-                            </tr>
-                          </React.Fragment>
+                          <TableRow
+                            key={index}
+                            userData={item}
+                            status={item.status}
+                            onAccept={handleAccept}
+                          />
                         ))}
                       </tbody>
                     </table>
                   ) : (
-                    <table className="table" id="table2">
+                    <table className="table">
                       <thead>
                         <tr>
-                          <th>{t("Date")}</th>
-                          <th>{t("Utilisateur")}</th>
+                          <th>{t("Nom")}</th>
+                          <th>{t("Véhicule")}</th>
                           <th>{t("Valeur")}</th>
-                          <th>{t("Type")}</th>
-                          <th>{t("Pièce jointe")}</th>
+                          <th>{t("Emplacement")}</th>
+                          <th>{t("Note")}</th>
                           <th>{t("Statut")}</th>
                           <th>{t("Accepter")}</th>
-                          <th>{t("Refuser")}</th>
+                          <th>{t("Cause")}</th>
                         </tr>
                       </thead>
                       <tbody>

@@ -357,6 +357,8 @@ const resources = {
       "L'élément a été supprimé": "The item was deleted",
       "L'élément a été ajouté": "The item was added",
       "Publier": "Publish",
+      "détail de question": "question detail",
+      "Réclamation": "Claim"
     }
   },
   fr: {
@@ -721,6 +723,9 @@ const resources = {
         "L'élément a été supprimé": "L'élément a été supprimé",
         "L'élément a été ajouté": "L'élément a été ajouté",
         "Publier": "Publier",
+        "Ventes": "Ventes",
+        "détail de question": "détail de question",
+        "Réclamation": "Réclamation",
       
     }
   },
@@ -1089,7 +1094,8 @@ const resources = {
       "L'élément a été supprimé": "تم حذف العنصر",
       "L'élément a été ajouté": "تمت إضافة العنصر",
       "Publier": "نشر",
-
+      "détail de question": "تفاصيل السؤال",
+      "Réclamation": "الشكوى"
     }
   }
 };

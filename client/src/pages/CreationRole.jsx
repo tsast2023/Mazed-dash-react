@@ -126,7 +126,7 @@ function CreationRole() {
                       <div className="col-12 d-flex justify-content-end">
                         <button
                           type="reset"
-                          className="btn btn-light-secondary me-1 mb-1"
+                          className="btn btn-secondary me-1 mb-1"
                         >
                           {t("Annuler")}
                         </button>
