@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/DetailEnchere.css";
 import { Link } from "react-router-dom";
 import "../css/DetailEnchere.css";
@@ -6,6 +6,20 @@ import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
 
 function DetailEnchere() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const deleteItem = () => {
     // Implement your delete logic here
   };
@@ -370,34 +384,69 @@ function DetailEnchere() {
         <section className="section">
           <div className="card">
             <div className="card-header">
-              <h2 className="new-price">{t("Liste des Participants")}</h2>
+              <h2 className="new-price">{t("Liste des participants")}</h2>
             </div>
             <div className="card-body">
               <div className="table-responsive datatable-minimal">
-                <table className="table" id="table2">
-                  <thead>
-                    <tr>
-                      <th>{t("Nom de famille")}</th>
-                      <th>{t("Prénom")}</th>
-                      <th>{t("Pseudo")}</th>
-                      <th>{t("Numéro du téléphone")}</th>
-                      <th>{t("Date de participation")}</th>
-                      <th>{t("Nombre d'encheres y liées")}</th>
-                      <th>{t("Lien Page Details")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Thamer</td>
-                      <td>Seif</td>
-                      <td>Clubisty</td>
-                      <td>(+1) 613 820 8838</td>
-                      <td>04/07/2026</td>
-                      <td>69</td>
-                      <td>Lien</td>
-                    </tr>
-                  </tbody>
-                </table>
+                {isMobile ? (
+                  <table className="table" id="table2">
+                    <tbody>
+                      <tr>
+                        <td>{t("Nom de famille")}</td>
+                        <td>Thamer</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Prénom")}</td>
+                        <td>Seif</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Pseudo")}</td>
+                        <td>Clubisty</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Numéro du téléphone")}</td>
+                        <td>(+1) 613 820 8838</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Date de participation")}</td>
+                        <td>04/07/2026</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Nombre d'encheres y liées")}</td>
+                        <td>69</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Lien Page Details")}</td>
+                        <td>Lien</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ) : (
+                  <table className="table" id="table2">
+                    <thead>
+                      <tr>
+                        <th>{t("Nom de famille")}</th>
+                        <th>{t("Prénom")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Numéro du téléphone")}</th>
+                        <th>{t("Date de participation")}</th>
+                        <th>{t("Nombre d'encheres y liées")}</th>
+                        <th>{t("Lien Page Details")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Thamer</td>
+                        <td>Seif</td>
+                        <td>Clubisty</td>
+                        <td>(+1) 613 820 8838</td>
+                        <td>04/07/2026</td>
+                        <td>69</td>
+                        <td>Lien</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           </div>
