@@ -1,23 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Choices from "choices.js";
-
+import axios from "axios";
 import { GlobalState } from "../GlobalState";
 import { useTranslation } from "react-i18next";
 
 function CreationRole() {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [data , setData] = useState({roleName:"" , permissionNames:[]})
   const [inputs, setInputs] = useState([]);
   const state = useContext(GlobalState);
-  const categoriess = state.Categories;
+  const permissions = state.Permissions;
+  console.log("ppp:" , permissions)
   const { t } = useTranslation();
-
-  const goBack = () => {
-    window.history.back(); // Simulate a browser back button
-  };
-
   useEffect(() => {
-    console.log("cat from here", categoriess);
+    console.log("cat from here", permissions);
     const select = new Choices("#category-select", {
       removeItemButton: true,
       placeholder: true,
@@ -42,10 +39,8 @@ function CreationRole() {
       );
       select.destroy();
     };
-  }, []);
-  const [data, setData] = useState({ name: "", permissions: [] });
-  const state = useContext(GlobalState);
-  const allPermissions = state.Permissions;
+  }, [permissions]);
+  
 
   const createRole = async (e) => {
     e.preventDefault();
@@ -63,7 +58,7 @@ function CreationRole() {
 
   const handlePermissionChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
-    setData({ ...data, permissions: selectedOptions });
+    setData({ ...data, permissionNames: selectedOptions });
   };
 
   return (
@@ -96,27 +91,23 @@ function CreationRole() {
                             name="roleName"
                             maxLength={25}
                             onChange={(e) =>
-                              setData({ ...data, name: e.target.value })
+                              setData({ ...data, roleName: e.target.value })
                             }
                           />
                         </div>
                       </div>
                       <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label htmlFor="category-select">{t("Role")}</label>
+                <label htmlFor="category-select">{t("Permissions")}</label>
                 <select
                   id="category-select"
                   className="choices form-select multiple-remove"
                   multiple
+                  onChange={handlePermissionChange}
                 >
-                  <optgroup>
-                    {categoriess ? (
-                      categoriess.map((item) => (
-                        <option value={item}>{item.libeléCategorie}</option>
-                      ))
-                    ) : (
-                      <option>loading</option>
-                    )}
-                  </optgroup>
+                  <option disabled>default</option>
+                 {permissions&& permissions.map((item)=>(
+                  <option value={item.name}>{item.name}</option>
+                 ))}
                 </select>
               </div>
                       <br />
