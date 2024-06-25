@@ -56,6 +56,7 @@ import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
 import TermeEdit from './pages/TermeEdit';
 import AdsEdit from './pages/adsEdit';
+import AdminEdit from './pages/adminEdit';
 import './i18n';
 
 const App = () => {
@@ -123,6 +124,7 @@ const App = () => {
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
               <Route path='/adsEdit' element={<AdsEdit />} />
+              <Route path='/adminEdit' element={<AdminEdit />} />
             </Routes>
           </div>
         )}

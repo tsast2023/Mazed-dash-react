@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
 
 function ListeAdministrateur() {
   const { t } = useTranslation();
@@ -128,9 +129,9 @@ function ListeAdministrateur() {
                           <td>vehi</td>
                           <td>Lorem</td>
                           <td>
-                            <a href="utilisateur-edit.html">
+                            <Link to="/adminEdit">
                               <i className="fa-solid fa-pen-to-square"></i>
-                            </a>
+                            </Link>
                           </td>
                           <td>
                             <i className="fa-solid fa-lock" onClick={handleBlock}></i>
