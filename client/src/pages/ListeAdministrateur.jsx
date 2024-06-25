@@ -12,29 +12,24 @@ function ListeAdministrateur() {
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Initial check
     handleResize();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleBlock = () => {
     Swal.fire({
-      title: t(`Êtes-vous sûr?`),
+      title: t("Êtes-vous sûr?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: t(`Oui`),
+      confirmButtonText: t("Oui"),
       cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          t(`Fait`),
-        );
+        Swal.fire(t("Fait"));
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
@@ -43,19 +38,17 @@ function ListeAdministrateur() {
 
   const handleUnblock = () => {
     Swal.fire({
-      title: t(`Êtes-vous sûr?`),
+      title: t("Êtes-vous sûr?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: t(`Oui`),
+      confirmButtonText: t("Oui"),
       cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          t(`Fait`),
-        );
+        Swal.fire(t("Fait"));
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
@@ -77,44 +70,79 @@ function ListeAdministrateur() {
                 <h2 className="new-price">{t("Liste des administrateurs")}</h2>
               </div>
               <div className="card-body">
-                <div className="table-responsive">
-                  <table className={isMobile ? "table table-sm" : "table"} id="table1">
-                    <thead>
-                      <tr>
-                        <th>{t("Nom")}</th>
-                        <th>{t("Pseudo")}</th>
-                        <th>{t("Role")}</th>
-                        <th>{t("Modifier")}</th>
-                        <th>{t("Bloquer")}</th>
-                        <th>{t("Débloquer")}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Alex</td>
-                        <td>vehi</td>
-                        <td>Lorem</td>
-                        <td>
-                          <a href="utilisateur-edit.html">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </a>
-                        </td>
-                        <td>
-                          <i
-                            onClick={handleBlock}
-                            className="fa-solid fa-lock"
-                          ></i>
-                        </td>
-                        <td>
-                          <i
-                            onClick={handleUnblock}
-                            className="fa-solid fa-lock-open"
-                          ></i>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                {isMobile ? (
+                  <div className="table-responsive">
+                    <table className="table" id="table1">
+                      <tbody>
+                        <tr>
+                          <td>{t("Nom")}</td>
+                          <td>Alex</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Pseudo")}</td>
+                          <td>vehi</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Role")}</td>
+                          <td>Lorem</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Modifier")}</td>
+                          <td>
+                            <a href="utilisateur-edit.html">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Bloquer")}</td>
+                          <td>
+                            <i className="fa-solid fa-lock" onClick={handleBlock}></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Débloquer")}</td>
+                          <td>
+                            <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="table-responsive">
+                    <table className="table" id="table1">
+                      <thead>
+                        <tr>
+                          <th>{t("Nom")}</th>
+                          <th>{t("Pseudo")}</th>
+                          <th>{t("Role")}</th>
+                          <th>{t("Modifier")}</th>
+                          <th>{t("Bloquer")}</th>
+                          <th>{t("Débloquer")}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Alex</td>
+                          <td>vehi</td>
+                          <td>Lorem</td>
+                          <td>
+                            <a href="utilisateur-edit.html">
+                              <i className="fa-solid fa-pen-to-square"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock" onClick={handleBlock}></i>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             </div>
           </section>
