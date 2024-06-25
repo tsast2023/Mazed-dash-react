@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
 function ListeAdministrateur() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleBlock = () => {
-    // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t(`Êtes-vous sûr?`),
       icon: "warning",
@@ -26,9 +41,7 @@ function ListeAdministrateur() {
     });
   };
 
-  // Function to handle unblocking an administrator
   const handleUnblock = () => {
-    // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t(`Êtes-vous sûr?`),
       icon: "warning",
@@ -65,7 +78,7 @@ function ListeAdministrateur() {
               </div>
               <div className="card-body">
                 <div className="table-responsive">
-                  <table className="table" id="table1">
+                  <table className={isMobile ? "table table-sm" : "table"} id="table1">
                     <thead>
                       <tr>
                         <th>{t("Nom")}</th>
