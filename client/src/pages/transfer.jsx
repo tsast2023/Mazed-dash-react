@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
-function ModalContent() { // Rename the Modal component
+function Modal() {
   const { t } = useTranslation();
   return (
     <div
@@ -105,7 +105,7 @@ function TableRow({ userData, status, onAccept }) {
           >
             <i className="fa-solid fa-circle-xmark text-danger"></i>
           </button>
-          <ModalContent /> {/* Use renamed ModalContent component */}
+          <Modal />
         </section>
       </td>
     </tr>
@@ -118,7 +118,7 @@ function Transfer() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);
@@ -206,32 +206,38 @@ function Transfer() {
                 <h2 className="new-price">{t("Demandes de transferts")}</h2>
               </div>
               <div className="card-body">
-                <div className="table-responsive">
+                <div className="table-responsive datatable-minimal">
                   {isMobile ? (
-                    <table className="table">
+                    <table className="table" id="table2">
                       <tbody>
                         {data.map((item, index) => (
-                          <TableRow
-                            key={index}
-                            userData={item}
-                            status={item.status}
-                            onAccept={handleAccept}
-                          />
+                          <React.Fragment key={index}>
+                            <TableRow
+                              userData={item}
+                              status={item.status}
+                              onAccept={handleAccept}
+                            />
+                            <tr>
+                              <td colSpan="2">
+                                <hr />
+                              </td>
+                            </tr>
+                          </React.Fragment>
                         ))}
                       </tbody>
                     </table>
                   ) : (
-                    <table className="table">
+                    <table className="table" id="table2">
                       <thead>
                         <tr>
-                          <th>{t("Nom")}</th>
-                          <th>{t("Véhicule")}</th>
+                          <th>{t("Date")}</th>
+                          <th>{t("Utilisateur")}</th>
                           <th>{t("Valeur")}</th>
-                          <th>{t("Emplacement")}</th>
-                          <th>{t("Note")}</th>
+                          <th>{t("Type")}</th>
+                          <th>{t("Pièce jointe")}</th>
                           <th>{t("Statut")}</th>
                           <th>{t("Accepter")}</th>
-                          <th>{t("Cause")}</th>
+                          <th>{t("Refuser")}</th>
                         </tr>
                       </thead>
                       <tbody>

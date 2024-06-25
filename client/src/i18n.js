@@ -358,7 +358,8 @@ const resources = {
       "L'élément a été ajouté": "The item was added",
       "Publier": "Publish",
       "détail de question": "question detail",
-      "Réclamation": "Claim"
+      "Réclamation": "Claim",
+      "modification d’une annonce": "modification of an ad",
     }
   },
   fr: {
@@ -726,7 +727,7 @@ const resources = {
         "Ventes": "Ventes",
         "détail de question": "détail de question",
         "Réclamation": "Réclamation",
-      
+        "modification d’une annonce": "modification d’une annonce",
     }
   },
   ar: {
@@ -1095,7 +1096,8 @@ const resources = {
       "L'élément a été ajouté": "تمت إضافة العنصر",
       "Publier": "نشر",
       "détail de question": "تفاصيل السؤال",
-      "Réclamation": "الشكوى"
+      "Réclamation": "الشكوى",
+      "modification d’une annonce": "تعديل إعلان",
     }
   }
 };
