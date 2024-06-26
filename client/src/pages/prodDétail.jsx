@@ -25,15 +25,14 @@ const ProductDetail = () => {
       title: t("Êtes-vous sûr?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui"),
       cancelButtonText: t("Non, annuler!"),
     }).then((result) => {
       if (result.isConfirmed) {
         let message;
         switch (actionType) {
-          case "Deactivate":
+          case "Désactiver":
             message = t("L'élément a été désactivé");
             break;
           case "Supprimé":
@@ -73,7 +72,7 @@ const ProductDetail = () => {
         <p><strong>Price:</strong> ${product.price}</p>
         <p><strong>In Stock:</strong> {product.stock}</p>
         <div className="product-buttons">
-          <button className="btn" onClick={() => confirmAction("deactivate")}>
+          <button className="btn" onClick={() => confirmAction("Désactiver")}>
             {t("Désactiver")}
           </button>
           <button className="btn" onClick={() => confirmAction("Supprimé")}>

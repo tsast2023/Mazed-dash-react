@@ -6,7 +6,7 @@ function Configuration() {
 
   return (
     <div className="content-container">
-      <div  id="main">
+      <div id="main">
         <header className="mb-3">
           <a href="#" className="burger-btn d-block d-xl-none">
             <i className="bi bi-justify fs-3" />
@@ -16,8 +16,8 @@ function Configuration() {
           <section id="basic-vertical-layouts">
             <div className="match-height">
               <div>
-                <div  className="card">
-                  <div  className="card-header">
+                <div className="card">
+                  <div className="card-header">
                     <h2 className="new-price" id="myModalLabel33">
                       {t("Configuration De L'enchere")}
                     </h2>
@@ -157,82 +157,92 @@ function Configuration() {
                 </div>
               </div>
             </div>
-            <div
-              style={{ backgroundColor: "white", padding: 20 }}
-              className="modal-content"
-            >
-              <div className="modal-header">
-                <h2 className="new-price" id="myModalLabel33">
-                  {t("Ajouter une nouvelle Configuration")}
-                </h2>
-                <br />
-                <br />
-                <br />
-                <br />
+            <div className="card">
+              <div
+                style={{ backgroundColor: "white", padding: 20 }}
+                className="modal-content"
+              >
+                <div className="modal-header">
+                  <h2 className="new-price" id="myModalLabel33">
+                    {t("Ajouter une nouvelle Configuration")}
+                  </h2>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </div>
+                <form action="#">
+                  <div className="modal-body">
+                    <label htmlFor="email">
+                      {t("Nb attendu des participants")}
+                    </label>
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        placeholder={t("Écrivez ici")}
+                        className="form-control"
+                        maxLength={25}
+                        required
+                      />
+                    </div>
+                    <label htmlFor="email">{t("Date de Lancement")}</label>
+                    <div className="form-group">
+                      <input
+                        type="datetime-local"
+                        placeholder={t("Écrivez ici")}
+                        className="form-control"
+                        maxLength={25}
+                        required
+                      />
+                    </div>
+                    <label htmlFor="email">{t("Date de Fermeture")}</label>
+                    <div className="form-group">
+                      <input
+                        type="datetime-local"
+                        placeholder={t("Écrivez ici")}
+                        className="form-control"
+                        maxLength={25}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <div className="modal-footer">
+                    <div className="d-flex flex-column flex-sm-row">
+                      <button
+                        type="button"
+                        className="btn btn-primary ms-1 mb-2 mb-sm-0"
+                        data-bs-dismiss="modal"
+                      >
+                        <i className="bx bx-check d-block d-sm-none" />
+                        <span className="d-none d-sm-block">
+                          {t("Planifier")}
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary ms-1 mb-2 mb-sm-0"
+                        data-bs-dismiss="modal"
+                      >
+                        <i className="bx bx-check d-block d-sm-none" />
+                        <span className="d-none d-sm-block">
+                          {t("Publier")}
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary ms-1"
+                        data-bs-dismiss="modal"
+                      >
+                        <i className="bx bx-check d-block d-sm-none" />
+                        <span className="d-none d-sm-block">
+                          {t("Enregistrer")}
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <form action="#">
-                <div className="modal-body">
-                  <label htmlFor="email">
-                    {t("Nb attendu des participants")}
-                  </label>
-                  <div className="form-group">
-                    <input
-                      type="number"
-                      placeholder={t("Écrivez ici")}
-                      className="form-control"
-                      maxLength={25}
-                      required
-                    />
-                  </div>
-                  <label htmlFor="email">{t("Date de Lancement")}</label>
-                  <div className="form-group">
-                    <input
-                      type="datetime-local"
-                      placeholder={t("Écrivez ici")}
-                      className="form-control"
-                      maxLength={25}
-                      required
-                    />
-                  </div>
-                  <label htmlFor="email">{t("Date de Fermeture")}</label>
-                  <div className="form-group">
-                    <input
-                      type="datetime-local"
-                      placeholder={t("Écrivez ici")}
-                      className="form-control"
-                      maxLength={25}
-                      required
-                    />
-                  </div>
-                </div>
-                <br />
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
-                  >
-                    <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">{t("Planifier")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
-                  >
-                    <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">{t("Publier")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
-                  >
-                    <i className="bx bx-check d-block d-sm-none" />
-                    <span className="d-none d-sm-block">{t("Enregister")}</span>
-                  </button>
-                </div>
-              </form>
             </div>
           </section>
         </div>

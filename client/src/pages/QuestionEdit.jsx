@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function QuestionEdit() {
+  const { t } = useTranslation();
   return (
     <div className="content-container">
       <div id="main">
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h4 className="card-title">détail de question</h4>
+              <h4 className="card-title">{t("détail de question")}</h4>
             </div>
             <div className="card-content">
               <div className="card-body">
@@ -20,7 +22,7 @@ function QuestionEdit() {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            La question
+                            {t("La question")}
                           </label>
                           <textarea
                             className="form-control"
@@ -34,7 +36,7 @@ function QuestionEdit() {
                             htmlFor="exampleFormControlTextarea1"
                             className="form-label"
                           >
-                            La réponse
+                            {t("La réponse")}
                           </label>
                           <textarea
                             className="form-control"
@@ -51,7 +53,7 @@ function QuestionEdit() {
                           data-bs-dismiss="modal"
                         >
                           <i className="bx bx-x d-block d-sm-none" />
-                          <span className="btn btn-secondary">Supprimer</span>
+                          <span className="btn btn-secondary">{t("Supprimer")}</span>
                         </button>
                         <br/>
                         <br/>
@@ -61,7 +63,7 @@ function QuestionEdit() {
                           className="btn btn-primary"
                           id="suivantBtn"
                         >
-                          Editer
+                          {t("Editer")}
                         </button>
                       </div>
                     </div>

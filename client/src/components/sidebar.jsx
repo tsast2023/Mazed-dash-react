@@ -161,7 +161,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  {t("Liste des Administrateur")}
+                  {t("Liste des administrateurs")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/CreationAdministrateur" />}
@@ -187,13 +187,11 @@ const Playground = () => {
                 {t("Demande")}
               </MenuItem> */}
               <SubMenu
-                label={t("Demande ")}
+                label={t("Demande")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
               >
           <SubMenu
-           label={t("Demande Vendeur ")}
-           icon={<i className="fa-solid fa-bookmark"></i>}
-           
+           label={t("Demande Vendeur")}
                   component={<Link to="/ListeAdministrateur" />}
                   onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
@@ -227,7 +225,6 @@ const Playground = () => {
                 </SubMenu>
                 <SubMenu
                 label={t("Demande Administrateur")}
-                icon={<i className="fa-solid fa-bookmark"></i>}
               >
         
                 <MenuItem

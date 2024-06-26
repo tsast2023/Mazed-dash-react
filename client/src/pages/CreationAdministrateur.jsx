@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { GlobalState } from "../GlobalState";
 import axios from "axios";
 function CreationAdministrateur() {
@@ -29,7 +30,7 @@ function CreationAdministrateur() {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Ajouter un Utilisateur</h2>
+                <h2 className="new-price">{t("Ajouter un administrateur")}</h2>
               </div>
               <div className="card-content">
                 <div className="card-body">
@@ -38,7 +39,7 @@ function CreationAdministrateur() {
                       <div className="row">
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Nom</label>
+                            <label htmlFor="email-id-icon">{t("Nom")}</label>
                             <div className="position-relative">
                               <input onChange={e=>setData({...data , prenom:e.target.value})}
                                 type="text"
@@ -66,7 +67,9 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Identifiant</label>
+                            <label htmlFor="email-id-icon">
+                              {t("Identifiant")}
+                            </label>
                             <div className="position-relative">
                               <input onChange={e=>setData({...data , identifiant:e.target.value})}
                                 type="text"
@@ -94,7 +97,7 @@ function CreationAdministrateur() {
                         </div>
                         <div className="form-group">
                           <label htmlFor="email-id-icon">
-                            Numéro de téléphone
+                            {t("Numéro de téléphone")}
                           </label>
                           <div className="input-group mb-3">
                             <span
@@ -113,7 +116,7 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Role</label>
+                            <label htmlFor="email-id-icon">{t("Role")}</label>
                             <fieldset className="form-group mb-3">
                               <select  onChange={e=>setData({...data , roleName:e.target.value})} className="form-select" id="basicSelect">
                                 {roles&& roles.map((item)=>(
@@ -127,18 +130,16 @@ function CreationAdministrateur() {
                       <div className="modal-footer">
                         <button
                           type="button"
-                          className="btn btn-light-secondary me-2"
-                          data-bs-dismiss="modal"
+                          className="btn btn-secondary me-2"
                         >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Annuler</span>
+                          {t("Annuler")}
                         </button>
                         <button
                           type="submit"
                           className="btn btn-dark"
                           id="suivantBtn"
                         >
-                          Enregistrer
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
 
 function AdsList() {
   const { t } = useTranslation();
@@ -123,9 +124,9 @@ function AdsList() {
                         </Button>
                       </td>
                       <td>
-                        <a href="annonces-edit.html?id=1">
+                      <Link to="/adsEdit">
                           <i className="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        </Link>
                       </td>
                       <td>
                         <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
@@ -141,9 +142,9 @@ function AdsList() {
                         </Button>
                       </td>
                       <td>
-                        <a href="annonces-edit.html">
+                        <Link to="/adsEdit">
                           <i className="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        </Link>
                       </td>
                       <td>
                         <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
@@ -159,9 +160,9 @@ function AdsList() {
                         </Button>
                       </td>
                       <td>
-                        <a href="annonces-edit.html">
+                      <Link to="/adsEdit">
                           <i className="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        </Link>
                       </td>
                       <td>
                         <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>

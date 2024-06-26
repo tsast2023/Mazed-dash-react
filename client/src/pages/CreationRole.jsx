@@ -72,7 +72,7 @@ function CreationRole() {
         <div className="col-12">
           <div className="card">
             <div className="card-header d-flex justify-content-between align-items-center">
-              <h2 className="new-price">Créer un rôle</h2>
+              <h2 className="new-price">{t("Créer un rôle")}</h2>
               <div id="add-input-button-container" />
               {/* + Button */}
             </div>
@@ -83,7 +83,7 @@ function CreationRole() {
                     <div className="row">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="role-name">Nom du rôle</label>
+                          <label htmlFor="role-name">{t("Nom du rôle")}</label>
                           <input
                             type="text"
                             id="role-name"
@@ -117,15 +117,15 @@ function CreationRole() {
                       <div className="col-12 d-flex justify-content-end">
                         <button
                           type="reset"
-                          className="btn btn-light-secondary me-1 mb-1"
+                          className="btn btn-secondary me-1 mb-1"
                         >
-                          Annuler
+                          {t("Annuler")}
                         </button>
                         <button
                           type="submit"
                           className="btn btn-primary me-1 mb-1"
                         >
-                          Enregistrer
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

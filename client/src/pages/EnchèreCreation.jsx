@@ -118,7 +118,7 @@ function EnchèreCreation() {
                             <Link to={"/configuration"} type="stubmi" className="btn btn-primary me-1 mb-1">
                               <a style={{ color: 'white' }}>{t("Suivant")}</a>
                             </Link>
-                            <button type="reset" className="btn btn-light-secondary me-1 mb-1">
+                            <button type="reset" className="btn btn-secondary me-1 mb-1">
                               {t("Annuler")}
                             </button>
                           </div>

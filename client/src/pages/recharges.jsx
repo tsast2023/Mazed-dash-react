@@ -164,7 +164,7 @@ const deleteCarte = async(id)=>{
                               >
                                 <i className="bx bx-check d-block d-sm-none"></i>
                                 <span className="btn btn-primary">
-                                  {t("Enregister")}
+                                  {t("Enregistrer")}
                                 </span>
                               </button>
                             </div>
