@@ -41,6 +41,7 @@ function Commandes() {
           </div>
         </div>
       </section>
+      <StatusModal />
     </div>
   );
 }
@@ -59,6 +60,7 @@ function DesktopTable() {
           <th>{t("Prix Total")}</th>
           <th>{t("Date De Commande")}</th>
           <th>{t("Status")}</th>
+          <th>{t("Changer Status")}</th>
         </tr>
       </thead>
       <tbody>
@@ -71,6 +73,7 @@ function DesktopTable() {
           <td>800</td>
           <td>2000000</td>
           <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
+          <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
         </tr>
         <tr className="table">
           <td className="text-bold-500">111111</td>
@@ -81,6 +84,7 @@ function DesktopTable() {
           <td>800</td>
           <td>2000000</td>
           <td><span className="badge bg-warning">{t("En Cours")}</span></td>
+          <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
         </tr>
       </tbody>
     </table>
@@ -161,6 +165,38 @@ function MobileTable() {
         </tr>
       </tbody>
     </table>
+  );
+}
+
+function StatusModal() {
+  const { t } = useTranslation();
+  return (
+    <div className="modal fade" id="statusModal" tabIndex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="statusModalLabel">{t("Changer Status")}</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-body">
+            <form>
+              <div className="mb-3">
+                <label htmlFor="statusSelect" className="form-label">{t("Select Status")}</label>
+                <select className="form-select" id="statusSelect">
+                  <option value="termine">{t("Terminé")}</option>
+                  <option value="en-cours">{t("En Cours")}</option>
+                  <option value="annule">{t("Annulé")}</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t("Fermer")}</button>
+            <button type="button" className="btn btn-primary">{t("Enregistrer les modifications")}</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
