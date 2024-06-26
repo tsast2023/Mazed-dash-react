@@ -55,10 +55,10 @@ function DesktopTable() {
           <th>{t("Produit")}</th>
           <th>{t("Image Produit")}</th>
           <th>{t("Prix Produit")}</th>
-          <th>{t("Status")}</th>
           <th>{t("Quantité")}</th>
           <th>{t("Prix Total")}</th>
           <th>{t("Date De Commande")}</th>
+          <th>{t("Status")}</th>
         </tr>
       </thead>
       <tbody>
@@ -67,20 +67,20 @@ function DesktopTable() {
           <td>Lorem Lorem</td>
           <td><img src="" alt="img"/></td>
           <td>200</td>
-          <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
           <td>500</td>
           <td>800</td>
           <td>2000000</td>
+          <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
         </tr>
         <tr className="table">
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
           <td><img src="" alt="img"/></td>
           <td>200</td>
-          <td><span className="badge bg-warning">{t("En Cours")}</span></td>
           <td>500</td>
           <td>800</td>
           <td>2000000</td>
+          <td><span className="badge bg-warning">{t("En Cours")}</span></td>
         </tr>
       </tbody>
     </table>
@@ -109,10 +109,6 @@ function MobileTable() {
           <td>200</td>
         </tr>
         <tr>
-          <td>{t("Status")}</td>
-          <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
-        </tr>
-        <tr>
           <td>{t("Quantité")}</td>
           <td>500</td>
         </tr>
@@ -123,6 +119,10 @@ function MobileTable() {
         <tr>
           <td>{t("Date De Commande")}</td>
           <td>2000000</td>
+        </tr>
+        <tr>
+          <td>{t("Status")}</td>
+          <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
         </tr>
         <tr>
           <td colSpan="2"><hr /></td> {/* Horizontal rule added here */}
@@ -144,10 +144,6 @@ function MobileTable() {
           <td>200</td>
         </tr>
         <tr>
-          <td>{t("Status")}</td>
-          <td><span className="badge bg-warning">{t("En Cours")}</span></td>
-        </tr>
-        <tr>
           <td>{t("Quantité")}</td>
           <td>500</td>
         </tr>
@@ -158,6 +154,10 @@ function MobileTable() {
         <tr>
           <td>{t("Date De Commande")}</td>
           <td>2000000</td>
+        </tr>
+        <tr>
+          <td>{t("Status")}</td>
+          <td><span className="badge bg-warning">{t("En Cours")}</span></td>
         </tr>
       </tbody>
     </table>
