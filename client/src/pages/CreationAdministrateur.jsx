@@ -6,6 +6,7 @@ function CreationAdministrateur() {
   const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:"" , password:""});
   const state= useContext(GlobalState);
   const roles = state.Roles;
+  const { t } = useTranslation();
 
   const submitAdmin = (e)=>{
     e.preventDefault();

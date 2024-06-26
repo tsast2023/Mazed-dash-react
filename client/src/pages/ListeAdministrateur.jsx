@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Swal from "sweetalert2";
-
+import { useTranslation } from 'react-i18next';
 function ListeAdministrateur() {
-  
+  const { t } = useTranslation();
+
   // Function to handle blocking an administrator
   const handleBlock = () => {
     Swal.fire({
