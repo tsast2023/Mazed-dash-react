@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useTranslation } from "react-i18next";
+import { GlobalState } from '../GlobalState';
 
 function Commandes() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-
+  const state = useContext(GlobalState);
+  const commandes = state.Commandes;
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
@@ -31,9 +33,9 @@ function Commandes() {
               <div className="card-content">
                 <div className="table-responsive">
                   {isMobile ? (
-                    <MobileTable />
+                    <MobileTable commandes={commandes} />
                   ) : (
-                    <DesktopTable />
+                    <DesktopTable commandes={commandes} />
                   )}
                 </div>
               </div>
@@ -45,7 +47,7 @@ function Commandes() {
   );
 }
 
-function DesktopTable() {
+function DesktopTable({commandes}) {
   const { t } = useTranslation();
   return (
     <table className="table" id="table1">
@@ -62,32 +64,26 @@ function DesktopTable() {
         </tr>
       </thead>
       <tbody>
-        <tr className="table">
-          <td className="text-bold-500">111111</td>
-          <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
-          <td>200</td>
-          <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
-          <td>500</td>
-          <td>800</td>
-          <td>2000000</td>
-        </tr>
-        <tr className="table">
-          <td className="text-bold-500">111111</td>
-          <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
-          <td>200</td>
-          <td><span className="badge bg-warning">{t("En Cours")}</span></td>
-          <td>500</td>
-          <td>800</td>
-          <td>2000000</td>
-        </tr>
+        {commandes && commandes.map((item)=>(
+ <tr className="table">
+ <td className="text-bold-500">111111</td>
+ <td>Lorem Lorem</td>
+ <td><img src="" alt="img"/></td>
+ <td>200</td>
+ <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
+ <td>500</td>
+ <td>800</td>
+ <td>2000000</td>
+</tr>
+        ))}
+       
+       
       </tbody>
     </table>
   );
 }
 
-function MobileTable() {
+function MobileTable({commandes}) {
   const { t } = useTranslation();
   return (
     <table className="table" id="table1">

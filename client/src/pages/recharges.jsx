@@ -11,7 +11,7 @@ function Recharges() {
   const cartes = state.cartes;
   const [carteRech , setCarteRech] = useState({numSérie : "" , valeur:""});
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -26,21 +26,30 @@ function Recharges() {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call deleteItem function
-        deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+        deleteItem(id);
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "info");
+        // window.location.reload();
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
 
-  const deleteItem = () => {  
+  const deleteItem = async (id) => { 
+    try {
+      const res = await axios.delete(
+        `http://localhost:8081/api/carte/deleteCarte?id=${id}`
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   
 const addCarte = async(e)=>{
   e.preventDefault();
   try {
-    const res = await axios.post('http://192.168.0.126:8081/api/carte/publishNow' , carteRech);
+    const res = await axios.post('http://localhost:8081/api/carte/publishNow' , carteRech);
     console.log(res.data);
     window.location.reload();
   } catch (error) {
@@ -49,7 +58,7 @@ const addCarte = async(e)=>{
 }
 const deleteCarte = async(id)=>{
   try {
-    const res = await axios.delete(`http://192.168.0.126:8081/api/carte/deleteCarte?id=${id}`);
+    const res = await axios.delete(`http://localhost:8081/api/carte/deleteCarte?id=${id}`);
     console.log(res.data)
   } catch (error) {
     console.log(error)

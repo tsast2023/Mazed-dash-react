@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+import { useLocation } from 'react-router-dom';
 
 function UtilisateurDetails() {
+  const location = useLocation();
+  const { user } = location.state || {}; 
   const { t } = useTranslation();
+
+  
   const handleBlockClick = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -55,6 +60,7 @@ function UtilisateurDetails() {
   const deleteItem = () => {
     // Your delete logic here
   };
+  console.log("useeeeeeeeer" , user)
   return (
     <div className="content-container">
       <div id="main">

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
+import { GlobalState } from "../GlobalState";
 
 function TableUtilisateur() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-
+  const state = useContext(GlobalState);
+  const users = state.Users
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1212);
@@ -83,24 +85,31 @@ function TableUtilisateur() {
               {isMobile ? (
                 <table className="table" id="table1">
                   <tbody>
-                    <tr>
+                    {users && users.map((item)=>(
+                      <>
+                       <tr>
                       <td>{t("Nom")}</td>
-                      <td>Alex</td>
+                      <td>{item.prenom}</td>
                     </tr>
                     <tr>
                       <td>{t("Pseudo")}</td>
-                      <td>vehi</td>
+                      <td>{item.pseudo}</td>
                     </tr>
                     <tr>
-                      <td>{t("Role")}</td>
-                      <td>Lorem</td>
+                      <td>{t("Email")}</td>
+                      <td>{item.email}</td>
                     </tr>
                     <tr>
                       <td>{t("Détail")}</td>
                       <td>
-                        <Link to='/UtilisateurDetails'>
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
+                      <Link
+  to={{
+    pathname: `/UtilisateurDetails/${item.id}`,
+    state: {user: "hello"}
+  }}
+>
+  <i className="fa-solid fa-eye"></i>
+</Link>
                       </td>
                     </tr>
                     <tr>
@@ -123,9 +132,10 @@ function TableUtilisateur() {
                         <i className="fa-solid fa-lock-open" onClick={handleUnblockClick}></i>
                       </td>
                     </tr>
-                    <tr>
-                      <td colSpan="2"><hr /></td>
-                    </tr>
+                      </>
+                    ))}
+                   
+                  
                   </tbody>
                 </table>
               ) : (
@@ -142,27 +152,35 @@ function TableUtilisateur() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Alex</td>
-                      <td>vehi</td>
-                      <td>Lorem</td>
-                      <td>
-                        <Link to='/UtilisateurDetails'>
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to='/UtilisateurEdit'>
-                          <i className="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </td>
-                      <td>
-                        <i className="fa-solid fa-lock" onClick={handleBlockClick}></i>
-                      </td>
-                      <td>
-                        <i className="fa-solid fa-lock-open" onClick={handleUnblockClick}></i>
-                      </td>
-                    </tr>
+                    {users && users.map((item)=>(
+ <tr>
+ <td>{item.prenom}</td>
+ <td>{item.pseudo}</td>
+ <td>{item.email}</td>
+ <td>
+   <Link  to={{
+                                  pathname: `/UtilisateurDetails/${item.id}`,
+                                  state: { user: "hello" }
+                                }}
+   
+   >
+     <i className="fa-solid fa-eye"></i>
+   </Link>
+ </td>
+ <td>
+   <Link to='/UtilisateurEdit'>
+     <i className="fa-solid fa-pen-to-square"></i>
+   </Link>
+ </td>
+ <td>
+   <i className="fa-solid fa-lock" onClick={handleBlockClick}></i>
+ </td>
+ <td>
+   <i className="fa-solid fa-lock-open" onClick={handleUnblockClick}></i>
+ </td>
+</tr>
+                    ))}
+                   
                   </tbody>
                 </table>
               )}

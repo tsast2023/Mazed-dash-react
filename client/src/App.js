@@ -84,7 +84,7 @@ const App = () => {
               <Route path='/UtilisateurForm' element={<UtilisateurForm/>}/>
               <Route path='/TableUtilisateur' element={<TableUtilisateur/>}/>
               <Route path='/UtilisateurEdit' element={<UtilisateurEdit/>}/>
-              <Route path='/UtilisateurDetails' element={<UtilisateurDetails/>}/>
+              <Route path='/UtilisateurDetails/:id' element={<UtilisateurDetails/>}/>
               <Route path='/QuestionForm' element={<QuestionForm/>}/>
               <Route path='/QuestionList' element={<QuestionList/>}/>
               <Route path='/QuestionDetail' element={<QuestionDetail/>}/>
