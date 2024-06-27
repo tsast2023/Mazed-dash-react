@@ -12,7 +12,10 @@ export const DataProvider = ({children}) => {
   const [carteRech , setCarteRech] = useState();
   const[bids , setBids] = useState();
   const[permissions , setPermissions] = useState();
-
+  const[roles , setRoles] = useState();
+  const[admins , setAdmins] = useState();
+  const [commandes , setCommandes] = useState();
+  const [users , setUsers] = useState();
   useEffect(()=>{
     
     const getAllCategories = async() =>{
@@ -69,13 +72,52 @@ export const DataProvider = ({children}) => {
         console.log(error)
       }
     }
-    
+    const getAllRoles = async()=>{
+      try {
+        const res = await axios.get('http://localhost:8081/admin/allRoles')
+        console.log("all roles:" , res.data)
+        setRoles(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getAllAdmin = async()=>{
+      try {
+        const res = await axios.get('http://localhost:8081/admin/users/Admin')
+        console.log("all Admins:" , res.data)
+        setAdmins(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getAllCommandes = async()=>{
+      try {
+        const res = await axios.get('http://localhost:8081/api/commandes/toutes-les-commandes')
+        console.log("all Commandes:" , res.data)
+        setCommandes(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const getAllUsers = async()=>{
+      try {
+        const res = await axios.get('http://localhost:8081/admin/users/Acheteur')
+        console.log("all Users:" , res.data)
+        setUsers(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+getAllUsers();
+getAllCommandes();
+getAllAdmin();     
 getAllCategories();
 getAllProducts();
 getAllTuto();
 getAllBids();
 getCarteRechar();
 getAllPermissions();
+getAllRoles();
   } , [token])
   
    const state ={
@@ -84,8 +126,11 @@ getAllPermissions();
     tutorials : tutoriel,
     bids : bids,
     cartes: carteRech,
-    Permissions : permissions
-    
+    Permissions : permissions,
+    Roles : roles,
+    Admins :  admins,
+    Commandes : commandes,
+    Users : users
 
 
 

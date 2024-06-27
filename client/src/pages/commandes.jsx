@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useTranslation } from "react-i18next";
+import { GlobalState } from '../GlobalState';
 
 function Commandes() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-
+  const state = useContext(GlobalState);
+  const commandes = state.Commandes;
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1212); // Adjust this breakpoint as needed
@@ -31,9 +33,9 @@ function Commandes() {
               <div className="card-content">
                 <div className="table-responsive">
                   {isMobile ? (
-                    <MobileTable />
+                    <MobileTable commandes={commandes} />
                   ) : (
-                    <DesktopTable />
+                    <DesktopTable commandes={commandes} />
                   )}
                 </div>
               </div>
@@ -46,7 +48,7 @@ function Commandes() {
   );
 }
 
-function DesktopTable() {
+function DesktopTable({commandes}) {
   const { t } = useTranslation();
   return (
     <table className="table" id="table1">
@@ -91,7 +93,7 @@ function DesktopTable() {
   );
 }
 
-function MobileTable() {
+function MobileTable({commandes}) {
   const { t } = useTranslation();
   return (
     <table className="table" id="table1">

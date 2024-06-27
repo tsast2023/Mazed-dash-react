@@ -10,7 +10,7 @@ const App = () => {
   const state = useContext(GlobalState);
   const tutorials = state.tutorials;
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -27,7 +27,7 @@ const App = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Call deleteItem function
-        deleteItem();
+        deleteItem(id);
         Swal.fire(
           t("Supprimé(e) !"),
           t("Votre élément a été supprimé."),
@@ -54,7 +54,7 @@ const App = () => {
   const deleteItem = async (id) => {
     try {
       const res = await axios.delete(
-        `http://192.168.0.126:8081/api/tuto/deleteTuto?id=${id}`
+        `http://localhost:8081/api/tuto/deleteTuto?id=${id}`
       );
       console.log(res.data);
     } catch (error) {
@@ -67,7 +67,7 @@ const App = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://192.168.0.126:8081/api/tuto/publishNow",
+        "http://localhost:8081/api/tuto/publishNow",
         tuto
       );
       console.log(res.data);
