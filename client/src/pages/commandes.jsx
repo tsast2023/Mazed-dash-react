@@ -69,7 +69,7 @@ function DesktopTable({commandes}) {
         <tr className="table">
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
+          <td><img className='imgtable' src="" alt="img"/></td>
           <td>200</td>
           <td>500</td>
           <td>800</td>
@@ -80,7 +80,7 @@ function DesktopTable({commandes}) {
         <tr className="table">
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
+          <td><img className='imgtable' src="" alt="img"/></td>
           <td>200</td>
           <td>500</td>
           <td>800</td>
@@ -108,7 +108,7 @@ function MobileTable({commandes}) {
         </tr>
         <tr>
           <td>{t("Image Produit")}</td>
-          <td><img src="" alt="img"/></td>
+          <td><img className='imgtable' src="" alt="img"/></td>
         </tr>
         <tr>
           <td>{t("Prix Produit")}</td>
@@ -147,7 +147,7 @@ function MobileTable({commandes}) {
         </tr>
         <tr>
           <td>{t("Image Produit")}</td>
-          <td><img src="" alt="img"/></td>
+          <td><img className='imgtable' src="" alt="img"/></td>
         </tr>
         <tr>
           <td>{t("Prix Produit")}</td>
