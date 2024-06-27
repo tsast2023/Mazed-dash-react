@@ -360,7 +360,7 @@ const resources = {
       "détail de question": "question detail",
       "Réclamation": "Claim",
       "modification d’une annonce": "modification of an ad",
-      "changer statut": "change status",
+      "Changer Statut": "change status",
     }
   },
   fr: {
@@ -1100,7 +1100,7 @@ const resources = {
       "détail de question": "تفاصيل السؤال",
       "Réclamation": "الشكوى",
       "modification d’une annonce": "تعديل إعلان",
-      "changer statut": "تغيير الوضع",
+      "Changer Statut": "تغيير الوضع",
     }
   }
 };

@@ -59,8 +59,8 @@ function DesktopTable() {
           <th>{t("Quantité")}</th>
           <th>{t("Prix Total")}</th>
           <th>{t("Date De Commande")}</th>
-          <th>{t("Status")}</th>
-          <th>{t("Changer Status")}</th>
+          <th>{t("Statut")}</th>
+          <th>{t("Changer Statut")}</th>
         </tr>
       </thead>
       <tbody>
@@ -129,7 +129,7 @@ function MobileTable() {
           <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
         </tr>
         <tr>
-          <td colSpan="2"><hr /></td> {/* Horizontal rule added here */}
+          <td colSpan="2"><hr /></td>
         </tr>
         <tr>
           <td>{t("Num Commande")}</td>
@@ -175,13 +175,12 @@ function StatusModal() {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="statusModalLabel">{t("Changer Status")}</h5>
+            <h5 className="modal-title" id="statusModalLabel">{t("Changer Statut")}</h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
             <form>
               <div className="mb-3">
-                <label htmlFor="statusSelect" className="form-label">{t("Select Status")}</label>
                 <select className="form-select" id="statusSelect">
                   <option value="termine">{t("Terminé")}</option>
                   <option value="en-cours">{t("En Cours")}</option>
@@ -192,7 +191,7 @@ function StatusModal() {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">{t("Fermer")}</button>
-            <button type="button" className="btn btn-primary">{t("Enregistrer les modifications")}</button>
+            <button type="button" className="btn btn-primary">{t("Enregistrer")}</button>
           </div>
         </div>
       </div>
