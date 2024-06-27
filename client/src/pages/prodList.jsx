@@ -104,7 +104,7 @@ function ProdList() {
                   <tr>
                     <td>{t("Image")}</td>
                     <td>
-                      <img src="" alt="img" />
+                    <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
                   </tr>
                   <tr>
@@ -179,7 +179,7 @@ function ProdList() {
                     <td>01121</td>
                     <td>Lorem</td>
                     <td>
-                      <img src="" alt="img" />
+                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
                     <td>50</td>
                     <td>10</td>
