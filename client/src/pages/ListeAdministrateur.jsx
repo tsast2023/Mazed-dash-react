@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 function ListeAdministrateur() {
   const { t } = useTranslation();
 
@@ -62,12 +62,12 @@ function ListeAdministrateur() {
                   <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Nom</th>
-                        <th>Pseudo</th>
-                        <th>Role</th>
-                        <th>Edit</th>
-                        <th>Bloquer</th>
-                        <th>Débloquer</th>
+                        <th>{t("Nom")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Role")}</th>
+                        <th>{t("Modifier")}</th>
+                        <th>{t("Bloquer")}</th>
+                        <th>{t("Débloquer")}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -81,14 +81,16 @@ function ListeAdministrateur() {
                           </a>
                         </td>
                         <td>
-                       
-                            <i onClick={handleBlock} className="fa-solid fa-lock"></i>
-                          
+                          <i
+                            onClick={handleBlock}
+                            className="fa-solid fa-lock"
+                          ></i>
                         </td>
                         <td>
-                
-                            <i onClick={handleUnblock} className="fa-solid fa-lock-open"></i>
-                      
+                          <i
+                            onClick={handleUnblock}
+                            className="fa-solid fa-lock-open"
+                          ></i>
                         </td>
                       </tr>
                     </tbody>

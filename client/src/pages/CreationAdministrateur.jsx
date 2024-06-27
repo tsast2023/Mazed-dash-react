@@ -54,13 +54,12 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Email</label>
+                            <label htmlFor="email-id-icon">{t("Email")}</label>
                             <div className="position-relative">
                               <input onChange={e=>setData({...data , email:e.target.value})}
                                 type="email"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Email"
                                 maxLength={25}
                               />
                             </div>
@@ -76,7 +75,6 @@ function CreationAdministrateur() {
                                 type="text"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Identifiant"
                                 maxLength={25}
                               />
                             </div>
@@ -84,13 +82,12 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Password</label>
+                            <label htmlFor="email-id-icon">{t("mot de passe")}</label>
                             <div className="position-relative">
                               <input onChange={e=>setData({...data , password:e.target.value})}
                                 type="text"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Password"
                                 maxLength={25}
                               />
                             </div>

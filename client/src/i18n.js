@@ -361,6 +361,8 @@ const resources = {
       "Réclamation": "Claim",
       "modification d’une annonce": "modification of an ad",
       "Changer Statut": "change status",
+      "mot de passe": "password",
+      "Identifiant": "Identifier",
     }
   },
   fr: {
@@ -730,6 +732,8 @@ const resources = {
         "Réclamation": "Réclamation",
         "modification d’une annonce": "modification d’une annonce",
         "changer statut": "changer statut",
+        "mot de passe": "mot de passe",
+        "Identifiant": "Identifiant",
     }
   },
   ar: {
@@ -855,6 +859,7 @@ const resources = {
       "Date de Déclenchement": "تاريخ التفعيل",
       "Statut": "الحالة",
       "Voir": "عرض",
+      "Identifiant": "المعرف",
       "Le stock à l’entrée": "المخزون عند الدخول",
       "Liste des Offres": "قائمة العروض",
       "Type de Offre": "نوع العرض",
@@ -1101,6 +1106,7 @@ const resources = {
       "Réclamation": "الشكوى",
       "modification d’une annonce": "تعديل إعلان",
       "Changer Statut": "تغيير الوضع",
+      "mot de passe": "أكد كلمة المرور",
     }
   }
 };
