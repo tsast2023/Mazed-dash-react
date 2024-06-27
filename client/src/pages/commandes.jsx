@@ -131,6 +131,10 @@ function MobileTable({commandes}) {
           <td><span className="badge bg-secondary">{t("Terminé")}</span></td>
         </tr>
         <tr>
+          <td>{t("Changer Statut")}</td>
+        <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
+        </tr>
+        <tr>
           <td colSpan="2"><hr /></td>
         </tr>
         <tr>
@@ -164,6 +168,10 @@ function MobileTable({commandes}) {
         <tr>
           <td>{t("Status")}</td>
           <td><span className="badge bg-warning">{t("En Cours")}</span></td>
+        </tr>
+        <tr>
+          <td>{t("Changer Statut")}</td>
+        <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
         </tr>
       </tbody>
     </table>
