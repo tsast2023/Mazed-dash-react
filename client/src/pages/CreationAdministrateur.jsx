@@ -98,12 +98,6 @@ function CreationAdministrateur() {
                             {t("Numéro de téléphone")}
                           </label>
                           <div className="input-group mb-3">
-                            <span
-                              className="input-group-text"
-                              id="basic-addon1"
-                            >
-                              +216
-                            </span>
                             <input onChange={e=>setData({...data , numTel:e.target.value})}
                               type="text"
                               className="form-control"
