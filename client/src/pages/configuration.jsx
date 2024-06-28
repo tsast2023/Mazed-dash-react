@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import "choices.js/public/assets/styles/choices.css";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Swal from "sweetalert2";
 
 function Configuration() {
   const { t } = useTranslation();
@@ -23,6 +24,42 @@ function Configuration() {
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
+  const handleDelete = () => {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: "Êtes-vous sûr(e) ?",
+      text: "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Oui, Annuler-le !",
+      cancelButtonText: "Non, annuler !",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call deleteItem function
+        deleteItem();
+        Swal.fire({
+          title: "Annuler(e) !",
+          text: "Votre élément a été supprimé.",
+          icon: "success",
+          iconColor:"black",
+          confirmButtonColor: "#b0210e", // Change to your desired color
+          confirmButtonText: "OK"
+        });      } else {
+        Swal.fire({
+          title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e", // Change to your desired color
+          confirmButtonText: "OK"
+        });      }
+    });
+  };
+  const deleteItem = () => {
+    // Implement your delete logic here
+  };
   return (
     <div className="content-container">
       <div id="main">
@@ -238,16 +275,21 @@ function Configuration() {
                   <button
                     type="button"
                     className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
                   >
                     <span className="d-none d-sm-block">{t("Publier")}</span>
                   </button>
                   <button
                     type="button"
                     className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
                   >
                     <span className="d-none d-sm-block">{t("Enregister")}</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary ms-1"
+                    onClick={handleDelete}
+                  >
+                    <span className="d-none d-sm-block">{t("Annuler")}</span>
                   </button>
                 </div>
               </form>

@@ -124,12 +124,9 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
-<<<<<<< HEAD
-              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
-=======
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
->>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
             </Routes>
           </div>
         )}
