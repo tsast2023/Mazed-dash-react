@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 function ProdList() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
+  const [starClicked, setStarClicked] = useState(false); // State to track star click
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,7 +75,8 @@ function ProdList() {
       cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem(); // Replace with your "put to top" logic
+        // Toggle starClicked state
+        setStarClicked(!starClicked);
         Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "success");
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
@@ -93,66 +95,16 @@ function ProdList() {
             {isMobile ? (
               <Table responsive="sm">
                 <tbody>
-                <tr>
-                    <td>{t("Image")}</td>
-                    <td>
-                    <img className="imgtable" src="./Mazed.jpg" alt="img" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{t("Réf")}</td>
-                    <td className="text-bold-500">01121</td>
-                  </tr>
-                  <tr>
-                    <td>{t("Libellé")}</td>
-                    <td className="text-bold-500">Lorem</td>
-                  </tr>
-                  <tr>
-                    <td>{t("Stock initial")}</td>
-                    <td className="text-bold-500">50</td>
-                  </tr>
-                  <tr>
-                    <td>{t("Stock actuel")}</td>
-                    <td className="text-bold-500">10</td>
-                  </tr>
-                  <tr>
-                    <td>{t("Statut")}</td>
-                    <td>
-                      <button className="btn btn-secondary">{t("Publié")}</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{t("Détail")}</td>
-                    <td>
-                      <Link to="/prodDétail" className="btn btn-outline block">
-                        <i className="fa-solid fa-eye font-medium-1"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{t("Editer")}</td>
-                    <td>
-                      <Link to="/prodEdit" className="btn btn-outline block">
-                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{t("Supprimer")}</td>
-                    <td>
-                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{t("Désactiver")}</td>
-                    <td>
-                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                    </td>
-                  </tr>
+                  {/* Your table rows */}
                   <tr>
                     <td>{t("Mettre à l'une")}</td>
                     <td>
-                      <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      {/* Conditional rendering based on starClicked state */}
+                      {starClicked ? (
+                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      ) : (
+                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -161,7 +113,8 @@ function ProdList() {
               <Table responsive="sm">
                 <thead>
                   <tr>
-                  <th>{t("Image")}</th>
+                    {/* Your table headers */}
+                    <th>{t("Image")}</th>
                     <th>{t("Réf")}</th>
                     <th>{t("Libellé")}</th>
                     <th>{t("Stock initial")}</th>
@@ -176,7 +129,8 @@ function ProdList() {
                 </thead>
                 <tbody>
                   <tr>
-                  <td>
+                    {/* Your table data */}
+                    <td>
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
                     <td>01121</td>
@@ -203,7 +157,12 @@ function ProdList() {
                       <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
                     </td>
                     <td>
-                      <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      {/* Conditional rendering based on starClicked state */}
+                      {starClicked ? (
+                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      ) : (
+                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      )}
                     </td>
                   </tr>
                 </tbody>

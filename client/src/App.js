@@ -58,6 +58,7 @@ import TermeEdit from './pages/TermeEdit';
 import AdsEdit from './pages/adsEdit';
 import AdminEdit from './pages/adminEdit';
 import './i18n';
+import EnchèreEdit from './pages/EnchèreEdit';
 import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
 
 const App = () => {
@@ -124,9 +125,16 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
+<<<<<<< HEAD
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
               <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+=======
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+              <Route path='/adsEdit' element={<AdsEdit />} />
+              <Route path='/adminEdit' element={<AdminEdit />} />
+              <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+>>>>>>> d51b7343738f004aa2c653796c7111a44480d985
             </Routes>
           </div>
         )}

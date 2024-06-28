@@ -26,7 +26,7 @@ function VendeurForm() {
               <div className="card-body">
                 <form className="form form-vertical">
                   <div className="form-body">
-                    <div className="row g-3">
+                    <div className="row g-2">
                       <div className="col-12">
                         <div className="form-group">
                           <label htmlFor="nom">{t("Nom")}</label>

@@ -134,7 +134,7 @@ function EnchereListe() {
                       <td>{t("Modifier")}</td>
                       <td>
                         <div className="buttons">
-                          <Link to="/EnchèreCreation" className="btn">
+                          <Link to="/EnchèreEdit" className="btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </div>
@@ -193,8 +193,8 @@ function EnchereListe() {
                         </div>
                       </td>
                       <td>
-                        <div className="buttons">
-                          <Link to="/EnchèreCreation" className="btn">
+                      <div className="buttons">
+                          <Link to="/EnchèreEdit" className="btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </div>
@@ -231,8 +231,8 @@ function EnchereListe() {
                         </div>
                       </td>
                       <td>
-                        <div className="buttons">
-                          <Link to="/EnchèreCreation" className="btn">
+                      <div className="buttons">
+                          <Link to="/EnchèreEdit" className="btn">
                             <i className="fa-solid fa-pen-to-square"></i>
                           </Link>
                         </div>

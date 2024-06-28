@@ -11,6 +11,7 @@ function CategoryList() {
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile, setIsMobile] = useState(false);
+  const [starClickedMap, setStarClickedMap] = useState({}); // State to track star click for each category
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,8 +27,7 @@ function CategoryList() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleDelete = () => {
-    // Show SweetAlert confirmation dialog
+  const handleDelete = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       text: t(
@@ -38,12 +38,9 @@ function CategoryList() {
       confirmButtonColor: "#DD6B55",
       confirmButtonText: t("Oui, supprimez-le !"),
       cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call deleteItem function
-        deleteItem();
+        deleteItem(catId);
         Swal.fire(
           t("Supprimé(e) !"),
           t("Votre élément a été supprimé."),
@@ -55,8 +52,7 @@ function CategoryList() {
     });
   };
 
-  const handleBan = () => {
-    // Show SweetAlert confirmation dialog
+  const handleBan = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
@@ -64,12 +60,9 @@ function CategoryList() {
       confirmButtonColor: "#DD6B55",
       confirmButtonText: t("Oui, désactivez-le !"),
       cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call activateDeactivateItem function
-        activateDeactivateItem();
+        activateDeactivateItem(catId);
         Swal.fire(
           t("Désactivé(e) !"),
           t("Votre élément a été désactivé."),
@@ -81,7 +74,7 @@ function CategoryList() {
     });
   };
 
-  const handleArrowClick = () => {
+  const handleArrowClick = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
@@ -89,12 +82,9 @@ function CategoryList() {
       confirmButtonColor: "#DD6B55",
       confirmButtonText: t("Oui, mettre à l'une !"),
       cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call relevant action
-        handleAction();
+        toggleStarClicked(catId); // Toggle starClicked state for this category
         Swal.fire(
           t("Effectué !"),
           t("Votre élément a été mis à l'une."),
@@ -106,16 +96,19 @@ function CategoryList() {
     });
   };
 
-  const deleteItem = () => {
-    // Implement delete logic
+  const deleteItem = (catId) => {
+    // Implement delete logic for catId
   };
 
-  const activateDeactivateItem = () => {
-    // Implement activate/deactivate logic
+  const activateDeactivateItem = (catId) => {
+    // Implement activate/deactivate logic for catId
   };
 
-  const handleAction = () => {
-    // Implement action logic
+  const toggleStarClicked = (catId) => {
+    setStarClickedMap((prevMap) => ({
+      ...prevMap,
+      [catId]: !prevMap[catId], // Toggle starClicked state for catId
+    }));
   };
 
   const DesktopTable = () => (
@@ -152,19 +145,26 @@ function CategoryList() {
                 </Link>
               </td>
               <td>
-                <i className="fa-solid fa-ban" onClick={handleBan}></i>
+                <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
               </td>
               <td>
                 <i
                   className="fa-solid fa-trash deleteIcon"
-                  onClick={handleDelete}
+                  onClick={() => handleDelete(cat.id)}
                 ></i>
               </td>
               <td>
-                <i
-                  className="fa-solid fa-star arrowIcon"
-                  onClick={handleArrowClick}
-                ></i>
+                {starClickedMap[cat.id] ? (
+                  <i
+                    className="fa-solid fa-star arrowIcon"
+                    onClick={() => handleArrowClick(cat.id)}
+                  ></i>
+                ) : (
+                  <i
+                    className="fa-regular fa-star arrowIcon"
+                    onClick={() => handleArrowClick(cat.id)}
+                  ></i>
+                )}
               </td>
             </tr>
           ))
@@ -229,7 +229,7 @@ function CategoryList() {
               </tr>
               <tr>
                 <td>
-                  <i className="fa-solid fa-ban" onClick={handleBan}></i>
+                  <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
                 </td>
               </tr>
               <tr>
@@ -241,21 +241,23 @@ function CategoryList() {
                 <td>
                   <i
                     className="fa-solid fa-trash deleteIcon"
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(cat.id)}
                   ></i>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <th>{t("Mettre a l'une")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <i
-                    className="fa-solid fa-star arrowIcon"
-                    onClick={handleArrowClick}
-                  ></i>
+                  {starClickedMap[cat.id] ? (
+                    <i
+                      className="fa-solid fa-star arrowIcon"
+                      onClick={() => handleArrowClick(cat.id)}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa-regular fa-star arrowIcon"
+                      onClick={() => handleArrowClick(cat.id)}
+                    ></i>
+                  )}
                 </td>
               </tr>
             </React.Fragment>
