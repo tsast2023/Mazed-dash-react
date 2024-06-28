@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../css/prod-detail.css';
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+import { Link } from 'react-router-dom';
 
 const ProductDetail = () => {
   const { t } = useTranslation();
@@ -78,9 +79,11 @@ const ProductDetail = () => {
           <button className="btn" onClick={() => confirmAction("Supprimé")}>
             {t("Supprimer")}
           </button>
-          <button className="btn" onClick={() => confirmAction("Terminé")}>
+          <Link to="/EnchèreCreation">
+          <button className="btn">
             {t("Ajouter une enchère")}
           </button>
+          </Link>
         </div>
       </div>
     </div>

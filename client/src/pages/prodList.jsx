@@ -93,6 +93,12 @@ function ProdList() {
             {isMobile ? (
               <Table responsive="sm">
                 <tbody>
+                <tr>
+                    <td>{t("Image")}</td>
+                    <td>
+                    <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
+                  </tr>
                   <tr>
                     <td>{t("Réf")}</td>
                     <td className="text-bold-500">01121</td>
@@ -100,12 +106,6 @@ function ProdList() {
                   <tr>
                     <td>{t("Libellé")}</td>
                     <td className="text-bold-500">Lorem</td>
-                  </tr>
-                  <tr>
-                    <td>{t("Image")}</td>
-                    <td>
-                    <img className="imgtable" src="./Mazed.jpg" alt="img" />
-                    </td>
                   </tr>
                   <tr>
                     <td>{t("Stock initial")}</td>
@@ -161,9 +161,9 @@ function ProdList() {
               <Table responsive="sm">
                 <thead>
                   <tr>
+                  <th>{t("Image")}</th>
                     <th>{t("Réf")}</th>
                     <th>{t("Libellé")}</th>
-                    <th>{t("Image")}</th>
                     <th>{t("Stock initial")}</th>
                     <th>{t("Stock actuel")}</th>
                     <th>{t("Statut")}</th>
@@ -176,11 +176,11 @@ function ProdList() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>01121</td>
-                    <td>Lorem</td>
-                    <td>
+                  <td>
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
+                    <td>01121</td>
+                    <td>Lorem</td>
                     <td>50</td>
                     <td>10</td>
                     <td>

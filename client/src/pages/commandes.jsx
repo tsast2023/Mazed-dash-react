@@ -54,9 +54,9 @@ function DesktopTable({commandes}) {
     <table className="table" id="table1">
       <thead>
         <tr>
+        <th>{t("Image")}</th>
           <th>{t("Num Commande")}</th>
           <th>{t("Produit")}</th>
-          <th>{t("Image")}</th>
           <th>{t("Prix Produit")}</th>
           <th>{t("Quantité")}</th>
           <th>{t("Prix Total")}</th>
@@ -67,9 +67,9 @@ function DesktopTable({commandes}) {
       </thead>
       <tbody>
         <tr className="table">
+        <td><img className='imgtable' src="" alt="img"/></td>
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img className='imgtable' src="" alt="img"/></td>
           <td>200</td>
           <td>500</td>
           <td>800</td>
@@ -78,9 +78,10 @@ function DesktopTable({commandes}) {
           <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
         </tr>
         <tr className="table">
+        <td><img className='imgtable' src="" alt="img"/></td>
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img className='imgtable' src="" alt="img"/></td>
+
           <td>200</td>
           <td>500</td>
           <td>800</td>
