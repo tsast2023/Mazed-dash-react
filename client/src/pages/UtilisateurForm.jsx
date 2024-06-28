@@ -52,6 +52,20 @@ function UtilisateurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
+                          <label htmlFor="prenom">{t("Pseudo")}</label>
+                          <div className="position-relative">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="prenom"
+                              placeholder={t("Pseudo")}
+                              maxLength={25}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="form-group">
                           <label htmlFor="email">{t("Email")}</label>
                           <div className="position-relative">
                             <input

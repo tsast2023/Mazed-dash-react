@@ -1,18 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-
+import { Table } from "react-bootstrap";
 
 function Recharges() {
   const { t } = useTranslation();
   const state = useContext(GlobalState);
   const cartes = state.cartes;
-  const [carteRech , setCarteRech] = useState({numSérie : "" , valeur:""});
+  const [carteRech, setCarteRech] = useState({ numSérie: "", valeur: "" });
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleDelete = () => {
-    // Show SweetAlert confirmation dialog
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleDelete = (id) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
@@ -25,36 +39,35 @@ function Recharges() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call deleteItem function
-        deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+        deleteItem(id);
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "info");
+        // window.location.reload();
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
   };
 
-  const deleteItem = () => {  
+  const deleteItem = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:8081/api/carte/deleteCarte?id=${id}`);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  
-const addCarte = async(e)=>{
-  e.preventDefault();
-  try {
-    const res = await axios.post('http://192.168.0.126:8081/api/carte/publishNow' , carteRech);
-    console.log(res.data);
-    window.location.reload();
-  } catch (error) {
-    console.log(error)
-  }
-}
-const deleteCarte = async(id)=>{
-  try {
-    const res = await axios.delete(`http://192.168.0.126:8081/api/carte/deleteCarte?id=${id}`);
-    console.log(res.data)
-  } catch (error) {
-    console.log(error)
-  }
-}
+
+  const addCarte = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:8081/api/carte/publishNow', carteRech);
+      console.log(res.data);
+      window.location.reload();
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <div id="main">
       <header className="mb-3">
@@ -63,7 +76,6 @@ const deleteCarte = async(id)=>{
         </a>
       </header>
 
-      {/* Contextual classes start */}
       <section id="form-and-scrolling-components">
         <div className="row">
           <div className="col-md-6 col-12">
@@ -74,7 +86,6 @@ const deleteCarte = async(id)=>{
                     <h2 className="new-price">
                       {t("Vous souhaitez ajouter une nouvelle carte ?")}
                     </h2>
-                    {/* Button trigger for login form modal */}
                     <button
                       type="button"
                       className="btn btn-outline-secondary"
@@ -85,7 +96,6 @@ const deleteCarte = async(id)=>{
                       {t("Ajouter")}
                     </button>
 
-                    {/*login form Modal */}
                     <div
                       className="modal fade text-left"
                       id="inlineForm"
@@ -104,13 +114,13 @@ const deleteCarte = async(id)=>{
                               {t("Ajouter une nouvelle carte")}
                             </h4>
                             <button
-                                      type="button"
-                                      className="btn-close"
-                                      data-bs-dismiss="modal"
-                                      aria-label="Close"
-                                    ></button>
+                              type="button"
+                              className="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
                           </div>
-                          <form  onSubmit={addCarte}>
+                          <form onSubmit={addCarte}>
                             <div className="modal-body">
                               <label htmlFor="serialNumber">
                                 {t("Numéro de série")}
@@ -122,7 +132,7 @@ const deleteCarte = async(id)=>{
                                   placeholder={t("Écrivez ici")}
                                   className="form-control"
                                   maxLength="25"
-                                  onChange={e=>setCarteRech({...carteRech , numSérie:e.target.value})}
+                                  onChange={e => setCarteRech({ ...carteRech, numSérie: e.target.value })}
                                 />
                               </div>
                               <label htmlFor="value">{t("Valeur")}</label>
@@ -133,7 +143,7 @@ const deleteCarte = async(id)=>{
                                   placeholder={t("Écrivez ici")}
                                   className="form-control"
                                   maxLength="25"
-                                  onChange={e=>setCarteRech({...carteRech , valeur:e.target.value})}
+                                  onChange={e => setCarteRech({ ...carteRech, valeur: e.target.value })}
                                 />
                               </div>
                             </div>
@@ -155,7 +165,7 @@ const deleteCarte = async(id)=>{
                               >
                                 <i className="bx bx-check d-block d-sm-none"></i>
                                 <span className="btn btn-primary">
-                                  {t("Enregister")}
+                                  {t("Enregistrer")}
                                 </span>
                               </button>
                             </div>
@@ -170,6 +180,7 @@ const deleteCarte = async(id)=>{
           </div>
         </div>
       </section>
+
       <section className="section mt-4">
         <div className="card">
           <div className="card-header">
@@ -177,37 +188,69 @@ const deleteCarte = async(id)=>{
           </div>
           <div className="card-content">
             <div className="card-body">
-              <div className="table-responsive datatable-minimal">
-                <table className="table" id="table2">
-                  <thead>
-                    <tr>
-                      <th>{t("Numéro de série")}</th>
-                      <th>{t("Statut")}</th>
-                      <th>{t("Valeur")}</th>
-                      <th>{t("Supprimer")}</th>
-                    </tr>
-                  </thead>
+              {isMobile ? (
+                <Table responsive="sm">
                   <tbody>
-                    {cartes? cartes.map((item)=>(
-                      <tr>
-                      <td className="text-bold-500">{item.numSérie}</td>
-                      <td>
-                        <span className={item.statuscarte==="NONUTILISER"?"badge bg-success":"badge bg-danger"}>{item.statuscarte}</span>
-                      </td>
-                      <td>{item.valeur}</td>
-                      <td>
-                        <i
-                          className="fa-solid fa-trash deleteIcon"
-                          onClick={()=>handleDelete(item.id)}
-                        ></i>
-                      </td>
-                    </tr>
-                    )):<div>loading</div>}
-                    
-                  
+                    {cartes ? cartes.map((item) => (
+                      <React.Fragment key={item.id}>
+                        <tr>
+                          <td>{t("Numéro de série")}</td>
+                          <td className="text-bold-500">{item.numSérie}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Statut")}</td>
+                          <td>
+                            <span className={item.statuscarte === "NONUTILISER" ? "badge bg-success" : "badge bg-danger"}>{item.statuscarte}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>{t("Valeur")}</td>
+                          <td>{item.valeur}</td>
+                        </tr>
+                        <tr>
+                          <td>{t("Supprimer")}</td>
+                          <td>
+                            <i
+                              className="fa-solid fa-trash deleteIcon"
+                              onClick={() => handleDelete(item.id)}
+                            ></i>
+                          </td>
+                        </tr>
+                      </React.Fragment>
+                    )) : <tr><td colSpan="2">loading</td></tr>}
                   </tbody>
-                </table>
-              </div>
+                </Table>
+              ) : (
+                <div className="table-responsive datatable-minimal">
+                  <Table className="table" id="table2">
+                    <thead>
+                      <tr>
+                        <th>{t("Numéro de série")}</th>
+                        <th>{t("Statut")}</th>
+                        <th>{t("Valeur")}</th>
+                        <th>{t("Supprimer")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartes ? cartes.map((item) => (
+                        <tr key={item.id}>
+                          <td className="text-bold-500">{item.numSérie}</td>
+                          <td>
+                            <span className={item.statuscarte === "NONUTILISER" ? "badge bg-success" : "badge bg-danger"}>{item.statuscarte}</span>
+                          </td>
+                          <td>{item.valeur}</td>
+                          <td>
+                            <i
+                              className="fa-solid fa-trash deleteIcon"
+                              onClick={() => handleDelete(item.id)}
+                            ></i>
+                          </td>
+                        </tr>
+                      )) : <tr><td colSpan="4">loading</td></tr>}
+                    </tbody>
+                  </Table>
+                </div>
+              )}
             </div>
           </div>
         </div>

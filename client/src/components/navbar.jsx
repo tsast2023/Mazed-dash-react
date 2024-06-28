@@ -49,17 +49,21 @@ const Navbar = ({ username }) => {
             <i className="fas fa-bell"></i>
           </div>
           <div className="profile-icon">
-            <img src="./user.png" alt="Profile" className="profile-image" />
+            {/* Link to profile page */}
+            <Link to="/Profile">
+              <img src="./user.png" alt="Profile" className="profile-image" />
+            </Link>
           </div>
         </div>
       </div>
 
+      {/* Notification menu */}
       <div
         className={`notification-menu ${isNotificationMenuOpen ? "open" : ""}`}
         style={{ position: "absolute", right: 0, top: "50px" }}
       >
         <div className="notification-content">
-        <div className="notification-item">
+          <div className="notification-item">
             <div className="icon-circle">
               <i className="fa-solid fa-user-plus"></i> 
             </div>
@@ -87,7 +91,7 @@ const Navbar = ({ username }) => {
             <div className="icon-circle">
               <i className="fa-solid fa-diamond"></i>
             </div>
-            {t("Demande de Produit")}
+            {t("Demande de produit")}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>
@@ -95,6 +99,7 @@ const Navbar = ({ username }) => {
         </div>
       </div>
 
+      {/* Language menu */}
       <div
         className={`notification-menu ${isLangMenuOpen ? "open" : ""}`}
         style={{ position: "absolute", right: 0, top: "50px" }}
@@ -124,6 +129,7 @@ const Navbar = ({ username }) => {
         </div>
       </div>
 
+      {/* Settings menu */}
       <div className={`notification-menu ${isSettingsMenuOpen ? "open" : ""}`}>
         <div className="notification-content">
           <div className="notification-item">

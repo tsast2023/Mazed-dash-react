@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function VendeurDetails() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="content-container">
       <div id="main">
@@ -25,7 +41,9 @@ function VendeurDetails() {
             <section className="section">
               <div className="row">
                 <div className="col-12">
-                  <div className="card mb-4"> {/* Added mb-4 for spacing */}
+                  <div className="card mb-4">
+                    {" "}
+                    {/* Added mb-4 for spacing */}
                     <div className="card-body">
                       <div className="d-flex justify-content-center align-items-center flex-column">
                         <div className="avatar avatar-xl">
@@ -115,7 +133,10 @@ function VendeurDetails() {
                             />
                           </div>
                           <div className="form-group">
-                            <button type="submit" className="btn btn-danger me-2">
+                            <button
+                              type="submit"
+                              className="btn btn-danger me-2"
+                            >
                               {t("Bloquer")}
                             </button>
                             <button type="submit" className="btn btn-secondary">
@@ -132,13 +153,40 @@ function VendeurDetails() {
             <div className="col-12">
               <div className="card">
                 <div className="card-body">
-                  <section className="section">
-                    <div className="card">
-                      <div className="card-header">
-                        <h5 className="card-title">{t("Ventes")}</h5>
-                      </div>
-                      <div className="card-body">
-                        <div className="table-responsive datatable-minimal">
+                    <div className="card-header">
+                      <h5 className="card-title">{t("Ventes")}</h5>
+                    </div>
+                      <div className="table-responsive datatable-minimal">
+                        {isMobile ? (
+                          <table className="table" id="table2">
+                            <tbody>
+                              <tr>
+                                <td>{t("Le stock à l’entrée")}</td>
+                                <td>500</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le stock actuel")}</td>
+                                <td>200</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le prix de vente")}</td>
+                                <td>20</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Les promotions")}</td>
+                                <td>20%</td>
+                              </tr>
+                              <tr>
+                                <td>{t("L’évaluation")}</td>
+                                <td>Lorem</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le nombre de visites sur produit")}</td>
+                                <td>350</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : (
                           <table className="table" id="table2">
                             <thead>
                               <tr>
@@ -161,10 +209,8 @@ function VendeurDetails() {
                               </tr>
                             </tbody>
                           </table>
-                        </div>
+                        )}
                       </div>
-                    </div>
-                  </section>
                 </div>
               </div>
             </div>

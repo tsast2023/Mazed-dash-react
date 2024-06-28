@@ -48,7 +48,7 @@ function ProdAction() {
                       {t("Retour")}
                     </Button>
                     <Button variant="success" className="me-2 mb-1" onClick={showNotification}>
-                      {t("Enregister")}
+                      {t("Enregistrer")}
                     </Button>
                     <Button variant="primary" className="me-2 mb-1" onClick={handleOpenModal}>
                       {t("Planifier")}

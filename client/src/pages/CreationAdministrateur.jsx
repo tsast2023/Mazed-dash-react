@@ -1,6 +1,24 @@
-import React from "react";
-
+import React, { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { GlobalState } from "../GlobalState";
+import axios from "axios";
 function CreationAdministrateur() {
+  const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:"" , password:""});
+  const state= useContext(GlobalState);
+  const roles = state.Roles;
+  const { t } = useTranslation();
+
+  const submitAdmin = (e)=>{
+    e.preventDefault();
+    console.log(data)
+    try {
+      const res = axios.post('http://localhost:8081/admin/createAdmin', data)
+      console.log(res.data)
+      alert("admin is added successfully")
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className="content-container">
       <div id="app">
@@ -13,18 +31,18 @@ function CreationAdministrateur() {
           <div className="col-md-12">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Ajouter un Utilisateur</h2>
+                <h2 className="new-price">{t("Ajouter un administrateur")}</h2>
               </div>
               <div className="card-content">
                 <div className="card-body">
-                  <form className="form form-vertical">
+                  <form onSubmit={submitAdmin} className="form form-vertical">
                     <div className="form-body">
                       <div className="row">
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Nom</label>
+                            <label htmlFor="email-id-icon">{t("Nom")}</label>
                             <div className="position-relative">
-                              <input
+                              <input onChange={e=>setData({...data , prenom:e.target.value})}
                                 type="text"
                                 className="form-control"
                                 id="email-id-icon"
@@ -36,13 +54,12 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Prénom</label>
+                            <label htmlFor="email-id-icon">{t("Email")}</label>
                             <div className="position-relative">
-                              <input
-                                type="text"
+                              <input onChange={e=>setData({...data , email:e.target.value})}
+                                type="email"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Prénom"
                                 maxLength={25}
                               />
                             </div>
@@ -50,13 +67,27 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Identifiant</label>
+                            <label htmlFor="email-id-icon">
+                              {t("Identifiant")}
+                            </label>
                             <div className="position-relative">
-                              <input
+                              <input onChange={e=>setData({...data , identifiant:e.target.value})}
                                 type="text"
                                 className="form-control"
                                 id="email-id-icon"
-                                placeholder="Identifiant"
+                                maxLength={25}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-12">
+                          <div className="form-group">
+                            <label htmlFor="email-id-icon">{t("mot de passe")}</label>
+                            <div className="position-relative">
+                              <input onChange={e=>setData({...data , password:e.target.value})}
+                                type="text"
+                                className="form-control"
+                                id="email-id-icon"
                                 maxLength={25}
                               />
                             </div>
@@ -64,16 +95,10 @@ function CreationAdministrateur() {
                         </div>
                         <div className="form-group">
                           <label htmlFor="email-id-icon">
-                            Numéro de téléphone
+                            {t("Numéro de téléphone")}
                           </label>
                           <div className="input-group mb-3">
-                            <span
-                              className="input-group-text"
-                              id="basic-addon1"
-                            >
-                              +216
-                            </span>
-                            <input
+                            <input onChange={e=>setData({...data , numTel:e.target.value})}
                               type="text"
                               className="form-control"
                               aria-label="Username"
@@ -83,12 +108,12 @@ function CreationAdministrateur() {
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label htmlFor="email-id-icon">Role</label>
+                            <label htmlFor="email-id-icon">{t("Role")}</label>
                             <fieldset className="form-group mb-3">
-                              <select className="form-select" id="basicSelect">
-                                <option>IT</option>
-                                <option>Blade Runner</option>
-                                <option>Thor Ragnarok</option>
+                              <select  onChange={e=>setData({...data , roleName:e.target.value})} className="form-select" id="basicSelect">
+                                {roles&& roles.map((item)=>(
+                                  <option value={item.name}>{item.name}</option>
+                                ))}
                               </select>
                             </fieldset>
                           </div>
@@ -97,18 +122,16 @@ function CreationAdministrateur() {
                       <div className="modal-footer">
                         <button
                           type="button"
-                          className="btn btn-light-secondary me-2"
-                          data-bs-dismiss="modal"
+                          className="btn btn-secondary me-2"
                         >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="d-none d-sm-block">Annuler</span>
+                          {t("Annuler")}
                         </button>
                         <button
-                          type="button"
+                          type="submit"
                           className="btn btn-dark"
                           id="suivantBtn"
                         >
-                          Enregistrer
+                          {t("Enregistrer")}
                         </button>
                       </div>
                     </div>

@@ -46,7 +46,6 @@ import TermesList from './pages/TermesList';
 import TermsAcheteur from './pages/TermsAcheteur';
 import ProductDetail from './pages/prodDétail';
 import ProductEditForm from './pages/prodEdit';
-// import ParticipantDetail from './pages/ParticipantDetail'
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
@@ -56,6 +55,8 @@ import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
 import TermeEdit from './pages/TermeEdit';
+import AdsEdit from './pages/adsEdit';
+import AdminEdit from './pages/adminEdit';
 import './i18n';
 import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
 
@@ -85,7 +86,7 @@ const App = () => {
               <Route path='/UtilisateurForm' element={<UtilisateurForm/>}/>
               <Route path='/TableUtilisateur' element={<TableUtilisateur/>}/>
               <Route path='/UtilisateurEdit' element={<UtilisateurEdit/>}/>
-              <Route path='/UtilisateurDetails' element={<UtilisateurDetails/>}/>
+              <Route path='/UtilisateurDetails/:id' element={<UtilisateurDetails/>}/>
               <Route path='/QuestionForm' element={<QuestionForm/>}/>
               <Route path='/QuestionList' element={<QuestionList/>}/>
               <Route path='/QuestionDetail' element={<QuestionDetail/>}/>
@@ -99,10 +100,7 @@ const App = () => {
               <Route path='/ListeAdministrateur' element={<ListeAdministrateur/>}/>
               <Route path='/CreationAdministrateur' element={<CreationAdministrateur/>}/>
               <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
-              {/* <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/> */}
-
               <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
-              {/* <Route path='/TableParticipant' element={<TableParticipant/>}/> */}
               <Route path='/configuration' element={<Configuration/>}/>
               <Route path='/CreationCat' element={<Categories />} />
               <Route path='/ListeCat' element={<ListeCategories />} />
@@ -126,7 +124,12 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
+<<<<<<< HEAD
               <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+=======
+              <Route path='/adsEdit' element={<AdsEdit />} />
+              <Route path='/adminEdit' element={<AdminEdit />} />
+>>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
             </Routes>
           </div>
         )}

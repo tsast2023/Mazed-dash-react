@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+import { Table } from "react-bootstrap";
 
 function EnchereListe() {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const deleteItem = () => {
     // Implement your delete logic here
   };
+
   const handleDelete = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -38,10 +56,7 @@ function EnchereListe() {
         </header>
         <section className="section">
           <div className="card">
-            <div
-              style={{ display: "flex", justifyContent: "space-between" }}
-              className="card-header"
-            >
+            <div style={{ display: "flex", justifyContent: "space-between" }} className="card-header">
               <h2 className="new-price">{t("Liste d'enchére")}</h2>
             </div>
             <div className="card-body">
@@ -66,224 +81,173 @@ function EnchereListe() {
                   </select>
                 </div>
               </div>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>{t("Produit")}</th>
-                    <th>{t("Prix")}</th>
-                    <th>{t("Nb de Participant")}</th>
-                    <th>{t("Date de Publication")}</th>
-                    <th>{t("Date de Déclenchement")}</th>
-                    <th>{t("Statut")}</th>
-                    <th>{t("Configuration")}</th>
-                    <th>{t("Voir")}</th>
-                    <th>{t("Modifier")}</th>
-                    <th>{t("Supprimer")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/configuration"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/configuration"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/configuration"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/configuration"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                          <i onClick={handleDelete} class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td className="text-bold-500">UI/UX</td>
-                    <td className="text-bold-500">Michael Right</td>
-                    <td>$15/hr</td>
-                    <td>
-                      <a href="#" className="btn btn-secondary">
-                        secondary
-                      </a>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/configuration"} className="btn">
-                          <i className="fas fa-cog"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/DetailEnchere"} className="btn">
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <Link to={"/EnchèreCreation"} className="btn">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="buttons">
-                        <a className="btn">
-                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              {isMobile ? (
+                <Table responsive="sm">
+                  <tbody>
+                    <tr>
+                      <td>{t("Produit")}</td>
+                      <td className="text-bold-500">Michael Right</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Prix")}</td>
+                      <td>$15/hr</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Nb de Participant")}</td>
+                      <td className="text-bold-500">UI/UX</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Date de Publication")}</td>
+                      <td className="text-bold-500">Michael Right</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Date de Déclenchement")}</td>
+                      <td>$15/hr</td>
+                    </tr>
+                    <tr>
+                      <td>{t("Statut")}</td>
+                      <td>
+                        <a href="#" className="btn btn-secondary">secondary</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Configuration")}</td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/ConfigurationEnchere" className="btn">
+                            <i className="fas fa-cog"></i>
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Voir")}</td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/DetailEnchere" className="btn">
+                            <i className="fa-solid fa-eye"></i>
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Modifier")}</td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/EnchèreCreation" className="btn">
+                            <i className="fa-solid fa-pen-to-square"></i>
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{t("Supprimer")}</td>
+                      <td>
+                        <div className="buttons">
+                          <a className="btn">
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              ) : (
+                <Table responsive="sm">
+                  <thead>
+                    <tr>
+                      <th>{t("Produit")}</th>
+                      <th>{t("Prix")}</th>
+                      <th>{t("Nb de Participant")}</th>
+                      <th>{t("Date de Publication")}</th>
+                      <th>{t("Date de Déclenchement")}</th>
+                      <th>{t("Statut")}</th>
+                      <th>{t("Configuration")}</th>
+                      <th>{t("Voir")}</th>
+                      <th>{t("Modifier")}</th>
+                      <th>{t("Supprimer")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="text-bold-500">Michael Right</td>
+                      <td>$15/hr</td>
+                      <td className="text-bold-500">UI/UX</td>
+                      <td className="text-bold-500">Michael Right</td>
+                      <td>$15/hr</td>
+                      <td>
+                        <a href="#" className="btn btn-secondary">secondary</a>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/ConfigurationEnchere" className="btn">
+                            <i className="fas fa-cog"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/DetailEnchere" className="btn">
+                            <i className="fa-solid fa-eye"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/EnchèreCreation" className="btn">
+                            <i className="fa-solid fa-pen-to-square"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <a className="btn">
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="text-bold-500">Michael Right</td>
+                      <td>$15/hr</td>
+                      <td className="text-bold-500">UI/UX</td>
+                      <td className="text-bold-500">Michael Right</td>
+                      <td>$15/hr</td>
+                      <td>
+                        <a href="#" className="btn btn-secondary">secondary</a>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/ConfigurationEnchere" className="btn">
+                            <i className="fas fa-cog"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/DetailEnchere" className="btn">
+                            <i className="fa-solid fa-eye"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <Link to="/EnchèreCreation" className="btn">
+                            <i className="fa-solid fa-pen-to-square"></i>
+                          </Link>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="buttons">
+                          <a className="btn">
+                            <i onClick={handleDelete} className="fa-solid fa-trash"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              )}
             </div>
           </div>
         </section>

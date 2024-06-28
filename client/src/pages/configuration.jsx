@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "choices.js/public/assets/styles/choices.css";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 function Configuration() {
   const { t } = useTranslation();
   const [showEmail1, setShowEmail1] = useState(true);
   const [showEmail2, setShowEmail2] = useState(true);
   const [showFac, setShowFac] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const handleCheckbox1Change = () => {
     setShowEmail1(!showEmail1);
@@ -16,6 +19,9 @@ function Configuration() {
     setShowEmail2(!showEmail2);
     setShowFac(!showFac);
   };
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="content-container">
@@ -225,7 +231,7 @@ function Configuration() {
                   <button
                     type="button"
                     className="btn btn-primary ms-1"
-                    data-bs-dismiss="modal"
+                    onClick={handleOpenModal}
                   >
                     <span className="d-none d-sm-block">{t("Planifier")}</span>
                   </button>
@@ -250,6 +256,30 @@ function Configuration() {
           </section>
         </div>
       </div>
+
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Planifier")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="mb-3">
+            <label htmlFor="dateInput" className="form-label">{t("Date")}</label>
+            <input type="date" className="form-control" id="dateInput" />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="timeInput" className="form-label">{t("Heure")}</label>
+            <input type="time" className="form-control" id="timeInput" />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            {t("Fermer")}
+          </Button>
+          <Button variant="primary">
+            {t("Planifier")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

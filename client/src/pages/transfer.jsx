@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
-function Modal() {
-  const { t } = useTranslation();
+// Modal component
+function Modal({ t }) {
   return (
     <div
       className="modal fade text-left"
@@ -55,7 +55,8 @@ function Modal() {
   );
 }
 
-function TableRow({ userData, status, onAccept }) {
+// TableRow component
+function TableRow({ userData, status, onAccept, onDelete }) {
   const { t } = useTranslation();
 
   const handleAccept = () => {
@@ -70,16 +71,12 @@ function TableRow({ userData, status, onAccept }) {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem();
+        onAccept();
         Swal.fire(t("Accepté"), t("Votre élément a été Accepté."), "success");
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
       }
     });
-  };
-
-  const deleteItem = () => {
-    console.log("Item deleted");
   };
 
   return (
@@ -93,7 +90,7 @@ function TableRow({ userData, status, onAccept }) {
         <span className={`badge bg-${status.color}`}>{t(status.text)}</span>
       </td>
       <td>
-        <i className="fa-solid fa-circle-check text-success" onClick={onAccept}></i>
+        <i className="fa-solid fa-circle-check text-success" onClick={handleAccept}></i>
       </td>
       <td>
         <section id="basic-modals">
@@ -105,13 +102,71 @@ function TableRow({ userData, status, onAccept }) {
           >
             <i className="fa-solid fa-circle-xmark text-danger"></i>
           </button>
-          <Modal />
+          <Modal t={t} />
         </section>
       </td>
     </tr>
   );
 }
 
+// ResponsiveTable component
+function ResponsiveTable({ data, headers, isMobile }) {
+  const { t } = useTranslation();
+
+  const handleAccept = () => {
+    // Handle acceptance logic
+    console.log("Item accepted");
+  };
+
+  return (
+    <div className="table-responsive datatable-minimal">
+      {isMobile ? (
+        <table className="table" id="table2">
+          <tbody>
+            {data.map((item, index) => (
+              <React.Fragment key={index}>
+                <TableRow
+                  userData={item}
+                  status={item.status}
+                  onAccept={handleAccept}
+                />
+                <tr>
+                  <td colSpan="2">
+                    <hr />
+                  </td>
+                </tr>
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <table className="table" id="table2">
+          <thead>
+            <tr>
+              {headers.map((header, index) => (
+                <th key={index}>{t(header)}</th>
+              ))}
+              <th>{t("Accepter")}</th>
+              <th>{t("Refuser")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <TableRow
+                key={index}
+                userData={item}
+                status={item.status}
+                onAccept={handleAccept}
+              />
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
+// Transfer component
 function Transfer() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
@@ -129,30 +184,6 @@ function Transfer() {
     // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleAccept = () => {
-    Swal.fire({
-      title: t("Êtes-vous sûr(e) ?"),
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: t("Oui"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteItem();
-        Swal.fire(t("Accepté"), t("Votre élément a été Accepté."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
-    });
-  };
-
-  const deleteItem = () => {
-    console.log("Item deleted");
-  };
 
   const data = [
     {
@@ -206,53 +237,18 @@ function Transfer() {
                 <h2 className="new-price">{t("Demandes de transferts")}</h2>
               </div>
               <div className="card-body">
-                <div className="table-responsive datatable-minimal">
-                  {isMobile ? (
-                    <table className="table" id="table2">
-                      <tbody>
-                        {data.map((item, index) => (
-                          <React.Fragment key={index}>
-                            <TableRow
-                              userData={item}
-                              status={item.status}
-                              onAccept={handleAccept}
-                            />
-                            <tr>
-                              <td colSpan="2">
-                                <hr />
-                              </td>
-                            </tr>
-                          </React.Fragment>
-                        ))}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <table className="table" id="table2">
-                      <thead>
-                        <tr>
-                          <th>{t("Date")}</th>
-                          <th>{t("Utilisateur")}</th>
-                          <th>{t("Valeur")}</th>
-                          <th>{t("Type")}</th>
-                          <th>{t("Pièce jointe")}</th>
-                          <th>{t("Statut")}</th>
-                          <th>{t("Accepter")}</th>
-                          <th>{t("Refuser")}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((item, index) => (
-                          <TableRow
-                            key={index}
-                            userData={item}
-                            status={item.status}
-                            onAccept={handleAccept}
-                          />
-                        ))}
-                      </tbody>
-                    </table>
-                  )}
-                </div>
+                <ResponsiveTable
+                  data={data}
+                  headers={[
+                    "Nom",
+                    "Véhicule",
+                    "Valeur",
+                    "Location",
+                    "Note",
+                    "Statut",
+                  ]}
+                  isMobile={isMobile}
+                />
               </div>
             </div>
           </section>
