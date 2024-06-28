@@ -56,7 +56,7 @@ function DesktopTable({commandes}) {
         <tr>
           <th>{t("Num Commande")}</th>
           <th>{t("Produit")}</th>
-          <th>{t("Image Produit")}</th>
+          <th>{t("Image")}</th>
           <th>{t("Prix Produit")}</th>
           <th>{t("Quantité")}</th>
           <th>{t("Prix Total")}</th>
@@ -146,7 +146,7 @@ function MobileTable({commandes}) {
           <td>Lorem Lorem</td>
         </tr>
         <tr>
-          <td>{t("Image Produit")}</td>
+          <td>{t("Image")}</td>
           <td><img className='imgtable' src="" alt="img"/></td>
         </tr>
         <tr>
