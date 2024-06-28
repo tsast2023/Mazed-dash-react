@@ -26,15 +26,15 @@ function VendeurForm() {
               <div className="card-body">
                 <form className="form form-vertical">
                   <div className="form-body">
-                    <div className="row">
+                    <div className="row g-3">
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Nom")}</label>
+                          <label htmlFor="nom">{t("Nom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
-                              id="email-id-icon"
+                              id="nom"
                               placeholder={t("Nom")}
                               maxLength={25}
                             />
@@ -43,12 +43,12 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Prénom")}</label>
+                          <label htmlFor="prenom">{t("Prénom")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
-                              id="email-id-icon"
+                              id="prenom"
                               placeholder={t("Prénom")}
                               maxLength={25}
                             />
@@ -57,12 +57,12 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Pseudo")}</label>
+                          <label htmlFor="pseudo">{t("Pseudo")}</label>
                           <div className="position-relative">
                             <input
                               type="text"
                               className="form-control"
-                              id="email-id-icon"
+                              id="pseudo"
                               placeholder={t("Pseudo")}
                               maxLength={25}
                             />
@@ -71,33 +71,32 @@ function VendeurForm() {
                       </div>
                       <div className="col-12">
                         <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Email")}</label>
+                          <label htmlFor="email">{t("Email")}</label>
                           <div className="position-relative">
                             <input
-                              type="Email"
+                              type="email"
                               className="form-control"
-                              id="email-id-icon"
+                              id="email"
                               placeholder="email"
                             />
                           </div>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="email-id-icon">
-                          {t("Numéro de téléphone")}
-                        </label>
-                        <div className="input-group mb-2">
-                          <input
-                            type="text"
-                            className="form-control"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                          />
+                      <div className="col-12">
+                        <div className="form-group">
+                          <label htmlFor="telephone">{t("Numéro de téléphone")}</label>
+                          <div className="position-relative">
+                            <input
+                              type="text"
+                              className="form-control"
+                              id="telephone"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="col-12">
-                        <label>{t("Type vendeurs")}</label>
                         <div className="form-group">
+                          <label>{t("Type vendeurs")}</label>
                           <select
                             className="choices form-select"
                             value={selectedType}
@@ -112,27 +111,24 @@ function VendeurForm() {
                         <>
                           <div className="col-12">
                             <div className="form-group">
-                              <label htmlFor="email-id-icon">{t("Patente")}</label>
+                              <label htmlFor="patente">{t("Patente")}</label>
                               <div className="position-relative">
                                 <input
                                   type="file"
                                   className="form-control"
-                                  id="email-id-icon"
-                                  placeholder="email"
+                                  id="patente"
                                 />
                               </div>
                             </div>
                           </div>
                           <div className="col-12">
                             <div className="form-group">
-                              <label htmlFor="email-id-icon">
-                                {t("Nom de societe")}
-                              </label>
+                              <label htmlFor="nom-societe">{t("Nom de societe")}</label>
                               <div className="position-relative">
                                 <input
-                                  type="Email"
+                                  type="text"
                                   className="form-control"
-                                  id="email-id-icon"
+                                  id="nom-societe"
                                   placeholder="Nom de societe"
                                   maxLength={25}
                                 />
@@ -141,24 +137,26 @@ function VendeurForm() {
                           </div>
                         </>
                       )}
-                      <div className="modal-footer">
-                        <button
-                          type="button"
-                          className="btn btn-light-secondary me-2"
-                          data-bs-dismiss="modal"
-                        >
-                          <i className="bx bx-x d-block d-sm-none" />
-                          <span className="btn btn-secondary me-3">
-                            {t("Annuler")}
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          id="suivantBtn"
-                        >
-                          {t("Valider")}
-                        </button>
+                      <div className="col-12">
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary me-2"
+                            data-bs-dismiss="modal"
+                          >
+                            <i className="bx bx-x d-block d-sm-none" />
+                            <span className="d-none d-sm-block">
+                              {t("Annuler")}
+                            </span>
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            id="suivantBtn"
+                          >
+                            {t("Valider")}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
