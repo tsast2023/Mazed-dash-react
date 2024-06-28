@@ -58,6 +58,7 @@ import TermeEdit from './pages/TermeEdit';
 import AdsEdit from './pages/adsEdit';
 import AdminEdit from './pages/adminEdit';
 import './i18n';
+import EnchèreEdit from './pages/EnchèreEdit';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -125,6 +126,7 @@ const App = () => {
               <Route path='/TermeEdit' element={<TermeEdit />} />
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
+              <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
             </Routes>
           </div>
         )}
