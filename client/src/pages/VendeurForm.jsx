@@ -1,11 +1,11 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 function VendeurForm() {
   const { t } = useTranslation();
 
   return (
-    <div className='content-container'>
+    <div className="content-container">
       <div id="main">
         <header className="mb-3">
           <a href="#" className="burger-btn d-block d-xl-none">
@@ -73,7 +73,6 @@ function VendeurForm() {
                               className="form-control"
                               id="email-id-icon"
                               placeholder="email"
-                              maxLength={25}
                             />
                           </div>
                         </div>
@@ -92,6 +91,15 @@ function VendeurForm() {
                         </div>
                       </div>
                       <div className="col-12">
+                        <label>{t("Type vendeurs")}</label>
+                        <div className="form-group">
+                          <select className="choices form-select">
+                            <option value="square">{t("Professionel")}</option>
+                            <option value="rectangle">{t("Particule")}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="col-12">
                         <div className="form-group">
                           <label htmlFor="email-id-icon">{t("Patente")}</label>
                           <div className="position-relative">
@@ -100,9 +108,24 @@ function VendeurForm() {
                               className="form-control"
                               id="email-id-icon"
                               placeholder="email"
-                              maxLength={25}
                             />
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-12">
+                      <div className="form-group">
+                        <label htmlFor="email-id-icon">
+                          {t("Nom de societe")}
+                        </label>
+                        <div className="position-relative">
+                          <input
+                            type="Email"
+                            className="form-control"
+                            id="email-id-icon"
+                            placeholder="Nom de societe"
+                            maxLength={25}
+                          />
                         </div>
                       </div>
                     </div>
@@ -113,7 +136,9 @@ function VendeurForm() {
                         data-bs-dismiss="modal"
                       >
                         <i className="bx bx-x d-block d-sm-none" />
-                        <span className="btn btn-secondary me-3">{t("Annuler")}</span>
+                        <span className="btn btn-secondary me-3">
+                          {t("Annuler")}
+                        </span>
                       </button>
                       <button
                         type="button"
