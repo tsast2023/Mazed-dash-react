@@ -58,7 +58,11 @@ import TermeEdit from './pages/TermeEdit';
 import AdsEdit from './pages/adsEdit';
 import AdminEdit from './pages/adminEdit';
 import './i18n';
+<<<<<<< HEAD
 import EnchèreEdit from './pages/EnchèreEdit';
+=======
+import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
+>>>>>>> 780edb338d2200350578f95e96694200857fac54
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -124,9 +128,16 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
+<<<<<<< HEAD
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+=======
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
+<<<<<<< HEAD
               <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+=======
+>>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
+>>>>>>> 780edb338d2200350578f95e96694200857fac54
             </Routes>
           </div>
         )}

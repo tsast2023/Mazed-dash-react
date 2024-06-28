@@ -201,8 +201,8 @@ const Playground = () => {
                   }
                 >
                       <MenuItem
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
+                  component={<Link to="/DemandeVendeurCreation" />}
+                  onClick={() => setActiveLink("/DemandeVendeurCreation")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active

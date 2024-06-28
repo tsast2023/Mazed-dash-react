@@ -7,6 +7,9 @@ export const GlobalState = createContext()
 export const DataProvider = ({children}) => {
  const token = Cookies.get('token');
   const [Categories , setCategories] = useState();
+  const [Acheteur , setAcheteur] = useState();
+  const [Vendeur , setVendeur] = useState();
+  const [Admin , setAdmin] = useState();
   const [Products , setProducts] = useState();
   const [tutoriel , setTutotiel]= useState();
   const [carteRech , setCarteRech] = useState();
@@ -17,10 +20,37 @@ export const DataProvider = ({children}) => {
   const [commandes , setCommandes] = useState();
   const [users , setUsers] = useState();
   useEffect(()=>{
-    
+    const getAllAcheteur = async() =>{
+      try {
+          const  res = await axios.get('http://192.168.0.118:8081/admin/users/Acheteur');
+          console.log("Acheteur:",res.data);
+          setAcheteur(res.data)
+      } catch (error) {
+          console.log(error);
+      }
+  }
+  const getAllVendeur = async() =>{
+    try {
+        const  res = await axios.get('http://192.168.0.118:8081/admin/users/Vendeur');
+        console.log("Vendeur:",res.data);
+        setVendeur(res.data)
+    } catch (error) {
+        console.log(error);
+    }
+}
+const getAllAdmin = async() =>{
+  try {
+      const  res = await axios.get('http://192.168.0.118:8081/admin/users/Admin');
+      console.log("Admin:",res.data);
+      setAdmin(res.data)
+  } catch (error) {
+      console.log(error);
+  }
+}
+
     const getAllCategories = async() =>{
         try {
-            const  res = await axios.get('http://localhost:8081/api/category/getAll');
+            const  res = await axios.get('http://192.168.0.118:8081/api/category/getAll');
             console.log("categories:",res.data);
             setCategories(res.data)
         } catch (error) {
@@ -29,7 +59,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllProducts = async() =>{
         try {
-            const  res = await axios.get('http://localhost:8081/api/product/getAll');
+            const  res = await axios.get('http://192.168.0.118:8081/api/product/getAll');
             console.log("Products:",res.data);
             setProducts(res.data)
         } catch (error) {
@@ -38,7 +68,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllTuto = async ()=>{
       try {
-        const res = await axios.get('http://localhost:8081/api/tuto/getAll');
+        const res = await axios.get('http://192.168.0.118:8081/api/tuto/getAll');
           console.log('tutorial:' , res.data);
           setTutotiel(res.data)
       } catch (error) {
@@ -47,7 +77,7 @@ export const DataProvider = ({children}) => {
     }
     const getCarteRechar = async()=>{
       try {
-        const res = await axios.get('http://localhost:8081/api/carte/getAll');
+        const res = await axios.get('http://192.168.0.118:8081/api/carte/getAll');
         console.log('cartes:' , res.data);
         setCarteRech(res.data);
       } catch (error) {
@@ -56,7 +86,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllBids = async()=>{
       try {
-        const res = await axios.get('http://localhost:8081/api/bid/getAll')
+        const res = await axios.get('http://192.168.0.118:8081/api/bid/getAll')
         console.log("all bids:" , res.data)
         setBids(res.data)
       } catch (error) {
@@ -65,7 +95,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllPermissions = async()=>{
       try {
-        const res = await axios.get('http://localhost:8081/admin/permissions')
+        const res = await axios.get('http://192.168.0.118:8081/admin/permissions')
         console.log("all permissions:" , res.data)
         setPermissions(res.data)
       } catch (error) {
@@ -117,7 +147,13 @@ getAllTuto();
 getAllBids();
 getCarteRechar();
 getAllPermissions();
+<<<<<<< HEAD
+getAllAcheteur();
+getAllVendeur();
+getAllAdmin(); 
+=======
 getAllRoles();
+>>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
   } , [token])
   
    const state ={
@@ -126,12 +162,19 @@ getAllRoles();
     tutorials : tutoriel,
     bids : bids,
     cartes: carteRech,
+<<<<<<< HEAD
+    Permissions : permissions ,
+    Acheteur : Acheteur ,
+    Vendeur : Vendeur ,
+    Admin : Admin 
+=======
     Permissions : permissions,
     Roles : roles,
     Admins :  admins,
     Commandes : commandes,
     Users : users
 
+>>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
 
 
   }

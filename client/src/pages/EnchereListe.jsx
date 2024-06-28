@@ -46,7 +46,6 @@ function EnchereListe() {
       }
     });
   };
-
   return (
     <div className="content-container">
       <div id="main">
