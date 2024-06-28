@@ -4,25 +4,6 @@ import { useTranslation } from "react-i18next";
 function ConfigurationEnchere() {
   const { t } = useTranslation();
   return (
-<<<<<<< HEAD
-    <>
-   
-      <div className="content-container">
-      <div className="card">
-        <div id="main">
-        <header className="mb-3">
-          <a href="#" className="burger-btn d-block d-xl-none">
-            <i className="bi bi-justify fs-3" />
-          </a>
-        </header>
-        <div className="card-content">
-          <div className="card-body">
-            <form className="form form-vertical">
-              <div className="form-body">
-                <div className="row">
-                  <div className="col-12">
-                    <h2 className="new-price">Configuration de l'enchére</h2>
-=======
     <div className="content-container">
       <div className="card">
         <div id="main">
@@ -99,7 +80,6 @@ function ConfigurationEnchere() {
                       </div>
                       <br />
                     </div>
->>>>>>> 7a7098a827570806cba0ce565e5ebb5da6ee408f
                     <br />
                     <div className="col-12 checkbox">
                       <input
@@ -182,8 +162,7 @@ function ConfigurationEnchere() {
         </div>
       </div>
       </div>
-      </div>
-    </>
+     
   );
 }
 

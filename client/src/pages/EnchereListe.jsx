@@ -1,10 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Swal from "sweetalert2";
 
 function EnchereListe() {
   const { t } = useTranslation();
-
+  const deleteItem = () => {
+    // Implement your delete logic here
+  };
+  const handleDelete = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui, supprimez-le !"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
   return (
     <div className="content-container">
       <div id="main">
@@ -72,7 +95,7 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
+                        <Link to={"/configuration"} className="btn">
                           <i className="fas fa-cog"></i>
                         </Link>
                       </div>
@@ -94,7 +117,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -112,7 +135,7 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
+                        <Link to={"/configuration"} className="btn">
                           <i className="fas fa-cog"></i>
                         </Link>
                       </div>
@@ -134,7 +157,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -152,7 +175,7 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
+                        <Link to={"/configuration"} className="btn">
                           <i className="fas fa-cog"></i>
                         </Link>
                       </div>
@@ -174,7 +197,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -192,7 +215,7 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
+                        <Link to={"/configuration"} className="btn">
                           <i className="fas fa-cog"></i>
                         </Link>
                       </div>
@@ -214,7 +237,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                          <i onClick={handleDelete} class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>
@@ -232,7 +255,7 @@ function EnchereListe() {
                     </td>
                     <td>
                       <div className="buttons">
-                        <Link to={"/ConfigurationEnchere"} className="btn">
+                        <Link to={"/configuration"} className="btn">
                           <i className="fas fa-cog"></i>
                         </Link>
                       </div>
@@ -254,7 +277,7 @@ function EnchereListe() {
                     <td>
                       <div className="buttons">
                         <a className="btn">
-                          <i class="fa-solid fa-trash"></i>
+                        <i onClick={handleDelete} class="fa-solid fa-trash"></i>
                         </a>
                       </div>
                     </td>

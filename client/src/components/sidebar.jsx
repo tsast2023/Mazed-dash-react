@@ -194,17 +194,11 @@ const Playground = () => {
            label={t("Demande Vendeur ")}
            icon={<i className="fa-solid fa-bookmark"></i>}
            
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
+             
                 >
                       <MenuItem
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
+                  component={<Link to="/DemandeVendeurCreation" />}
+                  onClick={() => setActiveLink("/DemandeVendeurCreation")}
                   style={
                     activeLink === "/open-street-maps"
                       ? menuItemStyles.active

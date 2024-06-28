@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Choices from "choices.js";
-
+import axios from "axios";
 import { GlobalState } from "../GlobalState";
 import { useTranslation } from "react-i18next";
 
@@ -44,7 +44,6 @@ function CreationRole() {
     };
   }, []);
   const [data, setData] = useState({ name: "", permissions: [] });
-  const state = useContext(GlobalState);
   const allPermissions = state.Permissions;
 
   const createRole = async (e) => {

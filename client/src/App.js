@@ -57,6 +57,7 @@ import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
 import TermeEdit from './pages/TermeEdit';
 import './i18n';
+import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -125,6 +126,7 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
             </Routes>
           </div>
         )}
