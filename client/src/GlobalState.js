@@ -38,15 +38,6 @@ export const DataProvider = ({children}) => {
         console.log(error);
     }
 }
-const getAllAdmin = async() =>{
-  try {
-      const  res = await axios.get('http://192.168.0.118:8081/admin/users/Admin');
-      console.log("Admin:",res.data);
-      setAdmin(res.data)
-  } catch (error) {
-      console.log(error);
-  }
-}
 
     const getAllCategories = async() =>{
         try {
@@ -147,13 +138,7 @@ getAllTuto();
 getAllBids();
 getCarteRechar();
 getAllPermissions();
-<<<<<<< HEAD
-getAllAcheteur();
-getAllVendeur();
-getAllAdmin(); 
-=======
 getAllRoles();
->>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
   } , [token])
   
    const state ={
@@ -162,19 +147,12 @@ getAllRoles();
     tutorials : tutoriel,
     bids : bids,
     cartes: carteRech,
-<<<<<<< HEAD
-    Permissions : permissions ,
-    Acheteur : Acheteur ,
-    Vendeur : Vendeur ,
-    Admin : Admin 
-=======
     Permissions : permissions,
     Roles : roles,
     Admins :  admins,
     Commandes : commandes,
     Users : users
 
->>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
 
 
   }

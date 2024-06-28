@@ -39,14 +39,8 @@ function CreationRole() {
       );
       select.destroy();
     };
-<<<<<<< HEAD
-  }, []);
-  const [data, setData] = useState({ name: "", permissions: [] });
-  const allPermissions = state.Permissions;
-=======
   }, [permissions]);
   
->>>>>>> 69de64be21e02f518ecd13b27968287422d8bfa5
 
   const createRole = async (e) => {
     e.preventDefault();
