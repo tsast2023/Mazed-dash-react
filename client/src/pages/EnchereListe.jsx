@@ -114,7 +114,7 @@ function EnchereListe() {
                       <td>{t("Configuration")}</td>
                       <td>
                         <div className="buttons">
-                          <Link to="/ConfigurationEnchere" className="btn">
+                          <Link to="/configuration" className="btn">
                             <i className="fas fa-cog"></i>
                           </Link>
                         </div>
@@ -180,7 +180,7 @@ function EnchereListe() {
                       </td>
                       <td>
                         <div className="buttons">
-                          <Link to="/ConfigurationEnchere" className="btn">
+                          <Link to="/configuration" className="btn">
                             <i className="fas fa-cog"></i>
                           </Link>
                         </div>
@@ -218,7 +218,7 @@ function EnchereListe() {
                       </td>
                       <td>
                         <div className="buttons">
-                          <Link to="/ConfigurationEnchere" className="btn">
+                          <Link to="/configuration" className="btn">
                             <i className="fas fa-cog"></i>
                           </Link>
                         </div>

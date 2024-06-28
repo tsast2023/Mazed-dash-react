@@ -17,9 +17,18 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(t("Fait"));
+        Swal.fire({
+          title: "fait",
+           confirmButtonColor: "#b0210e"
+        }
+        );
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
+          
       }
     });
   };
@@ -36,10 +45,14 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(t("Fait"));
+        Swal.fire({   title: "fait",
+          confirmButtonColor: "#b0210e"});
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });      }
     });
   };
 

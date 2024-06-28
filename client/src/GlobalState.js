@@ -102,15 +102,15 @@ export const DataProvider = ({children}) => {
         console.log(error)
       }
     }
-    const getAllAdmin = async()=>{
-      try {
-        const res = await axios.get('http://localhost:8081/admin/users/Admin')
-        console.log("all Admins:" , res.data)
-        setAdmins(res.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    // const getAllAdmin = async()=>{
+    //   try {
+    //     const res = await axios.get('http://localhost:8081/admin/users/Admin')
+    //     console.log("all Admins:" , res.data)
+    //     setAdmins(res.data)
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
     const getAllCommandes = async()=>{
       try {
         const res = await axios.get('http://localhost:8081/api/commandes/toutes-les-commandes')
@@ -131,7 +131,7 @@ export const DataProvider = ({children}) => {
     }
 getAllUsers();
 getAllCommandes();
-getAllAdmin();     
+// getAllAdmin();     
 getAllCategories();
 getAllProducts();
 getAllTuto();

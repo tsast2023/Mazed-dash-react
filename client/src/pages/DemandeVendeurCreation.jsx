@@ -89,7 +89,8 @@ function DemandeVendeurCreation() {
                   </thead>
                   <tbody>
                     <tr>
-                    <td ><img src="" alt="Profile" className="small-profile-img" /></td>
+                    <td >                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
                       <td>Toni</td>
                       <td>Kross</td>
                       <td>08/06/2024</td>
@@ -117,9 +118,7 @@ function DemandeVendeurCreation() {
       {/* Contextual classes end */}
       <footer>
         <div className="footer clearfix mb-0 text-muted">
-          <div className="float-end">
-            <p>2024 © Mazed</p>
-          </div>
+          
         </div>
       </footer>
     </div>

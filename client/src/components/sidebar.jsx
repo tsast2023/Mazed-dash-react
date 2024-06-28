@@ -192,13 +192,7 @@ const Playground = () => {
               >
           <SubMenu
            label={t("Demande Vendeur")}
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
+              
                 >
                       <MenuItem
                   component={<Link to="/DemandeVendeurCreation" />}
