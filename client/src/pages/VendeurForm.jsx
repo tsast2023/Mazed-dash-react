@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function VendeurForm() {
   const { t } = useTranslation();
+  const [selectedType, setSelectedType] = useState("square");
+
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+  };
 
   return (
     <div className="content-container">
@@ -93,60 +98,68 @@ function VendeurForm() {
                       <div className="col-12">
                         <label>{t("Type vendeurs")}</label>
                         <div className="form-group">
-                          <select className="choices form-select">
+                          <select
+                            className="choices form-select"
+                            value={selectedType}
+                            onChange={handleTypeChange}
+                          >
                             <option value="square">{t("Professionel")}</option>
-                            <option value="rectangle">{t("Particule")}</option>
+                            <option value="rectangle">{t("Particulier")}</option>
                           </select>
                         </div>
                       </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label htmlFor="email-id-icon">{t("Patente")}</label>
-                          <div className="position-relative">
-                            <input
-                              type="file"
-                              className="form-control"
-                              id="email-id-icon"
-                              placeholder="email"
-                            />
+                      {selectedType === "square" && (
+                        <>
+                          <div className="col-12">
+                            <div className="form-group">
+                              <label htmlFor="email-id-icon">{t("Patente")}</label>
+                              <div className="position-relative">
+                                <input
+                                  type="file"
+                                  className="form-control"
+                                  id="email-id-icon"
+                                  placeholder="email"
+                                />
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                          <div className="col-12">
+                            <div className="form-group">
+                              <label htmlFor="email-id-icon">
+                                {t("Nom de societe")}
+                              </label>
+                              <div className="position-relative">
+                                <input
+                                  type="Email"
+                                  className="form-control"
+                                  id="email-id-icon"
+                                  placeholder="Nom de societe"
+                                  maxLength={25}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      )}
+                      <div className="modal-footer">
+                        <button
+                          type="button"
+                          className="btn btn-light-secondary me-2"
+                          data-bs-dismiss="modal"
+                        >
+                          <i className="bx bx-x d-block d-sm-none" />
+                          <span className="btn btn-secondary me-3">
+                            {t("Annuler")}
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          id="suivantBtn"
+                        >
+                          {t("Valider")}
+                        </button>
                       </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="form-group">
-                        <label htmlFor="email-id-icon">
-                          {t("Nom de societe")}
-                        </label>
-                        <div className="position-relative">
-                          <input
-                            type="Email"
-                            className="form-control"
-                            id="email-id-icon"
-                            placeholder="Nom de societe"
-                            maxLength={25}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-light-secondary me-2"
-                        data-bs-dismiss="modal"
-                      >
-                        <i className="bx bx-x d-block d-sm-none" />
-                        <span className="btn btn-secondary me-3">
-                          {t("Annuler")}
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        id="suivantBtn"
-                      >
-                        {t("Valider")}
-                      </button>
                     </div>
                   </div>
                 </form>

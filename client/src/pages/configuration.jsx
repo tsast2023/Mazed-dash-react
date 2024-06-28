@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import "choices.js/public/assets/styles/choices.css";
 
 function Configuration() {
   const { t } = useTranslation();
+  const [showEmail1, setShowEmail1] = useState(true);
+  const [showEmail2, setShowEmail2] = useState(true);
+  const [showFac, setShowFac] = useState(true);
+
+  const handleCheckbox1Change = () => {
+    setShowEmail1(!showEmail1);
+  };
+
+  const handleCheckbox2Change = () => {
+    setShowEmail2(!showEmail2);
+    setShowFac(!showFac);
+  };
 
   return (
     <div className="content-container">
@@ -29,14 +42,14 @@ function Configuration() {
                           <div className="row">
                             <div className="col-12">
                               <div className="form-group">
-                                <label htmlFor="first-name-vertical">
+                                <label htmlFor="participation-cost">
                                   {t("Cout Du Participation")}
                                 </label>
                                 <input
                                   type="number"
-                                  id="first-name-vertical"
+                                  id="participation-cost"
                                   className="form-control"
-                                  name="référence"
+                                  name="participation-cost"
                                   placeholder={t("Ecrire Ici")}
                                   required
                                 />
@@ -44,14 +57,14 @@ function Configuration() {
                             </div>
                             <div className="col-12">
                               <div className="form-group">
-                                <label htmlFor="email-id-vertical">
+                                <label htmlFor="click-cost">
                                   {t("Cout Du Clic")}
                                 </label>
                                 <input
                                   type="number"
-                                  id="email-id-vertical"
+                                  id="click-cost"
                                   className="form-control"
-                                  name="email-id"
+                                  name="click-cost"
                                   placeholder={t("Ecrire Ici")}
                                   required
                                 />
@@ -59,42 +72,41 @@ function Configuration() {
                             </div>
                             <div className="col-12">
                               <div className="form-group">
-                                <label htmlFor="email-id-vertical">
+                                <label htmlFor="increment-value">
                                   {t("Valeur De Majoration")}
                                 </label>
                                 <input
                                   type="number"
-                                  id="email-id-vertical"
+                                  id="increment-value"
                                   className="form-control"
-                                  name="email-id"
+                                  name="increment-value"
                                   placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
                             </div>
-                            <br />
-                            <br />
-                            <br />
                             <div className="col-12 checkbox">
                               <input
                                 type="checkbox"
                                 id="checkbox1"
                                 className="col-1 form-check-input"
-                                defaultChecked
-                                onClick
-                              />{" "}
-                              <span>{t("Remboursement")}</span>
-                            </div>
-                            <div className="col-12">
-                              <input
-                                type="text"
-                                id="email-id-vertical1"
-                                className="col-6 form-control"
-                                name="email-id"
-                                placeholder={t("Ecrire Ici")}
-                                required
+                                checked={showEmail1}
+                                onChange={handleCheckbox1Change}
                               />
+                              <span>Remboursement</span>
                             </div>
+                            {showEmail1 && (
+                              <div className="col-12">
+                                <input
+                                  type="text"
+                                  id="email-id-vertical1"
+                                  className="col-6 form-control"
+                                  name="email-id"
+                                  placeholder="Ecrire Ici"
+                                  required
+                                />
+                              </div>
+                            )}
                             <br />
                             <br />
                             <div className="row">
@@ -103,52 +115,56 @@ function Configuration() {
                                   type="checkbox"
                                   id="checkbox2"
                                   className="col-6 form-check-input"
-                                  defaultChecked
-                                  onClick
-                                />{" "}
-                                <span>{t("Facilité")}</span>
+                                  checked={showEmail2}
+                                  onChange={handleCheckbox2Change}
+                                />
+                                <span>Facilité</span>
                               </div>
-                              <div className="col-6">
+                              {showEmail2 && (
+                                <div className="col-6">
+                                  <input
+                                    type="number"
+                                    id="email-id-vertical2"
+                                    className="col-6 form-control"
+                                    name="email-id"
+                                    placeholder="Ecrire Ici"
+                                    required
+                                  />
+                                </div>
+                              )}
+                              {showFac && (
+                                <fieldset
+                                  style={{ padding: "0px", margin: "0px" }}
+                                  id="fac"
+                                  className="col-6 form-group"
+                                >
+                                  <select
+                                    className="form-select"
+                                    id="basicSelect"
+                                    required
+                                  >
+                                    <option>Mois</option>
+                                    <option>L'année</option>
+                                  </select>
+                                </fieldset>
+                              )}
+                            </div>
+
+                            <div className="col-12">
+                              <div className="form-group">
+                                <label htmlFor="number-of-months">
+                                  {t("Nb De Mois")}
+                                </label>
                                 <input
                                   type="number"
-                                  id="email-id-vertical2"
-                                  className="col-6 form-control"
-                                  name="email-id"
+                                  id="number-of-months"
+                                  className="form-control"
+                                  name="number-of-months"
                                   placeholder={t("Ecrire Ici")}
                                   required
                                 />
                               </div>
-                              <fieldset
-                                style={{ padding: 0, margin: 0 }}
-                                id="fac"
-                                className="col-6 form-group"
-                              >
-                                <select
-                                  className="form-select"
-                                  id="basicSelect"
-                                  required
-                                >
-                                  <option>{t("Mois")}</option>
-                                  <option>{t("L'année")}</option>
-                                </select>
-                              </fieldset>
                             </div>
-                          </div>
-                        </div>
-                        <br />
-                        <div className="col-12">
-                          <div className="form-group">
-                            <label htmlFor="email-id-vertical">
-                              {t("Nb De Mois")}
-                            </label>
-                            <input
-                              type="number"
-                              id="email-id-vertical"
-                              className="form-control"
-                              name="email-id"
-                              placeholder={t("Ecrire Ici")}
-                              required
-                            />
                           </div>
                         </div>
                       </form>
@@ -157,91 +173,78 @@ function Configuration() {
                 </div>
               </div>
             </div>
+            <br/>
+            <br/>
             <div className="card">
               <div
-                style={{ backgroundColor: "white", padding: 20 }}
-                className="modal-content"
-              >
-                <div className="modal-header">
-                  <h2 className="new-price" id="myModalLabel33">
-                    {t("Ajouter une nouvelle Configuration")}
-                  </h2>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+              style={{ backgroundColor: "white", padding: 20 }}
+              className="modal-content"
+            >
+              <div className="modal-header">
+                <h2 className="new-price" id="myModalLabel33">
+                  {t("Ajouter une nouvelle Configuration")}
+                </h2>
+              </div>
+              <form action="#">
+                <div className="modal-body">
+                  <label htmlFor="expected-participants">
+                    {t("Nb attendu des participants")}
+                  </label>
+                  <div className="form-group">
+                    <input
+                      type="number"
+                      id="expected-participants"
+                      className="form-control"
+                      placeholder={t("Écrivez ici")}
+                      maxLength={25}
+                      required
+                    />
+                  </div>
+                  <label htmlFor="launch-date">{t("Date de Lancement")}</label>
+                  <div className="form-group">
+                    <input
+                      type="datetime-local"
+                      id="launch-date"
+                      className="form-control"
+                      placeholder={t("Écrivez ici")}
+                      required
+                    />
+                  </div>
+                  <label htmlFor="closing-date">{t("Date de Fermeture")}</label>
+                  <div className="form-group">
+                    <input
+                      type="datetime-local"
+                      id="closing-date"
+                      className="form-control"
+                      placeholder={t("Écrivez ici")}
+                      required
+                    />
+                  </div>
                 </div>
-                <form action="#">
-                  <div className="modal-body">
-                    <label htmlFor="email">
-                      {t("Nb attendu des participants")}
-                    </label>
-                    <div className="form-group">
-                      <input
-                        type="number"
-                        placeholder={t("Écrivez ici")}
-                        className="form-control"
-                        maxLength={25}
-                        required
-                      />
-                    </div>
-                    <label htmlFor="email">{t("Date de Lancement")}</label>
-                    <div className="form-group">
-                      <input
-                        type="datetime-local"
-                        placeholder={t("Écrivez ici")}
-                        className="form-control"
-                        maxLength={25}
-                        required
-                      />
-                    </div>
-                    <label htmlFor="email">{t("Date de Fermeture")}</label>
-                    <div className="form-group">
-                      <input
-                        type="datetime-local"
-                        placeholder={t("Écrivez ici")}
-                        className="form-control"
-                        maxLength={25}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <br />
-                  <div className="modal-footer">
-                    <div className="d-flex flex-column flex-sm-row">
-                      <button
-                        type="button"
-                        className="btn btn-primary ms-1 mb-2 mb-sm-0"
-                        data-bs-dismiss="modal"
-                      >
-                        <i className="bx bx-check d-block d-sm-none" />
-                        <span className="d-none d-sm-block">
-                          {t("Planifier")}
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary ms-1 mb-2 mb-sm-0"
-                        data-bs-dismiss="modal"
-                      >
-                        <i className="bx bx-check d-block d-sm-none" />
-                        <span className="d-none d-sm-block">
-                          {t("Publier")}
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary ms-1"
-                        data-bs-dismiss="modal"
-                      >
-                        <i className="bx bx-check d-block d-sm-none" />
-                        <span className="d-none d-sm-block">
-                          {t("Enregistrer")}
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-primary ms-1"
+                    data-bs-dismiss="modal"
+                  >
+                    <span className="d-none d-sm-block">{t("Planifier")}</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary ms-1"
+                    data-bs-dismiss="modal"
+                  >
+                    <span className="d-none d-sm-block">{t("Publier")}</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary ms-1"
+                    data-bs-dismiss="modal"
+                  >
+                    <span className="d-none d-sm-block">{t("Enregister")}</span>
+                  </button>
+                </div>
+              </form>
               </div>
             </div>
           </section>
