@@ -181,33 +181,19 @@ function ListeAdministrateur() {
                             <div className="row">
                               <div className="col-12">
                                 <div className="form-group">
-                                  <label htmlFor="name-id">{t("Nom")}</label>
-                                  <div className="position-relative">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="name-id"
-                                      placeholder="Nom"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12">
-                                <div className="form-group">
-                                  <label htmlFor="pseudo-id">{t("Pseudo")}</label>
-                                  <div className="position-relative">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      id="pseudo-id"
-                                      placeholder="Pseudo"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12">
-                                <div className="form-group">
                                   <label htmlFor="role-id">{t("Role")}</label>
+                                  <fieldset className="form-group mb-3">
+                                    <select className="form-select" id="role-id">
+                                      <option>IT</option>
+                                      <option>Blade Runner</option>
+                                      <option>Thor Ragnarok</option>
+                                    </select>
+                                  </fieldset>
+                                </div>
+                              </div>
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="role-id">{t("Permission")}</label>
                                   <fieldset className="form-group mb-3">
                                     <select className="form-select" id="role-id">
                                       <option>IT</option>
