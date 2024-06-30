@@ -9,7 +9,10 @@ function AdsList() {
   const [showImageModal, setShowImageModal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [showCarouselModal, setShowCarouselModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false); // State for edit modal
   const [isMobile, setIsMobile] = useState(false);
+  const [editType, setEditType] = useState('');
+  const [uploadInputs, setUploadInputs] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,6 +59,36 @@ function AdsList() {
     // Your delete logic here
   };
 
+  const openEditModal = () => {
+    setShowEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+    setEditType(''); // Reset edit type
+    setUploadInputs([]); // Clear upload inputs
+  };
+
+  const handleEditTypeChange = (event) => {
+    const selectedType = event.target.value;
+    setEditType(selectedType);
+    setUploadInputs([]);
+  };
+
+  const handleAddUploadInput = () => {
+    setUploadInputs([...uploadInputs, uploadInputs.length + 1]);
+  };
+
+  const handleRemoveUploadInput = (index) => {
+    const updatedInputs = uploadInputs.filter((_, i) => i !== index);
+    setUploadInputs(updatedInputs);
+  };
+
+  const handleEditSave = () => {
+    // Handle save edit logic
+    closeEditModal(); // Example: Close modal after save
+  };
+
   return (
     <div className="content-container">
       <section className="section">
@@ -91,9 +124,9 @@ function AdsList() {
                     <tr>
                       <td>{t("Editer")}</td>
                       <td>
-                        <a href="annonces-edit.html?id=1">
+                        <Button onClick={openEditModal}>
                           <i className="fa-solid fa-pen-to-square"></i>
-                        </a>
+                        </Button>
                       </td>
                     </tr>
                     <tr>
@@ -130,50 +163,15 @@ function AdsList() {
                         </Button>
                       </td>
                       <td>
-                      <Link to="/adsEdit">
+                        <Button onClick={openEditModal}>
                           <i className="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </td>
-                      <td>
-                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>02/01/2024</td>
-                      <td>06/05/2024</td>
-                      <td>{t("Video")}</td>
-                      <td>
-                        <Button onClick={() => setShowVideoModal(true)}>
-                          <i className="fa-solid fa-eye"></i>
                         </Button>
                       </td>
                       <td>
-                        <Link to="/adsEdit">
-                          <i className="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </td>
-                      <td>
                         <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
                       </td>
                     </tr>
-                    <tr>
-                      <td>03/01/2024</td>
-                      <td>07/05/2024</td>
-                      <td>{t("Carousel")}</td>
-                      <td>
-                        <Button onClick={() => setShowCarouselModal(true)}>
-                          <i className="fa-solid fa-eye"></i>
-                        </Button>
-                      </td>
-                      <td>
-                      <Link to="/adsEdit">
-                          <i className="fa-solid fa-pen-to-square"></i>
-                        </Link>
-                      </td>
-                      <td>
-                        <i className="fa-solid fa-trash deleteIcon" onClick={handleDelete}></i>
-                      </td>
-                    </tr>
+                    {/* Add more rows as needed */}
                   </tbody>
                 </table>
               )}
@@ -181,11 +179,63 @@ function AdsList() {
           </div>
         </div>
 
+        {/* Edit Modal */}
+        <Modal show={showEditModal} onHide={closeEditModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{t("Modification d’une annonce")}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="form-group mb-3">
+              <label htmlFor="edit-type">{t("Type de l'annonce")}</label>
+              <select
+                className="form-control"
+                id="edit-type"
+                onChange={handleEditTypeChange}
+                value={editType}
+              >
+                <option value="">{t("Sélectionner le type d'annonce")}</option>
+                <option value="image">{t("Image")}</option>
+                <option value="video">{t("Vidéo")}</option>
+                <option value="carousel">{t("Carousel")}</option>
+              </select>
+            </div>
+            {editType && (
+              <div className="form-group mb-3">
+              <label>{t("Ajouter un fichier")}</label>
+              <Button variant="secondary" onClick={handleAddUploadInput}>{t("Ajouter")}</Button>
+              {uploadInputs.map((_, index) => (
+                <div key={index} className="mt-2">
+                  <div className="custom-file">
+                    <input type="file" className="custom-file-input" />
+                    <label className="custom-file-label" htmlFor="customFile">
+                      {t("Choisir un fichier")}
+                    </label>
+                    <Button
+                      variant="link"
+                      className="ml-2"
+                      onClick={() => handleRemoveUploadInput(index)}
+                    >
+                      {t("Supprimer")}
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closeEditModal}>{t("Annuler")}</Button>
+            <Button variant="primary" onClick={handleEditSave}>{t("Enregistrer")}</Button>
+          </Modal.Footer>
+        </Modal>
+
+        {/* Other Modals (Image, Video, Carousel) */}
         <Modal show={showImageModal} onHide={() => setShowImageModal(false)} centered>
           <Modal.Header closeButton>
             <Modal.Title>{t("Image")}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {/* Image content */}
             <img src="/assets/compiled/jpg/architecture1.jpg" className="img-fluid" alt={t("Image")} />
             <div className="mt-3">
               <label>{t("Date de création")}</label>
@@ -206,14 +256,18 @@ function AdsList() {
             <Modal.Title>{t("Video")}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <video src="/assets/compiled/video/exemple.mp4" className="img-fluid" alt={t("video")} controls></video>
+            {/* Video content */}
+            <video className="img-fluid" autoPlay controls>
+              <source src="/assets/compiled/video/exemple.mp4" type="video/mp4" />
+              {t("Your browser does not support the video tag.")}
+            </video>
             <div className="mt-3">
               <label>{t("Date de création")}</label>
-              <input type="text" className="form-control" value="02/01/2024" disabled />
+              <input type="text" className="form-control" value="02/02/2024" disabled />
             </div>
             <div className="mt-3">
               <label>{t("Date de publication")}</label>
-              <input type="text" className="form-control" value="06/05/2024" disabled />
+              <input type="text" className="form-control" value="07/07/2024" disabled />
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -226,23 +280,27 @@ function AdsList() {
             <Modal.Title>{t("Carousel")}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+            {/* Carousel content */}
+            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <img src="/assets/compiled/jpg/architecture1.jpg" className="d-block w-100" alt={t("Image 1")} />
+                  <img src="/assets/compiled/jpg/architecture1.jpg" className="d-block w-100" alt={t("Carousel")} />
                 </div>
                 <div className="carousel-item">
-                  <img src="/assets/compiled/jpg/jump.jpg" className="d-block w-100" alt={t("Image 2")} />
+                  <img src="/assets/compiled/jpg/architecture2.jpg" className="d-block w-100" alt={t("Carousel")} />
+                </div>
+                <div className="carousel-item">
+                  <img src="/assets/compiled/jpg/architecture3.jpg" className="d-block w-100" alt={t("Carousel")} />
                 </div>
               </div>
-              <Button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">{t("Previous")}</span>
-              </Button>
-              <Button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span className="sr-only">Previous</span>
+              </a>
+              <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">{t("Next")}</span>
-              </Button>
+                <span className="sr-only">Next</span>
+              </a>
             </div>
             <div className="mt-3">
               <label>{t("Date de création")}</label>

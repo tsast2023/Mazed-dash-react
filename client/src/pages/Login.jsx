@@ -1,7 +1,23 @@
-import React from 'react';
+import React , {useState} from 'react';
 import '../css/Login.css';
+import axios from 'axios';
+import Cookies from 'js-cookie'
 
 const Login = () => {
+
+  const [data, setData] = useState({login : "" , password: "" , deviceToken:Cookies.get('fcmToken')});
+  const submitLogin = async(e) =>{
+    e.preventDefault();
+    try {
+      console.log(data)
+      const res = await  axios.post('http://localhost:8090/api/auth/login' , data);
+      console.log(res.data.refreshtoken)
+      Cookies.set('token' , res.data.refreshtoken )
+      window.location.href = "/"
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className="container-fluid">
       <div className="row">
@@ -9,14 +25,14 @@ const Login = () => {
           <div className="card-log">
             <div className="card-body">
               <h3 className="card-title">Bienvenue</h3>
-              <form>
+              <form onSubmit={submitLogin}>
                 <div className="form-group">
-                  <label htmlFor="email">Email:</label>
-                  <input type="email" className="form-control" id="email" placeholder="Enter email" />
+                  <label htmlFor="identifiant">Identifiant:</label>
+                  <input type="text" className="form-control" id="identifiant" placeholder="Enter identifiant" onChange={e=>setData({...data , login:e.target.value})} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Mot de passe:</label>
-                  <input type="password" className="form-control" id="password" placeholder="Enter password" />
+                  <input type="password" className="form-control" id="password" placeholder="Enter password" onChange={e=>setData({...data , password:e.target.value})} />
                 </div>
                 <button type="submit" className="btn btn-primary">Se connecter</button>
               </form>

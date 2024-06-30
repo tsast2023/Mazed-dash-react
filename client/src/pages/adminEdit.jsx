@@ -34,8 +34,6 @@ function AdminEdit() {
                                 className="form-control"
                                 id="name-id"
                                 placeholder="Nom"
-                                maxLength={25}
-                                defaultValue={name}
                               />
                             </div>
                           </div>
@@ -49,8 +47,6 @@ function AdminEdit() {
                                 className="form-control"
                                 id="pseudo-id"
                                 placeholder="Pseudo"
-                                maxLength={25}
-                                defaultValue={pseudo}
                               />
                             </div>
                           </div>

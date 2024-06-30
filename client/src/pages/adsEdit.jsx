@@ -1,29 +1,97 @@
-import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import { useTranslation } from "react-i18next";
 
-function AdsEdit() {
+function AdsList() {
   const { t } = useTranslation();
-  const [showSuivantModal, setShowSuivantModal] = useState(false);
-  const [showPlanifierModal, setShowPlanifierModal] = useState(false);
-  const [fileInputType, setFileInputType] = useState("");
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showCarouselModal, setShowCarouselModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [editType, setEditType] = useState('');
+  const [uploadInputs, setUploadInputs] = useState([]);
 
-  const handleTypeChange = (e) => {
-    const selectedType = e.target.value;
-    setFileInputType(selectedType);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: t("Êtes-vous sûr(e) ?"),
+      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: t("Oui, supprimez-le !"),
+      cancelButtonText: t("Non, annuler !"),
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteItem();
+        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
+      } else {
+        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+      }
+    });
+  };
+
+  const deleteItem = () => {
+    // Your delete logic here
+  };
+
+  const openEditModal = () => {
+    setShowEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+    setEditType('');
+    setUploadInputs([]);
+  };
+
+  const handleEditTypeChange = (event) => {
+    const selectedType = event.target.value;
+    setEditType(selectedType);
+    setUploadInputs([]);
+  };
+
+  const handleAddUploadInput = () => {
+    setUploadInputs([...uploadInputs, uploadInputs.length + 1]);
+  };
+
+  const handleRemoveUploadInput = (index) => {
+    const updatedInputs = uploadInputs.filter((_, i) => i !== index);
+    setUploadInputs(updatedInputs);
+  };
+
+  const handleEditSave = () => {
+    // Handle save edit logic
+    closeEditModal();
   };
 
   const handleFileInput = () => {
-    if (fileInputType === "image" || fileInputType === "video") {
+    if (editType === "image" || editType === "video") {
       return (
         <input
           type="file"
-          className="form-control mb-3" // Add bottom margin for spacing between inputs
-          accept={fileInputType === "video" ? "video/*" : "image/*"}
+          className="form-control mb-3"
+          accept={editType === "video" ? "video/*" : "image/*"}
         />
       );
-    } else if (fileInputType === "carousel") {
+    } else if (editType === "carousel") {
       return (
         <input type="file" className="form-control mb-3" multiple accept="image/*" />
       );
@@ -33,107 +101,102 @@ function AdsEdit() {
 
   return (
     <div className="content-container">
-      <div className="col-md-12">
+      <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">{t("modification d’une annonce")}</h2>
+            <h2 className="new-price">{t("Liste des annonces")}</h2>
           </div>
-          <div className="card-content">
-            <div className="card-body">
-              <form className="form form-vertical">
-                <div className="form-body">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="form-group mb-3">
-                        <label htmlFor="type-annonce">{t("Type de l'annonce")}</label>
-                        <div className="position-relative">
-                          <select
-                            className="form-control"
-                            id="type-annonce"
-                            onChange={handleTypeChange}
-                          >
-                            <option value="">{t("Sélectionner le type d'annonce")}</option>
-                            <option value="image">{t("Image")}</option>
-                            <option value="video">{t("Vidéo")}</option>
-                            <option value="carousel">{t("Carousel")}</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 mb-3" id="file-input-container">
-                      {handleFileInput()}
-                    </div>
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <Button
-                    variant="secondary"
-                    className="me-2"
-                    onClick={() => setShowSuivantModal(false)}
-                  >
-                    {t("Annuler")}
-                  </Button>
-                  <Button
-                    variant="primary"
-                    className="ms-2"
-                    onClick={() => setShowSuivantModal(true)}
-                  >
-                    {t("Suivant")}
-                  </Button>
-                </div>
-              </form>
+          <div className="card-body">
+            <div className="table-responsive">
+              {isMobile ? (
+                <table className="table" id="table1">
+                  <tbody>
+                    {/* Replace with your dynamic content */}
+                    <tr>
+                      <td>Example Data</td>
+                      <td>
+                        <Button variant="primary" onClick={openEditModal}>{t("Modifier")}</Button>{' '}
+                        <Button variant="danger" onClick={handleDelete}>{t("Supprimer")}</Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <table className="table" id="table1">
+                  <thead>
+                    <tr>
+                      <th>{t("Titre")}</th>
+                      <th>{t("Actions")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Replace with your dynamic content */}
+                    <tr>
+                      <td>Example Data</td>
+                      <td>
+                        <Button variant="primary" onClick={openEditModal}>{t("Modifier")}</Button>{' '}
+                        <Button variant="danger" onClick={handleDelete}>{t("Supprimer")}</Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
-        <Modal
-          show={showSuivantModal}
-          onHide={() => setShowSuivantModal(false)}
-          centered
-        >
+
+        {/* Edit Modal */}
+        <Modal show={showEditModal} onHide={closeEditModal} centered>
           <Modal.Header closeButton>
-            <Modal.Title>{t("Actions")}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button variant="primary" className="mb-1 me-2">{t("Annuler")}</Button>
-            <Button
-              variant="warning"
-              className="mb-1 me-2"
-              onClick={() => {
-                setShowSuivantModal(false);
-                setShowPlanifierModal(true);
-              }}
-            >
-              {t("Planifier")}
-            </Button>
-            <Button variant="info" className="mb-1">{t("Publier immédiatement")}</Button>
-          </Modal.Body>
-        </Modal>
-        <Modal
-          show={showPlanifierModal}
-          onHide={() => setShowPlanifierModal(false)}
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{t("Planifier la publication")}</Modal.Title>
+            <Modal.Title>{t("Modification d’une annonce")}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="form-group mb-3">
-              <label htmlFor="publicationDate">{t("Date")}</label>
-              <input type="date" id="publicationDate" className="form-control" />
+              <label htmlFor="edit-type">{t("Type de l'annonce")}</label>
+              <select
+                className="form-control"
+                id="edit-type"
+                onChange={handleEditTypeChange}
+                value={editType}
+              >
+                <option value="">{t("Sélectionner le type d'annonce")}</option>
+                <option value="image">{t("Image")}</option>
+                <option value="video">{t("Vidéo")}</option>
+                <option value="carousel">{t("Carousel")}</option>
+              </select>
             </div>
-            <div className="form-group mb-3">
-              <label htmlFor="publicationTime">{t("Heure")}</label>
-              <input type="time" id="publicationTime" className="form-control" />
-            </div>
+            {editType && (
+              <div className="form-group mb-3">
+                <label>{t("Ajouter un fichier")}</label>
+                <Button variant="secondary" onClick={handleAddUploadInput}>{t("Ajouter")}</Button>
+                {uploadInputs.map((_, index) => (
+                  <div key={index} className="mt-2">
+                    <div className="custom-file">
+                      <input type="file" className="custom-file-input" />
+                      <label className="custom-file-label" htmlFor="customFile">
+                        {t("Choisir un fichier")}
+                      </label>
+                      <Button
+                        variant="link"
+                        className="ml-2"
+                        onClick={() => handleRemoveUploadInput(index)}
+                      >
+                        {t("Supprimer")}
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="light" onClick={() => setShowPlanifierModal(false)}>{t("Annuler")}</Button>
-            <Button variant="secondary">{t("Planifier")}</Button>
+            <Button variant="secondary" onClick={closeEditModal}>{t("Annuler")}</Button>
+            <Button variant="primary" onClick={handleEditSave}>{t("Enregistrer")}</Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </section>
     </div>
   );
 }
 
-export default AdsEdit;
+export default AdsList;

@@ -232,6 +232,74 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+      <br />
+      <br />
+      <section className="section">
+      <div className="col-12">
+              <div className="card">
+                <div className="card-body">
+                    <div className="card-header">
+                      <h5 className="card-title">{t("Ventes")}</h5>
+                    </div>
+                      <div className="table-responsive datatable-minimal">
+                        {isMobile ? (
+                          <table className="table" id="table2">
+                            <tbody>
+                              <tr>
+                                <td>{t("Le stock à l’entrée")}</td>
+                                <td>500</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le stock actuel")}</td>
+                                <td>200</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le prix de vente")}</td>
+                                <td>20</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Les promotions")}</td>
+                                <td>20%</td>
+                              </tr>
+                              <tr>
+                                <td>{t("L’évaluation")}</td>
+                                <td>Lorem</td>
+                              </tr>
+                              <tr>
+                                <td>{t("Le nombre de visites sur produit")}</td>
+                                <td>350</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : (
+                          <table className="table" id="table2">
+                            <thead>
+                              <tr>
+                                <th>{t("Le stock à l’entrée")}</th>
+                                <th>{t("Le stock actuel")}</th>
+                                <th>{t("Le prix de vente")}</th>
+                                <th>{t("Les promotions")}</th>
+                                <th>{t("L’évaluation")}</th>
+                                <th>{t("Le nombre de visites sur produit")}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>500</td>
+                                <td>200</td>
+                                <td>20</td>
+                                <td>20%</td>
+                                <td>Lorem</td>
+                                <td>350</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        )}
+                      </div>
+                </div>
+              </div>
+            </div>
+      </section>
       </div>
     </>
   );
