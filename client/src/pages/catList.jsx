@@ -153,7 +153,7 @@ function CategoryList() {
                 </a>
               </td>
               <td>
-                <button className="btn btn-primary" onClick={() => handleEdit(cat)}>
+                <button className="btn" onClick={() => handleEdit(cat)}>
                   <i className="fa-solid fa-pen-to-square"></i>
                 </button>
               </td>
