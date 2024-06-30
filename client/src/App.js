@@ -62,6 +62,8 @@ import Login from './pages/Login';
 import Cookies from 'js-cookie'
 import EnchèreEdit from './pages/EnchèreEdit';
 import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
+import DemandeProduit from './pages/DemandeProduit';
+import DetailDemandeProduit from './pages/DetailDemandeProduit'
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -167,6 +169,11 @@ const App = () => {
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
               <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+<<<<<<< HEAD
+              <Route path='/DemandeProduit' element={<DemandeProduit/>}/>
+              <Route path='/DetailDemandeProduit' element={<DetailDemandeProduit/>}/>
+=======
+>>>>>>> 81e90a29a3ff4f43b471f001d4bd17c6ed10c001
             </Routes>
           </div>
         )}

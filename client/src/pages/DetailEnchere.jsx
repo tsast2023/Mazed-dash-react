@@ -194,8 +194,8 @@ function DetailEnchere() {
                             <button
                               type="button"
                               className="btn btn-outline-secondary"
-                              data-bs-toggle="modal"
-                              data-bs-target="#secondary"
+                              // data-bs-toggle="modal"
+                              // data-bs-target="#secondary"
                             >
                               {t("Publier")}
                             </button>

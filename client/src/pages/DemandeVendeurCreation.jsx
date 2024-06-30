@@ -21,9 +21,9 @@ function DemandeVendeurCreation() {
             // Perform the blocking action here
             // For example, you can make an AJAX request to disable the administrator
             // After successful blocking, you can update the UI accordingly
-            Swal.fire("Valider!", "The administrator has been Valide.", "success");
+            Swal.fire({text:"Valider ! The administrator has been Valide.", icon:"success",confirmButtonColor: "#b0210e"});
           } else {
-            Swal.fire("Cancelled", "The administrator is safe :)", "error");
+            Swal.fire({text:"Cancelled , The administrator is safe :)",icon: "error" ,confirmButtonColor: "#b0210e"});
           }
         });
       };
@@ -46,9 +46,9 @@ function DemandeVendeurCreation() {
             // Perform the unblocking action here
             // For example, you can make an AJAX request to enable the administrator
             // After successful unblocking, you can update the UI accordingly
-            Swal.fire("Refuser!", "The administrator has been Refuse.", "success");
+            Swal.fire({text:"Refuser! , The administrator has been Refuse.", icon:"success",confirmButtonColor: "#b0210e"});
           } else {
-            Swal.fire("Cancelled", "The administrator remains blocked :)", "error");
+            Swal.fire({text:"Cancelled , The administrator remains blocked :)",icon:"error",confirmButtonColor: "#b0210e"});
           }
         });
       };
@@ -75,12 +75,10 @@ function DemandeVendeurCreation() {
                     <tr>
                         
                       <th>Profile Image</th>
-                      <th>Nom</th>
                       <th>Prenom</th>
                       <th>Date De Naissance</th>
                       <th>Nom Famille</th>
                       <th>Pseudo</th>
-                      <th>Photo de Profil</th>
                       <th>Nom Societé</th>
                       <th>Num Tel</th>
                       <th>Valider</th>
@@ -91,12 +89,10 @@ function DemandeVendeurCreation() {
                     <tr>
                     <td >                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
-                      <td>Toni</td>
                       <td>Kross</td>
                       <td>08/06/2024</td>
                       <td>vehi</td>
                       <td>Alex</td>
-                      <td>Photo</td>
                       <td>Tsast</td>
                       <td>69 696 969</td>
                       <td>

@@ -44,13 +44,10 @@ function CategoryList() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(catId);
-        Swal.fire(
-          t("Supprimé(e) !"),
-          t("Votre élément a été supprimé."),
-          "secondary"
-        );
+        Swal.fire({
+          text:"Supprimé(e) !, Votre élément a été supprimé.",icon:"secondary",confirmButtonColor: "#b0210e"});
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+        Swal.fire({text:"Annulé , Votre élément est en sécurité :", icon:"error" , confirmButtonColor: "#b0210e"});
       }
     });
   };
@@ -66,13 +63,10 @@ function CategoryList() {
     }).then((result) => {
       if (result.isConfirmed) {
         activateDeactivateItem(catId);
-        Swal.fire(
-          t("Désactivé(e) !"),
-          t("Votre élément a été désactivé."),
-          "secondary"
-        );
+        Swal.fire({text:"Désactivé(e) !,Votre élément a été désactivé.",
+          icon:"secondary",confirmButtonColor: "#b0210e"});
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+        Swal.fire({text:"Annulé , Votre élément est en sécurité :)", icon:"error",confirmButtonColor: "#b0210e"});
       }
     });
   };
