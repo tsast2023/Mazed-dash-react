@@ -195,26 +195,26 @@ function AdsList() {
             </div>
             {editType && (
               <div className="form-group mb-3">
-                <label>{t("Ajouter un fichier")}</label>
-                <Button variant="secondary" onClick={handleAddUploadInput}>{t("Ajouter")}</Button>
-                {uploadInputs.map((_, index) => (
-                  <div key={index} className="mt-2">
-                    <div className="custom-file">
-                      <input type="file" className="custom-file-input" />
-                      <label className="custom-file-label" htmlFor="customFile">
-                        {t("Choisir un fichier")}
-                      </label>
-                      <Button
-                        variant="link"
-                        className="ml-2"
-                        onClick={() => handleRemoveUploadInput(index)}
-                      >
-                        {t("Supprimer")}
-                      </Button>
-                    </div>
+              <label>{t("Ajouter un fichier")}</label>
+              <Button variant="secondary" onClick={handleAddUploadInput}>{t("Ajouter")}</Button>
+              {uploadInputs.map((_, index) => (
+                <div key={index} className="mt-2">
+                  <div className="custom-file">
+                    <input type="file" className="custom-file-input" />
+                    <label className="custom-file-label" htmlFor="customFile">
+                      {t("Choisir un fichier")}
+                    </label>
+                    <Button
+                      variant="link"
+                      className="ml-2"
+                      onClick={() => handleRemoveUploadInput(index)}
+                    >
+                      {t("Supprimer")}
+                    </Button>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
             )}
           </Modal.Body>
           <Modal.Footer>

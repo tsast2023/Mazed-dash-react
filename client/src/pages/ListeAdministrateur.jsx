@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
+import { Modal, Button } from "react-bootstrap";
+
 function ListeAdministrateur() {
   const { t } = useTranslation();
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [name, setName] = useState("Alex"); // Example initial values
+  const [pseudo, setPseudo] = useState("vehi"); // Example initial values
+  const [role, setRole] = useState("Lorem"); // Example initial values
 
-  // Function to handle blocking an administrator
+  const handleEdit = () => {
+    setShowEditModal(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+  };
+
+  const handleSaveEdit = (event) => {
+    event.preventDefault(); // Prevent form submission
+    // Implement your save logic here
+    handleCloseEditModal(); // Close modal after saving
+    Swal.fire({
+      title: t("Sauvegardé"),
+      icon: "success",
+    });
+  };
+
   const handleBlock = () => {
     Swal.fire({
       title: t("Êtes-vous sûr?"),
@@ -19,16 +42,15 @@ function ListeAdministrateur() {
       if (result.isConfirmed) {
         Swal.fire({
           title: "fait",
-           confirmButtonColor: "#b0210e"
-        }
-        );
+          confirmButtonColor: "#b0210e",
+        });
       } else {
-        Swal.fire({   title: "Annulé",
+        Swal.fire({
+          title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
           confirmButtonColor: "#b0210e",
         });
-          
       }
     });
   };
@@ -45,14 +67,15 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({   title: "fait",
-          confirmButtonColor: "#b0210e"});
+        Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
-        Swal.fire({   title: "Annulé",
+        Swal.fire({
+          title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
           confirmButtonColor: "#b0210e",
-        });      }
+        });
+      }
     });
   };
 
@@ -85,25 +108,19 @@ function ListeAdministrateur() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Alex</td>
-                        <td>vehi</td>
-                        <td>Lorem</td>
+                        <td>{name}</td>
+                        <td>{pseudo}</td>
+                        <td>{role}</td>
                         <td>
-                          <a href="utilisateur-edit.html">
+                          <Button variant="primary" onClick={handleEdit}>
                             <i className="fa-solid fa-pen-to-square"></i>
-                          </a>
+                          </Button>
                         </td>
                         <td>
-                          <i
-                            onClick={handleBlock}
-                            className="fa-solid fa-lock"
-                          ></i>
+                          <i className="fa-solid fa-lock" onClick={handleBlock}></i>
                         </td>
                         <td>
-                          <i
-                            onClick={handleUnblock}
-                            className="fa-solid fa-lock-open"
-                          ></i>
+                          <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
                         </td>
                       </tr>
                     </tbody>
@@ -114,6 +131,72 @@ function ListeAdministrateur() {
           </section>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      <Modal show={showEditModal} onHide={handleCloseEditModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Modification d'un administrateur")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form className="form form-vertical" onSubmit={handleSaveEdit}>
+            <div className="form-body">
+              <div className="row">
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="name-id">{t("Nom")}</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="name-id"
+                      placeholder="Nom"
+                      maxLength={25}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="pseudo-id">{t("Pseudo")}</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pseudo-id"
+                      placeholder="Pseudo"
+                      maxLength={25}
+                      value={pseudo}
+                      onChange={(e) => setPseudo(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="role-id">{t("Role")}</label>
+                    <select
+                      className="form-select"
+                      id="role-id"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                    >
+                      <option>IT</option>
+                      <option>Blade Runner</option>
+                      <option>Thor Ragnarok</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <Button variant="secondary" onClick={handleCloseEditModal}>
+                {t("Annuler")}
+              </Button>
+              <Button type="submit" variant="primary">
+                {t("Enregistrer")}
+              </Button>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

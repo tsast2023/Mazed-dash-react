@@ -7,13 +7,13 @@ import { useTranslation } from "react-i18next";
 const ProdList = () => {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-  const [starClicked, setStarClicked] = useState(false); // State to track star click
-  const [showEditModal, setShowEditModal] = useState(false); // State to control modal visibility
+  const [starClicked, setStarClicked] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [label, setLabel] = useState("");
   const [image, setImage] = useState(null);
   const [initialStock, setInitialStock] = useState("");
   const [currentStock, setCurrentStock] = useState("");
-  const [color, setColor] = useState("#ffffff"); // Default color
+  const [color, setColor] = useState("#ffffff");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
@@ -23,10 +23,8 @@ const ProdList = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Initial check
     handleResize();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
