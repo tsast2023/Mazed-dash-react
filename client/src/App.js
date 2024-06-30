@@ -175,7 +175,7 @@ const App = () => {
           </div>
         )}
         </div>
-        {!authToken && <Login  />}
+        {authToken && <Login  />}
       </Router>
     </DataProvider>
   );

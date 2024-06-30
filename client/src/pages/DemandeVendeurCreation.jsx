@@ -122,4 +122,4 @@ function DemandeVendeurCreation() {
   )
 }
 
-export default DemandeVendeurCreation
+export default DemandeVendeurCreation;
