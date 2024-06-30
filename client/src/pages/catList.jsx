@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Modal, Button } from "react-bootstrap";
 
 function CategoryList() {
   const { t } = useTranslation();
@@ -12,6 +13,8 @@ function CategoryList() {
   const categories = state.Categories;
   const [isMobile, setIsMobile] = useState(false);
   const [starClickedMap, setStarClickedMap] = useState({}); // State to track star click for each category
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -111,6 +114,22 @@ function CategoryList() {
     }));
   };
 
+  const handleEdit = (cat) => {
+    setSelectedCategory(cat);
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedCategory(null);
+    setShowModal(false);
+  };
+
+  const handleModalSave = () => {
+    // Implement save logic for edited category
+    setShowModal(false);
+    // Optionally, you can perform any necessary state updates or API calls here
+  };
+
   const DesktopTable = () => (
     <table className="table" id="table1">
       <thead>
@@ -140,9 +159,9 @@ function CategoryList() {
                 </a>
               </td>
               <td>
-                <Link to={"/catmodif"}>
+                <button className="btn btn-primary" onClick={() => handleEdit(cat)}>
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
               </td>
               <td>
                 <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
@@ -217,9 +236,9 @@ function CategoryList() {
               </tr>
               <tr>
                 <td>
-                  <Link to={"/catmodif"}>
+                  <button className="btn btn-primary" onClick={() => handleEdit(cat)}>
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -337,6 +356,54 @@ function CategoryList() {
           </section>
         </div>
       </div>
+
+      {/* Bootstrap Modal */}
+      <Modal show={showModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Modifier la catégorie")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Form or content for editing category */}
+          <div className="card-content">
+          <div className="card-body">
+            <form className="form form-vertical">
+              <div className="form-body">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="form-group">
+                      <label htmlFor="email-id-icon">{t("Libellé")}</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="email-id-icon"
+                      />
+                    </div>
+                  </div>
+                  <label>{t("Type")}</label>
+                  <div className="input-group mb-3">
+                    <select
+                      className="form-select"
+                      id="inputGroupSelect01"
+                    >
+                      <option value="1">{t("Parente")}</option>
+                      <option value="2">{t("Fille")}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleModalClose}>
+            {t("Fermer")}
+          </Button>
+          <Button variant="primary" onClick={handleModalSave}>
+            {t("Enregistrer")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

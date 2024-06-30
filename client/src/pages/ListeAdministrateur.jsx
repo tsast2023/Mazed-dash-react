@@ -86,7 +86,7 @@ function ListeAdministrateur() {
   };
 const block = async(id)=>{
 try {
-    const res = await axios.put(`http://localhost:8081/admin/block/${id}`);
+    const res = await axios.put(`http://192.168.0.108:8081/admin/block/${id}`);
     console.log(res.data) 
 } catch (error) {
   console.log(error)
@@ -94,7 +94,7 @@ try {
 }
 const unBlock = async(id)=>{
 try {
-  const res = await axios.put(`http://localhost:8081/admin/unblock/${id}`);
+  const res = await axios.put(`http://192.168.0.108:8081/admin/unblock/${id}`);
     console.log(res.data)
 } catch (error) {
   console.log(error)

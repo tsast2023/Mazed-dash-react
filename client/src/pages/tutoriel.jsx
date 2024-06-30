@@ -189,7 +189,7 @@ const Tutoriel = () => {
 
   const deleteItem = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8081/api/tuto/deleteTuto?id=${id}`);
+      const res = await axios.delete(`http://192.168.0.108:8081/api/tuto/deleteTuto?id=${id}`);
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -199,7 +199,7 @@ const Tutoriel = () => {
   const addTuto = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8081/api/tuto/publishNow", tuto);
+      const res = await axios.post("http://192.168.0.108:8081/api/tuto/publishNow", tuto);
       console.log(res.data);
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 // src/serviceWorkerRegistration.js
-const isLocalhost = Boolean(
+const islocalhost = Boolean(
     window.location.hostname === 'localhost' ||
     window.location.hostname === '[::1]' ||
     window.location.hostname.match(
@@ -17,7 +17,7 @@ const isLocalhost = Boolean(
       window.addEventListener('load', () => {
         const swUrl = `${process.env.PUBLIC_URL}/firebase-messaging-sw.js`;
   
-        if (isLocalhost) {
+        if (islocalhost) {
           checkValidServiceWorker(swUrl, config);
   
           navigator.serviceWorker.ready.then(() => {
