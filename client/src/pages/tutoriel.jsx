@@ -79,7 +79,7 @@ const TableRow = ({ item, handleDelete }) => {
   return (
     <tr>
       <td className="text-bold-500">
-        <img src={item.file} alt="tuto_image" style={{ width: "auto", height: "150px" }} />
+        <img className="imgtable" src={item.file} alt="tuto_image" style={{ width: "auto", height: "150px" }} />
       </td>
       <td>{item.ordre}</td>
       <td>
@@ -94,12 +94,30 @@ const ResponsiveTable = ({ tutorials, handleDelete, isMobile }) => {
 
   return (
     <div className="table-responsive">
+      {isMobile ? (
+        <table className="table">
+          <tbody>
+            <tr>
+            <td>{t("Image")}</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>{t("Ordre")}</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>{t("Supprimer")}</td>
+            <td></td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
       <table className="table table-lg">
         <thead>
           <tr>
-            <th>{t("Image")}</th>
-            <th>{t("Ordre")}</th>
-            <th>{t("Supprimer")}</th>
+            <td>{t("Image")}</td>
+            <td>{t("Ordre")}</td>
+            <td>{t("Supprimer")}</td>
           </tr>
         </thead>
         <tbody>
@@ -114,6 +132,7 @@ const ResponsiveTable = ({ tutorials, handleDelete, isMobile }) => {
           )}
         </tbody>
       </table>
+      )}
     </div>
   );
 };

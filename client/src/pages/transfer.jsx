@@ -56,7 +56,7 @@ function Modal({ t }) {
 }
 
 // TableRow component
-function TableRow({ userData, status, onAccept, onDelete }) {
+function TableRow({ userData, status, onAccept }) {
   const { t } = useTranslation();
 
   const handleAccept = () => {
