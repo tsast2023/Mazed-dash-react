@@ -130,7 +130,61 @@ const ProdList = () => {
             {isMobile ? (
               <Table responsive="sm">
                 <tbody>
-                  {/* Your table rows */}
+                  <tr>
+                    <td>{t("Image")}</td>
+                    <td> <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Réf")}</td>
+                    <td>01121</td>
+                  </tr>
+                  <tr>
+                  <td>{t("Libellé")}</td>
+                  <td>Lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Stock initial")}</td>
+                    <td>50</td>
+                  </tr>
+                  <tr>
+                  <td>{t("Stock actuel")}</td>
+                  <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Statut")}</td>
+                    <td>
+                      <button className="btn btn-secondary">{t("Publié")}</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Détail")}</td>
+                    <td>
+                      <Link to="/prodDétail" className="btn btn-outline block">
+                        <i className="fa-solid fa-eye font-medium-1"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Modifier")}</td>
+                    <td>
+                      <button className="btn btn-outline block" onClick={handleEditClick}>
+                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Supprimer")}</td>
+                    <td>
+                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Désactiver")}</td>
+                    <td>
+                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
+                    </td>
+                  </tr>
                   <tr>
                     <td>{t("Mettre à l'une")}</td>
                     <td>
