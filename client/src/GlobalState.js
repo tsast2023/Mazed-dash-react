@@ -42,7 +42,6 @@ export const DataProvider = ({children}) => {
     const getAllCategories = async() =>{
         try {
             const  res = await axios.get('http://192.168.0.118:8081/api/category/getAll');
-            const  res = await axios.get('http://192.168.0.108:8081/api/category/getAll');
             console.log("categories:",res.data);
             setCategories(res.data)
         } catch (error) {
@@ -52,7 +51,6 @@ export const DataProvider = ({children}) => {
     const getAllProducts = async() =>{
         try {
             const  res = await axios.get('http://192.168.0.108:8081/api/product/getAll');
-            const  res = await axios.get('http://192.168.0.118:8081/api/product/getAll');
             console.log("Products:",res.data);
             setProducts(res.data)
         } catch (error) {
@@ -62,7 +60,6 @@ export const DataProvider = ({children}) => {
     const getAllTuto = async ()=>{
       try {
         const res = await axios.get('http://192.168.0.108:8081/api/tuto/getAll');
-        const res = await axios.get('http://192.168.0.118:8081/api/tuto/getAll');
           console.log('tutorial:' , res.data);
           setTutotiel(res.data)
       } catch (error) {
@@ -72,7 +69,6 @@ export const DataProvider = ({children}) => {
     const getCarteRechar = async()=>{
       try {
         const res = await axios.get('http://192.168.0.108:8081/api/carte/getAll');
-        const res = await axios.get('http://192.168.0.118:8081/api/carte/getAll');
         console.log('cartes:' , res.data);
         setCarteRech(res.data);
       } catch (error) {
@@ -82,7 +78,6 @@ export const DataProvider = ({children}) => {
     const getAllBids = async()=>{
       try {
         const res = await axios.get('http://192.168.0.108:8081/api/bid/getAll')
-        const res = await axios.get('http://192.168.0.118:8081/api/bid/getAll')
         console.log("all bids:" , res.data)
         setBids(res.data)
       } catch (error) {
