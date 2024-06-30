@@ -54,9 +54,9 @@ function DesktopTable({commandes}) {
     <table className="table" id="table1">
       <thead>
         <tr>
+        <th>{t("Image")}</th>
           <th>{t("Num Commande")}</th>
           <th>{t("Produit")}</th>
-          <th>{t("Image Produit")}</th>
           <th>{t("Prix Produit")}</th>
           <th>{t("Quantité")}</th>
           <th>{t("Prix Total")}</th>
@@ -67,9 +67,9 @@ function DesktopTable({commandes}) {
       </thead>
       <tbody>
         <tr className="table">
+        <td><img className='imgtable' src="" alt="img"/></td>
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
           <td>200</td>
           <td>500</td>
           <td>800</td>
@@ -78,9 +78,10 @@ function DesktopTable({commandes}) {
           <td><i className="fa-solid fa-sliders" data-bs-toggle="modal" data-bs-target="#statusModal"></i></td>
         </tr>
         <tr className="table">
+        <td><img className='imgtable' src="" alt="img"/></td>
           <td className="text-bold-500">111111</td>
           <td>Lorem Lorem</td>
-          <td><img src="" alt="img"/></td>
+
           <td>200</td>
           <td>500</td>
           <td>800</td>
@@ -108,7 +109,7 @@ function MobileTable({commandes}) {
         </tr>
         <tr>
           <td>{t("Image Produit")}</td>
-          <td><img src="" alt="img"/></td>
+          <td><img className='imgtable' src="" alt="img"/></td>
         </tr>
         <tr>
           <td>{t("Prix Produit")}</td>
@@ -146,8 +147,8 @@ function MobileTable({commandes}) {
           <td>Lorem Lorem</td>
         </tr>
         <tr>
-          <td>{t("Image Produit")}</td>
-          <td><img src="" alt="img"/></td>
+          <td>{t("Image")}</td>
+          <td><img className='imgtable' src="" alt="img"/></td>
         </tr>
         <tr>
           <td>{t("Prix Produit")}</td>

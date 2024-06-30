@@ -363,6 +363,7 @@ const resources = {
       "Changer Statut": "change status",
       "mot de passe": "password",
       "Identifiant": "Identifier",
+      "Particulier": "Particular",
     }
   },
   fr: {
@@ -734,6 +735,7 @@ const resources = {
         "changer statut": "changer statut",
         "mot de passe": "mot de passe",
         "Identifiant": "Identifiant",
+        "Particulier": "Particulier",
     }
   },
   ar: {
@@ -1107,6 +1109,7 @@ const resources = {
       "modification d’une annonce": "تعديل إعلان",
       "Changer Statut": "تغيير الوضع",
       "mot de passe": "أكد كلمة المرور",
+      "Particulier": "خاص",
     }
   }
 };

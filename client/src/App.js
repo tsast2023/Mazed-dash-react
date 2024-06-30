@@ -60,6 +60,9 @@ import './App.css';
 import './i18n';
 import Login from './pages/Login';
 import Cookies from 'js-cookie'
+import EnchèreEdit from './pages/EnchèreEdit';
+import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
+
 const App = () => {
   const [token, setToken] = useState(null);
   const authToken= Cookies.get('token');
@@ -101,70 +104,72 @@ const App = () => {
   return (
  
     <DataProvider>
-      <Router>
-        <div className='app-container'>
-          {authToken && (
-            <div className='sidebar-container'>
-              <Sidebar />
-            </div>
-          )}
-          {authToken && (
-            <div className='content-container'>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path='/EnchèreCreation' element={<EnchèreCreation />} />
-                <Route path='/EnchereListe' element={<EnchereListe />} />
-                <Route path='/ModificationDetailsEnchere' element={<ModificationDetailsEnchere />} />
-                <Route path='/DetailEnchere' element={<DetailEnchere />} />
-                <Route path='/VendeurForm' element={<VendeurForm />} />
-                <Route path='/VendeurDetails' element={<VendeurDetails />} />
-                <Route path='/UtilisateurForm' element={<UtilisateurForm />} />
-                <Route path='/TableUtilisateur' element={<TableUtilisateur />} />
-                <Route path='/UtilisateurEdit' element={<UtilisateurEdit />} />
-                <Route path='/UtilisateurDetails/:id' element={<UtilisateurDetails />} />
-                <Route path='/QuestionForm' element={<QuestionForm />} />
-                <Route path='/QuestionList' element={<QuestionList />} />
-                <Route path='/QuestionDetail' element={<QuestionDetail />} />
-                <Route path='/QuestionEdit' element={<QuestionEdit />} />
-                <Route path='/TermsForm' element={<TermsForm />} />
-                <Route path='/TermesList' element={<TermesList />} />
-                <Route path='/TermsAcheteur' element={<TermsAcheteur />} />
-                <Route path='/OffreEnchere' element={<OffreEnchere />} />
-                <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere />} />
-                <Route path='/CreationRole' element={<CreationRole />} />
-                <Route path='/ListeAdministrateur' element={<ListeAdministrateur />} />
-                <Route path='/CreationAdministrateur' element={<CreationAdministrateur />} />
-                <Route path='/TableVendeurs' element={<TableVendeurs />} />
-                <Route path='/ParticipantForm' element={<ParticipantForm />} />
-                <Route path='/configuration' element={<Configuration />} />
-                <Route path='/CreationCat' element={<Categories />} />
-                <Route path='/ListeCat' element={<ListeCategories />} />
-                <Route path='/Réclamations' element={<Réclamations />} />
-                <Route path='/Cartes' element={<Cartes />} />
-                <Route path='/Tutoriel' element={<Tutoriel />} />
-                <Route path='/Transferts' element={<Transferts />} />
-                <Route path='/CreationProd' element={<Produits />} />
-                <Route path='/CreationPart' element={<Participants />} />
-                <Route path='/ProdListe' element={<ProduitsListe />} />
-                <Route path='/catdetail/:id' element={<DataTable />} />
-                <Route path='/catmodif' element={<CatEdit />} />
-                <Route path='/PartListe' element={<ParticipantsListe />} />
-                <Route path='/partdetail' element={<ParticipantDetail />} />
-                <Route path='/prodDétail' element={<ProductDetail />} />
-                <Route path='/prodEdit' element={<ProductEditForm />} />
-                <Route path='/CreationAd' element={<AnnonceCreator />} />
-                <Route path='/ListeAds' element={<AnnonceList />} />
-                <Route path='/Commandes' element={<Commandes />} />
-                <Route path='/Messagerie' element={<Messagerie />} />
-                <Route path='/Profile' element={<Profile />} />
-                <Route path='/ProdAction' element={<ProdAction />} />
-                <Route path='/TermeEdit' element={<TermeEdit />} />
-                <Route path='/adsEdit' element={<AdsEdit />} />
-                <Route path='/adminEdit' element={<AdminEdit />} />
-              </Routes>
-            </div>
-          )}
+    <Router>
+      <div className='app-container'>
+        {!token && (
+          <div className='sidebar-container'>
+            <Sidebar />
+          </div>
+        )}
+        {!token && (
+          <div className='content-container'>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path='/EnchèreCreation' element={<EnchèreCreation/>}/>
+              <Route path='/EnchereListe' element={<EnchereListe/>}/>
+              <Route path='/ModificationDetailsEnchere' element={<ModificationDetailsEnchere/>}/>
+              <Route path='/DetailEnchere' element={<DetailEnchere/>}/>
+              <Route path='/VendeurForm' element={<VendeurForm/>}/>
+              <Route path='/VendeurDetails' element={<VendeurDetails/>}/>
+              <Route path='/UtilisateurForm' element={<UtilisateurForm/>}/>
+              <Route path='/TableUtilisateur' element={<TableUtilisateur/>}/>
+              <Route path='/UtilisateurEdit' element={<UtilisateurEdit/>}/>
+              <Route path='/UtilisateurDetails/:id' element={<UtilisateurDetails/>}/>
+              <Route path='/QuestionForm' element={<QuestionForm/>}/>
+              <Route path='/QuestionList' element={<QuestionList/>}/>
+              <Route path='/QuestionDetail' element={<QuestionDetail/>}/>
+              <Route path='/QuestionEdit' element={<QuestionEdit/>}/>
+              <Route path='/TermsForm' element={<TermsForm/>}/>
+              <Route path='/TermesList' element={<TermesList/>}/>
+              <Route path='/TermsAcheteur' element={<TermsAcheteur/>}/>
+              <Route path='/OffreEnchere' element={<OffreEnchere/>}/>
+              <Route path='/ConfigurationEnchere' element={<ConfigurationEnchere/>}/>
+              <Route path='/CreationRole' element={<CreationRole/>}/>
+              <Route path='/ListeAdministrateur' element={<ListeAdministrateur/>}/>
+              <Route path='/CreationAdministrateur' element={<CreationAdministrateur/>}/>
+              <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
+              <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
+              <Route path='/configuration' element={<Configuration/>}/>
+              <Route path='/CreationCat' element={<Categories />} />
+              <Route path='/ListeCat' element={<ListeCategories />} />
+              <Route path='/Réclamations' element={<Réclamations />} />
+              <Route path='/Cartes' element={<Cartes />} />
+              <Route path='/Tutoriel' element={<Tutoriel />} />
+              <Route path='/Transferts' element={<Transferts />} />
+              <Route path='/CreationProd' element={<Produits />} />
+              <Route path='/CreationPart' element={<Participants />} />
+              <Route path='/ProdListe' element={<ProduitsListe />} />
+              <Route path='/catdetail/:id' element={<DataTable/>}/>
+              <Route path='/catmodif' element={<CatEdit/>}/>
+              <Route path='/PartListe' element={<ParticipantsListe/>}/>
+              <Route path='/partdetail' element={<ParticipantDetail/>}/>
+              <Route path='/prodDétail' element={<ProductDetail/>} />
+              <Route path='/prodEdit' element={<ProductEditForm/>} />
+              <Route path='/CreationAd' element={<AnnonceCreator/>} />
+              <Route path='/ListeAds' element={<AnnonceList />} />
+              <Route path='/Commandes' element={<Commandes />} />
+              <Route path='/Messagerie' element={<Messagerie />} />
+              <Route path='/Profile' element={<Profile />} />
+              <Route path='/ProdAction' element={<ProdAction />} />
+              <Route path='/TermeEdit' element={<TermeEdit />} />
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+              <Route path='/adsEdit' element={<AdsEdit />} />
+              <Route path='/adminEdit' element={<AdminEdit />} />
+              <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+            </Routes>
+          </div>
+        )}
         </div>
         {!authToken && <Login  />}
       </Router>

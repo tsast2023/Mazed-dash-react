@@ -139,7 +139,7 @@ function CreationAdministrateur() {
                         </button>
                         <button
                           type="submit"
-                          className="btn btn-dark"
+                          className="btn btn-primary"
                           id="suivantBtn"
                         >
                           {t("Enregistrer")}
