@@ -29,7 +29,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="file"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={handleImageChange}
                 />
               </div>
@@ -40,7 +39,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="number"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={(e) => setTuto({ ...tuto, ordre: e.target.value })}
                 />
               </div>
@@ -51,7 +49,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="text"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={(e) => setTuto({ ...tuto, description: e.target.value })}
                 />
               </div>
