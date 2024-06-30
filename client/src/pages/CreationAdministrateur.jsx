@@ -3,17 +3,18 @@ import { useTranslation } from "react-i18next";
 import { GlobalState } from "../GlobalState";
 import axios from "axios";
 function CreationAdministrateur() {
-  const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:"" , password:""});
   const state= useContext(GlobalState);
   const roles = state.Roles;
+  const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:(roles && roles[0].name) || "" , password:""});
+  
   const { t } = useTranslation();
 
-  const submitAdmin = (e)=>{
+  const submitAdmin = async(e)=>{
     e.preventDefault();
     console.log(data)
     try {
-      const res = axios.post('http://localhost:8081/admin/createAdmin', data)
-      console.log(res.data)
+      const res = await axios.post('http://localhost:8081/admin/createAdmin', data)
+      console.log(res)
       alert("admin is added successfully")
     } catch (error) {
       console.log(error)
@@ -110,11 +111,21 @@ function CreationAdministrateur() {
                           <div className="form-group">
                             <label htmlFor="email-id-icon">{t("Role")}</label>
                             <fieldset className="form-group mb-3">
-                              <select  onChange={e=>setData({...data , roleName:e.target.value})} className="form-select" id="basicSelect">
-                                {roles&& roles.map((item)=>(
-                                  <option value={item.name}>{item.name}</option>
-                                ))}
-                              </select>
+                            <select
+  value={data.roleName} // Bind select value to state
+  onChange={e => setData({ ...data, roleName: e.target.value })}
+  className="form-select"
+  id="basicSelect"
+>
+  
+  
+
+  {roles && roles.map(item => (
+    <option key={item.name} value={item.name}>
+      {item.name}
+    </option>
+  ))}
+</select>
                             </fieldset>
                           </div>
                         </div>
