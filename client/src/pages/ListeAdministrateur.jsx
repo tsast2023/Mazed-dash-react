@@ -1,32 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
-import { Modal, Button } from "react-bootstrap";
 
 function ListeAdministrateur() {
   const { t } = useTranslation();
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [name, setName] = useState("Alex"); // Example initial values
-  const [pseudo, setPseudo] = useState("vehi"); // Example initial values
-  const [role, setRole] = useState("Lorem"); // Example initial values
+  const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleEdit = () => {
-    setShowEditModal(true);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
 
-  const handleCloseEditModal = () => {
-    setShowEditModal(false);
-  };
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
-  const handleSaveEdit = (event) => {
-    event.preventDefault(); // Prevent form submission
-    // Implement your save logic here
-    handleCloseEditModal(); // Close modal after saving
-    Swal.fire({
-      title: t("Sauvegardé"),
-      icon: "success",
-    });
-  };
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleBlock = () => {
     Swal.fire({
@@ -40,10 +32,7 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "fait",
-          confirmButtonColor: "#b0210e",
-        });
+        Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
         Swal.fire({
           title: "Annulé",
@@ -79,22 +68,65 @@ function ListeAdministrateur() {
     });
   };
 
+  const openEditModal = () => {
+    setShowModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="content-container">
-      <div id="app">
-        <div id="main">
-          <header className="mb-3">
-            <a href="#" className="burger-btn d-block d-xl-none">
-              <i className="bi bi-justify fs-3" />
-            </a>
-          </header>
-          <section className="section">
-            <div className="card">
-              <div className="card-header">
-                <h2 className="new-price">{t("Liste des administrateurs")}</h2>
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
+      <div id="main">
+        <header className="mb-3">
+          <a href="#" className="burger-btn d-block d-xl-none">
+            <i className="bi bi-justify fs-3" />
+          </a>
+        </header>
+        <section className="section">
+          <div className="card">
+            <div className="card-header">
+              <h2 className="new-price">{t("Liste des administrateurs")}</h2>
+            </div>
+            <div className="card-body">
+              <div className="table-responsive">
+                {isMobile ? (
+                  <table className="table" id="table1">
+                    <tbody>
+                      <tr>
+                        <td>{t("Nom")}</td>
+                        <td>Alex</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Pseudo")}</td>
+                        <td>vehi</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Role")}</td>
+                        <td>Lorem</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Modifier")}</td>
+                        <td>
+                          <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{t("Bloquer")}</td>
+                        <td>
+                          <i className="fa-solid fa-lock" onClick={handleBlock}></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{t("Débloquer")}</td>
+                        <td>
+                          <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ) : (
                   <table className="table" id="table1">
                     <thead>
                       <tr>
@@ -108,13 +140,11 @@ function ListeAdministrateur() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{name}</td>
-                        <td>{pseudo}</td>
-                        <td>{role}</td>
+                        <td>Alex</td>
+                        <td>vehi</td>
+                        <td>Lorem</td>
                         <td>
-                          <Button variant="primary" onClick={handleEdit}>
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </Button>
+                          <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
                         </td>
                         <td>
                           <i className="fa-solid fa-lock" onClick={handleBlock}></i>
@@ -125,78 +155,88 @@ function ListeAdministrateur() {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                )}
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
 
-      {/* Edit Modal */}
-      <Modal show={showEditModal} onHide={handleCloseEditModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{t("Modification d'un administrateur")}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form className="form form-vertical" onSubmit={handleSaveEdit}>
-            <div className="form-body">
-              <div className="row">
-                <div className="col-12">
-                  <div className="form-group">
-                    <label htmlFor="name-id">{t("Nom")}</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name-id"
-                      placeholder="Nom"
-                      maxLength={25}
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
+      {/* Modal and Backdrop */}
+      {showModal && (
+        <div>
+          <div className="modal-backdrop fade show"></div>
+          <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: "block" }}>
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">{t("modification d'un administrateur")}</h5>
+                  <button type="button" className="btn-close" onClick={closeEditModal}></button>
                 </div>
-                <div className="col-12">
-                  <div className="form-group">
-                    <label htmlFor="pseudo-id">{t("Pseudo")}</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="pseudo-id"
-                      placeholder="Pseudo"
-                      maxLength={25}
-                      value={pseudo}
-                      onChange={(e) => setPseudo(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="form-group">
-                    <label htmlFor="role-id">{t("Role")}</label>
-                    <select
-                      className="form-select"
-                      id="role-id"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                    >
-                      <option>IT</option>
-                      <option>Blade Runner</option>
-                      <option>Thor Ragnarok</option>
-                    </select>
-                  </div>
+                <div className="modal-body">
+                    <div className="card-content">
+                      <div className="card-body">
+                        <form className="form form-vertical">
+                          <div className="form-body">
+                            <div className="row">
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="name-id">{t("Nom")}</label>
+                                  <div className="position-relative">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      id="name-id"
+                                      placeholder="Nom"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="pseudo-id">{t("Pseudo")}</label>
+                                  <div className="position-relative">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      id="pseudo-id"
+                                      placeholder="Pseudo"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="role-id">{t("Role")}</label>
+                                  <fieldset className="form-group mb-3">
+                                    <select className="form-select" id="role-id">
+                                      <option>IT</option>
+                                      <option>Blade Runner</option>
+                                      <option>Thor Ragnarok</option>
+                                    </select>
+                                  </fieldset>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="modal-footer">
+                              <button type="button" className="btn btn-secondary me-2" onClick={closeEditModal}>
+                                {t("Annuler")}
+                              </button>
+                              <button type="submit" className="btn btn-primary" id="suivantBtn">
+                                {t("Enregistrer")}
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
-            <div className="modal-footer">
-              <Button variant="secondary" onClick={handleCloseEditModal}>
-                {t("Annuler")}
-              </Button>
-              <Button type="submit" variant="primary">
-                {t("Enregistrer")}
-              </Button>
-            </div>
-          </form>
-        </Modal.Body>
-      </Modal>
+          </div>
+        </div>
+      )}
+      {/* End Modal and Backdrop */}
     </div>
   );
 }
