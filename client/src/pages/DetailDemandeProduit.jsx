@@ -105,6 +105,7 @@ const DetailDemandeProduit = () => {
             <span>Prenon</span>
           </div>
         </div>
+        <br/>
         <h1>{product.title}</h1>
         <p>{product.description}</p>
         <p>

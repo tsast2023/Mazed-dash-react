@@ -108,12 +108,12 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {authToken && (
+        {!authToken && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
         )}
-        {authToken && (
+        {!authToken && (
           <div className='content-container'>
             <Navbar />
             <Routes>
@@ -169,16 +169,13 @@ const App = () => {
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
               <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
-<<<<<<< HEAD
               <Route path='/DemandeProduit' element={<DemandeProduit/>}/>
               <Route path='/DetailDemandeProduit' element={<DetailDemandeProduit/>}/>
-=======
->>>>>>> 81e90a29a3ff4f43b471f001d4bd17c6ed10c001
             </Routes>
           </div>
         )}
         </div>
-        {!authToken && <Login  />}
+        {authToken && <Login  />}
       </Router>
     </DataProvider>
   );

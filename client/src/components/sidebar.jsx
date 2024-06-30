@@ -189,34 +189,6 @@ const Playground = () => {
                 label={t("Demande")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
               >
-<<<<<<< HEAD
-          <SubMenu
-           label={t("Demande Vendeur")}
-              
-                >
-                      <MenuItem
-                  component={<Link to="/DemandeVendeurCreation" />}
-                  onClick={() => setActiveLink("/DemandeVendeurCreation")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  {t("Demande de Création de Compte")}
-                </MenuItem>
-                <MenuItem
-                  component={<Link to="/DemandeProduit" />}
-                  onClick={() => setActiveLink("/DemandeProduit")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  {t("Demande Produit")}
-                </MenuItem>
-=======
                 <SubMenu label={t("Demande Vendeur")}>
                   <MenuItem
                     component={<Link to="/DemandeVendeurCreation" />}
@@ -230,8 +202,8 @@ const Playground = () => {
                     {t("Demande de Création de Compte")}
                   </MenuItem>
                   <MenuItem
-                    component={<Link to="/ListeAdministrateur" />}
-                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    component={<Link to="/DemandeProduit" />}
+                    onClick={() => setActiveLink("/DemandeProduit")}
                     style={
                       activeLink === "/open-street-maps"
                         ? menuItemStyles.active
@@ -286,7 +258,6 @@ const Playground = () => {
                   >
                     {t("Demande Transfert de Solde")}
                   </MenuItem>
->>>>>>> 81e90a29a3ff4f43b471f001d4bd17c6ed10c001
                 </SubMenu>
               </SubMenu>
 
