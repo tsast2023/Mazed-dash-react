@@ -106,12 +106,12 @@ const App = () => {
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!token && (
+        {authToken && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
         )}
-        {!token && (
+        {authToken && (
           <div className='content-container'>
             <Navbar />
             <Routes>
