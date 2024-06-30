@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function ProdList() {
+function DemandeProduit() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [starClicked, setStarClicked] = useState(false); // State to track star click
@@ -35,12 +35,12 @@ function ProdList() {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#b0210e",
-      confirmButtonText: t("Oui, supprimez-le !"),
+      confirmButtonText: t("Oui, annuler-le !"),
       cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire({   title: "Supprimer",
+        Swal.fire({   title: "Annuler",
           text: "Votre élément est Supprimer :)",
           icon: "success",
           confirmButtonColor: "#b0210e",
@@ -59,13 +59,13 @@ function ProdList() {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#b0210e",
-      confirmButtonText: t("Oui, désactivez-le !"),
+      confirmButtonText: t("Oui, Valider-le !"),
       cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(); // Replace with your deactivate logic
-        Swal.fire({   title: "Desactiver",
-          text: "Votre élément est Desactiver :)",
+        Swal.fire({   title: "Valider",
+          text: "Votre élément est Validee :)",
           icon: "success",
           confirmButtonColor: "#b0210e",
         });      } else {
@@ -107,7 +107,7 @@ function ProdList() {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">{t("Listes des Produits")}</h2>
+            <h2 className="new-price">{t("Demande Produits")}</h2>
           </div>
           <div className="card-body">
             {isMobile ? (
@@ -132,55 +132,45 @@ function ProdList() {
                 <thead>
                   <tr>
                     {/* Your table headers */}
-                    <th>{t("Image")}</th>
-                    <th>{t("Réf")}</th>
-                    <th>{t("Libellé")}</th>
-                    <th>{t("Stock initial")}</th>
-                    <th>{t("Stock actuel")}</th>
-                    <th>{t("Statut")}</th>
+                    <th>{t("Photo de Profile")}</th>
+                    <th>{t("Nom")}</th>
+                    <th>{t("Prenon")}</th>
+                     <th>{t("Lib Produit")}</th>
+                    <th>{t("Catégorie")}</th>
+                    <th>{t("Prix")}</th>
+                    <th>{t("Stock ")}</th>
                     <th>{t("Détail")}</th>
-                    <th>{t("Editer")}</th>
-                    <th>{t("Supprimer")}</th>
-                    <th>{t("Désactiver")}</th>
-                    <th>{t("Mettre à l'une")}</th>
+                    <th>{t("Annuler")}</th>
+                    <th>{t("Valider")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     {/* Your table data */}
                     <td>
-                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      <img style={{borderRadius:"50px"}} className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
-                    <td>01121</td>
+                    <td>lorem</td>
                     <td>Lorem</td>
+                 
                     <td>50</td>
                     <td>10</td>
+                    <td>10</td>
+                    <td>10</td>
+
+                
                     <td>
-                      <button className="btn btn-secondary">{t("Publié")}</button>
-                    </td>
-                    <td>
-                      <Link to="/prodDétail" className="btn btn-outline block">
+                      <Link to="/DetailDemandeProduit" className="btn btn-outline block">
                         <i className="fa-solid fa-eye font-medium-1"></i>
                       </Link>
                     </td>
                     <td>
-                      <Link to="/prodEdit" className="btn btn-outline block">
-                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                      </Link>
+                    <i onClick={handleDelete} class="fa-solid fa-xmark"></i>
                     </td>
+                  
                     <td>
-                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                    </td>
-                    <td>
-                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                    </td>
-                    <td>
-                      {/* Conditional rendering based on starClicked state */}
-                      {starClicked ? (
-                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                      ) : (
-                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
-                      )}
+                    <i onClick={handleBan} class="fa-solid fa-check"></i>
+
                     </td>
                   </tr>
                 </tbody>
@@ -193,4 +183,4 @@ function ProdList() {
   );
 }
 
-export default ProdList;
+export default DemandeProduit;

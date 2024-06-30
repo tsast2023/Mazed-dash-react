@@ -35,10 +35,16 @@ function QuestionList() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer:)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });            }
     });
   };
 
