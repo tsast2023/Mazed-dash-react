@@ -4,7 +4,7 @@ import "../css/sidebar.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
-
+import Cookies from 'js-cookie'
 const Theme = "light";
 
 const themes = {
@@ -541,7 +541,7 @@ const Playground = () => {
               <MenuItem
                 icon={<i className="fa-solid fa-right-from-bracket"></i>}
               >
-                {t("Déconnexion")}
+                <button onClick={()=>{Cookies.remove('token') ; window.location.reload()}}>{t("Déconnexion")}</button>
               </MenuItem>
             </Menu>
           </div>

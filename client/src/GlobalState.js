@@ -22,7 +22,7 @@ export const DataProvider = ({children}) => {
   useEffect(()=>{
     const getAllAcheteur = async() =>{
       try {
-          const  res = await axios.get('http://192.168.0.118:8081/admin/users/Acheteur');
+          const  res = await axios.get('http://localhost:8081/admin/users/Acheteur');
           console.log("Acheteur:",res.data);
           setAcheteur(res.data)
       } catch (error) {
@@ -31,7 +31,7 @@ export const DataProvider = ({children}) => {
   }
   const getAllVendeur = async() =>{
     try {
-        const  res = await axios.get('http://192.168.0.118:8081/admin/users/Vendeur');
+        const  res = await axios.get('http://localhost:8081/admin/users/Vendeur');
         console.log("Vendeur:",res.data);
         setVendeur(res.data)
     } catch (error) {
@@ -41,7 +41,7 @@ export const DataProvider = ({children}) => {
 
     const getAllCategories = async() =>{
         try {
-            const  res = await axios.get('http://192.168.0.118:8081/api/category/getAll');
+            const  res = await axios.get('http://localhost:8081/api/category/getAll');
             console.log("categories:",res.data);
             setCategories(res.data)
         } catch (error) {
@@ -50,7 +50,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllProducts = async() =>{
         try {
-            const  res = await axios.get('http://192.168.0.118:8081/api/product/getAll');
+            const  res = await axios.get('http://localhost:8081/api/product/getAll');
             console.log("Products:",res.data);
             setProducts(res.data)
         } catch (error) {
@@ -59,7 +59,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllTuto = async ()=>{
       try {
-        const res = await axios.get('http://192.168.0.118:8081/api/tuto/getAll');
+        const res = await axios.get('http://localhost:8081/api/tuto/getAll');
           console.log('tutorial:' , res.data);
           setTutotiel(res.data)
       } catch (error) {
@@ -68,7 +68,7 @@ export const DataProvider = ({children}) => {
     }
     const getCarteRechar = async()=>{
       try {
-        const res = await axios.get('http://192.168.0.118:8081/api/carte/getAll');
+        const res = await axios.get('http://localhost:8081/api/carte/getAll');
         console.log('cartes:' , res.data);
         setCarteRech(res.data);
       } catch (error) {
@@ -77,7 +77,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllBids = async()=>{
       try {
-        const res = await axios.get('http://192.168.0.118:8081/api/bid/getAll')
+        const res = await axios.get('http://localhost:8081/api/bid/getAll')
         console.log("all bids:" , res.data)
         setBids(res.data)
       } catch (error) {
@@ -86,7 +86,7 @@ export const DataProvider = ({children}) => {
     }
     const getAllPermissions = async()=>{
       try {
-        const res = await axios.get('http://192.168.0.118:8081/admin/permissions')
+        const res = await axios.get('http://localhost:8081/admin/permissions')
         console.log("all permissions:" , res.data)
         setPermissions(res.data)
       } catch (error) {
@@ -102,15 +102,15 @@ export const DataProvider = ({children}) => {
         console.log(error)
       }
     }
-    // const getAllAdmin = async()=>{
-    //   try {
-    //     const res = await axios.get('http://localhost:8081/admin/users/Admin')
-    //     console.log("all Admins:" , res.data)
-    //     setAdmins(res.data)
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
+    const getAllAdmin = async()=>{
+      try {
+        const res = await axios.get('http://localhost:8081/admin/users/Admin')
+        console.log("all Admins:" , res.data)
+        setAdmins(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     const getAllCommandes = async()=>{
       try {
         const res = await axios.get('http://localhost:8081/api/commandes/toutes-les-commandes')
@@ -129,9 +129,11 @@ export const DataProvider = ({children}) => {
         console.log(error)
       }
     }
+getAllVendeur()
+getAllAcheteur()
 getAllUsers();
 getAllCommandes();
-// getAllAdmin();     
+getAllAdmin();     
 getAllCategories();
 getAllProducts();
 getAllTuto();

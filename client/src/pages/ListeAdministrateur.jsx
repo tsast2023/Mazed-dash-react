@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext , useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
+import { GlobalState } from "../GlobalState";
+import { Modal, Button } from "react-bootstrap"; // Import Bootstrap components
+import axios from "axios";
 
 function ListeAdministrateur() {
+  const state = useContext(GlobalState);
+  const admins = state.Admins;
+  const roles = state.Roles;
+  const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:(roles && roles[0].name) || "" , password:""});
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +27,7 @@ function ListeAdministrateur() {
     };
   }, []);
 
-  const handleBlock = () => {
+  const handleBlockModal = (id) => {
     Swal.fire({
       title: t("Êtes-vous sûr?"),
       icon: "warning",
@@ -32,6 +39,7 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
+       block(id)
         Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
         Swal.fire({
@@ -44,7 +52,7 @@ function ListeAdministrateur() {
     });
   };
 
-  const handleUnblock = () => {
+  const handleUnblockModal = (id) => {
     Swal.fire({
       title: t("Êtes-vous sûr?"),
       icon: "warning",
@@ -56,6 +64,7 @@ function ListeAdministrateur() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
+        unBlock(id)
         Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
         Swal.fire({
@@ -75,7 +84,22 @@ function ListeAdministrateur() {
   const closeEditModal = () => {
     setShowModal(false);
   };
-
+const block = async(id)=>{
+try {
+    const res = await axios.put(`http://localhost:8081/admin/block/${id}`);
+    console.log(res.data) 
+} catch (error) {
+  console.log(error)
+}
+}
+const unBlock = async(id)=>{
+try {
+  const res = await axios.put(`http://localhost:8081/admin/unblock/${id}`);
+    console.log(res.data)
+} catch (error) {
+  console.log(error)
+}
+}
   return (
     <div className="content-container">
       <div id="main">
@@ -94,17 +118,23 @@ function ListeAdministrateur() {
                 {isMobile ? (
                   <table className="table" id="table1">
                     <tbody>
-                      <tr>
+                      {admins && admins.map((item)=>(
+                        <>
+                        <tr>
                         <td>{t("Nom")}</td>
-                        <td>Alex</td>
+                        <td>{item.prenom}</td>
                       </tr>
                       <tr>
                         <td>{t("Pseudo")}</td>
-                        <td>vehi</td>
+                        <td>{item.identifiant}</td>
                       </tr>
                       <tr>
                         <td>{t("Role")}</td>
-                        <td>Lorem</td>
+                        <td>{item.roleAdmin.name}</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Status")}</td>
+                        <td>{item.status}</td>
                       </tr>
                       <tr>
                         <td>{t("Modifier")}</td>
@@ -115,44 +145,52 @@ function ListeAdministrateur() {
                       <tr>
                         <td>{t("Bloquer")}</td>
                         <td>
-                          <i className="fa-solid fa-lock" onClick={handleBlock}></i>
+                          <i className="fa-solid fa-lock" onClick={()=>handleBlockModal(item._id)}></i>
                         </td>
                       </tr>
                       <tr>
                         <td>{t("Débloquer")}</td>
                         <td>
-                          <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
+                          <i className="fa-solid fa-lock-open" onClick={()=>handleUnblockModal(item._id)}></i>
                         </td>
                       </tr>
+                      </>
+                      ))}
+                      
                     </tbody>
                   </table>
                 ) : (
                   <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>{t("Nom")}</th>
+                        <th>{t("Email")}</th>
                         <th>{t("Pseudo")}</th>
                         <th>{t("Role")}</th>
+                        <th>{t("Status")}</th>
                         <th>{t("Modifier")}</th>
                         <th>{t("Bloquer")}</th>
                         <th>{t("Débloquer")}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Alex</td>
-                        <td>vehi</td>
-                        <td>Lorem</td>
-                        <td>
-                          <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
-                        </td>
-                        <td>
-                          <i className="fa-solid fa-lock" onClick={handleBlock}></i>
-                        </td>
-                        <td>
-                          <i className="fa-solid fa-lock-open" onClick={handleUnblock}></i>
-                        </td>
-                      </tr>
+                      {admins && admins.map((item)=>(
+                        <tr>
+                          <td>{item.prenom}</td>
+                          <td>{item.identifiant}</td>
+                          <td>{item.roleAdmin.name}</td>
+                          <td>{item.status}</td>
+                          <td>
+                            <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock" onClick={handleBlockModal}></i>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock-open" onClick={handleUnblockModal}></i>
+                          </td>
+                        </tr>
+                      ))}
+                     
                     </tbody>
                   </table>
                 )}
