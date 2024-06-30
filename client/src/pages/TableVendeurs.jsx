@@ -9,7 +9,7 @@ function TableVendeurs() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 750);
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);
@@ -34,10 +34,16 @@ function TableVendeurs() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Bloquer",
+          text: "Votre élément est Bloquer :)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });       } else {
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est Deblouquer :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });       }
     });
   };
 
@@ -54,10 +60,16 @@ function TableVendeurs() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Débloquer"), t("Votre élément a été débloqué."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Deblouquer",
+          text: "Votre élément est Deblouquer:)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });            } else {
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });            }
     });
   };
 

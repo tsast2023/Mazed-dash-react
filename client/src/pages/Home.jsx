@@ -58,7 +58,7 @@ const Dashboard = () => {
     <div id="main" className="container-fluid content-container">
       <div className="page-content">
         <section className="row g-3 mb-4">
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-body px-4 py-4-5">
                 <div className="row align-items-center">
@@ -69,7 +69,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                       {t("Nombre d'installation")}
+                      {t("Nombre d'installation")}
                     </h6>
                     <h6 className="stats-number mb-0">112.000</h6>
                   </div>
@@ -77,7 +77,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-body px-4 py-4-5">
                 <div className="row align-items-center">
@@ -88,7 +88,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                       {t("Nombre de désinstallations")}
+                      {t("Nombre de désinstallations")}
                     </h6>
                     <h6 className="stats-number mb-0">183.000</h6>
                   </div>
@@ -96,7 +96,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-body px-4 py-4-5">
                 <div className="row align-items-center">
@@ -107,7 +107,7 @@ const Dashboard = () => {
                   </div>
                   <div className="col">
                     <h6 className="text-muted stats-text">
-                       {t("Nombre d'inscriptions")}
+                      {t("Nombre d'inscriptions")}
                     </h6>
                     <h6 className="stats-number mb-0">80.000</h6>
                   </div>
@@ -117,7 +117,7 @@ const Dashboard = () => {
           </div>
         </section>
         <section className="row g-3">
-          <div className="col-12 col-md-4 mb-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
                 <h4>{t("Traffic sur les produits")}</h4>
@@ -132,7 +132,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-4 mb-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
                 <h4>{t("Traffic sur les enchères")}</h4>
@@ -147,7 +147,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-4 mb-4">
+          <div className="col-12 col-lg-4 mb-4">
             <div className="card h-100">
               <div className="card-header">
                 <h4>{t("Traffic sur les catégories")}</h4>

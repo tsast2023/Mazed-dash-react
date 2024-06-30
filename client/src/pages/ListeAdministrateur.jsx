@@ -1,122 +1,266 @@
-import React from "react";
+import React, { useState, useContext , useEffect } from "react";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
+import { GlobalState } from "../GlobalState";
+import { Modal, Button } from "react-bootstrap"; // Import Bootstrap components
+import axios from "axios";
 
 function ListeAdministrateur() {
-  
-  // Function to handle blocking an administrator
-  const handleBlock = () => {
-    // Show SweetAlert confirmation dialog
+  const state = useContext(GlobalState);
+  const admins = state.Admins;
+  const roles = state.Roles;
+  const [data,setData] = useState({prenom:"" , numTel:"" , email:"" , identifiant:"" , roleName:(roles && roles[0].name) || "" , password:""});
+  const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1212);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleBlockModal = (id) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once disabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Blocked it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Perform the blocking action here
-        // For example, you can make an AJAX request to disable the administrator
-        // After successful blocking, you can update the UI accordingly
-        Swal.fire("Blocked!", "The administrator has been blocked.", "success");
+       block(id)
+        Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
-        Swal.fire("Cancelled", "The administrator is safe :)", "error");
+        Swal.fire({
+          title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
 
-  // Function to handle unblocking an administrator
-  const handleUnblock = () => {
-    // Show SweetAlert confirmation dialog
+  const handleUnblockModal = (id) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once enabled, you will not be able to recover this item!",
+      title: t("Êtes-vous sûr?"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, Unblocked it!",
-      cancelButtonText: "No, cancel!",
+      confirmButtonText: t("Oui"),
+      cancelButtonText: t("Non, annuler!"),
       closeOnConfirm: false,
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Perform the unblocking action here
-        // For example, you can make an AJAX request to enable the administrator
-        // After successful unblocking, you can update the UI accordingly
-        Swal.fire("Unblocked!", "The administrator has been unblocked.", "success");
+        unBlock(id)
+        Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
       } else {
-        Swal.fire("Cancelled", "The administrator remains blocked :)", "error");
+        Swal.fire({
+          title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
 
+  const openEditModal = () => {
+    setShowModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowModal(false);
+  };
+const block = async(id)=>{
+try {
+    const res = await axios.put(`http://192.168.0.108:8081/admin/block/${id}`);
+    console.log(res.data) 
+} catch (error) {
+  console.log(error)
+}
+}
+const unBlock = async(id)=>{
+try {
+  const res = await axios.put(`http://192.168.0.108:8081/admin/unblock/${id}`);
+    console.log(res.data)
+} catch (error) {
+  console.log(error)
+}
+}
   return (
     <div className="content-container">
-      <div id="app">
-        <div id="main">
-          <header className="mb-3">
-            <a href="#" className="burger-btn d-block d-xl-none">
-              <i className="bi bi-justify fs-3" />
-            </a>
-          </header>
-          <section className="section">
-            <div className="card">
-              <div className="card-header">
-                <h2 className="new-price">Liste des administrateurs</h2>
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
+      <div id="main">
+        <header className="mb-3">
+          <a href="#" className="burger-btn d-block d-xl-none">
+            <i className="bi bi-justify fs-3" />
+          </a>
+        </header>
+        <section className="section">
+          <div className="card">
+            <div className="card-header">
+              <h2 className="new-price">{t("Liste des administrateurs")}</h2>
+            </div>
+            <div className="card-body">
+              <div className="table-responsive">
+                {isMobile ? (
+                  <table className="table" id="table1">
+                    <tbody>
+                      {admins && admins.map((item)=>(
+                        <>
+                        <tr>
+                        <td>{t("Nom")}</td>
+                        <td>{item.prenom}</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Pseudo")}</td>
+                        <td>{item.identifiant}</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Role")}</td>
+                        <td>{item.roleAdmin.name}</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Status")}</td>
+                        <td>{item.status}</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Modifier")}</td>
+                        <td>
+                          <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{t("Bloquer")}</td>
+                        <td>
+                          <i className="fa-solid fa-lock" onClick={()=>handleBlockModal(item._id)}></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{t("Débloquer")}</td>
+                        <td>
+                          <i className="fa-solid fa-lock-open" onClick={()=>handleUnblockModal(item._id)}></i>
+                        </td>
+                      </tr>
+                      </>
+                      ))}
+                      
+                    </tbody>
+                  </table>
+                ) : (
                   <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Nom</th>
-                        <th>Pseudo</th>
-                        <th>Role</th>
-                        <th>Edit</th>
-                        <th>Bloquer</th>
-                        <th>Débloquer</th>
+                        <th>{t("Email")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Role")}</th>
+                        <th>{t("Status")}</th>
+                        <th>{t("Modifier")}</th>
+                        <th>{t("Bloquer")}</th>
+                        <th>{t("Débloquer")}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Alex</td>
-                        <td>vehi</td>
-                        <td>Lorem</td>
-                        <td>
-                          <a href="utilisateur-edit.html">
-                            <i className="fa-solid fa-pen-to-square"></i>
-                          </a>
-                        </td>
-                        <td>
-                       
-                            <i onClick={handleBlock} className="fa-solid fa-lock"></i>
-                          
-                        </td>
-                        <td>
-                
-                            <i onClick={handleUnblock} className="fa-solid fa-lock-open"></i>
-                      
-                        </td>
-                      </tr>
+                      {admins && admins.map((item)=>(
+                        <tr>
+                          <td>{item.prenom}</td>
+                          <td>{item.identifiant}</td>
+                          <td>{item.roleAdmin.name}</td>
+                          <td>{item.status}</td>
+                          <td>
+                            <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock" onClick={handleBlockModal}></i>
+                          </td>
+                          <td>
+                            <i className="fa-solid fa-lock-open" onClick={handleUnblockModal}></i>
+                          </td>
+                        </tr>
+                      ))}
+                     
                     </tbody>
                   </table>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Modal and Backdrop */}
+      {showModal && (
+        <div>
+          <div className="modal-backdrop fade show"></div>
+          <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: "block" }}>
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">{t("modification d'un administrateur")}</h5>
+                  <button type="button" className="btn-close" onClick={closeEditModal}></button>
+                </div>
+                <div className="modal-body">
+                    <div className="card-content">
+                      <div className="card-body">
+                        <form className="form form-vertical">
+                          <div className="form-body">
+                            <div className="row">
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="role-id">{t("Role")}</label>
+                                  <fieldset className="form-group mb-3">
+                                    <select className="form-select" id="role-id">
+                                      <option>IT</option>
+                                      <option>Blade Runner</option>
+                                      <option>Thor Ragnarok</option>
+                                    </select>
+                                  </fieldset>
+                                </div>
+                              </div>
+                              <div className="col-12">
+                                <div className="form-group">
+                                  <label htmlFor="role-id">{t("Permission")}</label>
+                                  <fieldset className="form-group mb-3">
+                                    <select className="form-select" id="role-id">
+                                      <option>IT</option>
+                                      <option>Blade Runner</option>
+                                      <option>Thor Ragnarok</option>
+                                    </select>
+                                  </fieldset>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="modal-footer">
+                              <button type="button" className="btn btn-secondary me-2" onClick={closeEditModal}>
+                                {t("Annuler")}
+                              </button>
+                              <button type="submit" className="btn btn-primary" id="suivantBtn">
+                                {t("Enregistrer")}
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
-        {/* Contextual classes end */}
-        <footer>
-          <div className="footer clearfix mb-0 text-muted">
-            <div className="float-end">
-              <p>2024 © Mazed</p>
-            </div>
           </div>
-        </footer>
-      </div>
+        </div>
+      )}
+      {/* End Modal and Backdrop */}
     </div>
   );
 }

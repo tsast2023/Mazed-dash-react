@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Profile() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "John Doe",
     email: "john.doe@example.net",
@@ -30,7 +33,7 @@ function Profile() {
     <section className="section">
       <div className="row">
         <div className="col-12">
-          <div className="card mb-4"> {/* Added margin-bottom here */}
+          <div className="card mb-4">
             <div className="card-body">
               <div className="d-flex justify-content-center align-items-center flex-column">
                 <div className="avatar avatar-xl">
@@ -51,7 +54,7 @@ function Profile() {
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name" className="form-label">
-                      Nom & Prénom
+                      {t("Nom et Prénom")}
                     </label>
                     <input
                       type="text"
@@ -65,7 +68,7 @@ function Profile() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="email" className="form-label">
-                      Email
+                      {t("Email")}
                     </label>
                     <input
                       type="text"
@@ -79,7 +82,7 @@ function Profile() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="phone" className="form-label">
-                      Num Tél
+                      {t("Numéro de téléphone")}
                     </label>
                     <input
                       type="text"
@@ -92,22 +95,8 @@ function Profile() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="birthday" className="form-label">
-                    Date de naissance
-                    </label>
-                    <input
-                      type="date"
-                      name="birthday"
-                      id="birthday"
-                      className="form-control"
-                      placeholder="Your Birthday"
-                      value={formData.birthday}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
                     <button type="submit" className="btn btn-primary">
-                    Sauvegarder
+                    {t("Enregister")}
                     </button>
                   </div>
                 </form>
@@ -118,13 +107,13 @@ function Profile() {
         <div className="col-12">
           <div className="card">
             <div className="card-header">
-              <h3 className="new-price">Change Password</h3>
+              <h3 className="new-price">{t("Changer le mot de passe")}</h3>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <div className="form-group my-2">
                   <label htmlFor="current_password" className="form-label">
-                  Mot de passe actuel
+                  {t("Mot de passe actuel")}
                   </label>
                   <input
                     type="password"
@@ -138,7 +127,7 @@ function Profile() {
                 </div>
                 <div className="form-group my-2">
                   <label htmlFor="newPassword" className="form-label">
-                  Nouveau mot de passe
+                  {t("Nouveau mot de passe")}
                   </label>
                   <input
                     type="password"
@@ -152,7 +141,7 @@ function Profile() {
                 </div>
                 <div className="form-group my-2">
                   <label htmlFor="confirmPassword" className="form-label">
-                  Confirmez le mot de passe
+                  {t("Confirmer le mot de passe")}
                   </label>
                   <input
                     type="password"
@@ -167,7 +156,7 @@ function Profile() {
 
                 <div className="form-group my-2 d-flex justify-content-start">
                   <button type="submit" className="btn btn-primary">
-                  Sauvegarder
+                  {t("Enregister")}
                   </button>
                 </div>
               </form>

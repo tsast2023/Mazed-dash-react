@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import '../css/EnchèreCreation.css';
 import { Link } from 'react-router-dom';
 
-function EnchèreCreation() {
+function EnchèreEdit() {
   const { t } = useTranslation();
 
   const confirmAction = (actionType) => {
@@ -31,7 +31,7 @@ function EnchèreCreation() {
             <div>
               <div className="card">
                 <div className="card-header">
-                  <h2 className="new-price">{t("Création De Enchere")}</h2>
+                  <h2 className="new-price">{t("Modification De Enchere")}</h2>
                 </div>
                 <div className="card-content">
                   <div className="card-body">
@@ -135,4 +135,4 @@ function EnchèreCreation() {
   );
 }
 
-export default EnchèreCreation;
+export default EnchèreEdit;

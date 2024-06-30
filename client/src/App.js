@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { messaging } from "./firebase";
+import { getToken, onMessage } from "firebase/messaging"; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { DataProvider } from './GlobalState';
 import Sidebar from './components/sidebar';
-import './App.css';
 import Navbar from './components/navbar';
 import Home from './pages/Home';
 import Categories from './pages/catCreate';
-import ListeCategories from './pages/catList'
-// import Login from './pages/Login';
+import ListeCategories from './pages/catList';
 import Réclamations from './pages/reclamation';
 import Cartes from './pages/recharges';
 import Tutoriel from './pages/tutoriel';
 import Transferts from './pages/transfer';
 import Produits from './pages/prodCreate';
 import Participants from './pages/partCreate';
-import ProduitsListe from './pages/prodList'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProduitsListe from './pages/prodList';
 import EnchèreCreation from './pages/EnchèreCreation';
 import Configuration from './pages/configuration';
 import EnchereListe from './pages/EnchereListe';
@@ -23,8 +24,6 @@ import OffreEnchere from './pages/OffreEnchere';
 import ConfigurationEnchere from './pages/ConfigurationEnchere';
 import ParticipantForm from './ParticipantForm';
 import CreationRole from './pages/CreationRole';
-// import TableParticipant from './pages/TableParticipant';
-import { DataProvider } from './GlobalState';
 import DataTable from './pages/catPartentTab';
 import DataTable2 from './pages/catFilleTab';
 import CatEdit from './pages/catEdit';
@@ -46,7 +45,6 @@ import TermesList from './pages/TermesList';
 import TermsAcheteur from './pages/TermsAcheteur';
 import ProductDetail from './pages/prodDétail';
 import ProductEditForm from './pages/prodEdit';
-// import ParticipantDetail from './pages/ParticipantDetail'
 import AnnonceCreator from './pages/adsCreate';
 import AnnonceList from './pages/adsList';
 import Commandes from './pages/commandes';
@@ -56,21 +54,66 @@ import Messagerie from './pages/Messagerie';
 import Profile from './pages/Profile';
 import ProdAction from './pages/ProdAction';
 import TermeEdit from './pages/TermeEdit';
+import AdsEdit from './pages/adsEdit';
+import AdminEdit from './pages/adminEdit';
+import './App.css';
 import './i18n';
+import Login from './pages/Login';
+import Cookies from 'js-cookie'
+import EnchèreEdit from './pages/EnchèreEdit';
+import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
+import DemandeProduit from './pages/DemandeProduit';
+import DetailDemandeProduit from './pages/DetailDemandeProduit'
 
 const App = () => {
   const [token, setToken] = useState(null);
+  const authToken= Cookies.get('token');
+  
+  useEffect(() => {
+    const requestPermission = async () => {
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+          console.log("Notification permission granted.");
+          const token = await getToken(messaging, { vapidKey: "BHQbgJaFmRtDqVOwtRB546hlboZvPmdkJYVwOWSEJGww4CyffpyG8S4SdA9NKY-xVa9bif_rzH-icsEiZFmL2EE" });
+          console.log("FCM Token:", token);
+          setToken(token);
+          Cookies.set('fcmToken' , token)
+          // Save the token to your server for sending notifications
+        } else {
+          console.log("Unable to get permission to notify.");
+        }
+      } catch (error) {
+        console.error("Error getting permission or token", error);
+      }
+    };
+
+    requestPermission();
+
+    onMessage(messaging, (payload) => {
+      console.log("Message received. ", payload);
+      // Customize notification here
+      const notificationTitle = payload.notification.title;
+      const notificationOptions = {
+        body: payload.notification.body,
+        icon: payload.notification.icon,
+      };
+
+      new Notification(notificationTitle, notificationOptions);
+    });
+  }, []);
 
   return (
+ 
     <DataProvider>
     <Router>
       <div className='app-container'>
-        {!token && (
+        {!authToken && (
           <div className='sidebar-container'>
             <Sidebar />
           </div>
         )}
-        {!token && (
+        {!authToken && (
           <div className='content-container'>
             <Navbar />
             <Routes>
@@ -84,7 +127,7 @@ const App = () => {
               <Route path='/UtilisateurForm' element={<UtilisateurForm/>}/>
               <Route path='/TableUtilisateur' element={<TableUtilisateur/>}/>
               <Route path='/UtilisateurEdit' element={<UtilisateurEdit/>}/>
-              <Route path='/UtilisateurDetails' element={<UtilisateurDetails/>}/>
+              <Route path='/UtilisateurDetails/:id' element={<UtilisateurDetails/>}/>
               <Route path='/QuestionForm' element={<QuestionForm/>}/>
               <Route path='/QuestionList' element={<QuestionList/>}/>
               <Route path='/QuestionDetail' element={<QuestionDetail/>}/>
@@ -98,10 +141,7 @@ const App = () => {
               <Route path='/ListeAdministrateur' element={<ListeAdministrateur/>}/>
               <Route path='/CreationAdministrateur' element={<CreationAdministrateur/>}/>
               <Route path='/TableVendeurs' element={<TableVendeurs/>}/>
-              {/* <Route path='/ParticipantDetail' element={<ParticipantDetail/>}/> */}
-
               <Route path='/ParticipantForm' element={<ParticipantForm/>}/>
-              {/* <Route path='/TableParticipant' element={<TableParticipant/>}/> */}
               <Route path='/configuration' element={<Configuration/>}/>
               <Route path='/CreationCat' element={<Categories />} />
               <Route path='/ListeCat' element={<ListeCategories />} />
@@ -125,11 +165,17 @@ const App = () => {
               <Route path='/Profile' element={<Profile />} />
               <Route path='/ProdAction' element={<ProdAction />} />
               <Route path='/TermeEdit' element={<TermeEdit />} />
+              <Route path='/DemandeVendeurCreation' element={<DemandeVendeurCreation/>}/>
+              <Route path='/adsEdit' element={<AdsEdit />} />
+              <Route path='/adminEdit' element={<AdminEdit />} />
+              <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+              <Route path='/DemandeProduit' element={<DemandeProduit/>}/>
+              <Route path='/DetailDemandeProduit' element={<DetailDemandeProduit/>}/>
             </Routes>
           </div>
         )}
         </div>
-        {/* {!token && <Login setToken={setToken} />} */}
+        {authToken && <Login  />}
       </Router>
     </DataProvider>
   );

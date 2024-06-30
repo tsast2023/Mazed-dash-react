@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Table, Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function ProdList() {
+const ProdList = () => {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
+  const [starClicked, setStarClicked] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [label, setLabel] = useState("");
+  const [image, setImage] = useState(null);
+  const [initialStock, setInitialStock] = useState("");
+  const [currentStock, setCurrentStock] = useState("");
+  const [color, setColor] = useState("#ffffff");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 750);
+      setIsMobile(window.innerWidth < 1212);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Initial check
     handleResize();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const deleteItem = () => {
     // Implement your delete logic here
+    console.log("Item deleted");
   };
 
   const handleDelete = () => {
@@ -31,199 +39,342 @@ function ProdList() {
       text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, supprimez-le !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        }); }
     });
   };
-
+  
   const handleBan = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, désactivez-le !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(); // Replace with your deactivate logic
-        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Desactiver",
+          text: "Votre élément est Desactiver :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });      }
     });
   };
-
+  
   const handleArrowClick = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, mettre à l'une !"),
-      cancelButtonText: t("Non, annuler !"),
-      closeOnConfirm: false,
-      closeOnCancel: false,
+      cancelButtonText: t("Non, annuler !")
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem(); // Replace with your "put to top" logic
-        Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        // Toggle starClicked state
+        setStarClicked(!starClicked);
+        Swal.fire({   title: "Effectuer",
+          text: "Votre élément est Effectuer :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });      }
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically handle the form submission,
+    // like sending data to a server.
+    console.log({
+      label,
+      image,
+      initialStock,
+      currentStock,
+      color,
+      description,
+    });
+    // You can add further logic here, like closing the modal after successful submission
+    setShowEditModal(false);
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleEditClick = () => {
+    // Show the edit modal
+    setShowEditModal(true);
+  };
+
+  const handleCloseEditModal = () => {
+    // Close the edit modal
+    setShowEditModal(false);
   };
 
   return (
     <div className="content-container">
-      <div id="app">
-        <div id="main">
-          <header className="mb-3">
-            <a href="#" className="burger-btn d-block d-xl-none">
-              <i className="bi bi-justify fs-3"></i>
-            </a>
-          </header>
+      <section className="section">
+        <div className="card">
+          <div className="card-header">
+            <h2 className="new-price">{t("Listes des Produits")}</h2>
+          </div>
+          <div className="card-body">
+            {isMobile ? (
+              <Table responsive="sm">
+                <tbody>
+                  <tr>
+                    <td>{t("Image")}</td>
+                    <td> <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Réf")}</td>
+                    <td>01121</td>
+                  </tr>
+                  <tr>
+                  <td>{t("Libellé")}</td>
+                  <td>Lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Stock initial")}</td>
+                    <td>50</td>
+                  </tr>
+                  <tr>
+                  <td>{t("Stock actuel")}</td>
+                  <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Statut")}</td>
+                    <td>
+                      <button className="btn btn-secondary">{t("Publié")}</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Détail")}</td>
+                    <td>
+                      <Link to="/prodDétail" className="btn btn-outline block">
+                        <i className="fa-solid fa-eye font-medium-1"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Modifier")}</td>
+                    <td>
+                      <button className="btn btn-outline block" onClick={handleEditClick}>
+                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Supprimer")}</td>
+                    <td>
+                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Désactiver")}</td>
+                    <td>
+                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Mettre à l'une")}</td>
+                    <td>
+                      {/* Conditional rendering based on starClicked state */}
+                      {starClicked ? (
+                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      ) : (
+                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            ) : (
+              <Table responsive="sm">
+                <thead>
+                  <tr>
+                    {/* Your table headers */}
+                    <th>{t("Image")}</th>
+                    <th>{t("Réf")}</th>
+                    <th>{t("Libellé")}</th>
+                    <th>{t("Stock initial")}</th>
+                    <th>{t("Stock actuel")}</th>
+                    <th>{t("Statut")}</th>
+                    <th>{t("Détail")}</th>
+                    <th>{t("Modifier")}</th>
+                    <th>{t("Supprimer")}</th>
+                    <th>{t("Désactiver")}</th>
+                    <th>{t("Mettre à l'une")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {/* Your table data */}
+                    <td>
+                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
+                    <td>01121</td>
+                    <td>Lorem</td>
+                    <td>50</td>
+                    <td>10</td>
+                    <td>
+                      <button className="btn btn-secondary">{t("Publié")}</button>
+                    </td>
+                    <td>
+                      <Link to="/prodDétail" className="btn btn-outline block">
+                        <i className="fa-solid fa-eye font-medium-1"></i>
+                      </Link>
+                    </td>
+                    <td>
+                      <button className="btn btn-outline block" onClick={handleEditClick}>
+                        <i className="fa-solid fa-pen-to-square font-medium-1"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
+                    </td>
+                    <td>
+                      <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
+                    </td>
+                    <td>
+                      {/* Conditional rendering based on starClicked state */}
+                      {starClicked ? (
+                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      ) : (
+                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            )}
+          </div>
+        </div>
+      </section>
 
-          <div className="page-heading">
-            <div className="page-title">
+      {/* Bootstrap Modal for Edit */}
+      <Modal show={showEditModal} onHide={handleCloseEditModal} backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Modifier de Produit")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form className="form form-vertical" onSubmit={handleSubmit}>
+            <div className="form-body">
               <div className="row">
-                <div className="col-12 col-md-6 order-md-1 order-last">
-                  {/* <h3>Produits</h3> */}
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="label">{t("Libellé")}</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="label"
+                      maxLength="25"
+                      value={label}
+                      onChange={(e) => setLabel(e.target.value)}
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
-            <section className="section">
-              <div className="card">
-                <div className="card-header">
-                  <h2 className="new-price">{t("Listes des Produits")}</h2>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="image">{t("Image")}</label>
+                    <input
+                      type="file"
+                      className="form-control"
+                      id="image"
+                      onChange={handleImageChange}
+                    />
+                  </div>
                 </div>
-                <div className="card-body">
-                  <div className="table-responsive">
-                    {isMobile ? (
-                      <table style={{ width: "100%", textAlign: "center" }}>
-                        <tbody>
-                          {/* Replace this with dynamic content */}
-                          <tr style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                            <hr />
-                            <td style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                              <th>{t("Réf")}</th>
-                              <tr className="text-bold-500">01121</tr>
-                              <th>{t("Libellé")}</th>
-                              <tr className="text-bold-500">Lorem</tr>
-                              <th>{t("Image")}</th>
-                              <tr>
-                                <img src="" alt="img" />
-                              </tr>
-                              <th>{t("Stock initial")}</th>
-                              <tr className="text-bold-500">50</tr>
-                              <th>{t("Stock actuel")}</th>
-                              <tr className="text-bold-500">10</tr>
-                              <th>{t("Statut")}</th>
-                              <tr>
-                                <button className="btn btn-secondary">{t("Publié")}</button>
-                              </tr>
-                              <th>{t("Détail")}</th>
-                              <tr>
-                                <Link to="/prodDétail" className="btn btn-outline block">
-                                  <i className="fa-solid fa-eye font-medium-1"></i>
-                                </Link>
-                              </tr>
-                              <th>{t("Editer")}</th>
-                              <tr>
-                                <Link to="/prodEdit" className="btn btn-outline block">
-                                  <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                                </Link>
-                              </tr>
-                              <th>{t("Supprimer")}</th>
-                              <tr>
-                                <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                              </tr>
-                              <th>{t("Désactiver")}</th>
-                              <tr>
-                                <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                              </tr>
-                              <th>{t("Mettre à l'une")}</th>
-                              <tr>
-                                <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                              </tr>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    ) : (
-                      <table className="table" id="table1">
-                        <thead>
-                          <tr>
-                            <th>{t("Réf")}</th>
-                            <th>{t("Libellé")}</th>
-                            <th>{t("Image")}</th>
-                            <th>{t("Stock initial")}</th>
-                            <th>{t("Stock actuel")}</th>
-                            <th>{t("Statut")}</th>
-                            <th>{t("Détail")}</th>
-                            <th>{t("Editer")}</th>
-                            <th>{t("Supprimer")}</th>
-                            <th>{t("Désactiver")}</th>
-                            <th>{t("Mettre à l'une")}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {/* Replace this with dynamic content */}
-                          <tr>
-                            <td>01121</td>
-                            <td>Lorem</td>
-                            <td>
-                              <img src="" alt="img" />
-                            </td>
-                            <th>50</th>
-                            <th>10</th>
-                            <th>
-                              <button className="btn btn-secondary">{t("Publié")}</button>
-                            </th>
-                            <th>
-                              <Link to="/prodDétail" className="btn btn-outline block">
-                                <i className="fa-solid fa-eye font-medium-1"></i>
-                              </Link>
-                            </th>
-                            <th>
-                              <Link to="/prodEdit" className="btn btn-outline block">
-                                <i className="fa-solid fa-pen-to-square font-medium-1"></i>
-                              </Link>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-trash deleteIcon font-medium-1" onClick={handleDelete}></i>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-ban blockIcon" onClick={handleBan}></i>
-                            </th>
-                            <th>
-                              <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                            </th>
-                          </tr>
-                        </tbody>
-                      </table>
-                    )}
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="initialStock">{t("Stock initial")}</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="initialStock"
+                      value={initialStock}
+                      onChange={(e) => setInitialStock(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="currentStock">{t("Stock actuel")}</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="currentStock"
+                      value={currentStock}
+                      onChange={(e) => setCurrentStock(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="color">{t("Couleur")}</label>
+                    <input
+                      type="color"
+                      className="form-control"
+                      id="color"
+                      value={color}
+                      onChange={(e) => setColor(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-group">
+                    <label htmlFor="description">{t("Description")}</label>
+                    <textarea
+                      className="form-control"
+                      id="description"
+                      rows="3"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-        </div>
-      </div>
+            </div>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseEditModal}>
+                {t("Annuler")}
+              </Button>
+              <Button variant="primary" type="submit">
+                {t("Enregistrer")}
+              </Button>
+            </Modal.Footer>
+          </form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
-}
+};
 
 export default ProdList;

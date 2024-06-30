@@ -97,7 +97,7 @@ const CatCreate = () => {
                   </optgroup>
                 </select>
               </div>
-
+              
               {inputs.map((input, index) => (
                 <div
                   key={index}

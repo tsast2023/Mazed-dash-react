@@ -49,11 +49,15 @@ const Navbar = ({ username }) => {
             <i className="fas fa-bell"></i>
           </div>
           <div className="profile-icon">
-            <img src="./user.png" alt="Profile" className="profile-image" />
+            {/* Link to profile page */}
+            <Link to="/Profile">
+              <img src="./user.png" alt="Profile" className="profile-image" />
+            </Link>
           </div>
         </div>
       </div>
 
+      {/* Notification menu */}
       <div
         className={`notification-menu ${isNotificationMenuOpen ? "open" : ""}`}
         style={{ position: "absolute", right: 0, top: "50px" }}
@@ -61,21 +65,33 @@ const Navbar = ({ username }) => {
         <div className="notification-content">
           <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-envelope"></i>
+              <i className="fa-solid fa-user-plus"></i> 
             </div>
-            {t("New message from John")}
+            {t("Demande Création de vendeur")}
           </div>
           <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-calendar-alt"></i>
+              <i className="fa-solid fa-gavel"></i> 
             </div>
-            {t("Meeting reminder at 3:00 PM")}
+            {t("Demande Enchére")}
           </div>
           <div className="notification-item">
             <div className="icon-circle">
-              <i className="fas fa-exclamation-circle"></i>
+              <i className="fa-solid fa-money-bill-transfer"></i> 
             </div>
-            {t("System update available")}
+            {t("Demande transfert de solde")}
+          </div>
+          <div className="notification-item">
+            <div className="icon-circle">
+              <i className="fa-solid fa-layer-group"></i>
+            </div>
+            {t("Demande Catégorie")}
+          </div>
+          <div className="notification-item">
+            <div className="icon-circle">
+              <i className="fa-solid fa-diamond"></i>
+            </div>
+            {t("Demande de produit")}
           </div>
         </div>
         <div className="close-button" onClick={handleNotificationToggle}>
@@ -83,6 +99,7 @@ const Navbar = ({ username }) => {
         </div>
       </div>
 
+      {/* Language menu */}
       <div
         className={`notification-menu ${isLangMenuOpen ? "open" : ""}`}
         style={{ position: "absolute", right: 0, top: "50px" }}
@@ -112,6 +129,7 @@ const Navbar = ({ username }) => {
         </div>
       </div>
 
+      {/* Settings menu */}
       <div className={`notification-menu ${isSettingsMenuOpen ? "open" : ""}`}>
         <div className="notification-content">
           <div className="notification-item">

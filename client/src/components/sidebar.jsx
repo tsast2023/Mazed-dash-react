@@ -4,7 +4,7 @@ import "../css/sidebar.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
-
+import Cookies from 'js-cookie'
 const Theme = "light";
 
 const themes = {
@@ -150,7 +150,7 @@ const Playground = () => {
                     activeLink === "/google-maps" ? menuItemStyles.active : null
                   }
                 >
-                  Creation D'un Role
+                  {t("Creation D'un Role")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/ListeAdministrateur" />}
@@ -161,7 +161,7 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Liste des Administrateur
+                  {t("Liste des administrateurs")}
                 </MenuItem>
                 <MenuItem
                   component={<Link to="/CreationAdministrateur" />}
@@ -172,11 +172,10 @@ const Playground = () => {
                       : null
                   }
                 >
-                  Créer un Administrateur
+                  {t("Créer un Administrateur")}
                 </MenuItem>
-        
               </SubMenu>
-              <MenuItem
+              {/* <MenuItem
                 component={<Link to="/Commandes" />}
                 icon={<i className="fa-solid fa-bookmark"></i>}
                 onClick={() => setActiveLink("/Commandes")}
@@ -185,86 +184,83 @@ const Playground = () => {
                 }
               >
                 {t("Demande")}
-              </MenuItem>
+              </MenuItem> */}
               <SubMenu
-                label={t("Demande Vendeur")}
+                label={t("Demande")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
               >
-        
-                <MenuItem
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande de Création de Compte
-                </MenuItem>
-                <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande Produit
-                </MenuItem>
-          
+                <SubMenu label={t("Demande Vendeur")}>
+                  <MenuItem
+                    component={<Link to="/DemandeVendeurCreation" />}
+                    onClick={() => setActiveLink("/DemandeVendeurCreation")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande de Création de Compte")}
+                  </MenuItem>
+                  <MenuItem
+                    component={<Link to="/DemandeProduit" />}
+                    onClick={() => setActiveLink("/DemandeProduit")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande Produit")}
+                  </MenuItem>
+                </SubMenu>
+                <SubMenu label={t("Demande Administrateur")}>
+                  <MenuItem
+                    component={<Link to="/ListeAdministrateur" />}
+                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande Produit")}
+                  </MenuItem>
+                  <MenuItem
+                    component={<Link to="/ListeAdministrateur" />}
+                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande Enchére")}
+                  </MenuItem>
+                  <MenuItem
+                    component={<Link to="/ListeAdministrateur" />}
+                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande Catégorie")}
+                  </MenuItem>
+                  <MenuItem
+                    component={<Link to="/ListeAdministrateur" />}
+                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    style={
+                      activeLink === "/open-street-maps"
+                        ? menuItemStyles.active
+                        : null
+                    }
+                  >
+                    {t("Demande Transfert de Solde")}
+                  </MenuItem>
+                </SubMenu>
               </SubMenu>
-              <SubMenu
-                label={t("Demande Administrateur")}
-                icon={<i className="fa-solid fa-bookmark"></i>}
-              >
-        
-                <MenuItem
-                  component={<Link to="/ListeAdministrateur" />}
-                  onClick={() => setActiveLink("/ListeAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande Produit
-                </MenuItem>
-                <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande Enchére
-                </MenuItem>
-                <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande Catégorie 
-                </MenuItem>
-                <MenuItem
-                  component={<Link to="/CreationAdministrateur" />}
-                  onClick={() => setActiveLink("/CreationAdministrateur")}
-                  style={
-                    activeLink === "/open-street-maps"
-                      ? menuItemStyles.active
-                      : null
-                  }
-                >
-                  Demande Transfert de Solde
-                </MenuItem>
-              </SubMenu>
+
               <SubMenu
                 label={t("Catégories")}
                 icon={<i className="fa-solid fa-layer-group"></i>}
@@ -472,10 +468,22 @@ const Playground = () => {
                 label={t("Termes et conditions")}
                 icon={<i className="fa-solid fa-clipboard"></i>}
               >
-                <MenuItem component={<Link to="/TermsForm" />}>
+                <MenuItem
+                  component={<Link to="/TermsForm" />}
+                  onClick={() => setActiveLink("/TermsForm")}
+                  style={
+                    activeLink === "/TermsForm" ? menuItemStyles.active : null
+                  }
+                >
                   {t("Création d'un terme")}
                 </MenuItem>
-                <MenuItem component={<Link to="/TermesList" />}>
+                <MenuItem
+                  component={<Link to="/TermesList" />}
+                  onClick={() => setActiveLink("/TermesList")}
+                  style={
+                    activeLink === "/TermesList" ? menuItemStyles.active : null
+                  }
+                >
                   {t("Termes et conditions")}
                 </MenuItem>
               </SubMenu>
@@ -533,7 +541,7 @@ const Playground = () => {
               <MenuItem
                 icon={<i className="fa-solid fa-right-from-bracket"></i>}
               >
-                {t("Déconnexion")}
+                <button onClick={()=>{Cookies.remove('token') ; window.location.reload()}}>{t("Déconnexion")}</button>
               </MenuItem>
             </Menu>
           </div>

@@ -65,14 +65,14 @@ function CategoryModificationForm() {
                   <div className="modal-footer">
                     <button
                       type="button"
-                      className="btn btn-light-secondary me-2"
+                      className="btn btn-secondary me-2"
                       onClick={handleCancel}
                     >
                       {t("Annuler")}
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-dark"
+                      className="btn btn-primary"
                       id="suivantBtn"
                     >
                       {t("Enregistrer")}
