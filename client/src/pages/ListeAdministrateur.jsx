@@ -2,7 +2,7 @@ import React, { useState, useContext , useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import { GlobalState } from "../GlobalState";
-import { Modal, Button } from "react-bootstrap"; // Import Bootstrap components
+import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 function ListeAdministrateur() {

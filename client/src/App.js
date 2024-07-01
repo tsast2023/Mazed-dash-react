@@ -64,6 +64,7 @@ import EnchèreEdit from './pages/EnchèreEdit';
 import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
 import DemandeProduit from './pages/DemandeProduit';
 import DetailDemandeProduit from './pages/DetailDemandeProduit'
+import DemandeProduitAdmin from './pages/DemandeProduitAdmin';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -171,6 +172,7 @@ const App = () => {
               <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
               <Route path='/DemandeProduit' element={<DemandeProduit/>}/>
               <Route path='/DetailDemandeProduit' element={<DetailDemandeProduit/>}/>
+              <Route path='/DemandeProduitAdmin' element={<DemandeProduitAdmin />} />
             </Routes>
           </div>
         )}
