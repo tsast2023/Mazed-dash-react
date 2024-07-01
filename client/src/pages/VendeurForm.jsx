@@ -4,9 +4,14 @@ import { useTranslation } from "react-i18next";
 function VendeurForm() {
   const { t } = useTranslation();
   const [selectedType, setSelectedType] = useState("square");
+  const [birthdate, setBirthdate] = useState("");
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
+  };
+
+  const handleBirthdateChange = (event) => {
+    setBirthdate(event.target.value);
   };
 
   return (
@@ -90,6 +95,20 @@ function VendeurForm() {
                               type="text"
                               className="form-control"
                               id="telephone"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="form-group">
+                          <label>{t("Date de Naissance")}</label>
+                          <div className="position-relative">
+                            <input
+                              type="date"
+                              className="form-control"
+                              id="birthdate"
+                              value={birthdate}
+                              onChange={handleBirthdateChange}
                             />
                           </div>
                         </div>

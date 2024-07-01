@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 import "../css/DemandeCreation.css";
 
 
 function DemandeVendeurCreation() {
+  const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -86,50 +88,50 @@ function DemandeVendeurCreation() {
           <section className="section">
             <div className="card">
               <div className="card-header">
-                <h2 className="new-price">Demande de Creation</h2>
+                <h2 className="new-price">{t("Demande de Création")}</h2>
               </div>
               <div className="card-body">
                 {isMobile ? (
                   <table className="table" id="table1">
                     <tbody>
                       <tr>
-                        <td>Profile Image</td>
+                        <td>{t("Photo de Profile")}</td>
                         <td>
                           <img className="imgtable" src="./Mazed.jpg" alt="img" />
                         </td>
                       </tr>
                       <tr>
-                        <td>Prenom</td>
+                        <td>{t("Prénom")}</td>
                         <td>Kross</td>
                       </tr>
                       <tr>
-                        <td>Date De Naissance</td>
+                        <td>{t("Date De Naissance")}</td>
                         <td>08/06/2024</td>
                       </tr>
                       <tr>
-                        <td>Nom Famille</td>
+                        <td>{t("Nom Famille")}</td>
                         <td>vehi</td>
                       </tr>
                       <tr>
-                        <td>Pseudo</td>
+                        <td>{t("Pseudo")}</td>
                         <td>Alex</td>
                       </tr>
                       <tr>
-                        <td>Nom Societé</td>
+                        <td>{t("Nom Societé")}</td>
                         <td>Tsast</td>
                       </tr>
                       <tr>
-                        <td>Num Tel</td>
+                        <td>{t("Numéro de téléphone")}</td>
                         <td>69 696 969</td>
                       </tr>
                       <tr>
-                        <td>Valider</td>
+                        <td>{t("Valider")}</td>
                         <td>
                           <i onClick={handleBlock} className="fa-solid fa-check"></i>
                         </td>
                       </tr>
                       <tr>
-                        <td>Refuser</td>
+                        <td>{t("Refuser")}</td>
                         <td>
                           <i onClick={handleUnblock} className="fa-solid fa-xmark"></i>
                         </td>
@@ -140,15 +142,15 @@ function DemandeVendeurCreation() {
                   <table className="table" id="table1">
                     <thead>
                       <tr>
-                        <th>Profile Image</th>
-                        <th>Prenom</th>
-                        <th>Date De Naissance</th>
-                        <th>Nom Famille</th>
-                        <th>Pseudo</th>
-                        <th>Nom Societé</th>
-                        <th>Num Tel</th>
-                        <th>Valider</th>
-                        <th>Refuser</th>
+                        <th>{t("Photo de Profile")}</th>
+                        <th>{t("Prénom")}</th>
+                        <th>{t("Date De Naissance")}</th>
+                        <th>{t("Nom Famille")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Nom Societé")}</th>
+                        <th>{t("Numéro de téléphone")}</th>
+                        <th>{t("Valider")}</th>
+                        <th>{t("Refuser")}</th>
                       </tr>
                     </thead>
                     <tbody>

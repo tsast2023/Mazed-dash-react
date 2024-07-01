@@ -116,7 +116,7 @@ function DemandeProduit() {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">{t("Demande Produits")}</h2>
+            <h2 className="new-price">{t("Demande Produit")}</h2>
           </div>
           <div className="card-body">
             <Table responsive="sm">
@@ -156,7 +156,7 @@ function DemandeProduit() {
                     <td>10</td>
                   </tr>
                   <tr>
-                    <td>{t("Stock ")}</td>
+                    <td>{t("Stock")}</td>
                     <td>10</td>
                   </tr>
                   <tr>
@@ -196,7 +196,7 @@ function DemandeProduit() {
                       <th>{t("Lib Produit")}</th>
                       <th>{t("Catégorie")}</th>
                       <th>{t("Prix")}</th>
-                      <th>{t("Stock ")}</th>
+                      <th>{t("Stock")}</th>
                       <th>{t("Détail")}</th>
                       <th>{t("Valider")}</th>
                       <th>{t("Annuler")}</th>

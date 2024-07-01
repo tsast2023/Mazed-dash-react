@@ -8,6 +8,7 @@ const resources = {
       "Tableau de bord": "Dashboard",
       "Super Admin": "Super Admin",
       "Catégories": "Categories",
+      "Catégorie": "Category",
       "Création de catégorie": "Category Creation",
       "Liste de catégories": "Category List",
       "Produits": "Products",
@@ -372,6 +373,10 @@ const resources = {
       "Nouveau Enchére": "New auction",
       "Ancien catégorie": "Old category",
       "Nouveau catégorie" : "New category",
+      "Stock": "Stock",
+      "Nom de societe": "Company name",
+      "Type vendeurs": "Seller type",
+      "Date de Naissance": "Birth date",
     }
   },
   fr: {
@@ -752,6 +757,12 @@ const resources = {
         "Nouveau Enchére": "Nouveau Enchére",
         "Ancien catégorie": "Ancien catégorie",
         "Nouveau catégorie" : "Nouveau catégorie",
+        "Catégorie": "Catégorie",
+        "Stock": "Stock",
+        "Demande de Création": "Demande de Création",
+        "Nom de societe": "Nom de societe",
+        "Type vendeurs": "Type vendeurs",
+        "Date de Naissance": "Date de Naissance",
     }
   },
   ar: {
@@ -810,6 +821,8 @@ const resources = {
       "Détail": "التفاصيل",
       "Modifier": "تعديل",
       "Désactiver": "تعطيل",
+      "Date de Naissance": "تاريخ الولادة",
+      "Type vendeurs": "نوع البائع",
       "Supprimer": "حذف",
       "Votre élément a été supprimé.": "لقد تم حذف البند الخاص بك.",
       "Mettre a l'une": "وضع في واحد",
@@ -1134,6 +1147,10 @@ const resources = {
       "Nouveau Enchére": "المزاد الجديد",
       "Ancien catégorie": "الفئة القديمة",
       "Nouveau catégorie" : "الفئة الجديدة",
+      "Catégorie": "الفئة",
+      "Stock": "المخزون",
+      "Demande de Création": "الطلب على إنتاج",
+      "Nom de societe": "إسم الشركة",
     }
   }
 };
