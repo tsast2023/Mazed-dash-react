@@ -364,6 +364,14 @@ const resources = {
       "mot de passe": "password",
       "Identifiant": "Identifier",
       "Particulier": "Particular",
+      "Photo de Profile": "Profile Photo",
+      "Nouveau produit": "New product",
+      "Ancien produit": "Old product",
+      "Action": "Action",
+      "Ancien Enchére": "Old auction",
+      "Nouveau Enchére": "New auction",
+      "Ancien catégorie": "Old category",
+      "Nouveau catégorie" : "New category",
     }
   },
   fr: {
@@ -736,6 +744,14 @@ const resources = {
         "mot de passe": "mot de passe",
         "Identifiant": "Identifiant",
         "Particulier": "Particulier",
+        "Photo de Profile": "Photo de Profile",
+        "Ancien produit": "Ancien produit",
+        "Nouveau produit": "Nouveau produit",
+        "Action": "Action",
+        "Ancien Enchére": "Ancien Enchére",
+        "Nouveau Enchére": "Nouveau Enchére",
+        "Ancien catégorie": "Ancien catégorie",
+        "Nouveau catégorie" : "Nouveau catégorie",
     }
   },
   ar: {
@@ -1110,6 +1126,14 @@ const resources = {
       "Changer Statut": "تغيير الوضع",
       "mot de passe": "أكد كلمة المرور",
       "Particulier": "خاص",
+      "Photo de Profile": "صورة الملف الشخصي",
+      "Ancien produit": "منتج قديم",
+      "Nouveau produit": "منتج جديد",
+      "Action": "فعل",
+      "Ancien Enchére": "المزاد القديم",
+      "Nouveau Enchére": "المزاد الجديد",
+      "Ancien catégorie": "الفئة القديمة",
+      "Nouveau catégorie" : "الفئة الجديدة",
     }
   }
 };
