@@ -117,7 +117,7 @@ function DemandeVendeurCreation() {
                         <td>Alex</td>
                       </tr>
                       <tr>
-                        <td>{t("Nom Societé")}</td>
+                        <td>{t("Nom Societe")}</td>
                         <td>Tsast</td>
                       </tr>
                       <tr>
@@ -147,7 +147,7 @@ function DemandeVendeurCreation() {
                         <th>{t("Date De Naissance")}</th>
                         <th>{t("Nom Famille")}</th>
                         <th>{t("Pseudo")}</th>
-                        <th>{t("Nom Societé")}</th>
+                        <th>{t("Nom Societe")}</th>
                         <th>{t("Numéro de téléphone")}</th>
                         <th>{t("Valider")}</th>
                         <th>{t("Refuser")}</th>
