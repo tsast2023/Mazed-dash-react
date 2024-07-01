@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 function DemandeProduit() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-  const [starClicked, setStarClicked] = useState(false); // State to track star click
+  const [starClicked, setStarClicked] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,44 +15,46 @@ function DemandeProduit() {
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Initial check
     handleResize();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const deleteItem = () => {
-    // Implement your delete logic here
     console.log("Item deleted");
   };
 
   const handleDelete = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
-      text: t("Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"),
+      text: t(
+        "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !"
+      ),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, annuler-le !"),
-      cancelButtonText: t("Non, annuler !")
+      cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire({   title: "Annuler",
+        Swal.fire({
+          title: "Annuler",
           text: "Votre élément est Supprimer :)",
           icon: "success",
           confirmButtonColor: "#b0210e",
-        });      } else {
-        Swal.fire({   title: "Annulé",
+        });
+      } else {
+        Swal.fire({
+          title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
           confirmButtonColor: "#b0210e",
-        }); }
+        });
+      }
     });
   };
-  
+
   const handleBan = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -60,23 +62,27 @@ function DemandeProduit() {
       showCancelButton: true,
       confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, Valider-le !"),
-      cancelButtonText: t("Non, annuler !")
+      cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem(); // Replace with your deactivate logic
-        Swal.fire({   title: "Valider",
+        deleteItem();
+        Swal.fire({
+          title: "Valider",
           text: "Votre élément est Validee :)",
           icon: "success",
           confirmButtonColor: "#b0210e",
-        });      } else {
-          Swal.fire({   title: "Annulé",
-            text: "Votre élément est en sécurité :)",
-            icon: "error",
-            confirmButtonColor: "#b0210e",
-          });      }
+        });
+      } else {
+        Swal.fire({
+          title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
+      }
     });
   };
-  
+
   const handleArrowClick = () => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -84,21 +90,24 @@ function DemandeProduit() {
       showCancelButton: true,
       confirmButtonColor: "#b0210e",
       confirmButtonText: t("Oui, mettre à l'une !"),
-      cancelButtonText: t("Non, annuler !")
+      cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
-        // Toggle starClicked state
         setStarClicked(!starClicked);
-        Swal.fire({   title: "Effectuer",
+        Swal.fire({
+          title: "Effectuer",
           text: "Votre élément est Effectuer :)",
           icon: "success",
           confirmButtonColor: "#b0210e",
-        });      } else {
-          Swal.fire({   title: "Annulé",
-            text: "Votre élément est en sécurité :)",
-            icon: "error",
-            confirmButtonColor: "#b0210e",
-          });      }
+        });
+      } else {
+        Swal.fire({
+          title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
+      }
     });
   };
 
@@ -110,72 +119,132 @@ function DemandeProduit() {
             <h2 className="new-price">{t("Demande Produits")}</h2>
           </div>
           <div className="card-body">
-            {isMobile ? (
-              <Table responsive="sm">
-                <tbody>
-                  {/* Your table rows */}
-                  <tr>
-                    <td>{t("Mettre à l'une")}</td>
-                    <td>
-                      {/* Conditional rendering based on starClicked state */}
-                      {starClicked ? (
-                        <i className="fa-solid fa-star arrowIcon" onClick={handleArrowClick}></i>
-                      ) : (
-                        <i className="fa-regular fa-star arrowIcon" onClick={handleArrowClick}></i>
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            ) : (
-              <Table responsive="sm">
-                <thead>
-                  <tr>
-                    {/* Your table headers */}
-                    <th>{t("Photo de Profile")}</th>
-                    <th>{t("Nom")}</th>
-                    <th>{t("Prenon")}</th>
-                     <th>{t("Lib Produit")}</th>
-                    <th>{t("Catégorie")}</th>
-                    <th>{t("Prix")}</th>
-                    <th>{t("Stock ")}</th>
-                    <th>{t("Détail")}</th>
-                    <th>{t("Annuler")}</th>
-                    <th>{t("Valider")}</th>
-                  </tr>
-                </thead>
+            <Table responsive="sm">
+              {isMobile ? (
                 <tbody>
                   <tr>
-                    {/* Your table data */}
+                    <td>{t("Photo de Profile")}</td>
                     <td>
-                      <img style={{borderRadius:"50px"}} className="imgtable" src="./Mazed.jpg" alt="img" />
+                      <img
+                        style={{ borderRadius: "50px" }}
+                        className="imgtable"
+                        src="./Mazed.jpg"
+                        alt="img"
+                      />
                     </td>
-                    <td>lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Nom")}</td>
                     <td>Lorem</td>
-                 
-                    <td>50</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
-
-                
+                  </tr>
+                  <tr>
+                    <td>{t("Prénom")}</td>
+                    <td>Lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Lib Produit")}</td>
                     <td>
-                      <Link to="/DetailDemandeProduit" className="btn btn-outline block">
+                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Catégorie")}</td>
+                    <td>Lorem</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Prix")}</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Stock ")}</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>{t("Détail")}</td>
+                    <td>
+                      <Link
+                        to="/DetailDemandeProduit"
+                        className="btn btn-outline block"
+                      >
                         <i className="fa-solid fa-eye font-medium-1"></i>
                       </Link>
                     </td>
+                  </tr>
+                  <tr>
+                    <td>{t("Valider")}</td>
                     <td>
-                    <i onClick={handleDelete} class="fa-solid fa-xmark"></i>
+                      <i onClick={handleBan} className="fa-solid fa-check"></i>
                     </td>
-                  
+                  </tr>
+                  <tr>
+                    <td>{t("Annuler")}</td>
                     <td>
-                    <i onClick={handleBan} class="fa-solid fa-check"></i>
-
+                      <i
+                        onClick={handleDelete}
+                        className="fa-solid fa-xmark"
+                      ></i>
                     </td>
                   </tr>
                 </tbody>
-              </Table>
-            )}
+              ) : (
+                <>
+                  <thead>
+                    <tr>
+                      <th>{t("Photo de Profile")}</th>
+                      <th>{t("Nom")}</th>
+                      <th>{t("Prénom")}</th>
+                      <th>{t("Lib Produit")}</th>
+                      <th>{t("Catégorie")}</th>
+                      <th>{t("Prix")}</th>
+                      <th>{t("Stock ")}</th>
+                      <th>{t("Détail")}</th>
+                      <th>{t("Valider")}</th>
+                      <th>{t("Annuler")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img
+                          style={{ borderRadius: "50px" }}
+                          className="imgtable"
+                          src="./Mazed.jpg"
+                          alt="img"
+                        />
+                      </td>
+                      <td>lorem</td>
+                      <td>Lorem</td>
+                      <td>
+                        <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </td>
+                      <td>Lorem</td>
+                      <td>10</td>
+                      <td>10</td>
+                      <td>
+                        <Link
+                          to="/DetailDemandeProduit"
+                          className="btn btn-outline block"
+                        >
+                          <i className="fa-solid fa-eye font-medium-1"></i>
+                        </Link>
+                      </td>
+                      <td>
+                        <i
+                          onClick={handleBan}
+                          className="fa-solid fa-check"
+                        ></i>
+                      </td>
+                      <td>
+                        <i
+                          onClick={handleDelete}
+                          className="fa-solid fa-xmark"
+                        ></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </>
+              )}
+            </Table>
           </div>
         </div>
       </section>

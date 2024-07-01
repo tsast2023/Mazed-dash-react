@@ -4,7 +4,7 @@ import { Table, Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const DemandeProduitAdmin = () => {
+const DemandeCatAdmin = () => {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
   const [starClicked, setStarClicked] = useState(false);
@@ -96,7 +96,7 @@ const DemandeProduitAdmin = () => {
       <section className="section">
         <div className="card">
           <div className="card-header">
-            <h2 className="new-price">{t("Demande Produit")}</h2>
+            <h2 className="new-price">{t("Demande Catégorie")}</h2>
           </div>
           <div className="card-body">
             {isMobile ? (
@@ -117,13 +117,13 @@ const DemandeProduitAdmin = () => {
                         <td>Lorem</td>
                     </tr>
                   <tr>
-                    <td>{t("Ancien produit")}</td>
+                    <td>{t("Ancien catégorie")}</td>
                     <td>
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
                   </tr>
                   <tr>
-                    <td>{t("Nouveau produit")}</td>
+                    <td>{t("Nouveau catégorie")}</td>
                     <td>
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
                     </td>
@@ -163,8 +163,8 @@ const DemandeProduitAdmin = () => {
                   <th>{t("Photo de Profile")}</th>
                   <th>{t("Nom")}</th>
                   <th>{t("Prénom")}</th>
-                    <th>{t("Ancien produit")}</th>
-                    <th>{t("Nouveau produit")}</th>
+                    <th>{t("Ancien catégorie")}</th>
+                    <th>{t("Nouveau catégorie")}</th>
                     <th>{t("Statut")}</th>
                     <th>{t("Action")}</th>
                     <th>{t("Valider")}</th>
@@ -308,4 +308,4 @@ const DemandeProduitAdmin = () => {
   );
 };
 
-export default DemandeProduitAdmin;
+export default DemandeCatAdmin;
