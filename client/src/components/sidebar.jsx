@@ -17,7 +17,7 @@ const themes = {
       menuContent: "#fbfcfd",
       icon: "#000",
       hover: {
-        backgroundColor: "#b0210e",
+        backgroundColor: "#d22d11",
         color: "#fff",
       },
       disabled: {
