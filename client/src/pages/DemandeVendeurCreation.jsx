@@ -36,13 +36,13 @@ function DemandeVendeurCreation() {
         Swal.fire({
           text: "Valider ! The administrator has been Valide.",
           icon: "success",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       } else {
         Swal.fire({
           text: "Cancelled , The administrator is safe :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });
@@ -64,13 +64,13 @@ function DemandeVendeurCreation() {
         Swal.fire({
           text: "Refuser! , The administrator has been Refuse.",
           icon: "success",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       } else {
         Swal.fire({
           text: "Cancelled , The administrator remains blocked :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });

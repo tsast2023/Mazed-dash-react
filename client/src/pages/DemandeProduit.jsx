@@ -32,7 +32,7 @@ function DemandeProduit() {
       ),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#b0210e",
+      confirmButtonColor: "#d22d11",
       confirmButtonText: t("Oui, annuler-le !"),
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
@@ -42,14 +42,14 @@ function DemandeProduit() {
           title: "Annuler",
           text: "Votre élément est Supprimer :)",
           icon: "success",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       } else {
         Swal.fire({
           title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });
@@ -60,7 +60,7 @@ function DemandeProduit() {
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#b0210e",
+      confirmButtonColor: "#d22d11",
       confirmButtonText: t("Oui, Valider-le !"),
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
@@ -70,14 +70,14 @@ function DemandeProduit() {
           title: "Valider",
           text: "Votre élément est Validee :)",
           icon: "success",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       } else {
         Swal.fire({
           title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });
@@ -88,7 +88,7 @@ function DemandeProduit() {
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#b0210e",
+      confirmButtonColor: "#d22d11",
       confirmButtonText: t("Oui, mettre à l'une !"),
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
@@ -98,14 +98,14 @@ function DemandeProduit() {
           title: "Effectuer",
           text: "Votre élément est Effectuer :)",
           icon: "success",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       } else {
         Swal.fire({
           title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });

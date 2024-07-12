@@ -45,14 +45,14 @@ const DemandeProduitAdmin = () => {
             title: "Valider",
             text: "Votre élément est validé :)",
             icon: "success",
-            confirmButtonColor: "#b0210e",
+            confirmButtonColor: "#d22d11",
           });
         } else {
           Swal.fire({
             title: "Refuser",
             text: "Votre élément est refusé :)",
             icon: "error",
-            confirmButtonColor: "#b0210e",
+            confirmButtonColor: "#d22d11",
           });
         }
       } else {
@@ -60,7 +60,7 @@ const DemandeProduitAdmin = () => {
           title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
-          confirmButtonColor: "#b0210e",
+          confirmButtonColor: "#d22d11",
         });
       }
     });
