@@ -124,7 +124,7 @@ const Playground = () => {
         }}
       >
         <div className="header">
-          <img className="logo" src="./logo-mazed.png" alt="logo" />
+          <img className="logo" src="./log-mazed.png" alt="logo" />
         </div>
         <div
           style={{ display: "flex", flexDirection: "column", height: "100%" }}
