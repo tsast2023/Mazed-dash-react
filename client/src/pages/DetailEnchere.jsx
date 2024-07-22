@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 
 function DetailEnchere() {
   const [isMobile, setIsMobile] = useState(false);
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1212);
@@ -20,6 +22,7 @@ function DetailEnchere() {
     // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const deleteItem = () => {
     // Implement your delete logic here
   };
@@ -50,7 +53,7 @@ function DetailEnchere() {
       }
     });
   };
-  const { t } = useTranslation();
+
   useEffect(() => {
     const imgs = document.querySelectorAll(".img-select a");
     const imgBtns = [...imgs];
@@ -67,11 +70,13 @@ function DetailEnchere() {
     function slideImage() {
       const displayWidth = document.querySelector(
         ".img-showcase img:first-child"
-      ).clientWidth;
+      )?.clientWidth;
 
-      document.querySelector(".img-showcase").style.transform = `translateX(${
-        -(imgId - 1) * displayWidth
-      }px)`;
+      if (displayWidth) {
+        document.querySelector(".img-showcase").style.transform = `translateX(${
+          -(imgId - 1) * displayWidth
+        }px)`;
+      }
     }
 
     window.addEventListener("resize", slideImage);
@@ -84,6 +89,7 @@ function DetailEnchere() {
       window.removeEventListener("resize", slideImage);
     };
   }, []);
+
   const product = {
     title: "Sample Product",
     description:
@@ -136,13 +142,9 @@ function DetailEnchere() {
   return (
     <div className="content-container">
       <div id="main">
-        <header className="mb-3">
-          <div id="timer" />
-        </header>
         <section className="section">
           <div className="card-wrapper">
-            <div className="cardss">
-              {/* card left */}
+            <div className="cardsss">
               <div className="product-detail">
                 <div className="product-images">
                   <div className="main-image">
@@ -161,7 +163,6 @@ function DetailEnchere() {
                 </div>
                 <div className="product-info">
                   <div className="product-price">
-                    {/* <p class="last-price">Old Price: <span>$257.00</span></p> */}
                     <div className="col-md-12  mb-4">
                       <div
                         style={{
@@ -194,8 +195,6 @@ function DetailEnchere() {
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
-                            // data-bs-toggle="modal"
-                            // data-bs-target="#secondary"
                           >
                             {t("Publier")}
                           </button>
@@ -207,181 +206,8 @@ function DetailEnchere() {
               </div>
               <br />
               <br />
-              {/* card right */}
               <div className="product-price">
-                {/* <p href="#" className="new-price">
-                  Reference :
-                </p> */}
-
                 <br />
-                {/* <div className="card">
-                  <div
-                    style={{ backgroundColor: "white", padding: 20 }}
-                    className="row product-price"
-                  >
-                    {" "}
-                    <h2 className="new-price">{t("Details")} :</h2>
-                    <div className="col-6">
-                      <p>{t("Libellé du Produit")} :</p>
-                      <p>{t("Le Commercant")}</p>
-                      <p>{t("Le Prix Magasin")}</p>
-                      <p>{t("Le Prix Mazed online")}</p>
-                      <p>{t("Le Cout de Clic")}</p>
-                      <p>{t("Le Frais d'inscription")}</p>
-                    </div>
-                    <div className="col-6">
-                      <p>{t("Formule de Facilité")}</p>
-                      <p>{t("Nombre attendu des Participants")}</p>
-                      <p>{t("Nombre réel des Participants")}</p>
-                      <p>{t("Date de Publication")}</p>
-                      <p>{t("Date de Fermeture")}</p>
-                      <p>{t("Date de Lancement")}</p>
-                    </div>
-                    <div style={{ textAlign: "center" }} className="buuttt">
-                      <div className="modal-secondary me-1 mb-1 d-inline-block">
-                        <button
-                          type="button"
-                          className="btn btn-outline-secondary pub"
-                          data-bs-toggle="modal"
-                          data-bs-target="#secondary"
-                        >
-                          {t("Publier")}
-                        </button>
-                        <div
-                          className="modal fade text-left"
-                          id="secondary"
-                          tabIndex={-1}
-                          role="dialog"
-                          aria-labelledby="myModalLabel110"
-                          aria-hidden="true"
-                        >
-                          <div
-                            className="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                            role="document"
-                          >
-                            <div className="modal-content">
-                              <div className="modal-header">
-                                <button
-                                  type="button"
-                                  className="close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                >
-                                  <i data-feather="x" />
-                                </button>
-                              </div>
-                              <div className="modal-body">
-                                Tart lemon drops macaroon oat cake chocolate
-                                toffee chocolate bar icing. Pudding jelly beans
-                                carrot cake pastry gummies cheesecake lollipop.
-                                I love cookie lollipop cake I love sweet gummi
-                                bears cupcake dessert.
-                              </div>
-                              <div className="modal-footer">
-                                <button
-                                  type="button"
-                                  className="btn btn-light-secondary"
-                                  data-bs-dismiss="modal"
-                                >
-                                  <i className="bx bx-x d-block d-sm-none" />
-                                  <span className="d-none d-sm-block">
-                                    {t("Close")}
-                                  </span>
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary ms-1"
-                                  data-bs-dismiss="modal"
-                                >
-                                  <i className="bx bx-check d-block d-sm-none" />
-                                  <span className="d-none d-sm-block">
-                                    {t("Accept")}
-                                  </span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="modal-primary me-1 mb-1 d-inline-block">
-                        <Link to={"/ModificationDetailsEnchere"}>
-                          <button
-                            type="button"
-                            className="btn btn-outline-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#primary"
-                          >
-                            {t("Modifier")}
-                          </button>
-                        </Link>
-                      </div>
-                      <div className="modal-danger me-1 mb-1 d-inline-block">
-                        <button
-                          type="button"
-                          className="btn btn-outline-danger deleteIcon"
-                          onClick={handleDelete}
-                        >
-                          {t("Annuler")}
-                        </button>
-                        <div
-                          className="modal fade text-left"
-                          id="danger"
-                          tabIndex={-1}
-                          role="dialog"
-                          aria-labelledby="myModalLabel120"
-                          aria-hidden="true"
-                        >
-                          <div
-                            className="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-                            role="document"
-                          >
-                            <div className="modal-content">
-                              <div className="modal-header bg-danger">
-                                <h5
-                                  className="modal-title white"
-                                  id="myModalLabel120"
-                                />
-                                <button
-                                  type="button"
-                                  className="close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                >
-                                  <i data-feather="x" />
-                                </button>
-                              </div>
-                              <div className="modal-body">
-                                {t("Vous Avez Sur de Supprimer !")}
-                              </div>
-                              <div className="modal-footer">
-                                <button
-                                  type="button"
-                                  className="btn btn-light-secondary"
-                                  data-bs-dismiss="modal"
-                                >
-                                  <i className="bx bx-x d-block d-sm-none" />
-                                  <span className="d-none d-sm-block">
-                                    {t("Close")}
-                                  </span>
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-danger ms-1"
-                                  data-bs-dismiss="modal"
-                                >
-                                  <i className="bx bx-check d-block d-sm-none" />
-                                  <span className="d-none d-sm-block">
-                                    {t("Accept")}
-                                  </span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
