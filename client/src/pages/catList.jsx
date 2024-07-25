@@ -4,14 +4,17 @@ import Swal from "sweetalert2";
 import { GlobalState } from "../GlobalState";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 function CategoryList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile, setIsMobile] = useState(false);
-  const [starClickedMap, setStarClickedMap] = useState({}); // State to track star click for each category
+  const [starClickedMap, setStarClickedMap] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,15 +22,12 @@ function CategoryList() {
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Initial check
     handleResize();
 
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleDelete = (catId) => {
+  const handleDeleteModal = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       text: t(
@@ -40,19 +40,30 @@ function CategoryList() {
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem(catId);
-        Swal.fire(
-          t("Supprimé(e) !"),
-          t("Votre élément a été supprimé."),
-          "secondary"
-        );
+        deleteC(catId);
+        Swal.fire({
+          text: "Supprimé(e) ! Votre élément a été supprimé.",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
-
-  const handleBan = (catId) => {
+const deleteC = async(id) =>{
+  try {
+    const res = await axios.delete(`http://localhost:8081/api/category/delete/${id}`);
+    console.log(res.data);
+  } catch (error) {
+    console.log(error)
+  }
+}
+  const handleBanModal = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
@@ -63,17 +74,28 @@ function CategoryList() {
     }).then((result) => {
       if (result.isConfirmed) {
         activateDeactivateItem(catId);
-        Swal.fire(
-          t("Désactivé(e) !"),
-          t("Votre élément a été désactivé."),
-          "secondary"
-        );
+        Swal.fire({
+          text: "Désactivé(e) ! Votre élément a été désactivé.",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
-
+  const banC = async(id) =>{
+    try {
+      const res = await axios.put(``);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleArrowClick = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -84,11 +106,11 @@ function CategoryList() {
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
-        toggleStarClicked(catId); // Toggle starClicked state for this category
+        toggleStarClicked(catId);
         Swal.fire(
           t("Effectué !"),
           t("Votre élément a été mis à l'une."),
-          "secondary"
+          "success"
         );
       } else {
         Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
@@ -107,12 +129,104 @@ function CategoryList() {
   const toggleStarClicked = (catId) => {
     setStarClickedMap((prevMap) => ({
       ...prevMap,
-      [catId]: !prevMap[catId], // Toggle starClicked state for catId
+      [catId]: !prevMap[catId],
     }));
   };
 
-  const DesktopTable = () => (
-    <table className="table" id="table1">
+  const handleEdit = (cat) => {
+    setSelectedCategory(cat);
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedCategory(null);
+    setShowModal(false);
+  };
+
+  const handleModalSave = () => {
+    // Implement save logic for edited category
+    setShowModal(false);
+  };
+
+  const renderMobileTable = () => (
+    <table className="table" style={{ width: "100%", textAlign: "center" }}>
+      <tbody>
+        {categories ? (
+          categories.map((cat, index) => (
+            <React.Fragment key={index}>
+              <tr>
+                <td>{t("Libellé")}</td>
+                <td>{cat.libCategorie}</td>
+              </tr>
+              <tr>
+                <td>{t("Détail")}</td>
+                <td>
+                  <a
+                    onClick={() =>
+                      navigate(`/catdetail/${cat.id}`, {
+                        state: { cat },
+                      })
+                    }
+                  >
+                    <i className="fa-solid fa-eye"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>{t("Modifier")}</td>
+                <td>
+                  <button className="btn" onClick={() => handleEdit(cat)}>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>{t("Désactiver")}</td>
+                <td>
+                  <i className="fa-solid fa-ban" onClick={() => handleBanModal(cat.id)}></i>
+                </td>
+              </tr>
+              <tr>
+                <td>{t("Supprimer")}</td>
+                <td>
+                  <i
+                    className="fa-solid fa-trash deleteIcon"
+                    onClick={() => handleDeleteModal(cat.id)}
+                  ></i>
+                </td>
+              </tr>
+              <tr>
+                <td>{t("Mettre a l'une")}</td>
+                <td>
+                  {starClickedMap[cat.id] ? (
+                    <i
+                      className="fa-solid fa-star arrowIcon"
+                      onClick={() => handleArrowClick(cat.id)}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa-regular fa-star arrowIcon"
+                      onClick={() => handleArrowClick(cat.id)}
+                    ></i>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="2"><hr /></td>
+              </tr>
+            </React.Fragment>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="2">Loading...</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
+
+  const renderDesktopTable = () => (
+    <table className="table">
       <thead>
         <tr>
           <th>{t("Libellé")}</th>
@@ -127,7 +241,7 @@ function CategoryList() {
         {categories ? (
           categories.map((cat, index) => (
             <tr key={index}>
-              <td className="text-bold-500">{cat.libeléCategorie}</td>
+              <td className="text-bold-500">{cat.libCategorie}</td>
               <td>
                 <a
                   onClick={() =>
@@ -140,17 +254,17 @@ function CategoryList() {
                 </a>
               </td>
               <td>
-                <Link to={"/catmodif"}>
+                <button className="btn" onClick={() => handleEdit(cat)}>
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
               </td>
               <td>
-                <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
+                <i className="fa-solid fa-ban" onClick={() => handleBanModal(cat.id)}></i>
               </td>
               <td>
                 <i
                   className="fa-solid fa-trash deleteIcon"
-                  onClick={() => handleDelete(cat.id)}
+                  onClick={() => handleDeleteModal(cat.id)}
                 ></i>
               </td>
               <td>
@@ -177,100 +291,6 @@ function CategoryList() {
     </table>
   );
 
-  const MobileTable = () => (
-    <table style={{ width: "100%", textAlign: "center" }}>
-      <tbody>
-        {categories ? (
-          categories.map((cat, index) => (
-            <React.Fragment key={index}>
-              <tr>
-                <td>
-                  <hr />
-                  <th>{t("Libellé")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td className="text-bold-500">{cat.libeléCategorie}</td>
-              </tr>
-              <tr>
-                <td>
-                  <th>{t("Détail")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    onClick={() =>
-                      navigate(`/catdetail/${cat.id}`, {
-                        state: { cat },
-                      })
-                    }
-                  >
-                    <i className="fa-solid fa-eye"></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <th>{t("Modifier")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link to={"/catmodif"}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <th>{t("Désactiver")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <th>{t("Supprimer")}</th>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <i
-                    className="fa-solid fa-trash deleteIcon"
-                    onClick={() => handleDelete(cat.id)}
-                  ></i>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  {starClickedMap[cat.id] ? (
-                    <i
-                      className="fa-solid fa-star arrowIcon"
-                      onClick={() => handleArrowClick(cat.id)}
-                    ></i>
-                  ) : (
-                    <i
-                      className="fa-regular fa-star arrowIcon"
-                      onClick={() => handleArrowClick(cat.id)}
-                    ></i>
-                  )}
-                </td>
-              </tr>
-            </React.Fragment>
-          ))
-        ) : (
-          <tr>
-            <td>Loading...</td>
-          </tr>
-        )}
-      </tbody>
-    </table>
-  );
-
   return (
     <div className="content-container">
       <div id="main">
@@ -279,64 +299,106 @@ function CategoryList() {
             <i className="bi bi-justify fs-3"></i>
           </a>
         </header>
-
-        <div className="page-heading">
-          <section className="section">
-            <div className="row" id="table-head">
-              <div className="col-12">
-                <div className="card">
-                  <div className="card-header">
-                    <h2 className="new-price">{t("Liste de catégories")}</h2>
+        <section className="section">
+          <div className="row" id="table-head">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="new-price">{t("Liste de catégories")}</h2>
+                </div>
+                <div className="card-content">
+                  <div className="row" style={{ padding: "0 20px" }}>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Type")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect1">
+                          <option disabled selected>
+                            {t("Choisissez le type")}
+                          </option>
+                          <option> Parente </option>
+                          <option> Fille </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6> Statut </h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect2">
+                          <option disabled selected>
+                            {t("Choisissez le statut")}
+                          </option>
+                          <option> Publiée </option>
+                          <option> Brouillon </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Etat")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect3">
+                          <option disabled selected>
+                            {t("Choisissez État")}
+                          </option>
+                          <option> Activée </option>
+                          <option> Désactivée </option>
+                        </select>
+                      </fieldset>
+                    </div>
                   </div>
-                  <div className="card-content">
-                    <div className="row" style={{ padding: "0 20px" }}>
-                      <div className="col-md-4 mb-4">
-                        <h6>{t("Type")}</h6>
-                        <fieldset className="form-group">
-                          <select className="form-select" id="basicSelect1">
-                            <option disabled selected>
-                              {t("Choisissez le type")}
-                            </option>
-                            <option> Parente </option>
-                            <option> Fille </option>
-                          </select>
-                        </fieldset>
-                      </div>
-                      <div className="col-md-4 mb-4">
-                        <h6> Statut </h6>
-                        <fieldset className="form-group">
-                          <select className="form-select" id="basicSelect2">
-                            <option disabled selected>
-                              {t("Choisissez le statut")}
-                            </option>
-                            <option> Publiée </option>
-                            <option> Brouillon </option>
-                          </select>
-                        </fieldset>
-                      </div>
-                      <div className="col-md-4 mb-4">
-                        <h6>{t("Etat")}</h6>
-                        <fieldset className="form-group">
-                          <select className="form-select" id="basicSelect3">
-                            <option disabled selected>
-                              {t("Choisissez État")}
-                            </option>
-                            <option> Activée </option>
-                            <option> Désactivée </option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div>
-                    <div>
-                      {isMobile ? <MobileTable /> : <DesktopTable />}
-                    </div>
+                  <div style={{ textAlign: "center" }}>
+                    {isMobile ? renderMobileTable() : renderDesktopTable()}
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
+
+      <Modal show={showModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Modifier la catégorie")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Form or content for editing category */}
+          <div className="card-content">
+            <div className="card-body">
+              <form className="form form-vertical">
+                <div className="form-body">
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="form-group">
+                        <label htmlFor="email-id-icon">{t("Libellé")}</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="email-id-icon"
+                          defaultValue={selectedCategory ? selectedCategory.libeléCategorie : ""}
+                        />
+                      </div>
+                    </div>
+                    <label>{t("Type")}</label>
+                    <div className="input-group mb-3">
+                      <select className="form-select" id="inputGroupSelect01">
+                        <option value="1">{t("Parente")}</option>
+                        <option value="2">{t("Fille")}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleModalClose}>
+            {t("Fermer")}
+          </Button>
+          <Button variant="primary" onClick={handleModalSave}>
+            {t("Enregistrer")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
