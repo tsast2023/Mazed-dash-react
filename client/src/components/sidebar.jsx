@@ -17,7 +17,7 @@ const themes = {
       menuContent: "#fbfcfd",
       icon: "#000",
       hover: {
-        backgroundColor: "#b0210e",
+        backgroundColor: "#d22d11",
         color: "#fff",
       },
       disabled: {
@@ -124,7 +124,7 @@ const Playground = () => {
         }}
       >
         <div className="header">
-          <img className="logo" src="./logo-mazed.png" alt="logo" />
+          <img className="logo" src="./log-mazed.png" alt="logo" />
         </div>
         <div
           style={{ display: "flex", flexDirection: "column", height: "100%" }}
@@ -147,7 +147,7 @@ const Playground = () => {
                   component={<Link to="/CreationRole" />}
                   onClick={() => setActiveLink("/CreationRole")}
                   style={
-                    activeLink === "/google-maps" ? menuItemStyles.active : null
+                    activeLink === "/CreationRole" ? menuItemStyles.active : null
                   }
                 >
                   {t("Creation D'un Role")}
@@ -156,7 +156,7 @@ const Playground = () => {
                   component={<Link to="/ListeAdministrateur" />}
                   onClick={() => setActiveLink("/ListeAdministrateur")}
                   style={
-                    activeLink === "/open-street-maps"
+                    activeLink === "/ListeAdministrateur"
                       ? menuItemStyles.active
                       : null
                   }
@@ -167,7 +167,7 @@ const Playground = () => {
                   component={<Link to="/CreationAdministrateur" />}
                   onClick={() => setActiveLink("/CreationAdministrateur")}
                   style={
-                    activeLink === "/open-street-maps"
+                    activeLink === "/CreationAdministrateur"
                       ? menuItemStyles.active
                       : null
                   }
@@ -175,16 +175,6 @@ const Playground = () => {
                   {t("Créer un Administrateur")}
                 </MenuItem>
               </SubMenu>
-              {/* <MenuItem
-                component={<Link to="/Commandes" />}
-                icon={<i className="fa-solid fa-bookmark"></i>}
-                onClick={() => setActiveLink("/Commandes")}
-                style={
-                  activeLink === "/Commandes" ? menuItemStyles.active : null
-                }
-              >
-                {t("Demande")}
-              </MenuItem> */}
               <SubMenu
                 label={t("Demande")}
                 icon={<i className="fa-solid fa-bookmark"></i>}
@@ -194,7 +184,7 @@ const Playground = () => {
                     component={<Link to="/DemandeVendeurCreation" />}
                     onClick={() => setActiveLink("/DemandeVendeurCreation")}
                     style={
-                      activeLink === "/open-street-maps"
+                      activeLink === "/DemandeVendeurCreation"
                         ? menuItemStyles.active
                         : null
                     }
@@ -202,10 +192,10 @@ const Playground = () => {
                     {t("Demande de Création de Compte")}
                   </MenuItem>
                   <MenuItem
-                    component={<Link to="/ListeAdministrateur" />}
-                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    component={<Link to="/DemandeProduit" />}
+                    onClick={() => setActiveLink("/DemandeProduit")}
                     style={
-                      activeLink === "/open-street-maps"
+                      activeLink === "/DemandeProduit"
                         ? menuItemStyles.active
                         : null
                     }
@@ -215,10 +205,10 @@ const Playground = () => {
                 </SubMenu>
                 <SubMenu label={t("Demande Administrateur")}>
                   <MenuItem
-                    component={<Link to="/ListeAdministrateur" />}
-                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    component={<Link to="/DemandeProduitAdmin" />}
+                    onClick={() => setActiveLink("/DemandeProduitAdmin")}
                     style={
-                      activeLink === "/open-street-maps"
+                      activeLink === "/DemandeProduitAdmin"
                         ? menuItemStyles.active
                         : null
                     }
@@ -226,10 +216,10 @@ const Playground = () => {
                     {t("Demande Produit")}
                   </MenuItem>
                   <MenuItem
-                    component={<Link to="/ListeAdministrateur" />}
-                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    component={<Link to="/DemandeEnchereAdmin" />}
+                    onClick={() => setActiveLink("/DemandeEnchereAdmin")}
                     style={
-                      activeLink === "/open-street-maps"
+                      activeLink === "/DemandeEnchereAdmin"
                         ? menuItemStyles.active
                         : null
                     }
@@ -237,17 +227,17 @@ const Playground = () => {
                     {t("Demande Enchére")}
                   </MenuItem>
                   <MenuItem
-                    component={<Link to="/ListeAdministrateur" />}
-                    onClick={() => setActiveLink("/ListeAdministrateur")}
+                    component={<Link to="/DemandeCatAdmin" />}
+                    onClick={() => setActiveLink("/DemandeCatAdmin")}
                     style={
-                      activeLink === "/open-street-maps"
+                      activeLink === "/DemandeCatAdmin"
                         ? menuItemStyles.active
                         : null
                     }
                   >
                     {t("Demande Catégorie")}
                   </MenuItem>
-                  <MenuItem
+                  {/* <MenuItem
                     component={<Link to="/ListeAdministrateur" />}
                     onClick={() => setActiveLink("/ListeAdministrateur")}
                     style={
@@ -257,7 +247,7 @@ const Playground = () => {
                     }
                   >
                     {t("Demande Transfert de Solde")}
-                  </MenuItem>
+                  </MenuItem> */}
                 </SubMenu>
               </SubMenu>
 

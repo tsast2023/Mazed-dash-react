@@ -56,7 +56,7 @@ function Modal({ t }) {
 }
 
 // TableRow component
-function TableRow({ userData, status, onAccept, onDelete }) {
+function TableRow({ userData, status, onAccept }) {
   const { t } = useTranslation();
 
   const handleAccept = () => {
@@ -72,10 +72,16 @@ function TableRow({ userData, status, onAccept, onDelete }) {
     }).then((result) => {
       if (result.isConfirmed) {
         onAccept();
-        Swal.fire(t("Accepté"), t("Votre élément a été Accepté."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Accepter",
+          text: "Votre élément est Accepter :)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });       } else {
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });       }
     });
   };
 

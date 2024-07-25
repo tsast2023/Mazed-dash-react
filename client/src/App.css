@@ -89,7 +89,7 @@ td, th {
   font-size: 20px;
   display: flex;
   align-items: center;
-  background-color: #b0210e;
+  background-color: #d22d11;
   color: #fff;
   padding: 20px;
   border-radius: 20%;
@@ -109,25 +109,25 @@ td, th {
 }
 
 .fa-trash {
-  color: #b0210e;
+  color: #d22d11;
 }
 
 .btn-primary {
-  background-color:#b0210e;
+  background-color:#d22d11;
   border: #000;
 }
 
 .btn-primary:hover {
-  background-color: #b0210e;
+  background-color: #d22d11;
 }
 
 hr {
   border: none;
   height: 5px;
-  background-color: #b0210e;
+  background-color: #d22d11;
 }
 
 .imgtable {
-  width: 80px;
-  margin-left: 25px;
+  width: 45px;
+  height: 45px;
 }

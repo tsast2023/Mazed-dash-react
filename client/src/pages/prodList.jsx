@@ -45,10 +45,16 @@ const ProdList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        }); }
     });
   };
   
@@ -63,10 +69,16 @@ const ProdList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(); // Replace with your deactivate logic
-        Swal.fire(t("Désactivé(e) !"), t("Votre élément a été désactivé."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Desactiver",
+          text: "Votre élément est Desactiver :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });      }
     });
   };
   
@@ -82,10 +94,16 @@ const ProdList = () => {
       if (result.isConfirmed) {
         // Toggle starClicked state
         setStarClicked(!starClicked);
-        Swal.fire(t("Effectué !"), t("Votre élément a été mis à l'une."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Effectuer",
+          text: "Votre élément est Effectuer :)",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });      }
     });
   };
 

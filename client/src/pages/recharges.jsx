@@ -40,17 +40,23 @@ function Recharges() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(id);
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "info");
-        // window.location.reload();
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer:)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });        // window.location.reload();
       } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Annulé",
+          text: "Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });       }
     });
   };
 
   const deleteItem = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8081/api/carte/deleteCarte?id=${id}`);
+      const res = await axios.delete(`http://192.168.0.108:8081/api/carte/deleteCarte?id=${id}`);
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -60,7 +66,7 @@ function Recharges() {
   const addCarte = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8081/api/carte/publishNow', carteRech);
+      const res = await axios.post('http://192.168.0.108:8081/api/carte/publishNow', carteRech);
       console.log(res.data);
       window.location.reload();
     } catch (error) {

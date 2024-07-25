@@ -42,10 +42,16 @@ function AdsList() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem();
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "success");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer:)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });       } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });      }
     });
   };
 
@@ -110,7 +116,7 @@ function AdsList() {
                     <tr>
                       <td>{t("Voir")}</td>
                       <td>
-                        <Button onClick={() => setShowImageModal(true)}>
+                        <Button className="btn" onClick={() => setShowImageModal(true)}>
                           <i className="fa-solid fa-eye"></i>
                         </Button>
                       </td>
@@ -118,7 +124,7 @@ function AdsList() {
                     <tr>
                       <td>{t("Editer")}</td>
                       <td>
-                        <Button onClick={openEditModal}>
+                        <Button className="btn" onClick={openEditModal}>
                           <i className="fa-solid fa-pen-to-square"></i>
                         </Button>
                       </td>
@@ -152,12 +158,12 @@ function AdsList() {
                       <td>05/05/2024</td>
                       <td>{t("Image")}</td>
                       <td>
-                        <Button onClick={() => setShowImageModal(true)}>
+                        <Button className="btn" onClick={() => setShowImageModal(true)}>
                           <i className="fa-solid fa-eye"></i>
                         </Button>
                       </td>
                       <td>
-                        <Button onClick={openEditModal}>
+                        <Button className="btn" onClick={openEditModal}>
                           <i className="fa-solid fa-pen-to-square"></i>
                         </Button>
                       </td>

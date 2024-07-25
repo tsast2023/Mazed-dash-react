@@ -62,6 +62,11 @@ import Login from './pages/Login';
 import Cookies from 'js-cookie'
 import EnchèreEdit from './pages/EnchèreEdit';
 import DemandeVendeurCreation from './pages/DemandeVendeurCreation';
+import DemandeProduit from './pages/DemandeProduit';
+import DetailDemandeProduit from './pages/DetailDemandeProduit'
+import DemandeProduitAdmin from './pages/DemandeProduitAdmin';
+import DemandeEnchereAdmin from './pages/DemandeEnchereAdmin';
+import DemandeCatAdmin from './pages/DemandeCatAdmin';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -167,6 +172,11 @@ const App = () => {
               <Route path='/adsEdit' element={<AdsEdit />} />
               <Route path='/adminEdit' element={<AdminEdit />} />
               <Route path='/EnchèreEdit' element={<EnchèreEdit />} />
+              <Route path='/DemandeProduit' element={<DemandeProduit/>}/>
+              <Route path='/DetailDemandeProduit' element={<DetailDemandeProduit/>}/>
+              <Route path='/DemandeProduitAdmin' element={<DemandeProduitAdmin />} />
+              <Route path='/DemandeEnchereAdmin' element={<DemandeEnchereAdmin />} />
+              <Route path='/DemandeCatAdmin' element={<DemandeCatAdmin />} />
             </Routes>
           </div>
         )}

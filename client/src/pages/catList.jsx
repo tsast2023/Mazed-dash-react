@@ -15,6 +15,9 @@ function CategoryList() {
   const [starClickedMap, setStarClickedMap] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [starClickedMap, setStarClickedMap] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,6 +55,11 @@ function CategoryList() {
           icon: "error",
           confirmButtonColor: "#b0210e",
         });
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
@@ -79,7 +87,17 @@ const deleteC = async(id) =>{
           icon: "success",
           confirmButtonColor: "#b0210e",
         });
+        Swal.fire({
+          text: "Désactivé(e) ! Votre élément a été désactivé.",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });
       } else {
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
         Swal.fire({
           text: "Annulé, Votre élément est en sécurité :)",
           icon: "error",
@@ -107,9 +125,11 @@ const deleteC = async(id) =>{
     }).then((result) => {
       if (result.isConfirmed) {
         toggleStarClicked(catId);
+        toggleStarClicked(catId);
         Swal.fire(
           t("Effectué !"),
           t("Votre élément a été mis à l'une."),
+          "success"
           "success"
         );
       } else {
@@ -129,6 +149,7 @@ const deleteC = async(id) =>{
   const toggleStarClicked = (catId) => {
     setStarClickedMap((prevMap) => ({
       ...prevMap,
+      [catId]: !prevMap[catId],
       [catId]: !prevMap[catId],
     }));
   };
@@ -255,7 +276,9 @@ const deleteC = async(id) =>{
               </td>
               <td>
                 <button className="btn" onClick={() => handleEdit(cat)}>
+                <button className="btn" onClick={() => handleEdit(cat)}>
                   <i className="fa-solid fa-pen-to-square"></i>
+                </button>
                 </button>
               </td>
               <td>
@@ -299,6 +322,60 @@ const deleteC = async(id) =>{
             <i className="bi bi-justify fs-3"></i>
           </a>
         </header>
+        <section className="section">
+          <div className="row" id="table-head">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="new-price">{t("Liste de catégories")}</h2>
+                </div>
+                <div className="card-content">
+                  <div className="row" style={{ padding: "0 20px" }}>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Type")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect1">
+                          <option disabled selected>
+                            {t("Choisissez le type")}
+                          </option>
+                          <option> Parente </option>
+                          <option> Fille </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6> Statut </h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect2">
+                          <option disabled selected>
+                            {t("Choisissez le statut")}
+                          </option>
+                          <option> Publiée </option>
+                          <option> Brouillon </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Etat")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect3">
+                          <option disabled selected>
+                            {t("Choisissez État")}
+                          </option>
+                          <option> Activée </option>
+                          <option> Désactivée </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    {isMobile ? renderMobileTable() : renderDesktopTable()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="section">
           <div className="row" id="table-head">
             <div className="col-12">

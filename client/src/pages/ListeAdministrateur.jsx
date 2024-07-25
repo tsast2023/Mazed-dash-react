@@ -2,7 +2,7 @@ import React, { useState, useContext , useEffect } from "react";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import { GlobalState } from "../GlobalState";
-import { Modal, Button } from "react-bootstrap"; // Import Bootstrap components
+import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 function ListeAdministrateur() {
@@ -88,7 +88,7 @@ function ListeAdministrateur() {
   };
 const block = async(id)=>{
 try {
-    const res = await axios.put(`http://localhost:8081/admin/block/${id}`);
+    const res = await axios.put(`http://192.168.0.108:8081/admin/block/${id}`);
     console.log(res.data) 
 } catch (error) {
   console.log(error)
@@ -96,7 +96,7 @@ try {
 }
 const unBlock = async(id)=>{
 try {
-  const res = await axios.put(`http://localhost:8081/admin/unblock/${id}`);
+  const res = await axios.put(`http://192.168.0.108:8081/admin/unblock/${id}`);
     console.log(res.data)
 } catch (error) {
   console.log(error)

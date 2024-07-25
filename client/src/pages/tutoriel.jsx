@@ -29,7 +29,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="file"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={handleImageChange}
                 />
               </div>
@@ -40,7 +39,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="number"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={(e) => setTuto({ ...tuto, ordre: e.target.value })}
                 />
               </div>
@@ -51,7 +49,6 @@ const Modal = ({ t, handleImageChange, tuto, setTuto, addTuto }) => {
                   type="text"
                   placeholder={t("Écrivez ici")}
                   className="form-control"
-                  maxLength="25"
                   onChange={(e) => setTuto({ ...tuto, description: e.target.value })}
                 />
               </div>
@@ -79,7 +76,7 @@ const TableRow = ({ item, handleDelete }) => {
   return (
     <tr>
       <td className="text-bold-500">
-        <img src={item.file} alt="tuto_image" style={{ width: "auto", height: "150px" }} />
+        <img className="imgtable" src={item.file} alt="tuto_image" style={{ width: "auto", height: "150px" }} />
       </td>
       <td>{item.ordre}</td>
       <td>
@@ -94,12 +91,30 @@ const ResponsiveTable = ({ tutorials, handleDelete, isMobile }) => {
 
   return (
     <div className="table-responsive">
+      {isMobile ? (
+        <table className="table">
+          <tbody>
+            <tr>
+            <td>{t("Image")}</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>{t("Ordre")}</td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>{t("Supprimer")}</td>
+            <td></td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
       <table className="table table-lg">
         <thead>
           <tr>
-            <th>{t("Image")}</th>
-            <th>{t("Ordre")}</th>
-            <th>{t("Supprimer")}</th>
+            <td>{t("Image")}</td>
+            <td>{t("Ordre")}</td>
+            <td>{t("Supprimer")}</td>
           </tr>
         </thead>
         <tbody>
@@ -114,6 +129,7 @@ const ResponsiveTable = ({ tutorials, handleDelete, isMobile }) => {
           )}
         </tbody>
       </table>
+      )}
     </div>
   );
 };
@@ -153,10 +169,16 @@ const Tutoriel = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteItem(id);
-        Swal.fire(t("Supprimé(e) !"), t("Votre élément a été supprimé."), "secondary");
-      } else {
-        Swal.fire(t("Annulé"), t("Votre élément est en sécurité :)"), "error");
-      }
+        Swal.fire({   title: "Supprimer",
+          text: "Votre élément est Supprimer:)",
+          icon: "Succes",
+          confirmButtonColor: "#b0210e",
+        });      } else {
+          Swal.fire({   title: "Annulé",
+            text: "Votre élément est en sécurité :)",
+            icon: "error",
+            confirmButtonColor: "#b0210e",
+          });       }
     });
   };
 
@@ -173,7 +195,7 @@ const Tutoriel = () => {
 
   const deleteItem = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8081/api/tuto/deleteTuto?id=${id}`);
+      const res = await axios.delete(`http://192.168.0.108:8081/api/tuto/deleteTuto?id=${id}`);
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -183,7 +205,7 @@ const Tutoriel = () => {
   const addTuto = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8081/api/tuto/publishNow", tuto);
+      const res = await axios.post("http://192.168.0.108:8081/api/tuto/publishNow", tuto);
       console.log(res.data);
     } catch (error) {
       console.log(error);
