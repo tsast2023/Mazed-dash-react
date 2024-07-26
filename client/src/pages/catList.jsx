@@ -5,13 +5,16 @@ import { GlobalState } from "../GlobalState";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Modal, Button } from "react-bootstrap";
-
+import axios from "axios";
 function CategoryList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile, setIsMobile] = useState(false);
+  const [starClickedMap, setStarClickedMap] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [starClickedMap, setStarClickedMap] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -27,7 +30,7 @@ function CategoryList() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleDelete = (catId) => {
+  const handleDeleteModal = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       text: t(
@@ -40,7 +43,7 @@ function CategoryList() {
       cancelButtonText: t("Non, annuler !"),
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteItem(catId);
+        deleteC(catId);
         Swal.fire({
           text: "Supprimé(e) ! Votre élément a été supprimé.",
           icon: "success",
@@ -52,11 +55,23 @@ function CategoryList() {
           icon: "error",
           confirmButtonColor: "#b0210e",
         });
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
       }
     });
   };
-
-  const handleBan = (catId) => {
+const deleteC = async(id) =>{
+  try {
+    const res = await axios.delete(`http://localhost:8081/api/category/delete/${id}`);
+    console.log(res.data);
+  } catch (error) {
+    console.log(error)
+  }
+}
+  const handleBanModal = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
       icon: "warning",
@@ -72,7 +87,17 @@ function CategoryList() {
           icon: "success",
           confirmButtonColor: "#b0210e",
         });
+        Swal.fire({
+          text: "Désactivé(e) ! Votre élément a été désactivé.",
+          icon: "success",
+          confirmButtonColor: "#b0210e",
+        });
       } else {
+        Swal.fire({
+          text: "Annulé, Votre élément est en sécurité :)",
+          icon: "error",
+          confirmButtonColor: "#b0210e",
+        });
         Swal.fire({
           text: "Annulé, Votre élément est en sécurité :)",
           icon: "error",
@@ -81,7 +106,14 @@ function CategoryList() {
       }
     });
   };
-
+  const banC = async(id) =>{
+    try {
+      const res = await axios.put(``);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleArrowClick = (catId) => {
     Swal.fire({
       title: t("Êtes-vous sûr(e) ?"),
@@ -93,9 +125,11 @@ function CategoryList() {
     }).then((result) => {
       if (result.isConfirmed) {
         toggleStarClicked(catId);
+        toggleStarClicked(catId);
         Swal.fire(
           t("Effectué !"),
           t("Votre élément a été mis à l'une."),
+          "success"
           "success"
         );
       } else {
@@ -115,6 +149,7 @@ function CategoryList() {
   const toggleStarClicked = (catId) => {
     setStarClickedMap((prevMap) => ({
       ...prevMap,
+      [catId]: !prevMap[catId],
       [catId]: !prevMap[catId],
     }));
   };
@@ -142,7 +177,7 @@ function CategoryList() {
             <React.Fragment key={index}>
               <tr>
                 <td>{t("Libellé")}</td>
-                <td>{cat.libeléCategorie}</td>
+                <td>{cat.libCategorie}</td>
               </tr>
               <tr>
                 <td>{t("Détail")}</td>
@@ -169,7 +204,7 @@ function CategoryList() {
               <tr>
                 <td>{t("Désactiver")}</td>
                 <td>
-                  <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
+                  <i className="fa-solid fa-ban" onClick={() => handleBanModal(cat.id)}></i>
                 </td>
               </tr>
               <tr>
@@ -177,7 +212,7 @@ function CategoryList() {
                 <td>
                   <i
                     className="fa-solid fa-trash deleteIcon"
-                    onClick={() => handleDelete(cat.id)}
+                    onClick={() => handleDeleteModal(cat.id)}
                   ></i>
                 </td>
               </tr>
@@ -227,7 +262,7 @@ function CategoryList() {
         {categories ? (
           categories.map((cat, index) => (
             <tr key={index}>
-              <td className="text-bold-500">{cat.libeléCategorie}</td>
+              <td className="text-bold-500">{cat.libCategorie}</td>
               <td>
                 <a
                   onClick={() =>
@@ -241,16 +276,18 @@ function CategoryList() {
               </td>
               <td>
                 <button className="btn" onClick={() => handleEdit(cat)}>
+                <button className="btn" onClick={() => handleEdit(cat)}>
                   <i className="fa-solid fa-pen-to-square"></i>
+                </button>
                 </button>
               </td>
               <td>
-                <i className="fa-solid fa-ban" onClick={() => handleBan(cat.id)}></i>
+                <i className="fa-solid fa-ban" onClick={() => handleBanModal(cat.id)}></i>
               </td>
               <td>
                 <i
                   className="fa-solid fa-trash deleteIcon"
-                  onClick={() => handleDelete(cat.id)}
+                  onClick={() => handleDeleteModal(cat.id)}
                 ></i>
               </td>
               <td>
@@ -285,6 +322,60 @@ function CategoryList() {
             <i className="bi bi-justify fs-3"></i>
           </a>
         </header>
+        <section className="section">
+          <div className="row" id="table-head">
+            <div className="col-12">
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="new-price">{t("Liste de catégories")}</h2>
+                </div>
+                <div className="card-content">
+                  <div className="row" style={{ padding: "0 20px" }}>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Type")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect1">
+                          <option disabled selected>
+                            {t("Choisissez le type")}
+                          </option>
+                          <option> Parente </option>
+                          <option> Fille </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6> Statut </h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect2">
+                          <option disabled selected>
+                            {t("Choisissez le statut")}
+                          </option>
+                          <option> Publiée </option>
+                          <option> Brouillon </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div className="col-md-4 mb-4">
+                      <h6>{t("Etat")}</h6>
+                      <fieldset className="form-group">
+                        <select className="form-select" id="basicSelect3">
+                          <option disabled selected>
+                            {t("Choisissez État")}
+                          </option>
+                          <option> Activée </option>
+                          <option> Désactivée </option>
+                        </select>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    {isMobile ? renderMobileTable() : renderDesktopTable()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="section">
           <div className="row" id="table-head">
             <div className="col-12">

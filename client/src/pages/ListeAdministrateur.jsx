@@ -41,6 +41,7 @@ function ListeAdministrateur() {
       if (result.isConfirmed) {
        block(id)
         Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
+        // window.location.reload();
       } else {
         Swal.fire({
           title: "Annulé",
@@ -66,6 +67,7 @@ function ListeAdministrateur() {
       if (result.isConfirmed) {
         unBlock(id)
         Swal.fire({ title: "fait", confirmButtonColor: "#b0210e" });
+        // window.location.reload();
       } else {
         Swal.fire({
           title: "Annulé",
@@ -145,13 +147,13 @@ try {
                       <tr>
                         <td>{t("Bloquer")}</td>
                         <td>
-                          <i className="fa-solid fa-lock" onClick={()=>handleBlockModal(item._id)}></i>
+                          <i className="fa-solid fa-lock" onClick={()=>handleBlockModal(item.id)}></i>
                         </td>
                       </tr>
                       <tr>
                         <td>{t("Débloquer")}</td>
                         <td>
-                          <i className="fa-solid fa-lock-open" onClick={()=>handleUnblockModal(item._id)}></i>
+                          <i className="fa-solid fa-lock-open" onClick={()=>handleUnblockModal(item.id)}></i>
                         </td>
                       </tr>
                       </>
@@ -183,10 +185,10 @@ try {
                             <i className="fa-solid fa-pen-to-square" onClick={openEditModal}></i>
                           </td>
                           <td>
-                            <i className="fa-solid fa-lock" onClick={handleBlockModal}></i>
+                            <i className="fa-solid fa-lock" onClick={()=>handleBlockModal(item.id)}></i>
                           </td>
                           <td>
-                            <i className="fa-solid fa-lock-open" onClick={handleUnblockModal}></i>
+                            <i className="fa-solid fa-lock-open" onClick={()=>handleUnblockModal(item.id)}></i>
                           </td>
                         </tr>
                       ))}
