@@ -119,13 +119,17 @@ const DemandeCatAdmin = () => {
                   <tr>
                     <td>{t("Ancien catégorie")}</td>
                     <td>
+                    <Link to="/catdetail/:id">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
                     <td>{t("Nouveau catégorie")}</td>
                     <td>
+                    <Link to="/catdetail/:id">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
@@ -179,10 +183,14 @@ const DemandeCatAdmin = () => {
                     <td>lorem</td>
                     <td>Lorem</td>
                     <td>
+                    <Link to="/catdetail/:id">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
+                    <Link to="/catdetail/:id">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
                       <button className="btn btn-secondary">

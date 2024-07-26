@@ -102,30 +102,39 @@ const DemandeProduitAdmin = () => {
             {isMobile ? (
               <Table responsive="sm">
                 <tbody>
-                    <tr>
+                  <tr>
                     <td>{t("Photo de Profile")}</td>
                     <td>
-                      <img style={{borderRadius:"50px"}} className="imgtable" src="./Mazed.jpg" alt="img" />
+                      <img
+                        style={{ borderRadius: "50px" }}
+                        className="imgtable"
+                        src="./Mazed.jpg"
+                        alt="img"
+                      />
                     </td>
-                    </tr>
-                    <tr>
+                  </tr>
+                  <tr>
                     <td>{t("Nom")}</td>
                     <td>Lorem</td>
-                    </tr>
-                    <tr>
-                        <td>{t("Prénom")}</td>
-                        <td>Lorem</td>
-                    </tr>
+                  </tr>
+                  <tr>
+                    <td>{t("Prénom")}</td>
+                    <td>Lorem</td>
+                  </tr>
                   <tr>
                     <td>{t("Ancien produit")}</td>
                     <td>
+                    <Link to="/prodDétail">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
                     <td>{t("Nouveau produit")}</td>
                     <td>
-                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      <Link to="/prodDétail">
+                        <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
@@ -160,9 +169,9 @@ const DemandeProduitAdmin = () => {
               <Table responsive="sm">
                 <thead>
                   <tr>
-                  <th>{t("Photo de Profile")}</th>
-                  <th>{t("Nom")}</th>
-                  <th>{t("Prénom")}</th>
+                    <th>{t("Photo de Profile")}</th>
+                    <th>{t("Nom")}</th>
+                    <th>{t("Prénom")}</th>
                     <th>{t("Ancien produit")}</th>
                     <th>{t("Nouveau produit")}</th>
                     <th>{t("Statut")}</th>
@@ -173,16 +182,25 @@ const DemandeProduitAdmin = () => {
                 </thead>
                 <tbody>
                   <tr>
-                  <td>
-                      <img style={{borderRadius:"50px"}} className="imgtable" src="./Mazed.jpg" alt="img" />
+                    <td>
+                      <img
+                        style={{ borderRadius: "50px" }}
+                        className="imgtable"
+                        src="./Mazed.jpg"
+                        alt="img"
+                      />
                     </td>
                     <td>lorem</td>
                     <td>Lorem</td>
                     <td>
+                    <Link to="/prodDétail">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
-                      <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      <Link to="/prodDétail">
+                        <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
                       <button className="btn btn-secondary">

@@ -119,13 +119,17 @@ const DemandeEnchereAdmin = () => {
                   <tr>
                     <td>{t("Ancien produit")}</td>
                     <td>
+                    <Link to="/DetailEnchere">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
                     <td>{t("Nouveau produit")}</td>
                     <td>
+                    <Link to="/DetailEnchere">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                   </tr>
                   <tr>
@@ -179,10 +183,14 @@ const DemandeEnchereAdmin = () => {
                     <td>lorem</td>
                     <td>Lorem</td>
                     <td>
+                    <Link to="/DetailEnchere">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
+                    <Link to="/DetailEnchere">
                       <img className="imgtable" src="./Mazed.jpg" alt="img" />
+                      </Link>
                     </td>
                     <td>
                       <button className="btn btn-secondary">
