@@ -68,6 +68,7 @@ import DemandeProduitAdmin from './pages/DemandeProduitAdmin';
 import DemandeEnchereAdmin from './pages/DemandeEnchereAdmin';
 import DemandeCatAdmin from './pages/DemandeCatAdmin';
 import Winners from './pages/winners';
+import Echeance from './pages/echeance';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -179,6 +180,7 @@ const App = () => {
               <Route path='/DemandeEnchereAdmin' element={<DemandeEnchereAdmin />} />
               <Route path='/DemandeCatAdmin' element={<DemandeCatAdmin />} />
               <Route path='/Winners' element={<Winners />} />
+              <Route path='/Echéance' element={<Echeance />} />
             </Routes>
           </div>
         )}

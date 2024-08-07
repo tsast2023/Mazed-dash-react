@@ -501,6 +501,14 @@ const Playground = () => {
                 {t("Liste des gagnants")}
               </MenuItem>
               <MenuItem
+                component={<Link to="/Echéance" />}
+                icon={<i className="fa-solid fa-hand-holding-dollar"></i>}
+                onClick={() => setActiveLink("/Echéance")}
+                style={activeLink === "/Echéance" ? menuItemStyles.active : null}
+              >
+                {t("Liste des Echéances")}
+              </MenuItem>
+              <MenuItem
                 component={<Link to="/Transferts" />}
                 icon={<i className="fa-solid fa-right-left"></i>}
                 onClick={() => setActiveLink("/Transferts")}

@@ -40,35 +40,7 @@ function Winners() {
                     {isMobile ? (
                       <table className="table">
                         <tbody>
-                          <tr>
-                            <td>{t("Nom")}</td>
-                            <td>Lorem</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Prénom")}</td>
-                            <td>{t("Lorem Lorem")}</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Pseudo")}</td>
-                            <td>{t("Lorem Lorem")}</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Email")}</td>
-                            <td> Lorem@Lorem.Lorem </td>
-                          </tr>
-                          <tr>
-                            <td>{t("Enchère")}</td>
-                            <td>
-                              <Link to="/DetailEnchere" className="btn btn-outline block">
-                                <i className="fa-solid fa-eye font-medium-1"></i>
-                              </Link>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colSpan="2">
-                              <hr />
-                            </td>
-                          </tr>
+                          <tr></tr>
                           <tr>
                             <td>{t("User")}</td>
                             <td>
@@ -99,11 +71,27 @@ function Winners() {
                           <tr>
                             <td>{t("Enchère")}</td>
                             <td>
-                              <Link to="/DetailEnchere" className="btn btn-outline block">
+                              <Link
+                                to="/DetailEnchere"
+                                className="btn btn-outline block"
+                              >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </Link>
                             </td>
                           </tr>
+                          <tr>
+                            <td>{t("Type de payement")}</td>
+                            <td>type de payement</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Echéance")}</td>
+                            <td>
+                              <i className="fa-solid fa-plus"></i>
+                            </td>
+                          </tr>
+                          <td colSpan="2">
+                            <hr />
+                          </td>
                         </tbody>
                       </table>
                     ) : (
@@ -115,6 +103,8 @@ function Winners() {
                             <th>{t("Prénom")}</th>
                             <th>{t("Pseudo")}</th>
                             <th>{t("Enchère")}</th>
+                            <th>{t("Type de payement")}</th>
+                            <th>{t("Echéance")}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -133,29 +123,16 @@ function Winners() {
                             </td>
                             <td>Lorem Lorem</td>
                             <td>
-                              <Link to="/DetailEnchere" className="btn btn-outline block">
+                              <Link
+                                to="/DetailEnchere"
+                                className="btn btn-outline block"
+                              >
                                 <i className="fa-solid fa-eye font-medium-1"></i>
                               </Link>
                             </td>
-                          </tr>
-                          <tr>
+                            <td>Payement</td>
                             <td>
-                              <img
-                                style={{ borderRadius: "50px" }}
-                                className="imgtable"
-                                src="./Mazed.jpg"
-                                alt="img"
-                              />
-                            </td>
-                            <td>{t("Lorem Lorem")}</td>
-                            <td className="text-bold-500">
-                              {t("Lorem Lorem")}
-                            </td>
-                            <td>Lorem Lorem</td>
-                            <td>
-                              <Link to="/DetailEnchere" className="btn btn-outline block">
-                                <i className="fa-solid fa-eye font-medium-1"></i>
-                              </Link>
+                              <i className="fa-solid fa-plus"></i>
                             </td>
                           </tr>
                         </tbody>
