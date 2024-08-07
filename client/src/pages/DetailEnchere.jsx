@@ -4,9 +4,19 @@ import { Link } from "react-router-dom";
 import "../css/DetailEnchere.css";
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+import { Modal, Button, Form } from "react-bootstrap";
+
 
 function DetailEnchere() {
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [additionalTables, setAdditionalTables] = useState([]);
+  const [newTableData, setNewTableData] = useState({
+    date: "",
+    montantPayer: "",
+    montantRestant: "",
+    montantChaqueMois: "",
+  });
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -25,6 +35,36 @@ function DetailEnchere() {
 
   const deleteItem = () => {
     // Implement your delete logic here
+  };
+
+  const handleAddTable = () => {
+    setAdditionalTables([
+      ...additionalTables,
+      {
+        id: additionalTables.length + 1,
+        data: [
+          { label: t("Date de paiement"), value: newTableData.date },
+          { label: t("Montant à payer"), value: newTableData.montantPayer },
+          { label: t("Montant restant"), value: newTableData.montantRestant },
+          {
+            label: t("Montant à payer chaque mois"),
+            value: newTableData.montantChaqueMois,
+          },
+        ],
+      },
+    ]);
+    setShowModal(false);
+    setNewTableData({
+      date: "",
+      montantPayer: "",
+      montantRestant: "",
+      montantChaqueMois: "",
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewTableData({ ...newTableData, [name]: value });
   };
 
   const handleDelete = () => {
@@ -276,9 +316,7 @@ function DetailEnchere() {
                         <td>04/07/2026</td>
                         <td>69</td>
                         <td>
-                          <Link to="/Profile" className="btn btn-outline block">
                             <i className="fa-solid fa-eye font-medium-1"></i>
-                          </Link>
                         </td>
                       </tr>
                     </tbody>
@@ -375,9 +413,8 @@ function DetailEnchere() {
                         <td>04/07/2026</td>
                         <td>69</td>
                         <td>
-                          <Link to="/Profile" className="btn btn-outline block">
-                            <i className="fa-solid fa-trophy"></i>
-                          </Link>
+                            <i className="fa-solid fa-trophy" onClick={() => setShowModal(true)}
+                            ></i>
                         </td>
                       </tr>
                     </tbody>
@@ -388,6 +425,60 @@ function DetailEnchere() {
           </div>
         </section>
       </div>
+       {/* Modal */}
+       <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{t("Ajouter Echéance")}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>{t("Date de paiement")}</Form.Label>
+              <Form.Control
+                type="date"
+                name="date"
+                value={newTableData.date}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>{t("Montant à payer")}</Form.Label>
+              <Form.Control
+                type="text"
+                name="montantPayer"
+                value={newTableData.montantPayer}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>{t("Montant restant")}</Form.Label>
+              <Form.Control
+                type="text"
+                name="montantRestant"
+                value={newTableData.montantRestant}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>{t("Montant à payer chaque mois")}</Form.Label>
+              <Form.Control
+                type="text"
+                name="montantChaqueMois"
+                value={newTableData.montantChaqueMois}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            {t("Annuler")}
+          </Button>
+          <Button variant="primary" onClick={handleAddTable}>
+            {t("Ajouter")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

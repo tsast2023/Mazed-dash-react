@@ -135,7 +135,7 @@ function Winners() {
                             <td>{t("Type de payement")}</td>
                             <td>type de payement</td>
                           </tr>
-                          <tr>
+                          {/* <tr>
                             <td>{t("Echéance")}</td>
                             <td>
                               <i
@@ -143,7 +143,7 @@ function Winners() {
                                 onClick={() => setShowModal(true)}
                               ></i>
                             </td>
-                          </tr>
+                          </tr> */}
                           <td colSpan="2">
                             <hr />
                           </td>
@@ -159,7 +159,7 @@ function Winners() {
                             <th>{t("Pseudo")}</th>
                             <th>{t("Enchère")}</th>
                             <th>{t("Type de payement")}</th>
-                            <th>{t("Echéance")}</th>
+                            {/* <th>{t("Echéance")}</th> */}
                             <th>{t("Liste echéance")}</th>
                           </tr>
                         </thead>
@@ -187,12 +187,12 @@ function Winners() {
                               </Link>
                             </td>
                             <td>Payement</td>
-                            <td>
+                            {/* <td>
                               <i
                                 className="fa-solid fa-plus"
                                 onClick={() => setShowModal(true)}
                               ></i>
-                            </td>
+                            </td> */}
                             <td>
                               <Link to="/Echéance">
                               <i className="fa-solid fa-eye"></i>
