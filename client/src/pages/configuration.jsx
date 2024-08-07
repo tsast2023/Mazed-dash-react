@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "choices.js/public/assets/styles/choices.css";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Choices from "choices.js";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 
 function Configuration() {
@@ -11,6 +12,52 @@ function Configuration() {
   const [showEmail2, setShowEmail2] = useState(true);
   const [showFac, setShowFac] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [inputValue, setInputValue] = useState(""); // State for input value
+
+  const selectRef = useRef(null);
+  const choicesInstance = useRef(null);
+
+  useEffect(() => {
+    // Initialize Choices.js
+    if (selectRef.current) {
+      choicesInstance.current = new Choices(selectRef.current, {
+        allowHTML: false,
+        removeItemButton: true,
+        addItemText: (value) => `Add "${value}"`,
+        itemSelectText: "",
+      });
+    }
+
+    // Cleanup Choices.js
+    return () => {
+      if (choicesInstance.current) {
+        choicesInstance.current.destroy();
+        choicesInstance.current = null;
+      }
+    };
+  }, []);
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && inputValue.trim() !== "") {
+      event.preventDefault(); // Prevent default form submission or other actions
+
+      if (choicesInstance.current) {
+        const value = inputValue.trim();
+        // Use setChoices to update the choices
+        choicesInstance.current.setChoices(
+          [{ value: value, label: value, selected: false, disabled: false }],
+          "value",
+          "label",
+          true // This flag indicates that the options should be added to the end of the existing list
+        );
+        setInputValue(""); // Clear the input after adding
+      }
+    }
+  };
 
   const handleCheckbox1Change = () => {
     setShowEmail1(!showEmail1);
@@ -25,7 +72,6 @@ function Configuration() {
   const handleCloseModal = () => setShowModal(false);
 
   const handleDelete = () => {
-    // Show SweetAlert confirmation dialog
     Swal.fire({
       title: "Êtes-vous sûr(e) ?",
       text: "Une fois supprimé(e), vous ne pourrez pas récupérer cet élément !",
@@ -38,28 +84,31 @@ function Configuration() {
       closeOnCancel: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Call deleteItem function
         deleteItem();
         Swal.fire({
           title: "Annuler(e) !",
           text: "Votre élément a été supprimé.",
           icon: "success",
-          iconColor:"black",
-          confirmButtonColor: "#b0210e", // Change to your desired color
-          confirmButtonText: "OK"
-        });      } else {
+          iconColor: "black",
+          confirmButtonColor: "#b0210e",
+          confirmButtonText: "OK",
+        });
+      } else {
         Swal.fire({
           title: "Annulé",
           text: "Votre élément est en sécurité :)",
           icon: "error",
-          confirmButtonColor: "#b0210e", // Change to your desired color
-          confirmButtonText: "OK"
-        });      }
+          confirmButtonColor: "#b0210e",
+          confirmButtonText: "OK",
+        });
+      }
     });
   };
+
   const deleteItem = () => {
     // Implement your delete logic here
   };
+
   return (
     <div className="content-container">
       <div id="main">
@@ -116,16 +165,32 @@ function Configuration() {
                             <div className="col-12">
                               <div className="form-group">
                                 <label htmlFor="increment-value">
-                                  {t("Valeur De Majoration")}
+                                  {t("Ajouter Valeur De Majoration")}
                                 </label>
                                 <input
-                                  type="number"
+                                  type="text"
                                   id="increment-value"
                                   className="form-control"
-                                  name="increment-value"
-                                  placeholder={t("Ecrire Ici")}
-                                  required
+                                  value={inputValue}
+                                  onChange={handleInputChange}
+                                  onKeyDown={handleKeyPress}
+                                  placeholder={t(
+                                    "Add new option and press Enter"
+                                  )}
                                 />
+                                <label htmlFor="increment-value">
+                                  {t("Select Valeur De Majoration")}
+                                </label>
+                                <select
+                                  id="choices-select"
+                                  className="form-select"
+                                  name="increment-value"
+                                  ref={selectRef}
+                                  required
+                                  multiple
+                                >
+                                  {/* Initial options can be added here if needed */}
+                                </select>
                               </div>
                             </div>
                             <div className="col-12 checkbox">
@@ -216,83 +281,85 @@ function Configuration() {
                 </div>
               </div>
             </div>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div className="card">
               <div
-              style={{ backgroundColor: "white", padding: 20 }}
-              className="modal-content"
-            >
-              <div className="modal-header">
-                <h2 className="new-price" id="myModalLabel33">
-                  {t("Ajouter une nouvelle Configuration")}
-                </h2>
-              </div>
-              <form action="#">
-                <div className="modal-body">
-                  <label htmlFor="expected-participants">
-                    {t("Nb attendu des participants")}
-                  </label>
-                  <div className="form-group">
-                    <input
-                      type="number"
-                      id="expected-participants"
-                      className="form-control"
-                      placeholder={t("Écrivez ici")}
-                      maxLength={25}
-                      required
-                    />
-                  </div>
-                  <label htmlFor="launch-date">{t("Date de Lancement")}</label>
-                  <div className="form-group">
-                    <input
-                      type="datetime-local"
-                      id="launch-date"
-                      className="form-control"
-                      placeholder={t("Écrivez ici")}
-                      required
-                    />
-                  </div>
-                  <label htmlFor="closing-date">{t("Date de Fermeture")}</label>
-                  <div className="form-group">
-                    <input
-                      type="datetime-local"
-                      id="closing-date"
-                      className="form-control"
-                      placeholder={t("Écrivez ici")}
-                      required
-                    />
-                  </div>
+                style={{ backgroundColor: "white", padding: 20 }}
+                className="modal-content"
+              >
+                <div className="modal-header">
+                  <h2 className="new-price" id="myModalLabel33">
+                    {t("Ajouter une nouvelle Configuration")}
+                  </h2>
                 </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                    onClick={handleOpenModal}
-                  >
-                    <span className="d-none d-sm-block">{t("Planifier")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                  >
-                    <span className="d-none d-sm-block">{t("Publier")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                  >
-                    <span className="d-none d-sm-block">{t("Enregister")}</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary ms-1"
-                    onClick={handleDelete}
-                  >
-                    <span className="d-none d-sm-block">{t("Annuler")}</span>
-                  </button>
-                </div>
-              </form>
+                <form action="#">
+                  <div className="modal-body">
+                    <label htmlFor="expected-participants">
+                      {t("Nb attendu des participants")}
+                    </label>
+                    <div className="form-group">
+                      <input
+                        type="number"
+                        id="expected-participants"
+                        className="form-control"
+                        placeholder={t("Écrivez ici")}
+                        maxLength={25}
+                        required
+                      />
+                    </div>
+                    <label htmlFor="launch-date">
+                      {t("Date de Lancement")}
+                    </label>
+                    <div className="form-group">
+                      <input
+                        type="datetime-local"
+                        id="launch-date"
+                        className="form-control"
+                        placeholder={t("Écrivez ici")}
+                        required
+                      />
+                    </div>
+                    <label htmlFor="closing-date">
+                      {t("Date de Fermeture")}
+                    </label>
+                    <div className="form-group">
+                      <input
+                        type="datetime-local"
+                        id="closing-date"
+                        className="form-control"
+                        placeholder={t("Écrivez ici")}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-primary ms-1"
+                      onClick={handleOpenModal}
+                    >
+                      <span className="d-none d-sm-block">
+                        {t("Planifier")}
+                      </span>
+                    </button>
+                    <button type="button" className="btn btn-primary ms-1">
+                      <span className="d-none d-sm-block">{t("Publier")}</span>
+                    </button>
+                    <button type="button" className="btn btn-primary ms-1">
+                      <span className="d-none d-sm-block">
+                        {t("Enregister")}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary ms-1"
+                      onClick={handleDelete}
+                    >
+                      <span className="d-none d-sm-block">{t("Annuler")}</span>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </section>
@@ -305,11 +372,15 @@ function Configuration() {
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
-            <label htmlFor="dateInput" className="form-label">{t("Date")}</label>
+            <label htmlFor="dateInput" className="form-label">
+              {t("Date")}
+            </label>
             <input type="date" className="form-control" id="dateInput" />
           </div>
           <div className="mb-3">
-            <label htmlFor="timeInput" className="form-label">{t("Heure")}</label>
+            <label htmlFor="timeInput" className="form-label">
+              {t("Heure")}
+            </label>
             <input type="time" className="form-control" id="timeInput" />
           </div>
         </Modal.Body>
@@ -317,9 +388,7 @@ function Configuration() {
           <Button variant="secondary" onClick={handleCloseModal}>
             {t("Fermer")}
           </Button>
-          <Button variant="primary">
-            {t("Planifier")}
-          </Button>
+          <Button variant="primary">{t("Planifier")}</Button>
         </Modal.Footer>
       </Modal>
     </div>

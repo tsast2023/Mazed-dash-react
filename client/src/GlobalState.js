@@ -41,7 +41,7 @@ export const DataProvider = ({children}) => {
 
     const getAllCategories = async() =>{
         try {
-            const  res = await axios.get('http://192.168.0.118:8081/api/category/getAll');
+            const  res = await axios.get('http://localhost:8081/api/category/getAll');
             console.log("categories:",res.data);
             setCategories(res.data)
         } catch (error) {

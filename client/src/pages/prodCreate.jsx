@@ -219,7 +219,7 @@ const App = () => {
                         <Link
                           to="/ProdAction"
                           className="btn-link text-white text-decoration-none"
-                          style={{ textDecoration: "none" }} // Added inline style to ensure no underline
+                          style={{ textDecoration: "none" }}
                         >
                           {t("Suivant")}
                         </Link>
