@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 function AnnonceCreator() {
   const { t } = useTranslation();
-  const [showSuivantModal, setShowSuivantModal] = useState(false);
   const [showPlanifierModal, setShowPlanifierModal] = useState(false);
   const [fileInputType, setFileInputType] = useState("");
 
@@ -69,45 +68,28 @@ function AnnonceCreator() {
                   <Button
                     variant="secondary"
                     className="me-2"
-                    onClick={() => setShowSuivantModal(false)}
+                    onClick={() => setShowPlanifierModal(false)}
                   >
                     {t("Annuler")}
                   </Button>
                   <Button
+                    variant="warning"
+                    className="ms-2"
+                    onClick={() => setShowPlanifierModal(true)}
+                  >
+                    {t("Planifier")}
+                  </Button>
+                  <Button
                     variant="primary"
                     className="ms-2"
-                    onClick={() => setShowSuivantModal(true)}
                   >
-                    {t("Suivant")}
+                    {t("Publier immédiatement")}
                   </Button>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        <Modal
-          show={showSuivantModal}
-          onHide={() => setShowSuivantModal(false)}
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{t("Actions")}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Button variant="primary" className="mb-1 me-2">{t("Annuler")}</Button>
-            <Button
-              variant="warning"
-              className="mb-1 me-2"
-              onClick={() => {
-                setShowSuivantModal(false);
-                setShowPlanifierModal(true);
-              }}
-            >
-              {t("Planifier")}
-            </Button>
-            <Button variant="info" className="mb-1">{t("Publier immédiatement")}</Button>
-          </Modal.Body>
-        </Modal>
         <Modal
           show={showPlanifierModal}
           onHide={() => setShowPlanifierModal(false)}
