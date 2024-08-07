@@ -42,6 +42,12 @@ function EnchèreCreation() {
                           </div>
                           <div className="col-12">
                             <div className="form-group">
+                              <label htmlFor="email-id-vertical">{t("Référence")}</label>
+                              <input type="number" id="email-id-vertical" className="form-control" name="email-id" placeholder={t("dt")} required />
+                            </div>
+                          </div>
+                          <div className="col-12">
+                            <div className="form-group">
                               <label htmlFor="email-id-vertical">{t("Prix magasin")}</label>
                               <input type="number" id="email-id-vertical" className="form-control" name="email-id" placeholder={t("dt")} required />
                             </div>
