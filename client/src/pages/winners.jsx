@@ -52,25 +52,25 @@ function Winners() {
                       <table className="table">
                         <tbody>
                           <tr>
-                            <td>{t("Date")}</td>
-                            <td>10/10/2024</td>
+                            <td>{t("Nom")}</td>
+                            <td>Lorem</td>
                           </tr>
                           <tr>
-                            <td>{t("Utilisateur")}</td>
+                            <td>{t("Prénom")}</td>
                             <td>{t("Lorem Lorem")}</td>
                           </tr>
                           <tr>
-                            <td>{t("Sujet")}</td>
+                            <td>{t("Pseudo")}</td>
                             <td>{t("Lorem Lorem")}</td>
                           </tr>
                           <tr>
-                            <td>{t("Statut")}</td>
+                            <td>{t("Email")}</td>
                             <td>
-                              <span className="badge bg-secondary">{t("Ouverte")}</span>
+                              <td> Lorem@Lorem.Lorem </td>
                             </td>
                           </tr>
                           <tr>
-                            <td>{t("Détail")}</td>
+                            <td>{t("Enchére")}</td>
                             <td>
                               <button
                                 type="button"
@@ -82,28 +82,30 @@ function Winners() {
                             </td>
                           </tr>
                           <tr>
-                            <td colSpan="2"><hr /></td>
-                          </tr>
-                          <tr>
-                            <td>{t("Date")}</td>
-                            <td>10/10/2024</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Utilisateur")}</td>
-                            <td>{t("Lorem Lorem")}</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Sujet")}</td>
-                            <td>{t("Lorem Lorem")}</td>
-                          </tr>
-                          <tr>
-                            <td>{t("Statut")}</td>
-                            <td>
-                              <span className="badge bg-danger">{t("Fermée")}</span>
+                            <td colSpan="2">
+                              <hr />
                             </td>
                           </tr>
                           <tr>
-                            <td>{t("Détail")}</td>
+                            <td>{t("Nom")}</td>
+                            <td>Lorem</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Prénom")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Pseudo")}</td>
+                            <td>{t("Lorem Lorem")}</td>
+                          </tr>
+                          <tr>
+                            <td>{t("Email")}</td>
+                            <td>
+                              <td>Lorem@Lorem.Lorem</td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>{t("Enchére")}</td>
                             <td>
                               <button
                                 type="button"
@@ -120,21 +122,21 @@ function Winners() {
                       <table className="table">
                         <thead>
                           <tr>
-                            <th>{t("Date")}</th>
-                            <th>{t("Utilisateur")}</th>
-                            <th>{t("Sujet")}</th>
-                            <th>{t("Statut")}</th>
-                            <th>{t("Détail")}</th>
+                            <th>{t("Nom")}</th>
+                            <th>{t("Prénom")}</th>
+                            <th>{t("Pseudo")}</th>
+                            <th>{t("Email")}</th>
+                            <th>{t("Enchére")}</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="text-bold-500">10/10/2024</td>
+                            <td className="text-bold-500">Lorem</td>
                             <td>{t("Lorem Lorem")}</td>
-                            <td className="text-bold-500">{t("Lorem Lorem")}</td>
-                            <td>
-                              <span className="badge bg-secondary">{t("Ouverte")}</span>
+                            <td className="text-bold-500">
+                              {t("Lorem Lorem")}
                             </td>
+                            <td>Lorem Lorem</td>
                             <td>
                               <button
                                 type="button"
@@ -146,12 +148,12 @@ function Winners() {
                             </td>
                           </tr>
                           <tr>
-                            <td className="text-bold-500">10/10/2024</td>
+                            <td className="text-bold-500">Lorem</td>
                             <td>{t("Lorem Lorem")}</td>
-                            <td className="text-bold-500">{t("Lorem Lorem")}</td>
-                            <td>
-                              <span className="badge bg-danger">{t("Fermée")}</span>
+                            <td className="text-bold-500">
+                              {t("Lorem Lorem")}
                             </td>
+                            <td>Lorem Lorem</td>
                             <td>
                               <button
                                 type="button"
@@ -176,7 +178,7 @@ function Winners() {
       {/* Modals */}
       <Modal show={showModal1} onHide={() => setShowModal1(false)}>
         <Modal.Header closeButton>
-        <Modal.Title>{t("Réclamation")}</Modal.Title>
+          <Modal.Title>{t("Réclamation")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Please provide details of your reclamation.</p>
