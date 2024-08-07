@@ -144,7 +144,7 @@ function DetailEnchere() {
       <div id="main">
         <section className="section">
           <div className="card-wrap">
-            <div className="caard">
+            <div className="card">
               <div className="product-detail">
                 <div className="product-images">
                   <div className="main-image">
@@ -290,6 +290,103 @@ function DetailEnchere() {
         </section>
         <br />
         <br />
+
+        <section className="section">
+          <div className="card">
+            <div className="card-header">
+              <h2 className="new-price">{t("Liste des Enchèrissement")}</h2>
+            </div>
+            <div className="card-body">
+              <div className="table-responsive datatable-minimal">
+                {isMobile ? (
+                  <table className="table" id="table2">
+                    <tbody>
+                      <tr>
+                        <td>{t("User")}</td>
+                        <td>
+                          <img
+                            style={{ borderRadius: "50px" }}
+                            className="imgtable"
+                            src="./Mazed.jpg"
+                            alt="img"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>{t("Nom")}</td>
+                        <td>Seif</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Prénom")}</td>
+                        <td>Seif</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Pseudo")}</td>
+                        <td>Clubisty</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Heure de majoration")}</td>
+                        <td>(+1) 613 820 8838</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Valeur Majoration")}</td>
+                        <td>04/07/2026</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Montant total")}</td>
+                        <td>69</td>
+                      </tr>
+                      <tr>
+                        <td>{t("Gagant")}</td>
+                        <td>
+                          <i className="fa-solid fa-trophy"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ) : (
+                  <table className="table" id="table2">
+                    <thead>
+                      <tr>
+                        <th>{t("User")}</th>
+                        <th>{t("Nom")}</th>
+                        <th>{t("Prénom")}</th>
+                        <th>{t("Pseudo")}</th>
+                        <th>{t("Heure de majoration")}</th>
+                        <th>{t("Valeur Majoration")}</th>
+                        <th>{t("Montant total")}</th>
+                        <th>{t("Gagant")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <img
+                            style={{ borderRadius: "50px" }}
+                            className="imgtable"
+                            src="./Mazed.jpg"
+                            alt="img"
+                          />
+                        </td>
+                        <td>Seif</td>
+                        <td>Seif</td>
+                        <td>Clubisty</td>
+                        <td>(+1) 613 820 8838</td>
+                        <td>04/07/2026</td>
+                        <td>69</td>
+                        <td>
+                          <Link to="/Profile" className="btn btn-outline block">
+                            <i className="fa-solid fa-trophy"></i>
+                          </Link>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
