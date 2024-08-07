@@ -73,7 +73,7 @@ function AnnonceCreator() {
                     {t("Annuler")}
                   </Button>
                   <Button
-                    variant="warning"
+                    variant="success"
                     className="ms-2"
                     onClick={() => setShowPlanifierModal(true)}
                   >
