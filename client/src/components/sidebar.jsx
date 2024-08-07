@@ -4,7 +4,7 @@ import "../css/sidebar.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 const Theme = "light";
 
 const themes = {
@@ -147,7 +147,9 @@ const Playground = () => {
                   component={<Link to="/CreationRole" />}
                   onClick={() => setActiveLink("/CreationRole")}
                   style={
-                    activeLink === "/CreationRole" ? menuItemStyles.active : null
+                    activeLink === "/CreationRole"
+                      ? menuItemStyles.active
+                      : null
                   }
                 >
                   {t("Creation D'un Role")}
@@ -494,9 +496,7 @@ const Playground = () => {
                 component={<Link to="/Winners" />}
                 icon={<i className="fa-solid fa-trophy"></i>}
                 onClick={() => setActiveLink("/Winners")}
-                style={
-                  activeLink === "/Winners" ? menuItemStyles.active : null
-                }
+                style={activeLink === "/Winners" ? menuItemStyles.active : null}
               >
                 {t("Liste des gagnants")}
               </MenuItem>
@@ -540,8 +540,12 @@ const Playground = () => {
               </MenuItem>
               <MenuItem
                 icon={<i className="fa-solid fa-right-from-bracket"></i>}
+                onClick={() => {
+                  Cookies.remove("token");
+                  window.location.reload();
+                }}
               >
-                <button onClick={()=>{Cookies.remove('token') ; window.location.reload()}}>{t("Déconnexion")}</button>
+                {t("Déconnexion")}
               </MenuItem>
             </Menu>
           </div>
