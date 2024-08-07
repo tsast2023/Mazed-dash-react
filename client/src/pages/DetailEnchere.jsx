@@ -143,8 +143,8 @@ function DetailEnchere() {
     <div className="content-container">
       <div id="main">
         <section className="section">
-          <div className="card-wrapper">
-            <div className="cardsss">
+          <div className="card-wrap">
+            <div className="caard">
               <div className="product-detail">
                 <div className="product-images">
                   <div className="main-image">
