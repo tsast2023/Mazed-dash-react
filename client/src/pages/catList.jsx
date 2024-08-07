@@ -6,18 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
+
 function CategoryList() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const categories = state.Categories;
   const [isMobile, setIsMobile] = useState(false);
-  const [starClickedMap, setStarClickedMap] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [starClickedMap, setStarClickedMap] = useState({});
-  const [showModal, setShowModal] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -129,7 +127,6 @@ const deleteC = async(id) =>{
         Swal.fire(
           t("Effectué !"),
           t("Votre élément a été mis à l'une."),
-          "success"
           "success"
         );
       } else {

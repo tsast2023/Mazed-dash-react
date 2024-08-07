@@ -377,6 +377,7 @@ const resources = {
       "Nom de societe": "Company name",
       "Type vendeurs": "Seller type",
       "Date de Naissance": "Birth date",
+      "Liste des gagnants": "Winners list"
     }
   },
   fr: {
@@ -763,6 +764,7 @@ const resources = {
         "Nom de societe": "Nom de societe",
         "Type vendeurs": "Type vendeurs",
         "Date de Naissance": "Date de Naissance",
+        "Liste des gagnants": "Liste des gagnants",
     }
   },
   ar: {
@@ -1151,6 +1153,7 @@ const resources = {
       "Stock": "المخزون",
       "Demande de Création": "الطلب على إنتاج",
       "Nom de societe": "إسم الشركة",
+      "Liste des gagnants":"قائمة الفائزين",
     }
   }
 };
