@@ -70,7 +70,7 @@ function Winners() {
                             </td>
                           </tr>
                           <tr>
-                            <td>{t("Enchére")}</td>
+                            <td>{t("Enchère")}</td>
                             <td>
                               <button
                                 type="button"
@@ -105,7 +105,7 @@ function Winners() {
                             </td>
                           </tr>
                           <tr>
-                            <td>{t("Enchére")}</td>
+                            <td>{t("Enchère")}</td>
                             <td>
                               <button
                                 type="button"
@@ -126,7 +126,7 @@ function Winners() {
                             <th>{t("Prénom")}</th>
                             <th>{t("Pseudo")}</th>
                             <th>{t("Email")}</th>
-                            <th>{t("Enchére")}</th>
+                            <th>{t("Enchère")}</th>
                           </tr>
                         </thead>
                         <tbody>
