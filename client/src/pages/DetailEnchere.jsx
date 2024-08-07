@@ -468,6 +468,20 @@ function DetailEnchere() {
                 onChange={handleInputChange}
               />
             </Form.Group>
+            <Form.Group>
+              <Form.Label>{t("Choisissez une option")}</Form.Label>
+              <Form.Control
+                as="select"
+                name="selectedOption"
+                value={newTableData.selectedOption}
+                onChange={handleInputChange}
+              >
+                <option value="">{t("Type de payement")}</option>
+                <option value="option1">{t("Option 1")}</option>
+                <option value="option2">{t("Option 2")}</option>
+                <option value="option3">{t("Option 3")}</option>
+              </Form.Control>
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
