@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Winners() {
   const { t } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
-  const [showModal1, setShowModal1] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
-  const [reclamationText, setReclamationText] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,14 +19,6 @@ function Winners() {
     // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleSendReclamation = () => {
-    // Handle sending reclamation text here
-    console.log("Sending reclamation:", reclamationText);
-
-    // Close modal after sending
-    setShowModal1(false);
-  };
 
   return (
     <div className="content-container">
@@ -65,25 +54,30 @@ function Winners() {
                           </tr>
                           <tr>
                             <td>{t("Email")}</td>
-                            <td>
-                              <td> Lorem@Lorem.Lorem </td>
-                            </td>
+                            <td> Lorem@Lorem.Lorem </td>
                           </tr>
                           <tr>
                             <td>{t("Enchère")}</td>
                             <td>
-                              <button
-                                type="button"
-                                className="btn btn-outline block"
-                                onClick={() => setShowModal1(true)}
-                              >
+                              <Link to="/DetailEnchere" className="btn btn-outline block">
                                 <i className="fa-solid fa-eye font-medium-1"></i>
-                              </button>
+                              </Link>
                             </td>
                           </tr>
                           <tr>
                             <td colSpan="2">
                               <hr />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>{t("User")}</td>
+                            <td>
+                              <img
+                                style={{ borderRadius: "50px" }}
+                                className="imgtable"
+                                src="./Mazed.jpg"
+                                alt="img"
+                              />
                             </td>
                           </tr>
                           <tr>
@@ -100,20 +94,14 @@ function Winners() {
                           </tr>
                           <tr>
                             <td>{t("Email")}</td>
-                            <td>
-                              <td>Lorem@Lorem.Lorem</td>
-                            </td>
+                            <td>Lorem@Lorem.Lorem</td>
                           </tr>
                           <tr>
                             <td>{t("Enchère")}</td>
                             <td>
-                              <button
-                                type="button"
-                                className="btn btn-outline block"
-                                onClick={() => setShowModal2(true)}
-                              >
+                              <Link to="/DetailEnchere" className="btn btn-outline block">
                                 <i className="fa-solid fa-eye font-medium-1"></i>
-                              </button>
+                              </Link>
                             </td>
                           </tr>
                         </tbody>
@@ -122,46 +110,52 @@ function Winners() {
                       <table className="table">
                         <thead>
                           <tr>
+                            <th>{t("User")}</th>
                             <th>{t("Nom")}</th>
                             <th>{t("Prénom")}</th>
                             <th>{t("Pseudo")}</th>
-                            <th>{t("Email")}</th>
                             <th>{t("Enchère")}</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="text-bold-500">Lorem</td>
+                            <td>
+                              <img
+                                style={{ borderRadius: "50px" }}
+                                className="imgtable"
+                                src="./Mazed.jpg"
+                                alt="img"
+                              />
+                            </td>
                             <td>{t("Lorem Lorem")}</td>
                             <td className="text-bold-500">
                               {t("Lorem Lorem")}
                             </td>
                             <td>Lorem Lorem</td>
                             <td>
-                              <button
-                                type="button"
-                                className="btn btn-outline block"
-                                onClick={() => setShowModal1(true)}
-                              >
+                              <Link to="/DetailEnchere" className="btn btn-outline block">
                                 <i className="fa-solid fa-eye font-medium-1"></i>
-                              </button>
+                              </Link>
                             </td>
                           </tr>
                           <tr>
-                            <td className="text-bold-500">Lorem</td>
+                            <td>
+                              <img
+                                style={{ borderRadius: "50px" }}
+                                className="imgtable"
+                                src="./Mazed.jpg"
+                                alt="img"
+                              />
+                            </td>
                             <td>{t("Lorem Lorem")}</td>
                             <td className="text-bold-500">
                               {t("Lorem Lorem")}
                             </td>
                             <td>Lorem Lorem</td>
                             <td>
-                              <button
-                                type="button"
-                                className="btn btn-outline block"
-                                onClick={() => setShowModal2(true)}
-                              >
+                              <Link to="/DetailEnchere" className="btn btn-outline block">
                                 <i className="fa-solid fa-eye font-medium-1"></i>
-                              </button>
+                              </Link>
                             </td>
                           </tr>
                         </tbody>
@@ -174,48 +168,6 @@ function Winners() {
           </div>
         </section>
       </div>
-
-      {/* Modals */}
-      <Modal show={showModal1} onHide={() => setShowModal1(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{t("Réclamation")}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Please provide details of your reclamation.</p>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={reclamationText}
-            onChange={(e) => setReclamationText(e.target.value)}
-            placeholder={t("Enter your reclamation here")}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleSendReclamation}>
-            {t("Envoyer")}
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      <Modal show={showModal2} onHide={() => setShowModal2(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{t("Réclamation")}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Please provide details of your reclamation.</p>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={reclamationText}
-            onChange={(e) => setReclamationText(e.target.value)}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleSendReclamation}>
-            {t("Envoyer")}
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }

@@ -326,7 +326,7 @@ function DetailEnchere() {
                       </tr>
                       <tr>
                         <td>{t("Heure de majoration")}</td>
-                        <td>(+1) 613 820 8838</td>
+                        <td>Date Here</td>
                       </tr>
                       <tr>
                         <td>{t("Valeur Majoration")}</td>
@@ -371,7 +371,7 @@ function DetailEnchere() {
                         <td>Seif</td>
                         <td>Seif</td>
                         <td>Clubisty</td>
-                        <td>(+1) 613 820 8838</td>
+                        <td>Date Here</td>
                         <td>04/07/2026</td>
                         <td>69</td>
                         <td>
