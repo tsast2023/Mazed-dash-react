@@ -469,7 +469,7 @@ function DetailEnchere() {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>{t("Choisissez une option")}</Form.Label>
+              <Form.Label>{t("Type de payement")}</Form.Label>
               <Form.Control
                 as="select"
                 name="selectedOption"
