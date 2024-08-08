@@ -246,11 +246,10 @@ function Transfer() {
                 <ResponsiveTable
                   data={data}
                   headers={[
-                    "Nom",
-                    "Véhicule",
-                    "Valeur",
-                    "Location",
-                    "Note",
+                    "File",
+                    "Type recharge",
+                    "Pseduo",
+                    "Montant",
                     "Statut",
                   ]}
                   isMobile={isMobile}
