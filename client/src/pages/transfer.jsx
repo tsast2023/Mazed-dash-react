@@ -92,7 +92,7 @@ function TableRow({ userData, status, onAccept }) {
       <td>{userData.value}</td>
       <td>{userData.location}</td>
       <td>{userData.note}</td>
-      <td>
+      {/* <td>
         <span className={`badge bg-${status.color}`}>{t(status.text)}</span>
       </td>
       <td>
@@ -110,7 +110,7 @@ function TableRow({ userData, status, onAccept }) {
           </button>
           <Modal t={t} />
         </section>
-      </td>
+      </td> */}
     </tr>
   );
 }
@@ -152,8 +152,8 @@ function ResponsiveTable({ data, headers, isMobile }) {
               {headers.map((header, index) => (
                 <th key={index}>{t(header)}</th>
               ))}
-              <th>{t("Accepter")}</th>
-              <th>{t("Refuser")}</th>
+              {/* <th>{t("Accepter")}</th>
+              <th>{t("Refuser")}</th> */}
             </tr>
           </thead>
           <tbody>
