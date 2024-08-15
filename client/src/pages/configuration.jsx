@@ -25,6 +25,8 @@ function Configuration() {
         removeItemButton: true,
         addItemText: (value) => `Add "${value}"`,
         itemSelectText: "",
+        duplicateItemsAllowed: false, // Prevent duplicate items
+        shouldSort: false, // Disable sorting to keep the original order
       });
     }
 
@@ -47,9 +49,9 @@ function Configuration() {
 
       if (choicesInstance.current) {
         const value = inputValue.trim();
-        // Use setChoices to update the choices
+        // Add the new option
         choicesInstance.current.setChoices(
-          [{ value: value, label: value, selected: false, disabled: false }],
+          [{ value: value, label: value, selected: true, disabled: false }],
           "value",
           "label",
           true // This flag indicates that the options should be added to the end of the existing list
@@ -293,104 +295,37 @@ function Configuration() {
                     {t("Ajouter une nouvelle Configuration")}
                   </h2>
                 </div>
-                <form action="#">
-                  <div className="modal-body">
-                    <label htmlFor="expected-participants">
-                      {t("Nb attendu des participants")}
-                    </label>
-                    <div className="form-group">
-                      <input
-                        type="number"
-                        id="expected-participants"
-                        className="form-control"
-                        placeholder={t("Écrivez ici")}
-                        maxLength={25}
-                        required
-                      />
-                    </div>
-                    <label htmlFor="launch-date">
-                      {t("Date de Lancement")}
-                    </label>
-                    <div className="form-group">
-                      <input
-                        type="datetime-local"
-                        id="launch-date"
-                        className="form-control"
-                        placeholder={t("Écrivez ici")}
-                        required
-                      />
-                    </div>
-                    <label htmlFor="closing-date">
-                      {t("Date de Fermeture")}
-                    </label>
-                    <div className="form-group">
-                      <input
-                        type="datetime-local"
-                        id="closing-date"
-                        className="form-control"
-                        placeholder={t("Écrivez ici")}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-primary ms-1"
-                      onClick={handleOpenModal}
-                    >
-                      <span className="d-none d-sm-block">
-                        {t("Planifier")}
-                      </span>
-                    </button>
-                    <button type="button" className="btn btn-primary ms-1">
-                      <span className="d-none d-sm-block">{t("Publier")}</span>
-                    </button>
-                    <button type="button" className="btn btn-primary ms-1">
-                      <span className="d-none d-sm-block">
-                        {t("Enregister")}
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-primary ms-1"
-                      onClick={handleDelete}
-                    >
-                      <span className="d-none d-sm-block">{t("Annuler")}</span>
-                    </button>
-                  </div>
-                </form>
+                <div className="modal-body">
+                  <button
+                    className="btn btn-primary"
+                    onClick={handleOpenModal}
+                  >
+                    {t("Ajouter une nouvelle Configuration")}
+                  </button>
+                </div>
+                <Modal
+                  show={showModal}
+                  onHide={handleCloseModal}
+                  style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>{t("Modal title")}</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>{t("Modal body text goes here.")}</Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                      {t("Fermer")}
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseModal}>
+                      {t("Save Changes")}
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
           </section>
         </div>
       </div>
-
-      <Modal show={showModal} onHide={handleCloseModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{t("Planifier")}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="mb-3">
-            <label htmlFor="dateInput" className="form-label">
-              {t("Date")}
-            </label>
-            <input type="date" className="form-control" id="dateInput" />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="timeInput" className="form-label">
-              {t("Heure")}
-            </label>
-            <input type="time" className="form-control" id="timeInput" />
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            {t("Fermer")}
-          </Button>
-          <Button variant="primary">{t("Planifier")}</Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }
