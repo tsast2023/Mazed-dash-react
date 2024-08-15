@@ -40,7 +40,7 @@ const Login = () => {
           </div>
         </div>
         <div className="col-lg-6 image-container">
-          <img src="./Mazed.jpg" alt="login" className="img-fluid" />
+          <img src="./newMazed.png" alt="login" className="imglogo" />
         </div>
       </div>
     </div>

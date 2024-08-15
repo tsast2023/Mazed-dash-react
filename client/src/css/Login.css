@@ -27,6 +27,10 @@
     margin-bottom: 40px;
 }
 
+.imglogo {
+    width: 50%;
+}
+
 @media (max-width: 768px) {
     .login-container {
         height: 50;
